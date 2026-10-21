@@ -1,0 +1,373 @@
+/* Small local prototype override; do not edit DevLab itself. */
+:root {
+  --site-width: 92rem;
+  --content-width: 50rem;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+@font-face {
+  font-family: "Manrope";
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/manrope-latin.woff2") format("woff2");
+}
+:root[data-theme="dark"] {
+  --color-bg: #0a1019;
+  --color-surface: #101d2b;
+  --color-fg: #edf1f6;
+  --color-muted: #b0c4d3;
+  --color-border: #31404e;
+  --color-accent: #97c8d7;
+}
+.content figure.research-figure {
+  width: 100%;
+  margin: 2rem auto 2.5rem;
+}
+.content figure.research-figure img {
+  display:block;max-width:100%;height:auto;border:1px solid var(--color-border);
+}
+.content figure.research-figure figcaption {
+  color: var(--color-muted);font-size:.82rem;margin-top:.6rem;
+}
+
+
+/* Editorial reading rhythm, applied only to this isolated DevLab prototype. */
+.docs-content.content {
+  line-height: 1.78;
+}
+.docs-content.content > p {
+  margin-block: 0 1.45rem;
+}
+.docs-content.content > ul,
+.docs-content.content > ol {
+  margin-block: 1rem 1.7rem;
+  padding-inline-start: 1.5rem;
+}
+.docs-content.content > ul > li,
+.docs-content.content > ol > li {
+  padding-block: .19rem;
+  padding-inline-start: .2rem;
+}
+.docs-content.content h2 {
+  margin-top: 3rem;
+  margin-bottom: 1.25rem;
+}
+.docs-content.content h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.docs-content.content figure.research-figure {
+  margin-block: 2.25rem 2.75rem;
+}
+.docs-content.content > table {
+  margin-block: 1.5rem 2rem;
+}
+@media (max-width: 640px) {
+  .docs-content.content h2 { margin-top: 2.35rem; }
+  .docs-content.content > p { margin-bottom: 1.2rem; }
+}
+
+
+/* lxrider editorial refinements: compact headings, restrained figures and brand. */
+/* User-provided wordmark. Mark-only link retains DevLab's accessible home label. */
+.site-header .site-logo-mark.site-logo-mark-image {
+  display: block;
+  width: 184px;
+  height: auto;
+  max-height: 44px;
+  object-fit: contain;
+}
+/* Keep the wordmark legible in light mode without a separate raster asset. */
+:root[data-theme="light"] .site-header .site-logo-mark-image {
+  filter: brightness(0);
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .site-header .site-logo-mark-image {
+    filter: brightness(0);
+  }
+}
+@media (max-width: 760px) {
+  .site-header .site-logo-mark.site-logo-mark-image {
+    width: 148px;
+    max-height: 36px;
+  }
+}
+.docs-content.content figure.research-figure {
+  width: min(100%, 720px);
+  max-width: 100%;
+  margin-inline: auto;
+}
+.docs-content.content figure.research-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 640px) {
+  .docs-content.content figure.research-figure {
+    width: 100%;
+  }
+}
+
+/* Accueil lxrider : illustration originale, cadrages adaptés aux écrans. */
+.site-main.lx-home-main {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+.lx-home-cinematic {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: max(660px, calc(100svh - var(--header-height, 64px)));
+  overflow: hidden;
+  background-color: #0a1019;
+  background-image: url("/images/home-hero-original.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: #eef3f8;
+}
+.lx-home-cinematic::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(90deg,
+    rgba(6,14,26,.92) 0%,
+    rgba(6,14,26,.87) 22%,
+    rgba(6,14,26,.73) 39%,
+    rgba(6,14,26,.23) 64%,
+    rgba(6,14,26,.02) 90%);
+}
+.lx-home-cinematic-copy {
+  position: relative;
+  z-index: 2;
+  width: min(100% - 3rem, 1490px);
+  margin-inline: auto;
+  padding-block: clamp(4rem, 10vh, 8rem);
+}
+.lx-home-cinematic-eyebrow {
+  max-width: 670px;
+  margin: 0 0 clamp(1.75rem, 3.2vw, 2.2rem);
+  color: #9aafbe;
+  font-size: .77rem;
+  font-weight: 750;
+  letter-spacing: .15em;
+}
+.lx-home-cinematic-copy h1 {
+  max-width: 670px;
+  margin: 0 0 2rem;
+  color: #f4f6fb;
+  font-size: clamp(2.75rem, 4.1vw, 4.45rem);
+  font-weight: 760;
+  letter-spacing: -.047em;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+.lx-home-cinematic-lead {
+  max-width: 680px;
+  margin: 0;
+  color: #bed2df;
+  font-size: clamp(1.05rem, 1.25vw, 1.31rem);
+  line-height: 1.72;
+}
+/* Tablette : préserver le paysage sous le texte. */
+@media (min-width: 641px) and (max-width: 960px) {
+  .lx-home-cinematic {
+    min-height: max(720px, calc(100svh - 64px));
+    align-items: flex-start;
+    background-position: 66% center;
+  }
+  .lx-home-cinematic::before {
+    background: linear-gradient(180deg,
+      rgba(6,14,26,.94) 0%,
+      rgba(6,14,26,.83) 40%,
+      rgba(6,14,26,.25) 78%,
+      rgba(6,14,26,.06) 100%);
+  }
+  .lx-home-cinematic-copy {
+    width: min(100% - 3rem, 670px);
+    margin-top: clamp(2rem, 8vh, 6rem);
+  }
+  .lx-home-cinematic-copy h1 {
+    max-width: 650px;
+    font-size: clamp(2.7rem, 6vw, 3.9rem);
+  }
+}
+/* Mobile : texte indépendant du cadrage, vue polaire en partie basse. */
+@media (max-width: 640px) {
+  .lx-home-cinematic {
+    display: block;
+    min-height: max(740px, calc(100svh - 112px));
+    background-image: none;
+    background-color: #0a1019;
+  }
+  .lx-home-cinematic::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 53%;
+    background-image: url("/images/home-hero-mobile.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+  }
+  .lx-home-cinematic::before {
+    background: linear-gradient(180deg,
+      #0a1019 0%,
+      #0a1019 36%,
+      rgba(10,16,25,.98) 42%,
+      rgba(10,16,25,.81) 53%,
+      rgba(10,16,25,.15) 80%,
+      rgba(10,16,25,.03) 100%);
+  }
+  .lx-home-cinematic-copy {
+    width: calc(100% - 2rem);
+    padding-block: clamp(3rem, 7vh, 4.2rem) 4rem;
+  }
+  .lx-home-cinematic-eyebrow {
+    font-size: .65rem;
+    letter-spacing: .11em;
+    margin-bottom: 1.5rem;
+  }
+  .lx-home-cinematic-copy h1 {
+    max-width: 100%;
+    font-size: clamp(2.05rem, 9.3vw, 3.1rem);
+    line-height: 1.13;
+    letter-spacing: -.036em;
+    margin-bottom: 1.4rem;
+  }
+  .lx-home-cinematic-lead {
+    max-width: 34ch;
+    font-size: 1.01rem;
+    line-height: 1.63;
+  }
+}
+
+/* Accueil PC : la zone héro occupe l'espace restant entre en-tête et pied de page. */
+@media (min-width: 961px) {
+  .site-main.lx-home-main {
+    display: flex;
+    flex-direction: column;
+  }
+  .lx-home-cinematic {
+    flex: 1;
+    min-height: 0;
+  }
+  .lx-home-cinematic-copy {
+    padding-block: clamp(1.5rem, 5vh, 4.5rem);
+    transform: none;
+  }
+}
+/* Fenêtres très basses : conserver le texte lisible, même si le défilement devient nécessaire. */
+@media (min-width: 961px) and (max-height: 740px) {
+  .lx-home-cinematic { min-height: max-content; }
+}
+
+/* À propos : hiérarchie éditoriale légère, sans toucher au contenu ni à la grille. */
+.lx-about-page > .page-header .page-description {
+  color: #aab9c6;
+}
+.lx-about-page > h3 {
+  color: #f8fafc;
+  font-weight: 750;
+  font-size: 1.35rem;
+  line-height: 1.32;
+  letter-spacing: -0.012em;
+  margin-top: 2.15rem;
+  margin-bottom: 1.1rem;
+}
+.lx-about-page > p {
+  line-height: 1.78;
+  margin-bottom: 1.4rem;
+}
+
+/* À propos : grande image à droite, sans imposer sa hauteur aux sections. */
+.site-main .content.lx-about-page {
+  width: 100%;
+  max-width: 1250px;
+  margin-inline: auto;
+}
+.lx-about-page > .page-header {
+  width: 100%;
+  max-width: 740px;
+  margin-left: 0;
+  margin-right: auto;
+}
+.lx-about-page > :is(p, h2, h3, h4, ul, ol, blockquote) {
+  width: 100%;
+  max-width: 740px;
+  margin-left: 0;
+  margin-right: auto;
+}
+.lx-about-page .lx-about-intro {
+  position: relative;
+  margin: 1.7rem 0 1rem;
+}
+.lx-about-page .lx-about-intro-copy {
+  min-width: 0;
+  max-width: 740px;
+}
+.lx-about-page .lx-about-intro-copy p {
+  margin: 0 0 1.5rem;
+  line-height: 1.78;
+}
+.lx-about-page figure.lx-about-avatar {
+  width: 100%;
+  max-width: 440px;
+  margin: 0;
+}
+.lx-about-page .lx-about-avatar img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  border-radius: 50%;
+}
+/* Desktop : l'image flotte à droite sans réserver une ligne de 440 px de haut. */
+@media (min-width: 1051px) {
+  .lx-about-page .lx-about-intro-copy,
+  .lx-about-page > :is(p, h2, h3, h4, ul, ol, blockquote) {
+    max-width: min(740px, calc(100% - 470px));
+  }
+  .lx-about-page figure.lx-about-avatar {
+    position: absolute;
+    right: 0;
+    top: -100px;
+    width: 440px;
+    max-width: 440px;
+  }
+}
+/* Tablette : revenir au flux normal, côte à côte. */
+@media (min-width: 701px) and (max-width: 1050px) {
+  .lx-about-page .lx-about-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 34%);
+    align-items: start;
+    gap: clamp(1.5rem, 3vw, 3rem);
+  }
+  .lx-about-page figure.lx-about-avatar {
+    justify-self: end;
+  }
+}
+/* Mobile : texte puis image ; aucune superposition. */
+@media (max-width: 700px) {
+  .lx-about-page .lx-about-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.6rem;
+    margin: 2rem 0 2.8rem;
+  }
+  .lx-about-page figure.lx-about-avatar {
+    justify-self: center;
+    width: min(100%, 340px);
+  }
+}
