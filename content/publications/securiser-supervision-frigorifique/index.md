@@ -40,7 +40,11 @@ Une **adresse IP publique** permet à des équipements de communiquer avec Inter
 
 **Point essentiel :** vérifier la manière dont les alarmes sont envoyées et confirmer leur bonne réception après l’intervention.
 
-**À vérifier :** peut-on atteindre l'interface du superviseur directement depuis Internet, sans connexion privée ? Une page de connexion visible **n'est pas une preuve de compromission**.
+**Comment vérifier ?** Avec l'accord du responsable réseau, essayez d'accéder à l'interface du superviseur depuis une connexion extérieure au magasin, par exemple un téléphone en 4G avec le Wi-Fi désactivé.
+
+Si la page de connexion apparaît sans utiliser de VPN, **le superviseur est directement exposé sur Internet**, même s'il demande un mot de passe.
+
+Cela ne signifie pas qu'il a déjà été piraté, mais **cet accès doit être sécurisé**.
 
 ## 2. Avant toute modification : qu'est-ce qui doit continuer à fonctionner ?
 
@@ -50,10 +54,10 @@ Avant toute modification, notez le **modèle et la version** du superviseur (Dan
 
 | Rôle | Responsabilité avant la bascule |
 | --- | --- |
-| **Exploitant — décide** | Autorise le changement, la fenêtre d'intervention et le repli. |
-| **Prestataire IT / responsable réseau — réalise** | Configure et teste l'accès privé, contrôle les droits, puis retire la publication après autorisation. |
-| **Frigoriste — valide** | Confirme que la télémaintenance et les fonctions de supervision/froid restent utilisables. |
-| **Astreinte / télésurveilleur — informé** | Participe à l'essai d'alarme et confirme la réception ainsi que le moyen de secours. |
+| **Exploitant → décide** | Autorise le changement, la fenêtre d'intervention et le repli. |
+| **Prestataire IT / responsable réseau → réalise** | Configure et teste l'accès privé, contrôle les droits, puis retire la publication après autorisation. |
+| **Frigoriste → valide** | Confirme que la télémaintenance et les fonctions de supervision/froid restent utilisables. |
+| **Astreinte / télésurveilleur → informé** | Participe à l'essai d'alarme et confirme la réception ainsi que le moyen de secours. |
 
 Si l'un de ces rôles manque, identifiez-le avant de poursuivre. **Aucune coupure de box, de WAN, de 4G ou de télémaintenance à l'aveugle.** Un contrat n'interdit pas de sécuriser : il impose de coordonner la décision et la continuité du service.
 
