@@ -371,3 +371,18 @@
     width: min(100%, 340px);
   }
 }
+
+/* Footer public : bandeau discret, proche de 60 px sur deux lignes. */
+.site-footer:not(.site-footer-compact) {
+  font-size: 0.8125rem;
+}
+.site-footer:not(.site-footer-compact) .site-footer-inner {
+  padding-block: 0.75rem;
+}
+.site-footer:not(.site-footer-compact) .site-footer-info {
+  gap: 0.125rem;
+  line-height: 1.45;
+}
+.site-footer:not(.site-footer-compact) .site-footer-note {
+  color: var(--color-muted);
+}
