@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 332" role="img" aria-labelledby="title desc">
+<title id="title">Exemple fictif de redirection NAT/PAT</title>
+<desc id="desc">Une connexion depuis Internet rejoint le port externe 8443 de la box. Une règle NAT/PAT la dirige vers le superviseur du LAN, adresse privée 192.168.1.50, port 443. Cet exemple ne constitue pas un réglage recommandé.</desc>
+<defs>
+<marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7" fill="none" stroke="#70d8c1" stroke-width="1.7"/></marker>
+</defs>
+<rect width="1080" height="332" rx="15" fill="#0f1b2a"/>
+<text x="34" y="42" font-size="25" font-family="Arial,sans-serif" font-weight="700" fill="#f0f6f7">Comment fonctionne une redirection de port ?</text>
+<text x="34" y="72" font-size="16" font-family="Arial,sans-serif" fill="#a9c2ce">EXEMPLE FICTIF · CONNEXION ENTRANTE</text>
+<rect x="34" y="101" width="256" height="142" rx="11" fill="#182b39" stroke="#557281" stroke-width="2"/>
+<text x="162" y="142" font-size="23" font-family="Arial,sans-serif" font-weight="700" text-anchor="middle" fill="#f0f6f7">Internet</text>
+<text x="162" y="173" font-size="18" font-family="Arial,sans-serif" text-anchor="middle" fill="#b7ceda">Connexion extérieure</text>
+<rect x="399" y="101" width="280" height="142" rx="11" fill="#26313e" stroke="#e9bb85" stroke-width="2"/>
+<text x="539" y="142" font-size="23" font-family="Arial,sans-serif" font-weight="700" text-anchor="middle" fill="#f0f6f7">Box / routeur</text>
+<text x="539" y="173" font-size="18" font-family="Arial,sans-serif" text-anchor="middle" fill="#b7ceda">Adresse IP publique</text>
+<text x="539" y="204" font-size="21" font-family="Arial,sans-serif" text-anchor="middle" fill="#f4cf9e">Port externe 8443</text>
+<rect x="786" y="101" width="260" height="142" rx="11" fill="#173e3c" stroke="#70d8c1" stroke-width="2"/>
+<text x="916" y="142" font-size="23" font-family="Arial,sans-serif" font-weight="700" text-anchor="middle" fill="#f0f6f7">Superviseur</text>
+<text x="916" y="173" font-size="17" font-family="Arial,sans-serif" text-anchor="middle" fill="#b7ceda">IP privée : 192.168.1.50</text>
+<text x="916" y="204" font-size="20" font-family="Arial,sans-serif" text-anchor="middle" fill="#83e2c5">Port interne 443</text>
+<path d="M296 170H389" fill="none" stroke="#70d8c1" stroke-width="3" marker-end="url(#arrow)"/>
+<path d="M686 170H776" fill="none" stroke="#70d8c1" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="733" y="146" font-family="Arial,sans-serif" font-size="15" text-anchor="middle" fill="#a9c2ce">NAT / PAT</text>
+<text x="539" y="285" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#d0dee3">La box transmet la connexion au superviseur sur le LAN.</text>
+<text x="539" y="311" font-family="Arial,sans-serif" font-size="15" text-anchor="middle" fill="#9db4c0">Ces adresses et ports sont inventés pour expliquer le mécanisme.</text>
+</svg>
