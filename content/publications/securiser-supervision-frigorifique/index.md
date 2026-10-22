@@ -23,7 +23,7 @@ Une supervision frigorifique peut être accessible à distance pour permettre le
 | **Vous gérez les comptes du superviseur** | Vérifiez les comptes par défaut, partagés ou inconnus. Organisez avec le mainteneur leur sécurisation sans interrompre les accès ou notifications nécessaires. |
 | **Vous observez un accès ou une configuration suspects** | Ne suivez pas simplement la procédure préventive : prévenez le responsable d'incident et appliquez les consignes CERT-FR/constructeur. |
 
-**Même sans droits réseau, vous pouvez faire avancer la protection : identifier le site concerné, les personnes à joindre et les fonctions à préserver.** L'exposition doit être traitée sans attendre la mise en place hypothétique d'une solution idéale. Votre action commence par un point de situation frigoriste / exploitant / prestataire(s). 
+Même sans droits réseau, vous pouvez faire avancer la protection. **Cela commence par un inventaire : identifier le site concerné, les personnes à joindre et les fonctions à préserver.** L'exposition doit être traitée sans attendre la mise en place hypothétique d'une solution idéale. Votre action commence par un point de situation frigoriste / exploitant / prestataire(s). 
 
 ## 1. Comprendre le problème : pourquoi le superviseur est-il accessible ?
 
