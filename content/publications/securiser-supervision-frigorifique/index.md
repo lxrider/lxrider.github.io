@@ -10,9 +10,7 @@ author = "lxrider"
 subtitle = "Danfoss, XWEB, box Internet et télémaintenance"
 +++
 
-*Danfoss, XWEB, box Internet et télémaintenance*
-
-Un frigoriste doit parfois accéder au superviseur d'un magasin sans se déplacer : pour consulter les températures, vérifier des alarmes ou effectuer une opération de maintenance. **Pouvoir intervenir à distance est utile. Laisser l'interface du superviseur accessible directement depuis Internet ne l'est généralement pas.**
+Un frigoriste doit parfois accéder au superviseur d'un magasin sans se déplacer : pour consulter les températures, vérifier des alarmes ou effectuer une opération de maintenance. **Pouvoir intervenir à distance est utile. Laisser l'interface du superviseur accessible directement depuis Internet augmente le risque de compromission de l'installation.**
 
 À la suite des incidents d'octobre 2026, le [CERT-FR recommande de supprimer cette exposition](https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/) et de privilégier un VPN ou un réseau protégé. L'objectif de ce guide est de comprendre le problème, de repérer les accès concernés et de les sécuriser **sans interrompre le froid, les alarmes ni l'astreinte**.
 
@@ -22,9 +20,9 @@ Un frigoriste doit parfois accéder au superviseur d'un magasin sans se déplace
 
 Le superviseur est comme un équipement installé dans un local technique. Les frigoristes doivent pouvoir y accéder pour travailler, y compris à distance.
 
-**Une interface directement exposée à Internet, c'est comme une porte de ce local donnant sur la rue.** Même si cette porte est fermée par un code — le mot de passe — elle est visible et peut faire l'objet de tentatives d'accès.
+**Une interface directement exposée à Internet, c'est comme une porte de ce local donnant sur la rue.** Même si cette porte est fermée par un code  (le mot de passe) elle est visible et peut faire l'objet de tentatives d'accès.
 
-**Un VPN, c'est plutôt une entrée réservée aux intervenants autorisés.** Le technicien établit d'abord une connexion privée avec le réseau du magasin, puis accède au superviseur selon les droits qui lui ont été accordés. La porte donnant directement sur la rue n'est plus nécessaire.
+**Un VPN est comparable à une entrée réservée aux intervenants autorisés.** Le technicien établit d'abord une connexion privée avec le réseau du magasin, puis accède au superviseur selon les droits qui lui ont été accordés. La porte donnant directement sur la rue n'est plus nécessaire.
 
 **L'analogie a une limite :** un VPN ne dispense pas de gérer les comptes, les mots de passe et les autorisations du superviseur.
 
