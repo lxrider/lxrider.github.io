@@ -1,6 +1,6 @@
 +++
 title = "Sécuriser sa supervision frigorifique : guide pratique pas à pas"
-description = "Danfoss, XWEB, box Internet et télémaintenance : retirer un accès direct à Internet sans interrompre le froid, les alarmes ou l'astreinte."
+description = "Danfoss, XWEB, box Internet et télémaintenance : sécuriser un accès distant sans interrompre le froid, les alarmes ou l'astreinte."
 date = 2026-10-21
 draft = false
 template = "doc-page.html"
@@ -12,7 +12,7 @@ subtitle = "Danfoss, XWEB, box Internet et télémaintenance"
 
 *Danfoss, XWEB, box Internet et télémaintenance*
 
-Une supervision frigorifique peut être accessible depuis Internet pour permettre les interventions à distance. Cet accès facilite la maintenance, mais une interface d'administration exposée augmente drastiquement le risque d'une cyberattaque. Suite aux incidents d'octobre 2026 le [CERT-FR recommande de supprimer cette exposition](https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/) et de rétablir l'accès par un VPN sécurisé ou un réseau protégé. **Le point délicat est de le faire sans perdre les alarmes, l'astreinte ni la capacité d'intervenir sur le froid.** Voici pour comprendre et sécuriser vos accès distants.
+Une supervision frigorifique peut être accessible à distance pour permettre les interventions à distance. Cet accès facilite la maintenance, mais augmente considérablement le risque d'une cyberattaque. Suite aux incidents d'octobre 2026, le [CERT-FR recommande de supprimer cette exposition](https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/) et de rétablir l'accès par un VPN sécurisé ou un réseau protégé. **Le point délicat est de le faire sans perdre les alarmes, l'astreinte ni la capacité d'intervenir sur le froid.** Voici pour comprendre et sécuriser vos accès distants.
 
 ### Vous devez agir aujourd'hui ? Commencez ici.
 
@@ -27,7 +27,7 @@ Une supervision frigorifique peut être accessible depuis Internet pour permettr
 
 ## 1. Comprendre le problème : pourquoi le superviseur est-il accessible ?
 
-Une **adresse IP publique** permet à des équipements de communiquer avec Internet. Des équipements tels qu'une **box** ou un **routeur 4G** relient le réseau du magasin à Internet. Une règle de **redirection de port (NAT/PAT)** configurée sur l'équipement peut laisser entrer une connexion extérieure vers le superviseur. Il est alors possible que **l'interface du superviseur soit exposée publiquement**, c'est-à-dire accessible directement depuis Internet, sans passer par un accès privé. **Cela ne signifie pas que n'importe quel compte peut se connecter avec un compte ou modifier des réglages.**
+Une **adresse IP publique** permet à des équipements de communiquer avec Internet. Des équipements tels qu'une **box** ou un **routeur 4G** relient le réseau du magasin à Internet. Une règle de **redirection de port (NAT/PAT)** configurée sur l'équipement peut laisser entrer une connexion extérieure vers le superviseur. Il est alors possible que **l'interface du superviseur soit exposée publiquement**, c'est-à-dire accessible directement depuis Internet, sans passer par un accès privé. **Cela ne signifie pas que n'importe quel compte peut se connecter ou modifier des réglages.**
 
 À l'inverse, **envoyer une alarme vers un prestataire** est généralement un échange *sortant*. Supprimer une redirection entrante n'oblige pas à couper tous les échanges sortants. Mais certaines télésurveillances interrogent le site depuis l'extérieur : **il faut identifier le fonctionnement réel avant de toucher au réseau.**
 
