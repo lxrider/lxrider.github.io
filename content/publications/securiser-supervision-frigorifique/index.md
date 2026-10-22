@@ -12,7 +12,7 @@ subtitle = "Danfoss, XWEB, box Internet et télémaintenance"
 
 *Danfoss, XWEB, box Internet et télémaintenance*
 
-Une supervision frigorifique peut être accessible à distance pour permettre les interventions à distance. Cet accès facilite la maintenance, mais augmente considérablement le risque d'une cyberattaque. Suite aux incidents d'octobre 2026, le [CERT-FR recommande de supprimer cette exposition](https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/) et de rétablir l'accès par un VPN sécurisé ou un réseau protégé. **Le point délicat est de le faire sans perdre les alarmes, l'astreinte ni la capacité d'intervenir sur le froid.** Voici pour comprendre et sécuriser vos accès distants.
+Une supervision frigorifique peut être accessible à distance pour permettre les interventions à distance. Cet accès facilite la maintenance, mais augmente considérablement le risque d'une cyberattaque. Suite aux incidents d'octobre 2026, le [CERT-FR recommande de supprimer cette exposition](https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/) et de rétablir l'accès par un VPN sécurisé ou un réseau protégé. **Le point délicat est de le faire sans perdre les alarmes, l'astreinte ni la capacité d'intervenir sur le froid.** Voici un guide pour comprendre et sécuriser vos accès distants.
 
 ### Vous devez agir aujourd'hui ? Commencez ici.
 
