@@ -12,7 +12,7 @@ subtitle = "Danfoss, XWEB, box Internet et télémaintenance"
 
 *Danfoss, XWEB, box Internet et télémaintenance*
 
-Une supervision frigorifique peut être accessible depuis Internet pour permettre à un prestataire d'intervenir à distance. Cet accès facilite la maintenance, mais une interface d'administration directement publiée expose inutilement l'installation. Le [CERT-FR recommande de supprimer cette exposition](https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/) et de rétablir l'accès par un VPN sécurisé ou un réseau protégé. **Le point délicat est de le faire sans perdre les alarmes, l'astreinte ni la capacité d'intervenir sur le froid.** Voici comment préparer cette modification, **même sans être administrateur système**.
+Une supervision frigorifique peut être accessible depuis Internet pour permettre les interventions à distance. Cet accès facilite la maintenance, mais une interface d'administration exposée augmente drastiquement le risque d'une cyberattaque. Suite aux incidents d'octobre 2026 le [CERT-FR recommande de supprimer cette exposition](https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/) et de rétablir l'accès par un VPN sécurisé ou un réseau protégé. **Le point délicat est de le faire sans perdre les alarmes, l'astreinte ni la capacité d'intervenir sur le froid.** Voici pour comprendre et sécuriser vos accès distants.
 
 ### Vous devez agir aujourd'hui ? Commencez ici.
 
@@ -23,11 +23,11 @@ Une supervision frigorifique peut être accessible depuis Internet pour permettr
 | **Vous gérez les comptes du superviseur** | Vérifiez les comptes par défaut, partagés ou inconnus. Organisez avec le mainteneur leur sécurisation sans interrompre les accès ou notifications nécessaires. |
 | **Vous observez un accès ou une configuration suspects** | Ne suivez pas simplement la procédure préventive : prévenez le responsable d'incident et appliquez les consignes CERT-FR/constructeur. |
 
-**Sans droits réseau, vous pouvez déjà faire avancer la protection : identifier le site concerné, les personnes à joindre et les fonctions à préserver.** L'exposition doit être traitée sans attendre la mise en place hypothétique d'une solution idéale.
+**Même sans droits réseau, vous pouvez faire avancer la protection : identifier le site concerné, les personnes à joindre et les fonctions à préserver.** L'exposition doit être traitée sans attendre la mise en place hypothétique d'une solution idéale. Votre action commence par un point de situation frigoriste / exploitant / prestataire(s). 
 
 ## 1. Comprendre le problème : pourquoi le superviseur est-il accessible ?
 
-Une **adresse IP publique** permet à des équipements de communiquer avec Internet. La **box** ou le **routeur 4G** relie le réseau du magasin à Internet. Une règle de **redirection de port (NAT/PAT)** peut laisser entrer une connexion extérieure vers le superviseur. Il est alors possible que **l'interface du superviseur soit joignable publiquement**, c'est-à-dire accessible depuis Internet par n'importe qui, sans passer par un accès privé. **Cela ne signifie pas que n'importe qui peut se connecter avec un compte ou modifier des réglages.**
+Une **adresse IP publique** permet à des équipements de communiquer avec Internet. Des équipements tels qu'une **box** ou un **routeur 4G** relient le réseau du magasin à Internet. Une règle de **redirection de port (NAT/PAT)** configurée sur l'équipement peut laisser entrer une connexion extérieure vers le superviseur. Il est alors possible que **l'interface du superviseur soit exposée publiquement**, c'est-à-dire accessible directement depuis Internet, sans passer par un accès privé. **Cela ne signifie pas que n'importe quel compte peut se connecter avec un compte ou modifier des réglages.**
 
 À l'inverse, **envoyer une alarme vers un prestataire** est généralement un échange *sortant*. Supprimer une redirection entrante n'oblige pas à couper tous les échanges sortants. Mais certaines télésurveillances interrogent le site depuis l'extérieur : **il faut identifier le fonctionnement réel avant de toucher au réseau.**
 
