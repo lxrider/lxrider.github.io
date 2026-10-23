@@ -14,6 +14,13 @@ Un frigoriste doit parfois accéder au superviseur d'un magasin sans se déplace
 
 À la suite des incidents d'octobre 2026, le [CERT-FR recommande de supprimer cette exposition](https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/) et de privilégier un VPN ou un réseau protégé. L'objectif de ce guide est de comprendre le problème, de repérer les accès concernés et de les sécuriser **sans interrompre le froid, les alarmes ni l'astreinte**.
 
+<figure class="research-figure">
+<a class="figure-open" href="illustration-froid-commercial-lxrider-web.svg" target="_blank" rel="noopener" aria-label="Ouvrir l'illustration du magasin frigorifique en grand">
+<img src="illustration-froid-commercial-lxrider-web.svg" width="1200" height="630" alt="Allée de supermarché bordée de meubles frigorifiques éclairés, avec un voyant ambré et un tracé lumineux vers le local technique." loading="eager" decoding="async" fetchpriority="high">
+</a>
+<figcaption>Illustration d'ouverture lxrider — Représentation conceptuelle d'une installation frigorifique.</figcaption>
+</figure>
+
 ## 1. Comprendre la différence entre accès distant et exposition Internet
 
 ### Imaginez le local technique d'un magasin
@@ -28,7 +35,7 @@ Le superviseur est comme un équipement installé dans un local technique. Les f
 
 <figure class="research-figure">
 <a class="figure-open" href="schema-acces-supervision.svg" target="_blank" rel="noopener" aria-label="Ouvrir le schéma original en haute résolution">
-<img src="schema-acces-supervision.svg" alt="Avant : Internet atteint directement le superviseur par une redirection de port sur la box. Après : le technicien passe par un VPN et un accès administré ; le superviseur n'est plus directement publié. Les flux d'alarme sont représentés séparément et doivent être vérifiés sur site." loading="eager" decoding="async">
+<img src="schema-acces-supervision.svg" alt="Avant : Internet atteint directement le superviseur par une redirection de port sur la box. Après : le technicien passe par un VPN et un accès administré ; le superviseur n'est plus directement publié. Les flux d'alarme sont représentés séparément et doivent être vérifiés sur site." loading="lazy" decoding="async">
 </a>
 <figcaption>Figure 1. Deux façons d'accéder au superviseur : directement depuis Internet ou par un accès privé. Les alarmes suivent éventuellement un autre chemin. Schéma original lxrider.</figcaption>
 </figure>
@@ -131,6 +138,22 @@ Cette passerelle doit donner accès **au seul superviseur et aux services utiles
 
 **Et les accès Web ?** [Cloudflare Tunnel avec Access](https://developers.cloudflare.com/cloudflare-one/setup/secure-private-apps/private-web-app/) peut convenir à certaines applications Web compatibles. Il **ne constitue pas une solution par défaut** pour des interfaces anciennes Danfoss ou XWEB.
 
+### Et le bastion de télémaintenance ?
+
+**Le VPN protège le chemin d'accès ; il ne limite pas automatiquement ce qu'un technicien peut administrer.** Quand plusieurs frigoristes ou prestataires interviennent sur différents magasins, un **bastion d'administration** peut servir de point de passage contrôlé, au sein d'une chaîne d'accès sécurisée.
+
+Selon ses fonctionnalités et les protocoles utilisés, il peut :
+
+- **Identifier** chaque intervenant avec un compte nominatif et une authentification renforcée ;
+- **Limiter** les sites et équipements accessibles, ainsi que la durée d'une intervention ;
+- **Tracer** les connexions et, lorsque c'est possible, les sessions réalisées.
+
+**Exemple :** le prestataire intervient sur le superviseur du magasin A sans obtenir, par défaut, l'accès aux autres magasins. Mais si son compte reste administrateur sur ce superviseur, **le bastion ne supprime pas ses droits de modification**.
+
+**Un bastion ne remplace ni le VPN, ni le cloisonnement, ni les droits propres aux équipements.** Il concentre des accès sensibles et doit être protégé, maintenu et secouru. Il faut aussi vérifier que les alarmes continuent de fonctionner indépendamment de cette voie de maintenance. Sur un site simple, un VPN correctement filtré peut être plus facile à exploiter ; sur un parc multisite, le bastion mérite d'être étudié.
+
+L'[ANSSI recommande une chaîne d'accès dédiée avec bastion pour les prestataires en GTB/GTC](https://messervices.cyber.gouv.fr/documents-guides/Guide__Systemes_industriels___GTB_GTC_2025.pdf). Cette recommandation éclaire le froid commercial, sans valoir diagnostic de chaque installation.
+
 ### Si le VPN n'est pas prêt : une protection temporaire
 
 Un **pare-feu**, parfois intégré à la box, peut **autoriser ou refuser les connexions** selon leur origine. Le *filtrage par adresse IP source* consiste, par exemple, à n'autoriser que les connexions provenant de l'**adresse Internet publique connue du prestataire**, et à refuser les autres.
@@ -166,7 +189,7 @@ Le frigoriste contrôle les fonctions utiles à l'installation ; l'astreinte con
 - [ ] Superviseur, box/4G, PC froid et chemins d'accès identifiés.
 - [ ] Exploitant, responsable réseau, frigoriste et astreinte identifiés ; intervention autorisée.
 - [ ] Contrat, alarmes, dépendances et solution de repli vérifiés.
-- [ ] Nouvelle télémaintenance testée avec un compte **autorisé** et accès **refusé** aux autres ; comptes à privilèges et mots de passe revus avec le mainteneur.
+- [ ] Nouvelle télémaintenance testée avec un compte **autorisé** et accès **refusé** aux autres ; comptes à privilèges et mots de passe revus avec le mainteneur. Si un bastion est déployé, vérifier les droits par site, les journaux de connexion et l'accès de secours.
 - [ ] Accès public direct retiré et absence de chemin direct résiduel vérifiée avec l'IT.
 - [ ] Alarmes **émises et réellement reçues** par l'astreinte, avec un test convenu **sans perturber le procédé frigorifique**.
 - [ ] Consignes, programmations de dégivrage, état des équipements et températures réelles, si pertinentes, contrôlés et comparés à l'état attendu.
@@ -182,6 +205,7 @@ Une installation mieux protégée n'est pas simplement une installation moins ac
 - [Copeland / Dixell France — Recommandations pour une utilisation sécurisée des superviseurs XWEB](https://dixell.fr/wp-content/uploads/2026/10/Recommandations-pour-une-utilisation-securisee-des-superviseurs-XWEB-v1.0.pdf) (14 octobre 2026).
 - [Danfoss — AK-SM 800A User Guide](https://assets.danfoss.com/documents/latest/471013/BC337629891709en-000901.pdf) (juin 2026, notamment p. 30 et 35 ; **800A uniquement**).
 - [Copeland / Dixell — Manuels XWEB EVO 5.6.0](https://webapps.copeland.com/Dixell/Content/Pages/Manuals/XWEBEVO/XWEBEVOV5.6.0OPERATION/XWEB-EVO-r5.6.0-OPR-EN.pdf) et [XWEB PRO 1.2](https://webapps.copeland.com/Dixell/Content/Pages/Manuals/XWEBPRO/XWEBPROV1.2OPERATION/XWEB-PRO-OPR-EN.pdf) : **versions distinctes**.
+- [ANSSI — Recommandations de sécurité relatives à la GTB/GTC (2026)](https://messervices.cyber.gouv.fr/guides/recommandations-gestion-technique-batiment) et [Administration sécurisée des systèmes d'information, section 13.1 « Utilisation d'un bastion »](https://messervices.cyber.gouv.fr/documents-guides/anssi-guide-admin_securisee_si_v3-0.pdf).
 - [Orange — Livebox 5, NAT/PAT](https://assistance.orange.fr/ordinateurs-peripheriques/installer-et-utiliser/les-consoles-de-jeux/xbox/livebox-5-configurer-les-regles-nat-pour-pouvoir-utiliser-un-jeu-ou-une-application-serveur_287340-827962) ; [Free — paramètres réseau avancés](https://assistance.free.fr/articles/1395) ; [Tailscale — subnet routers et contrôle d'accès](https://tailscale.com/docs/features/subnet-routers).
 
 *Ce guide ne remplace pas les consignes constructeur ni les décisions du responsable d’exploitation. © 2026 lxrider — Tous droits réservés.*
