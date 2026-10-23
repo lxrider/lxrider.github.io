@@ -150,6 +150,13 @@ Selon ses fonctionnalités et les protocoles utilisés, il peut :
 
 **Exemple :** le prestataire intervient sur le superviseur du magasin A sans obtenir, par défaut, l'accès aux autres magasins. Mais si son compte reste administrateur sur ce superviseur, **le bastion ne supprime pas ses droits de modification**.
 
+<figure class="research-figure">
+<a class="figure-open" href="schema-bastion-telemaintenance.svg" target="_blank" rel="noopener" aria-label="Ouvrir le schéma du bastion de télémaintenance">
+<img src="schema-bastion-telemaintenance.svg" width="1160" height="520" alt="Exemple d'accès : un frigoriste passe par un VPN et un bastion. La session vers le superviseur du magasin A est autorisée, tandis que l'accès au magasin B est refusé selon les permissions attribuées. Le bastion journalise les connexions sans modifier les droits propres au superviseur." loading="lazy" decoding="async">
+</a>
+<figcaption>Figure 4. Bastion de télémaintenance : un intervenant, deux magasins, des droits d'accès différents. Exemple conceptuel lxrider.</figcaption>
+</figure>
+
 **Un bastion ne remplace ni le VPN, ni le cloisonnement, ni les droits propres aux équipements.** Il concentre des accès sensibles et doit être protégé, maintenu et secouru. Il faut aussi vérifier que les alarmes continuent de fonctionner indépendamment de cette voie de maintenance. Sur un site simple, un VPN correctement filtré peut être plus facile à exploiter ; sur un parc multisite, le bastion mérite d'être étudié.
 
 L'[ANSSI recommande une chaîne d'accès dédiée avec bastion pour les prestataires en GTB/GTC](https://messervices.cyber.gouv.fr/documents-guides/Guide__Systemes_industriels___GTB_GTC_2025.pdf). Cette recommandation éclaire le froid commercial, sans valoir diagnostic de chaque installation.
