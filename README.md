@@ -1,4 +1,4 @@
-# lxrider ■
+# lxrider.
 
 Independent research in offensive security: attack surface, trust boundaries, identity, IT/OT attack paths and operational consequences.
 
