@@ -7,7 +7,7 @@ updated = 2026-10-24
 template = "doc-page.html"
 
 [extra]
-article_version = "1.3 — révision éditoriale publiée"
+article_version = "1.4 — révision éditoriale publiée"
 author = "lxrider"
 rights = "© 2026 lxrider — Tous droits réservés"
 +++
@@ -93,6 +93,13 @@ Pour une entreprise frigorifique intervenant sur plusieurs magasins, une archite
 - **Le bastion** applique ses habilitations : quels magasins et quels superviseurs ce technicien peut atteindre. Il trace les connexions et, selon les protocoles et ses fonctionnalités, les sessions.
 - **Le réseau** relie la zone de maintenance aux magasins par des **VPN intersites**, terminés sur des passerelles adaptées. Le **pare-feu de chaque magasin** limite les flux aux superviseurs et aux services nécessaires.
 - **Le superviseur** conserve sa propre gestion des comptes et des commandes. Ses permissions déterminent ce que l'intervenant peut effectivement consulter ou modifier une fois connecté.
+
+<figure class="research-figure">
+<a class="figure-open" href="schema-habilitations-multisites-lxrider.svg" target="_blank" rel="noopener" aria-label="Ouvrir le schéma d'habilitations multisites via bastion">
+<img src="schema-habilitations-multisites-lxrider.svg" width="1160" height="700" alt="Un technicien frigoriste utilise son compte nominatif, un VPN avec MFA puis un bastion centralisé. Des liaisons VPN intersites rejoignent les passerelles et pare-feu des magasins. Pour ce technicien, les accès aux magasins A et C sont autorisés ; celui au magasin B est refusé par le bastion. Les droits de commande propres aux superviseurs restent distincts." loading="lazy" decoding="async">
+</a>
+<figcaption>Exemple — Habilitations multisites via bastion : une identité par technicien, des accès autorisés par magasin, un filtrage réseau sur chaque site et des permissions propres aux superviseurs. Schéma conceptuel lxrider.</figcaption>
+</figure>
 
 Cette chaîne sépare plusieurs autorités. **L'exploitant ou l'enseigne valide l'accès à ses magasins**, l'entreprise frigorifique tient à jour la liste de ses techniciens et l'administrateur de l'infrastructure applique les habilitations convenues. À chaque départ ou changement de périmètre, les accès correspondants sont réexaminés et révoqués.
 
@@ -183,4 +190,4 @@ Pour les éléments techniques de l'incident et leurs limites : [étude indépen
 
 ---
 
-*Version 1.3 — 24 octobre 2026 — révision éditoriale publiée. © 2026 lxrider — Tous droits réservés. Schémas conceptuels, à confronter aux configurations réelles.*
+*Version 1.4 — 24 octobre 2026 — révision éditoriale publiée. © 2026 lxrider — Tous droits réservés. Schémas conceptuels, à confronter aux configurations réelles.*
