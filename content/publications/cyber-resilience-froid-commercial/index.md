@@ -3,21 +3,22 @@ title = "Cyber-résilience du froid commercial : que reste-t-il quand la supervi
 description = "Régulation locale, effets différés, sauvegardes et reconstruction : comment démontrer le retour à un état frigorifique fiable ?"
 date = 2026-10-23
 draft = false
+updated = 2026-10-24
 template = "doc-page.html"
 
 [extra]
 author = "lxrider"
-article_version = "1.1 — révision éditoriale publiée"
+article_version = "1.2 — révision éditoriale publiée"
 rights = "© 2026 lxrider — Tous droits réservés pour le texte original"
 +++
 
 Le superviseur répond à nouveau. Les courbes s'affichent, les équipements semblent communiquer. **Le froid est-il pour autant revenu à un état fiable ?**
 
-Pas nécessairement. La régulation peut continuer sans supervision, une commande produire ses effets plus tard et une alarme ne jamais atteindre l'astreinte. **Une sauvegarde ne garantit pas non plus que l'installation soit récupérable.**
+**Le retour de l'interface est un premier indice.** La régulation locale, les paramètres réellement appliqués, la transmission des alarmes et les sauvegardes demandent chacun leurs propres vérifications.
 
-L'[analyse des capacités d'action](https://lxrider.github.io/publications/froid-commercial/) examinait les accès, les privilèges et les chemins permettant d'agir sur le procédé. La question est ici différente : **quelles fonctions restent opérationnelles lorsque la supervision devient suspecte, que peut-on réellement reconstruire et quelles preuves permettent de valider la reprise ?**
+L'[analyse des capacités d'action](https://lxrider.github.io/publications/froid-commercial/) examine les identités, leurs privilèges et le périmètre des commandes possibles. Ici, nous cherchons **quelles fonctions restent opérationnelles, ce qui peut être reconstruit et quelles preuves permettent de valider la reprise**.
 
-Les incidents d'octobre 2026 rendent ces questions concrètes. Le [CERT-FR](https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/) rappelle notamment qu'une intervention sur les accès distants peut perturber la remontée d'informations vers le frigoriste. Couper une connexion ne suffit donc ni à décrire l'état du froid ni à garantir la continuité des alertes.
+Les incidents d'octobre 2026 rendent ces questions concrètes. Le [CERT-FR](https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/) rappelle notamment qu'une intervention sur les accès distants peut perturber la remontée d'informations vers le frigoriste. La fermeture d'un accès doit ainsi s'accompagner d'une vérification du procédé et de la chaîne d'alerte.
 
 ## 1. L'écran ne dit pas tout
 
@@ -94,7 +95,7 @@ Une copie conservée sur le superviseur, accessible avec les mêmes comptes comp
 - **Restaurables** : exercices de récupération, accès aux outils et aux références nécessaires ;
 - **Adaptées au métier** : fréquence et délais de reprise compatibles avec la continuité du froid.
 
-Les comptes d'administration des sauvegardes doivent être distincts des comptes exposés ; une copie immuable mais connectée peut renforcer la protection sans être nécessairement équivalente à une copie déconnectée. Les essais doivent vérifier aussi la disponibilité du matériel, des versions et des intervenants nécessaires.
+Les comptes d'administration des sauvegardes doivent être distincts des comptes exposés ; une copie immuable mais connectée peut renforcer la protection, avec des garanties différentes de celles d'une copie déconnectée. **Qui peut déclencher la restauration, obtenir les outils et approuver les paramètres restaurés ?** Les essais doivent aussi vérifier la disponibilité du matériel, des versions et des intervenants nécessaires.
 
 **La dernière sauvegarde n'est pas forcément saine** : elle peut contenir des paramètres altérés ou des comptes indésirables. La reprise doit partir d'une référence examinée, sur un environnement assaini, puis être confrontée aux réglages et mesures réels.
 
@@ -104,7 +105,7 @@ Le vrai test n'est pas de trouver un fichier de sauvegarde, mais de répondre : 
 
 ## 6. Quelles preuves avant de déclarer la reprise ?
 
-Une interface qui répond ne suffit pas. La reprise demande **quatre validations complémentaires**, à organiser selon l'installation :
+Pour valider la reprise, **quatre vérifications complémentaires** sont à organiser selon l'installation, au-delà de l'affichage du superviseur :
 
 - **Liaisons et alertes.** Les communications nécessaires fonctionnent-elles ? Une alarme peut-elle être suivie jusqu'à sa réception et sa prise en charge par l'astreinte, lors d'un essai autorisé ?
 - **Paramètres réellement appliqués.** Les valeurs, modes, horaires et dégivrages actifs correspondent-ils à une référence approuvée ? Les réglages ont-ils été relus sur les instruments concernés ?
@@ -120,17 +121,18 @@ Une interface qui répond ne suffit pas. La reprise demande **quatre validations
 
 ### Qui peut encore administrer après l'incident ?
 
-Les paramètres sont corrigés et l'accès initial fermé. **L'attaquant a-t-il pour autant perdu toute capacité d'administration ?**
+Les paramètres ont été corrigés et l'accès initial fermé. **La reprise exige aussi de savoir quelles identités conservent un pouvoir d'administration et qui peut retirer ce pouvoir.**
 
-Le contrôle doit porter sur trois points :
+Quatre vérifications sont utiles :
 
-- **Chemins :** superviseur, régulateurs lorsqu'ils disposent d'un accès de gestion, VPN, routeur cellulaire, PC froid, téléassistance, plateformes et accès prestataires ;
-- **Autorités :** comptes et permissions, sessions valides, secrets réutilisés et droits injustifiés ;
-- **Persistance :** modifications de configuration, services suspects et autres mécanismes adaptés au niveau de compromission.
+- **Chemins :** quels accès au superviseur, aux régulateurs administrables, au PC froid et aux plateformes distantes restent opérationnels ?
+- **Comptes et privilèges :** quelles permissions, sessions et clés permettent encore de modifier les équipements ?
+- **Autorité de gestion :** qui détient l'administration des comptes, côté enseigne comme côté prestataire, et qui peut suspendre chaque accès ?
+- **Persistance :** quelles modifications de configuration, services ou autres mécanismes pourraient maintenir une capacité d'action ?
 
-Il faut neutraliser les accès non autorisés identifiés, renouveler les secrets exposés, révoquer les sessions lorsque c'est possible et vérifier les journaux disponibles. Les comptes secondaires, services persistants et modifications de configuration ne doivent pas être oubliés. Si l'intégrité du superviseur ou du PC froid reste douteuse, une reconstruction depuis une source fiable peut être nécessaire, en coordination avec le frigoriste.
+Une plateforme exploitée par un tiers mérite une vérification avec son administrateur : **la révocation d'un compte local peut laisser subsister un autre chemin de maintenance**. Les sessions encore actives sont à révoquer lorsque le produit le permet ; les secrets exposés doivent être renouvelés et les comptes secondaires vérifiés. Le frigoriste et le responsable cyber coordonnent les contrôles sur le superviseur et le PC froid, ainsi que la reconstruction depuis une source fiable si leur intégrité est incertaine.
 
-**L'absence de connexion suspecte ne démontre pas l'absence de persistance.** Les chemins vérifiés, les mesures appliquées et les limites de l'investigation doivent être tracés. Si une capacité d'administration ne peut être écartée, la reprise reste partielle, avec restrictions et surveillance adaptées. Voir les principes de [remédiation de l'ANSSI](https://messervices.cyber.gouv.fr/guides/cyberattaques-et-remediation-piloter-la-remediation).
+**La reprise des accès se démontre par les contrôles réalisés et leurs résultats**, avec les limites des journaux disponibles. Toute capacité d'administration encore incertaine appelle des restrictions et une surveillance adaptées. Voir les principes de [remédiation de l'ANSSI](https://messervices.cyber.gouv.fr/guides/cyberattaques-et-remediation-piloter-la-remediation).
 
 **Le sens des opérations de restauration mérite une vérification particulière.** Dans le [manuel Danfoss AK-SM 800](https://assets.danfoss.com/documents/latest/56759/BC316842192932en-001001.pdf), *Upload* transfère les paramètres des régulateurs vers le superviseur, alors que *Download* les transfère du superviseur vers les régulateurs. Sur XWEB EVO, *Import*, *Write* et *Read* correspondent également à des opérations distinctes. Confondre charger une sauvegarde, envoyer des réglages et relire l'état réel peut laisser une installation dans un état inattendu.
 
@@ -140,13 +142,13 @@ La reprise doit aussi rejoindre le **plan de maîtrise sanitaire (PMS)** : rappr
 
 **Une donnée manquante ne prouve pas une rupture sanitaire, mais limite ce qui peut être démontré.** Les lots et écarts doivent être examinés par l'exploitant au regard de son PMS. Remettre le froid en marche ne suffit pas à décider de la remise en vente des denrées.
 
-Personne ne peut valider seul cette reprise : le **frigoriste** vérifie le procédé et ses protections, l'**exploitant** statue sur les denrées, et les **responsables cyber** documentent les accès repris en main et les inconnues restantes. **Chaque décision doit s'appuyer sur des vérifications traçables.**
+La reprise réunit plusieurs validations : le **frigoriste** vérifie le procédé et ses protections, l'**exploitant** statue sur les denrées, et les **responsables cyber et prestataires concernés** documentent les accès repris en main et les incertitudes restantes. **Chaque décision s'appuie sur des vérifications traçables.**
 
 ## Conclusion
 
-Le superviseur est revenu, les paramètres ont été corrigés et les accès exposés ont été fermés. **Mais quels réglages sont réellement appliqués, quelles alertes parviennent à l'astreinte et qui peut encore administrer ?**
+Le superviseur répond à nouveau, les paramètres ont été corrigés et les accès exposés ont été fermés. **Quels réglages sont réellement appliqués, quelles alertes parviennent à l'astreinte et qui peut encore administrer ?**
 
-Tant que ces questions restent sans réponse, le retour des écrans n'est pas une preuve de reprise. La cyber-résilience tient à cette capacité : **reconstruire un état fiable, vérifier le procédé et rendre explicite ce qui reste incertain**, y compris pour les denrées.
+**Les réponses documentées** permettent de statuer sur la reprise. La cyber-résilience tient à cette capacité : **reconstruire un état fiable, vérifier le procédé et rendre explicite ce qui reste incertain**, y compris pour les denrées.
 
 ### Références essentielles
 
@@ -165,4 +167,4 @@ Tant que ces questions restent sans réponse, le retour des écrans n'est pas un
 
 ---
 
-*Version 1.1 — révision éditoriale publiée, 23 octobre 2026. © 2026 lxrider — Tous droits réservés pour le texte original. Schémas conceptuels.*
+*Version 1.2 — révision éditoriale publiée, 24 octobre 2026. © 2026 lxrider — Tous droits réservés pour le texte original. Schémas conceptuels.*

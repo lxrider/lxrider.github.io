@@ -3,23 +3,24 @@ title = "Cybersécurité du froid commercial : qui peut agir sur vos installatio
 description = "Des accès aux consignes de froid : comprendre les droits, les chemins d'action et leurs conséquences."
 date = 2026-10-22
 draft = false
+updated = 2026-10-24
 template = "doc-page.html"
 
 [extra]
-article_version = "1.1 — révision éditoriale publiée"
+article_version = "1.2 — révision éditoriale publiée"
 author = "lxrider"
 rights = "© 2026 lxrider — Tous droits réservés"
 +++
 
 Dans un magasin, plusieurs intervenants accèdent aux installations frigorifiques. Le frigoriste consulte les températures, l'intégrateur configure la supervision et le prestataire informatique administre les accès réseau.
 
-Mais **quelles sont leurs capacités d'action réelles ?** Consulter une température, modifier une consigne, inhiber une alarme ou atteindre un autre système ne demandent pas les mêmes droits.
+**Que peut réellement faire chacun ?** Consulter une température, modifier une consigne, acquitter ou inhiber une alarme, administrer un équipement : chaque opération mobilise des permissions différentes.
 
-Cette analyse s'intéresse aux **capacités d'action**, pas seulement aux équipements visibles sur Internet : quels chemins sont accessibles, quelles permissions permettent d'agir et jusqu'où s'étendent les conséquences possibles ?
+Cette analyse relie **les chemins d'accès, les identités et les capacités d'action** : quelles permissions permettent d'agir sur quels équipements, et jusqu'où s'étend leur portée ?
 
 Les incidents d'octobre 2026 concernant des supervisions Danfoss et Copeland/Dixell ont rappelé l'importance de ces questions. Le [CERT-FR](https://www.cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/) recommande notamment de supprimer les accès de gestion directement exposés sur Internet. Les informations publiques ne permettent pas pour autant d'établir un chemin initial unique de compromission.
 
-Le [guide pratique de sécurisation des supervisions](https://lxrider.github.io/publications/securiser-supervision-frigorifique/) explique comment protéger les accès distants. Ici, la question est différente : **que pourrait faire une identité compromise et qu'est-ce qui limiterait son pouvoir ?**
+Le [guide pratique de sécurisation des supervisions](https://lxrider.github.io/publications/securiser-supervision-frigorifique/) détaille la maîtrise des accès distants. Ici, nous suivons **ce qu'une identité compromise pourrait commander et les protections qui limiteraient sa portée**.
 
 <figure class="research-figure">
 <a class="figure-open" href="illustration-bastion-lxrider.svg" target="_blank" rel="noopener" aria-label="Ouvrir l'illustration des frontières de confiance">
@@ -38,7 +39,7 @@ Un superviseur peut être joignable depuis le réseau du magasin, un VPN, un PC 
 
 Sur le terrain, les fonctions sont réparties entre des **régulateurs**, qui assurent la conduite locale, et des **systèmes de supervision**, qui collectent des informations et peuvent, selon les configurations et les droits, transmettre des commandes. Un Danfoss AK-SM et un régulateur AK-PC n'ont pas le même rôle. Les familles XWEB présentent elles aussi des fonctions différentes selon les générations.
 
-Dans certaines installations, la gestion technique centralisée du froid (**GTC**) échange avec une gestion technique du bâtiment (**GTB**) ou une supervision multisite. La connexion mérite d'être examinée, mais **un échange d'informations ne prouve pas qu'un système peut commander l'autre**.
+Dans certaines installations, la gestion technique centralisée du froid (**GTC**) échange avec une gestion technique du bâtiment (**GTB**) ou une supervision multisite. **Les flux réellement échangés et les éventuelles commandes autorisées** sont à identifier : une remontée de mesures et une fonction de pilotage ont des portées différentes.
 
 **Par quels chemins les équipements sont-ils joignables, et qui maîtrise ces chemins ?** Un schéma simple aide à poser les bonnes questions, avant de vérifier les liaisons et les permissions sur le site réel.
 
@@ -51,7 +52,7 @@ Dans certaines installations, la gestion technique centralisée du froid (**GTC*
 
 ## 2. Se connecter donne-t-il le pouvoir de modifier ?
 
-Imaginez un compte capable d'ouvrir l'interface d'un superviseur. On sait qu'un accès existe. On ne sait pas encore ce que ce compte peut changer.
+Un compte ouvre l'interface d'un superviseur. Pour mesurer son pouvoir, il faut ensuite vérifier **ce que le compte peut consulter, modifier et commander**.
 
 Pour qualifier une capacité d'action, quatre vérifications sont nécessaires : l'équipement est-il **joignable**, l'identité est-elle **reconnue**, possède-t-elle les **droits nécessaires**, et l'ordre est-il **accepté et appliqué** par le régulateur ?
 
@@ -62,15 +63,27 @@ Pour qualifier une capacité d'action, quatre vérifications sont nécessaires :
 <figcaption>Figure 1 — Entre l'accès réseau et l'action sur le froid, quatre vérifications.</figcaption>
 </figure>
 
-Une consultation de température, un acquittement d'alarme, une modification de consigne et une opération d'administration n'ont pas les mêmes conséquences.
+Consulter une température, acquitter une alarme, modifier une consigne et administrer un équipement correspondent à **des opérations et à des conséquences différentes**.
 
 La documentation de [XWEB PRO](https://webapps.copeland.com/Dixell/Content/Pages/Manuals/XWEBPRO/XWEBPROV1.2OPERATION/XWEB-PRO-OPR-EN.pdf) distingue par exemple la lecture des paramètres, leur modification et l'envoi de commandes. Chez [Danfoss](https://www.danfoss.com/en/service-and-support/downloads/dcs/adap-kool-software/ak-sm-800a/), les niveaux de permission et les services disponibles dépendent également du produit, de la version et des réglages.
 
 Ces documentations montrent ce que les systèmes *peuvent* autoriser. **Les capacités d'action effectives dépendent des comptes, des droits et des réglages propres à chaque site.**
 
-C'est le principe du **moindre privilège** : attribuer à chacun uniquement les droits nécessaires à sa mission. Consulter des températures ne nécessite pas de modifier des consignes ; intervenir sur un magasin ne justifie pas des droits d'écriture sur tous les sites. Lorsque les équipements le permettent, séparer consultation, maintenance et administration réduit le pouvoir d'un compte compromis.
+C'est le principe du **moindre privilège** : attribuer à chacun les droits utiles à sa mission. Un compte de consultation sert à lire les températures ; les droits de modification et d'administration sont attribués aux interventions qui les exigent. Lorsque les équipements le permettent, séparer ces fonctions limite le pouvoir d'une identité compromise.
 
-Il faut aussi distinguer la possibilité technique du droit d'intervenir : un technicien peut disposer d'un compte puissant pour la maintenance, sans être autorisé à modifier tous les paramètres pendant un simple diagnostic.
+### Qui donne le pouvoir d'agir ?
+
+Un frigoriste peut intervenir avec des accès fournis par l'enseigne, son entreprise de maintenance ou un intégrateur. Sur certains parcs, le VPN, le bastion, la plateforme multisite et le superviseur possèdent chacun leurs propres comptes et administrateurs.
+
+Trois questions permettent de comprendre l'autorité réellement exercée :
+
+- **Mission autorisée :** qui demande et valide l'intervention, sur quel magasin et pour quelles opérations ?
+- **Privilèges techniques :** quels équipements et commandes le compte permet-il effectivement d'atteindre, depuis le point d'accès jusqu'au superviseur ?
+- **Administration des droits :** qui crée les comptes, étend les permissions et peut les retirer, y compris chez un prestataire ?
+
+**Exemple fictif :** un technicien consulte une alarme sur le magasin A. Le compte utilisé dispose aussi, selon les permissions configurées, de droits d'écriture sur les magasins B et C. **La mission concerne un magasin ; l'identité possède des capacités sur trois.** Cet écart mérite une revue, même lorsque l'intervention se déroule normalement.
+
+L'évaluation doit donc suivre **l'intervenant, le compte utilisé, les personnes qui gèrent ce compte et les équipements qu'il peut modifier**. Le [guide d'accès distant](https://lxrider.github.io/publications/securiser-supervision-frigorifique/) décrit comment retrouver les responsables de ces accès.
 
 ## 3. Jusqu'où une modification peut-elle se propager ?
 
@@ -80,9 +93,9 @@ Le *blast radius* désigne le **périmètre potentiellement affectable** par une
 
 Prenons un exemple précis. Sur le régulateur [Dixell XR60CX](https://webapps.copeland.com/Dixell/Content/Pages/Manuals/XR-CX/XR60CX/XR60CX-FR.pdf), le paramètre **SEt** définit une consigne, tandis que **US** peut fixer sa limite supérieure. Si une même autorité peut modifier la consigne **et** sa limite, cette limite ne constitue plus une protection indépendante contre cette autorité.
 
-Cela ne signifie pas que toutes les installations utilisant ce régulateur sont exposées. Les droits effectifs, les protections physiques et la configuration doivent être vérifiés.
+Cet exemple illustre une **dépendance entre deux réglages**. Sa portée sur un magasin donné dépend des droits effectifs, des protections physiques et de la configuration des régulateurs.
 
-La même prudence s'applique aux plateformes multisites. **Voir plusieurs magasins sur un tableau de bord ne signifie pas pouvoir les modifier tous.** À l'inverse, un compte autorisé à écrire sur plusieurs sites concentre une capacité d'action qu'il faut connaître et limiter.
+Sur une plateforme multisite, **voir les magasins et pouvoir les modifier sont deux fonctions distinctes**. Les permissions d'écriture, leurs limites et leur administrateur déterminent la concentration réelle des capacités d'action.
 
 ### Et si l'accès dépassait le froid ?
 
@@ -96,11 +109,9 @@ Il faut ensuite relier chaque capacité au procédé : quelles consignes peuvent
 
 Une protection mécanique peut préserver un compresseur sans garantir la température des denrées. Le risque se mesure donc aussi au regard du **service que l'installation doit assurer**.
 
-## 4. Si la supervision disparaît, qui surveille le froid ?
+## 4. Quand les alarmes disparaissent, quelles capacités restent ?
 
-Un incident numérique ne produit pas toujours un arrêt immédiat des installations. Certains régulateurs peuvent continuer de fonctionner localement lorsque la connexion Internet ou le superviseur est indisponible.
-
-En revanche, **le froid peut continuer à être produit alors que personne ne reçoit plus les alarmes à distance**.
+Selon le matériel et les réglages, certains régulateurs poursuivent leur fonctionnement local après la perte du superviseur ou de la liaison extérieure. **La production de froid et la transmission des alarmes suivent alors des chemins différents.**
 
 <figure class="research-figure">
 <a class="figure-open" href="03-regulation-alarmes-lxrider.svg" target="_blank" rel="noopener" aria-label="Ouvrir la figure 2">
@@ -109,37 +120,34 @@ En revanche, **le froid peut continuer à être produit alors que personne ne re
 <figcaption>Figure 2 — Le froid peut continuer alors que les alarmes ne remontent plus.</figcaption>
 </figure>
 
-Je distingue donc trois situations : perte de liaison extérieure, indisponibilité du superviseur et rupture des communications avec les régulateurs. Leurs conséquences varient selon l'architecture et l'autonomie locale des équipements. La figure illustre des fonctions possibles, pas le comportement garanti d'un site particulier.
+Les conséquences dépendent aussi des **droits d'administration sur les seuils, les notifications et les programmes**. Une identité capable de changer un seuil d'alerte ou sa destination peut affecter la surveillance, tandis qu'une perte de liaison peut interrompre la remontée d'informations.
 
-La surveillance des températures de conservation mérite une attention propre. Si ses seuils, sa transmission ou ses comptes d'administration dépendent du système qui pilote le froid, une modification de paramètres peut aussi rendre une alerte inefficace.
+Pour analyser le périmètre d'action, il faut distinguer **la régulation, les protections locales et l'alerte reçue par l'astreinte**, puis examiner leurs dépendances éventuelles : comptes, sondes, réseau, alimentation et configuration.
 
-Lorsque le risque le justifie, **une chaîne de mesure et d'alerte indépendante** peut réduire cette dépendance : sonde distincte, seuils validés, transmission maîtrisée et astreinte réellement joignable. Encore faut-il vérifier l'ensemble, y compris lors des dégivrages, en cas de panne réseau et lorsque les moyens habituels ne sont plus disponibles.
-
-La reprise soulève une autre question : **quel état restaure-t-on ?** Une sauvegarde récente peut contenir des paramètres déjà altérés. [Dixell France](https://dixell.fr/wp-content/uploads/2026/10/Recommandations-pour-une-utilisation-securisee-des-superviseurs-XWEB-v1.0.pdf) précise en outre que, pour XWEB PRO et EVO, une sauvegarde générale du superviseur ne conserve pas les paramètres des régulateurs ni les historiques de fonctionnement.
-
-La vérification du retour à la normale doit donc aller jusqu'aux équipements et jusqu'à la réception effective des alertes par l'astreinte. Un véritable PCA/PRA demanderait une analyse complémentaire.
+L'[analyse de cyber-résilience](https://lxrider.github.io/publications/cyber-resilience-froid-commercial/) développe la continuité de la régulation, l'indépendance des protections, les sauvegardes et les preuves nécessaires à une reprise fiable.
 
 ## 5. Que vérifier, sans compliquer inutilement le métier ?
 
-Une évaluation utile ne commence pas forcément par un nouvel outil ou un test intrusif. Elle peut partir de quelques questions concrètes :
+Une évaluation utile commence par **quelques questions que l'on peut confronter aux installations et aux comptes existants** :
 
 - **Accès :** savons-nous comment chaque intervenant rejoint les installations, y compris par les chemins secondaires ?
-- **Moindre privilège :** qui peut lire, modifier une consigne, changer ses limites ou envoyer une commande, et ces permissions sont-elles nécessaires ?
+- **Autorité :** qui valide une intervention, qui gère les comptes et quels droits d'administration sont effectivement attribués ?
+- **Moindre privilège :** qui peut lire, modifier une consigne, changer ses limites ou envoyer une commande, et pour quelle mission ?
 - **Périmètre :** quels autres équipements, magasins ou systèmes critiques seraient atteignables depuis l'accès considéré ?
-- **Continuité :** que perdons-nous si un superviseur, une liaison ou la télésurveillance devient indisponible ?
-- **Maîtrise :** qui peut couper un accès, restaurer une configuration fiable et confirmer que les alarmes arrivent à destination ?
+- **Alertes :** qui peut modifier les seuils et les destinataires des alarmes, et qui vérifie leur réception ?
+- **Maîtrise :** qui peut révoquer un accès ou réduire les permissions, y compris lorsque les comptes sont administrés par un prestataire ?
 
 Le frigoriste connaît le procédé et les contraintes de maintenance. Le prestataire réseau maîtrise les communications qu'il administre. Le spécialiste en cybersécurité relie les **expositions, identités, privilèges et chemins d'action**, y compris entre systèmes, pour mesurer les conséquences possibles. Ces regards se complètent, sans imposer les mêmes compétences à chacun.
 
 La réponse doit rester proportionnée aux moyens de l'entreprise. Supprimer un ancien accès, réduire un privilège ou tester une alarme peut avoir plus de valeur que multiplier les équipements de sécurité. Quand un matériel obsolète ou une dépendance critique empêche de maîtriser le risque, il faut en revanche envisager des mesures compensatoires ou son remplacement.
 
-L'objectif est de produire **quelques décisions vérifiables et maintenables**, plutôt qu'un catalogue de préconisations que personne ne pourra appliquer.
+L'objectif est d'aboutir à **quelques décisions vérifiables et maintenables**, appuyées sur des comptes, des configurations et des responsabilités identifiés.
 
 ## Conclusion
 
 La question de départ paraît simple : *qui peut agir sur nos installations frigorifiques ?*
 
-La réponse se construit en reliant les accès, les identités, les droits d'écriture, les équipements réellement commandables, les chemins possibles vers d'autres systèmes et les protections qui resteraient actives en cas de défaillance.
+La réponse se construit en reliant **les missions autorisées, les identités, les administrateurs des droits et les commandes réellement possibles**, puis en suivant leur portée vers les régulateurs, les autres magasins et les systèmes voisins.
 
 C'est dans ces relations que se trouvent les chemins de compromission possibles et les concentrations d'autorité les plus importantes à maîtriser.
 
@@ -160,4 +168,4 @@ Pour les éléments techniques de l'incident et leurs limites : [étude indépen
 
 ---
 
-*Version 1.1 — 22 octobre 2026 — révision éditoriale publiée. © 2026 lxrider — Tous droits réservés. Schémas conceptuels, à confronter aux configurations réelles.*
+*Version 1.2 — 24 octobre 2026 — révision éditoriale publiée. © 2026 lxrider — Tous droits réservés. Schémas conceptuels, à confronter aux configurations réelles.*
