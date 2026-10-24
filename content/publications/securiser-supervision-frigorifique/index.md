@@ -9,7 +9,7 @@ template = "doc-page.html"
 [extra]
 author = "lxrider"
 subtitle = "Box, routeur 4G, VPN et bastion : sécuriser les accès en conservant la maintenance"
-article_version = "1.3.1 — révision éditoriale publiée"
+article_version = "1.3.2 — révision éditoriale publiée"
 +++
 
 Quand un magasin appelle pour une alarme, le frigoriste doit pouvoir ouvrir sa supervision à distance. C'est souvent ce qui permet de comprendre la situation avant de se déplacer.
@@ -95,7 +95,18 @@ Si vous connaissez déjà l'adresse utilisée par le frigoriste et disposez de l
 
 Ce contrôle porte **sur l’adresse habituelle de maintenance, dans un périmètre autorisé**. Pour obtenir d’autres adresses ou vérifier d’autres équipements, passez par le responsable réseau et le mainteneur.
 
-Le point à éclaircir est simple : **qui utilise quel accès, vers quel équipement, et qui en tient la configuration ?**
+### Qui tient les accès de télémaintenance ?
+
+Un magasin peut appartenir à une enseigne, être équipé par un intégrateur et disposer d'un accès distant installé par son frigoriste. Le VPN peut être administré par l'informatique du groupe, tandis que le routeur 4G ou la plateforme de télémaintenance dépend d'un prestataire.
+
+**Pour chaque accès, quatre questions méritent une réponse :**
+
+- **Qui décide ?** Qui autorise un frigoriste ou un prestataire à intervenir sur le magasin ?
+- **Qui administre ?** Qui crée les comptes, attribue les accès et peut les révoquer ?
+- **Où ?** Sur la box du magasin, un routeur 4G, un bastion de l'enseigne ou une plateforme hébergée chez le prestataire ?
+- **Avec quelle autorité ?** Quels magasins et quels équipements l'intervenant peut-il atteindre ? Qui valide une extension de ses droits ?
+
+Un changement de mainteneur est un bon révélateur : **qui sait retrouver les accès de l'ancien prestataire et qui possède les moyens de les fermer ?**
 
 ## 3. Avant de toucher à la box, préparer le relais
 
@@ -181,6 +192,7 @@ L’ancienne adresse publique doit désormais **rejeter les connexions vers le s
 - [ ] Les accès directs identifiés ont été fermés ; le réseau a vérifié les autres chemins possibles.
 - [ ] Une alarme de test autorisée a été **reçue et confirmée par l'astreinte**.
 - [ ] Le frigoriste confirme que la supervision et les fonctions de télémaintenance nécessaires restent accessibles.
+- [ ] Pour chaque accès, **celui qui autorise, administre et retire les droits** est identifié, y compris chez les prestataires.
 - [ ] On sait **qui maintient la solution**, qui dépanne et qui appeler en dehors des heures ouvrées.
 
 Ce guide concerne **la sécurisation préventive des accès**. Si une compromission est suspectée, il faut préserver les constats et coordonner la réponse avec les personnes compétentes ; la [reprise après incident](https://lxrider.github.io/publications/cyber-resilience-froid-commercial/) est un autre sujet.
@@ -198,4 +210,4 @@ Ce guide concerne **la sécurisation préventive des accès**. Si une compromiss
 
 *Portée : guide pratique destiné aux intervenants autorisés sur les supervisions frigorifiques. Les exemples d'accès et les schémas sont conceptuels ; ils doivent être confrontés aux équipements, connexions et contrats du site.*
 
-*Version 1.3.1 — révision éditoriale publiée, 24 octobre 2026. © 2026 lxrider — Tous droits réservés.*
+*Version 1.3.2 — révision éditoriale publiée, 24 octobre 2026. © 2026 lxrider — Tous droits réservés.*
