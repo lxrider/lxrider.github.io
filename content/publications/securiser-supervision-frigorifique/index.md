@@ -1,18 +1,24 @@
 +++
 title = "Sécuriser sa supervision frigorifique : guide pratique pas à pas"
-description = "Danfoss, XWEB, box Internet et télémaintenance : comprendre une exposition et protéger les accès sans interrompre le froid ni les alarmes."
+description = "Accès distants des superviseurs Danfoss et XWEB : retrouver les chemins ouverts, passer au VPN ou au bastion, préserver la télémaintenance et les alarmes."
 date = 2026-10-22
+updated = 2026-10-24
 draft = false
 template = "doc-page.html"
 
 [extra]
 author = "lxrider"
-subtitle = "Danfoss, XWEB, box Internet et télémaintenance"
+subtitle = "Box, routeur 4G, VPN et bastion : sécuriser les accès en conservant la maintenance"
+article_version = "1.3.1 — révision éditoriale publiée"
 +++
 
-Un frigoriste doit parfois accéder au superviseur d'un magasin sans se déplacer : pour consulter les températures, vérifier des alarmes ou effectuer une opération de maintenance. **Pouvoir intervenir à distance est utile. Laisser l'interface du superviseur accessible directement depuis Internet augmente le risque de compromission de l'installation.**
+Quand un magasin appelle pour une alarme, le frigoriste doit pouvoir ouvrir sa supervision à distance. C'est souvent ce qui permet de comprendre la situation avant de se déplacer.
 
-À la suite des incidents d'octobre 2026, le [CERT-FR recommande de supprimer cette exposition](https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/) et de privilégier un VPN ou un réseau protégé. L'objectif de ce guide est de comprendre le problème, de repérer les accès concernés et de les sécuriser **sans interrompre le froid, les alarmes ni l'astreinte**.
+**La télémaintenance fait partie du quotidien des frigoristes. Les chemins d’accès méritent autant d’attention que les superviseurs eux-mêmes.** Une redirection sur une box, un routeur 4G ajouté pour dépanner, un PC froid accessible à distance… Au fil des interventions, les chemins se multiplient et leur suivi devient plus difficile.
+
+Après les incidents d'octobre 2026, le [CERT-FR](https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/) recommande de supprimer les accès de gestion directement exposés sur Internet. Reste la question pratique : **comment fermer ces accès publics tout en conservant la télémaintenance et les alarmes de nuit ?**
+
+C'est l'objet de ce guide. Pour comprendre [ce qu'un compte compromis pourrait commander](https://lxrider.github.io/publications/froid-commercial/) ou [comment reprendre le froid après un incident](https://lxrider.github.io/publications/cyber-resilience-froid-commercial/), deux autres articles vont plus loin. Ici, on s'occupe des **accès distants aux superviseurs**.
 
 <figure class="research-figure">
 <a class="figure-open" href="illustration-froid-commercial-lxrider-web.svg" target="_blank" rel="noopener" aria-label="Ouvrir l'illustration du magasin frigorifique en grand">
@@ -21,193 +27,165 @@ Un frigoriste doit parfois accéder au superviseur d'un magasin sans se déplace
 <figcaption>Illustration d'ouverture lxrider — Représentation conceptuelle d'une installation frigorifique.</figcaption>
 </figure>
 
-## 1. Comprendre la différence entre accès distant et exposition Internet
+## 1. Accès distant et exposition Internet : deux chemins différents
 
-### Imaginez le local technique d'un magasin
+**L’accès distant répond au besoin du frigoriste.** L’exposition Internet décrit la façon dont une interface de gestion est rendue joignable depuis l’extérieur.
 
-Le superviseur est comme un équipement installé dans un local technique. Les frigoristes doivent pouvoir y accéder pour travailler, y compris à distance.
+- **Accès direct :** depuis Internet, une connexion arrive sur l'interface du superviseur, souvent grâce à une redirection de port sur la box.
+- **Accès protégé :** le technicien entre d'abord par un VPN ou une autre solution d'accès administrée. Il accède ensuite aux seuls équipements prévus.
 
-**Une interface directement exposée à Internet, c'est comme une porte de ce local donnant sur la rue.** Même si cette porte est fermée par un code  (le mot de passe) elle est visible et peut faire l'objet de tentatives d'accès.
-
-**Un VPN est comparable à une entrée réservée aux intervenants autorisés.** Le technicien établit d'abord une connexion privée avec le réseau du magasin, puis accède au superviseur selon les droits qui lui ont été accordés. La porte donnant directement sur la rue n'est plus nécessaire.
-
-**L'analogie a une limite :** un VPN ne dispense pas de gérer les comptes, les mots de passe et les autorisations du superviseur.
+**Une page de connexion publique reste exposée, même protégée par un mot de passe.** Le VPN crée un chemin privé ; le filtrage réseau limite ensuite chaque technicien aux équipements nécessaires.
 
 <figure class="research-figure">
 <a class="figure-open" href="schema-acces-supervision.svg" target="_blank" rel="noopener" aria-label="Ouvrir le schéma original en haute résolution">
-<img src="schema-acces-supervision.svg" alt="Avant : Internet atteint directement le superviseur par une redirection de port sur la box. Après : le technicien passe par un VPN et un accès administré ; le superviseur n'est plus directement publié. Les flux d'alarme sont représentés séparément et doivent être vérifiés sur site." loading="lazy" decoding="async">
+<img src="schema-acces-supervision.svg" alt="Avant : Internet atteint directement le superviseur par une redirection de port sur la box. Après : le technicien passe par un VPN et un accès administré ; le superviseur devient accessible après authentification sur le VPN. Les flux d'alarme sont représentés séparément et doivent être vérifiés sur site." loading="lazy" decoding="async">
 </a>
 <figcaption>Figure 1. Deux façons d'accéder au superviseur : directement depuis Internet ou par un accès privé. Les alarmes suivent éventuellement un autre chemin. Schéma original lxrider.</figcaption>
 </figure>
 
-### Et les alarmes ?
+### Attention au chemin des alarmes
 
-Une alarme envoyée depuis le magasin vers un destinataire extérieur ressemble davantage à **un appel passé depuis le local technique** : elle peut sortir sans qu'une porte d'entrée publique reste ouverte.
+Deux fonctionnements existent : le superviseur **envoie ses alarmes** vers l’extérieur, ou la plateforme de télésurveillance **interroge le site**. Le sens de la communication change les règles réseau à prévoir.
 
-Mais certaines plateformes de télésurveillance **interrogent le superviseur depuis l'extérieur**. Avant de fermer un accès, il faut donc savoir **qui initie la communication** et tester la réception des alarmes après intervention.
+Avant de modifier une règle, posez la question au mainteneur et à l’astreinte : **qui appelle qui ?** La bascule doit préserver les communications utiles. Un essai convenu avec l’astreinte permettra ensuite de confirmer la réception des alarmes.
 
-**À retenir : l'accès distant peut être indispensable. L'exposition publique directe du superviseur ne l'est généralement pas.**
+## 2. Retrouver les accès qui existent vraiment
 
-## 2. Identifier comment le superviseur est accessible
+Le schéma réseau du magasin, s'il existe, est un début. Les habitudes des intervenants en disent parfois davantage : « Je passe par la box », « on utilise une carte SIM », « je prends la main sur le PC froid ».
 
-### Comprendre le trajet d'une connexion
+Il faut retrouver **tous les chemins utilisés ou encore ouverts** :
 
-La **box Internet** ou le **routeur 4G** relie le magasin à Internet. À l'intérieur, les équipements — superviseur, éventuellement PC froid — communiquent sur un **réseau local (LAN)**. Chacun possède généralement une **adresse IP privée** : par exemple `192.168.1.50` pour un superviseur fictif.
+- redirections de ports sur la box ou le pare-feu ;
+- routeur 4G/5G autonome, éventuellement ajouté par un prestataire ;
+- connexion IPv6, si elle est utilisée ;
+- VPN, accès cloud ou logiciel de téléassistance sur le PC froid ;
+- anciens accès de maintenance, à rapprocher des contrats et intervenants actuels.
 
-Un **port** est le numéro utilisé pour joindre un service sur un équipement : par exemple une interface Web. Le port `443` est souvent utilisé pour HTTPS, mais **le port d'un superviseur dépend de sa configuration**.
+**Une box principale dépourvue de redirection NAT laisse entière la question des autres accès**, notamment les routeurs cellulaires et les plateformes de téléassistance.
 
-La box peut également disposer d'une **adresse IP publique** : c'est l'adresse par laquelle on peut la joindre depuis Internet. Une **redirection de port (NAT/PAT)** lui indique alors où transmettre une connexion reçue sur un **port externe** : vers l'adresse privée et le port du superviseur.
+### Comprendre ce que fait la redirection
+
+Exemple fictif : la box reçoit une connexion sur le port **8443** et la transmet au superviseur `192.168.1.50` sur le port **443**. Le port externe et le port interne peuvent être différents.
+
+Une telle règle indique un **chemin possible** vers le superviseur. L’accessibilité du service et l’historique des connexions restent deux vérifications distinctes.
 
 <figure class="research-figure">
   <a class="figure-open" href="schema-lan-nat.svg" target="_blank" rel="noopener" aria-label="Ouvrir le schéma de redirection NAT en grand">
     <img src="schema-lan-nat.svg" alt="Exemple fictif : connexion Internet reçue par la box sur le port externe 8443, transmise par NAT/PAT au superviseur du réseau local à l'adresse 192.168.1.50 sur le port interne 443." loading="lazy" decoding="async">
   </a>
-  <figcaption>Figure 2. Exemple fictif de redirection NAT/PAT. Les adresses et ports ne sont pas des réglages Danfoss ou XWEB à reproduire. Schéma original lxrider.</figcaption>
+  <figcaption>Figure 2. Exemple fictif de redirection NAT/PAT. Adresses et ports fictifs, présentés pour illustrer le mécanisme. Schéma original lxrider.</figcaption>
 </figure>
 
-Dans cet exemple, **8443** est le port externe de la box, **192.168.1.50** l'adresse privée du superviseur et **443** son port interne. Une telle règle crée un **chemin possible** vers le superviseur ; elle ne prouve ni que le service répond ni qu'une intrusion a eu lieu.
-
-### Vérifier l'exposition, sans modifier la configuration
-
-**1. Demandez au responsable réseau** l'adresse ou le lien normalement utilisé pour la télémaintenance, ainsi que son accord pour effectuer la vérification.
-
-**2. Depuis un téléphone en données mobiles**, avec le Wi-Fi et tout VPN désactivés, essayez d'ouvrir **cette adresse connue et autorisée**. Si la page de connexion propre au superviseur apparaît directement, sans passer par un accès privé, **son interface Web est accessible depuis Internet**, même si elle exige un mot de passe.
-
-**3. Interprétez correctement le résultat :** voir la page de connexion **ne prouve pas que quelqu'un a piraté le superviseur**. À l'inverse, ne pas voir cette page **ne garantit pas l'absence d'exposition** : d'autres ports, protocoles ou chemins d'accès peuvent exister.
-
-Il ne s'agit **pas de rechercher ou scanner des équipements sur Internet**. La vérification porte uniquement sur une installation dont vous êtes autorisé à contrôler l'accès.
-
-### Où repérer une redirection sur la box ?
-
-Avec la personne habilitée, cherchez les règles pointant vers le superviseur ou un **PC froid**. Relevez l'**adresse de destination**, le **port externe**, le **port interne** et, si disponible, le **protocole** (TCP/UDP). **Pour l'instant, ne supprimez aucune règle.**
+Le responsable de la box relève la destination, les ports, le protocole et l’utilité de chaque règle. **On documente d’abord ; les changements viendront lors de la bascule coordonnée.**
 
 <figure class="research-figure">
   <a class="figure-open" href="reperes-interfaces-box.svg" target="_blank" rel="noopener" aria-label="Ouvrir le schéma des menus Orange et Freebox en grand">
-    <img src="reperes-interfaces-box.svg" alt="Repères schématiques : sur Livebox 5, Paramètres avancés, Réseau, NAT/PAT ; sur Freebox Connect, Réseau, Paramètres réseau avancés, puis Redirection de port ou Serveur VPN. Ces dessins ne sont pas des captures réelles des applications." loading="lazy" decoding="async">
+    <img src="reperes-interfaces-box.svg" alt="Repères schématiques : sur Livebox 5, Paramètres avancés, Réseau, NAT/PAT ; sur Freebox Connect, Réseau, Paramètres réseau avancés, puis Redirection de port ou Serveur VPN. Repères schématiques inspirés des menus des applications." loading="lazy" decoding="async">
   </a>
-  <figcaption>Figure 3. Exemples de menus, pas de configurations exposées : repères lxrider d'après l'<a href="https://assistance.orange.fr/ordinateurs-peripheriques/installer-et-utiliser/les-consoles-de-jeux/xbox/livebox-5-configurer-les-regles-nat-pour-pouvoir-utiliser-un-jeu-ou-une-application-serveur_287340-827962">assistance Orange (Livebox 5)</a> et l'<a href="https://assistance.free.fr/articles/1395">assistance Free (Freebox Connect)</a>. Les menus varient selon le matériel.</figcaption>
+  <figcaption>Figure 3. Repères de navigation vers les réglages réseau : repères lxrider d'après l'<a href="https://assistance.orange.fr/ordinateurs-peripheriques/installer-et-utiliser/les-consoles-de-jeux/xbox/livebox-5-configurer-les-regles-nat-pour-pouvoir-utiliser-un-jeu-ou-une-application-serveur_287340-827962">assistance Orange (Livebox 5)</a> et l'<a href="https://assistance.free.fr/articles/1395">assistance Free (Freebox Connect)</a>. Les menus varient selon le matériel.</figcaption>
 </figure>
 
-**Une absence de redirection NAT ne suffit pas à conclure.** Selon le site, le responsable réseau devra aussi considérer une DMZ, IPv6, un routeur 4G indépendant, un accès cloud ou un outil de téléassistance.
+### Une vérification simple, sur votre installation
 
-### Ce que vous pouvez faire aujourd'hui
+Si vous connaissez déjà l'adresse utilisée par le frigoriste et disposez de l'autorisation nécessaire :
 
-Même sans droits d'administration sur la box, vous pouvez **identifier le superviseur et son modèle**, noter **comment le prestataire intervient habituellement** et contacter **l'exploitant ou le responsable réseau** pour demander une vérification.
+1. Sur un téléphone, coupez le Wi-Fi et tout VPN, puis essayez **l'adresse habituelle de maintenance** avec la connexion mobile.
+2. Si la page de gestion du superviseur apparaît directement, son interface Web est **accessible depuis Internet**.
+3. Si la page reste inaccessible par cette adresse, poursuivez l’inventaire des autres chemins possibles : 4G, IPv6, outil de téléassistance ou autre service.
 
-**Message prêt à transmettre :**
+Ce contrôle porte **sur l’adresse habituelle de maintenance, dans un périmètre autorisé**. Pour obtenir d’autres adresses ou vérifier d’autres équipements, passez par le responsable réseau et le mainteneur.
 
-> « Sur le site [nom], nous utilisons un superviseur [modèle] avec un accès distant [connu / à confirmer]. Pouvez-vous vérifier si son interface est directement accessible depuis Internet et organiser sa protection ? Avant toute modification, il faut confirmer avec le frigoriste et l'astreinte le fonctionnement des alarmes et de la télémaintenance. »
+Le point à éclaircir est simple : **qui utilise quel accès, vers quel équipement, et qui en tient la configuration ?**
 
-## 3. Préparer l'intervention sans interrompre le froid
+## 3. Avant de toucher à la box, préparer le relais
 
-**Avant de modifier l'accès, identifiez ce qui doit continuer à fonctionner.** Notez le modèle et la version du superviseur, le mode de connexion (box, routeur 4G, VPN, PC froid), le prestataire de maintenance et les destinataires des alarmes.
+On peut supprimer une redirection en quelques clics. **Retrouver l'accès du frigoriste en pleine astreinte peut prendre beaucoup plus longtemps.**
 
-Vérifiez notamment **qui reçoit les alertes la nuit**, comment une intervention à distance est déclenchée, si les alarmes sont **envoyées par le superviseur** ou si une plateforme extérieure **interroge le site**, et ce que prévoient le contrat de maintenance et, le cas échéant, les exigences de l'assureur.
+Avant l'intervention, mettez sur la table trois informations :
 
-### Qui fait quoi ?
+- **Télémaintenance :** comment le frigoriste se connecte-t-il aujourd'hui ? Depuis son PC, un VPN, un portail, une prise en main du PC froid ?
+- **Alarmes :** qui les reçoit, par quel chemin, et comment vérifier leur réception après la modification ?
+- **Dépannage :** quel moyen de secours est prévu en cas de panne du nouvel accès ? Qui est joignable la nuit ?
 
-Un frigoriste n'a pas toujours la main sur le réseau ; inversement, le responsable informatique ne connaît pas nécessairement le fonctionnement de la chaîne du froid. **La modification doit donc être coordonnée.** Inscrivez un nom et un téléphone pour chaque rôle ; une personne peut cumuler plusieurs fonctions.
+Il faut aussi connaître le modèle du superviseur et la liaison utilisée : box du magasin, routeur cellulaire ou autre. **Si un contrat prévoit une télésurveillance, le prestataire concerné doit être associé à la bascule.**
 
-| Intervenant | Avant et pendant la modification |
+| Qui intervient ? | Ce qu'il doit confirmer |
 | --- | --- |
-| **Exploitant → décide** | Valide l'intervention, le créneau et la procédure de repli. |
-| **Responsable réseau / prestataire IT → réalise** | Prépare l'accès privé, vérifie les droits, effectue la modification et confirme la fermeture de l'accès public direct. |
-| **Frigoriste → valide le fonctionnement** | Vérifie l'accès de télémaintenance et les fonctions utiles de supervision. |
-| **Astreinte / télésurveilleur → confirme les alarmes** | Participe à un essai convenu et confirme la réception des alertes ainsi que le moyen de secours. |
+| **Exploitant du magasin** | Accord pour l'intervention, créneau et solution de repli. |
+| **Responsable réseau / informatique** | Nouveau chemin d'accès, changement des règles et fermeture de l'ancien. |
+| **Frigoriste** | Accès distant opérationnel et fonctions utiles accessibles. |
+| **Astreinte / télésurveilleur** | Alarmes reçues et procédure de secours connue. |
 
-**Ne coupez pas la box, la 4G ou une redirection à l'aveugle.** Il faut d'abord connaître les dépendances, disposer d'un accès de remplacement fonctionnel et prévoir un retour arrière si la télémaintenance ou les alarmes cessent de fonctionner.
+Les essais sont définis avec les intervenants : vérification des accès, réception des alarmes et **préservation du fonctionnement frigorifique**.
 
-## 4. Remplacer l'accès direct par une connexion protégée
+## 4. Quel accès mettre à la place ?
 
-L'objectif est de **conserver la télémaintenance pour les personnes autorisées**, tout en supprimant l'accès direct à l'interface depuis Internet. Un **VPN** établit une connexion privée entre le technicien et le réseau du site ; les droits doivent ensuite limiter les équipements accessibles.
+**Une solution simple, maintenue et limitée aux bons équipements facilite la télémaintenance et les dépannages futurs.** Chaque composant ajouté doit avoir un responsable.
 
-### Quel accès privé choisir ?
+### VPN, passerelle, bastion : des rôles différents
 
-**VPN et bastion ne sont pas deux solutions à opposer.** Le premier établit un chemin privé vers le site ; le second peut encadrer les interventions qui empruntent ce chemin. Avant d'ajouter un équipement, vérifiez si un VPN déjà administré peut être réutilisé.
+Un **VPN** fournit un chemin privé vers le site. Une **passerelle** peut porter cet accès. Un **bastion** est utile pour organiser et tracer les interventions, surtout quand plusieurs magasins ou prestataires sont concernés.
 
-| Situation sur site | Solution à examiner | Vérification indispensable |
+| Situation rencontrée | Piste à examiner | Point à vérifier |
 | --- | --- | --- |
-| VPN d'entreprise existant | Le réutiliser avec un accès filtré aux équipements frigorifiques nécessaires | Comptes nominatifs, équipements accessibles et droits |
-| Box avec serveur VPN compatible | VPN de la box, par exemple [WireGuard sur certaines Freebox](https://assistance.free.fr/articles/1970) | Compatibilité, authentification, filtrage et maintenance |
-| Petite installation sans VPN adapté | Routeur VPN administré ou passerelle d'accès privé | Responsable des mises à jour, des comptes et du dépannage |
-| Site équipé d'un routeur 4G | VPN compatible avec le routeur ou solution gérée par le prestataire | Possibilités de connexion, secours et réception des alarmes |
-| Plusieurs magasins ou prestataires | **Accès privé + bastion de télémaintenance**, si la complexité le justifie | Permissions par site, traçabilité des sessions et accès de secours |
+| Le magasin dispose déjà d'un VPN d'entreprise | Le réutiliser, avec un accès limité au froid | Qui se connecte et quels équipements sont joignables ? |
+| La box possède un serveur VPN adapté | VPN de la box, par exemple [WireGuard sur certaines Freebox](https://assistance.free.fr/articles/1970) | Comptes, mises à jour et filtrage des accès |
+| Site à équiper d’un accès privé | Routeur VPN ou passerelle administrée | Qui assurera le suivi et le dépannage ? |
+| Télémaintenance par routeur 4G/5G | Solution VPN ou distante compatible avec cette liaison | Connexion, secours et chaîne d'alarme |
+| Plusieurs magasins ou plusieurs entreprises de maintenance | Accès privé **complété, si nécessaire, par un bastion** | Droits par magasin, sessions et accès de secours |
 
-**Passerelle et bastion, quelle différence ?** Une passerelle VPN permet à un technicien autorisé de rejoindre des équipements du réseau local. Un routeur VPN peut remplir ce rôle ; un Raspberry Pi avec [Tailscale](https://tailscale.com/docs/features/subnet-routers) en est un autre exemple, **à condition d'être correctement administré**.
+**Le VPN fournit le chemin privé ; le bastion encadre les interventions.** Selon l’outil et les protocoles utilisés, ce dernier peut imposer des comptes nominatifs, limiter les sites accessibles et conserver des traces de connexion. **Les droits d’administration restent définis sur chaque superviseur.**
 
-Le **bastion**, lui, contrôle le passage des intervenants vers les équipements autorisés et peut tracer les sessions, selon les fonctions disponibles. **Il complète l'accès privé, sans remplacer les permissions du superviseur.** Cette distinction est illustrée dans le schéma ci-dessous.
+### Exemple avec deux magasins
 
-La passerelle doit donner accès **aux seuls équipements et services nécessaires**, pas à tout le réseau du magasin. Ne l'ajoutez pas à un PC froid critique sans accord et analyse préalable.
-
-**Et les accès Web ?** [Cloudflare Tunnel avec Access](https://developers.cloudflare.com/cloudflare-one/setup/secure-private-apps/private-web-app/) peut convenir à certaines applications Web compatibles. Il **ne constitue pas une solution par défaut** pour des interfaces anciennes Danfoss ou XWEB.
-
-### Et le bastion de télémaintenance ?
-
-**Le VPN protège le chemin d'accès ; il ne limite pas automatiquement ce qu'un technicien peut administrer.** Quand plusieurs frigoristes ou prestataires interviennent sur différents magasins, un **bastion d'administration** peut servir de point de passage contrôlé, au sein d'une chaîne d'accès sécurisée.
-
-Selon ses fonctionnalités et les protocoles utilisés, il peut :
-
-- **Identifier** chaque intervenant avec un compte nominatif et une authentification renforcée ;
-- **Limiter** les sites et équipements accessibles, ainsi que la durée d'une intervention ;
-- **Tracer** les connexions et, lorsque c'est possible, les sessions réalisées.
-
-**Exemple :** le prestataire intervient sur le superviseur du magasin A sans obtenir, par défaut, l'accès aux autres magasins. Mais si son compte reste administrateur sur ce superviseur, **le bastion ne supprime pas ses droits de modification**.
+Un même frigoriste entretient les magasins A et B. Lors d’une intervention sur A, sa session peut être limitée à ce seul magasin. Un bastion correctement configuré peut limiter sa session à A et enregistrer cette connexion.
 
 <figure class="research-figure">
 <a class="figure-open" href="schema-bastion-telemaintenance.svg" target="_blank" rel="noopener" aria-label="Ouvrir le schéma du bastion de télémaintenance">
-<img src="schema-bastion-telemaintenance.svg" width="1160" height="520" alt="Exemple d'accès : un frigoriste passe par un VPN et un bastion. La session vers le superviseur du magasin A est autorisée, tandis que l'accès au magasin B est refusé selon les permissions attribuées. Le bastion journalise les connexions sans modifier les droits propres au superviseur." loading="lazy" decoding="async">
+<img src="schema-bastion-telemaintenance.svg" width="1160" height="520" alt="Exemple d'accès : un frigoriste passe par un VPN et un bastion. La session vers le superviseur du magasin A est autorisée, tandis que l'accès au magasin B est refusé selon les permissions attribuées. Le bastion journalise les connexions ; les droits de modification restent gérés sur chaque superviseur." loading="lazy" decoding="async">
 </a>
 <figcaption>Figure 4. Bastion de télémaintenance : un intervenant, deux magasins, des droits d'accès différents. Exemple conceptuel lxrider.</figcaption>
 </figure>
 
-**Un bastion ne remplace ni le VPN, ni le cloisonnement, ni les droits propres aux équipements.** Il concentre des accès sensibles et doit être protégé, maintenu et secouru. Il faut aussi vérifier que les alarmes continuent de fonctionner indépendamment de cette voie de maintenance. Sur un site simple, un VPN correctement filtré peut être plus facile à exploiter ; sur un parc multisite, le bastion mérite d'être étudié.
+Attention toutefois : **le bastion devient un passage sensible**. Il faut le maintenir à jour, protéger son administration et prévoir un secours en cas de panne. Les principes de l'[ANSSI sur les accès des prestataires aux GTB/GTC](https://messervices.cyber.gouv.fr/guides/recommandations-gestion-technique-batiment) éclairent ce choix. L'architecture se décide selon les contraintes de chaque magasin.
 
-L'[ANSSI recommande une chaîne d'accès dédiée avec bastion pour les prestataires en GTB/GTC](https://messervices.cyber.gouv.fr/documents-guides/Guide__Systemes_industriels___GTB_GTC_2025.pdf). Cette recommandation éclaire le froid commercial, sans valoir diagnostic de chaque installation.
+### Protection provisoire avant la mise en place du VPN
 
-### Si le VPN n'est pas prêt : une protection temporaire
+Le responsable réseau peut provisoirement filtrer les connexions venant d’Internet pour **autoriser exclusivement les adresses IP publiques connues du prestataire**, si le matériel le permet. Le [CERT-FR](https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/) présente cette mesure comme **temporaire** : le superviseur reste joignable depuis ces adresses.
 
-Un **pare-feu**, parfois intégré à la box, peut **autoriser ou refuser les connexions** selon leur origine. Le *filtrage par adresse IP source* consiste, par exemple, à n'autoriser que les connexions provenant de l'**adresse Internet publique connue du prestataire**, et à refuser les autres.
+Cette protection provisoire nécessite un responsable, une échéance de passage au VPN et un essai de réception des alarmes.
 
-Cette adresse « source » indique **d'où vient la connexion** ; elle ne désigne pas le superviseur. Si l'adresse du prestataire change, la règle peut empêcher sa télémaintenance.
+### Vérifier les comptes de maintenance
 
-Le [CERT-FR](https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/) envisage ce filtrage **en urgence seulement** : il réduit l'exposition, mais **ne remplace pas un accès privé**. L'interface reste accessible depuis les adresses autorisées.
+Un ancien prestataire utilise encore un identifiant partagé ? Un compte par défaut existe toujours ? Cela mérite une revue avec le mainteneur. Quand c'est possible, attribuez des comptes nominatifs et une authentification renforcée sur le VPN ou le bastion.
 
-**À faire par le responsable réseau :** vérifier que le matériel permet ce filtrage, identifier les adresses du prestataire, confirmer les alarmes et prévoir le remplacement rapide de cette mesure provisoire. **Ne modifiez pas les règles à l'aveugle.**
+**La fermeture des ports publics et la gestion des comptes sont deux protections complémentaires.** Le VPN réduit également l’exposition d’un superviseur en fin de support. Pour les XWEB EVO, Copeland a [annoncé l’arrêt des mises à jour logicielles le 16 mars 2026](https://webapps.copeland.com/dixell/Content/Pages/AdvertisingMaterials/ProductNews/XWEB%20EVO%20EoS%20-%20Product_Bulletin_March_2026.pdf) : la protection immédiate de l’accès s’accompagne d’un projet de remplacement.
 
-### Vérifier les comptes, sans confondre les protections
+### La bascule, dans le bon ordre
 
-En parallèle, faites examiner par le mainteneur les comptes **par défaut, partagés ou inutilisés**. Les comptes d'administration doivent avoir des mots de passe **uniques et robustes** ; leur modification doit préserver les accès ou services qui en dépendent.
+1. Mettre en place **le nouvel accès et le tester** avec le frigoriste ; conserver ce qui est nécessaire au retour arrière.
+2. Vérifier la **télémaintenance et le parcours des alarmes** avec l'astreinte.
+3. Faire retirer l'**accès public direct** par la personne habilitée, avec l'accord de l'exploitant.
+4. Retester, vérifier les autres chemins (4G, IPv6, accès cloud) et noter le moyen de secours.
 
-**Changer un mot de passe ne ferme pas une exposition Internet.**
+## 5. Après la modification, qu'est-ce qui le prouve ?
 
-Pour les **XWEB EVO**, le bulletin Copeland demande le retrait de l'exposition publique. Cette génération n'étant plus corrigée, il faut aussi planifier une migration vers un équipement maintenu.
+L’ancienne adresse publique doit désormais **rejeter les connexions vers le superviseur**. Ce premier contrôle s’accompagne de la vérification des autres chemins recensés et d’un essai complet de télémaintenance.
 
-### Dans quel ordre effectuer la bascule ?
+### Contrôles à clôturer ensemble
 
-1. **Le responsable réseau met en place et teste l'accès privé**, avec le frigoriste, sans encore supprimer l'ancien accès.
-2. **Le frigoriste et l'astreinte vérifient les fonctions essentielles**, notamment la télémaintenance et la réception des alarmes, suivant la procédure prévue.
-3. **L'exploitant autorise le changement** ; le responsable réseau retire alors l'accès direct et contrôle qu'il n'en reste pas d'autre. Les essais sont répétés après la modification (étape 5).
+- [ ] Les accès connus ont été recensés : box, 4G/5G, IPv6, PC froid, plateformes et prestataires.
+- [ ] Le nouveau VPN ou accès privé fonctionne pour le frigoriste autorisé ; les tentatives depuis un compte hors périmètre sont bloquées.
+- [ ] Le technicien accède uniquement aux équipements prévus pour son intervention.
+- [ ] Si un bastion est présent, les droits par magasin, les journaux et le secours ont été testés.
+- [ ] Les accès directs identifiés ont été fermés ; le réseau a vérifié les autres chemins possibles.
+- [ ] Une alarme de test autorisée a été **reçue et confirmée par l'astreinte**.
+- [ ] Le frigoriste confirme que la supervision et les fonctions de télémaintenance nécessaires restent accessibles.
+- [ ] On sait **qui maintient la solution**, qui dépanne et qui appeler en dehors des heures ouvrées.
 
-## 5. Vérifier que tout fonctionne après l'intervention
+Ce guide concerne **la sécurisation préventive des accès**. Si une compromission est suspectée, il faut préserver les constats et coordonner la réponse avec les personnes compétentes ; la [reprise après incident](https://lxrider.github.io/publications/cyber-resilience-froid-commercial/) est un autre sujet.
 
-Pendant la **fenêtre approuvée par l'exploitant**, le responsable réseau retire la publication directe, une fois la nouvelle voie d'accès vérifiée.
-
-Le frigoriste contrôle les fonctions utiles à l'installation ; l'astreinte confirme la réception des alertes. **Si un service indispensable ne fonctionne plus**, l'équipe applique le repli prévu et fait arbitrer la suite par l'exploitant. Toute protection provisoire doit avoir un responsable et une échéance.
-
-### Checklist de fin d'intervention
-
-- [ ] Superviseur, box/4G, PC froid et chemins d'accès identifiés.
-- [ ] Exploitant, responsable réseau, frigoriste et astreinte identifiés ; intervention autorisée.
-- [ ] Contrat, alarmes, dépendances et solution de repli vérifiés.
-- [ ] Nouvelle télémaintenance testée avec un compte **autorisé** et accès **refusé** aux autres ; comptes à privilèges et mots de passe revus avec le mainteneur. Si un bastion est déployé, vérifier les droits par site, les journaux de connexion et l'accès de secours.
-- [ ] Accès public direct retiré et absence de chemin direct résiduel vérifiée avec l'IT.
-- [ ] Alarmes **émises et réellement reçues** par l'astreinte, avec un test convenu **sans perturber le procédé frigorifique**.
-- [ ] Consignes, programmations de dégivrage, état des équipements et températures réelles, si pertinentes, contrôlés et comparés à l'état attendu.
-- [ ] Procédure de secours, comptes, mises à jour et **responsable du maintien en sécurité** consignés.
-
-**Si une compromission est suspectée :** ce guide de prévention ne suffit pas. Alertez le responsable d'incident et suivez les consignes applicables du **constructeur** et du **CERT-FR**, en préservant les constats. **Ni redémarrage, ni remise à zéro, ni changement de passerelle IP, ni désactivation générale d'UPnP/IPv6** ne doivent être improvisés comme geste préventif.
-
-Une installation mieux protégée n'est pas simplement une installation moins accessible : c'est une installation dont **les bons intervenants conservent les bons accès, dont les alarmes arrivent et dont le froid reste maîtrisé**.
+**Le résultat se vérifie sur le terrain : le frigoriste intervient à distance par un accès maîtrisé, l’astreinte reçoit les alarmes et les interfaces de gestion restent derrière les protections prévues.**
 
 ## Sources et documentation
 
@@ -216,6 +194,8 @@ Une installation mieux protégée n'est pas simplement une installation moins ac
 - [Danfoss — AK-SM 800A User Guide](https://assets.danfoss.com/documents/latest/471013/BC337629891709en-000901.pdf) (juin 2026, notamment p. 30 et 35 ; **800A uniquement**).
 - [Copeland / Dixell — Manuels XWEB EVO 5.6.0](https://webapps.copeland.com/Dixell/Content/Pages/Manuals/XWEBEVO/XWEBEVOV5.6.0OPERATION/XWEB-EVO-r5.6.0-OPR-EN.pdf) et [XWEB PRO 1.2](https://webapps.copeland.com/Dixell/Content/Pages/Manuals/XWEBPRO/XWEBPROV1.2OPERATION/XWEB-PRO-OPR-EN.pdf) : **versions distinctes**.
 - [ANSSI — Recommandations de sécurité relatives à la GTB/GTC (2026)](https://messervices.cyber.gouv.fr/guides/recommandations-gestion-technique-batiment) et [Administration sécurisée des systèmes d'information, section 13.1 « Utilisation d'un bastion »](https://messervices.cyber.gouv.fr/documents-guides/anssi-guide-admin_securisee_si_v3-0.pdf).
-- [Orange — Livebox 5, NAT/PAT](https://assistance.orange.fr/ordinateurs-peripheriques/installer-et-utiliser/les-consoles-de-jeux/xbox/livebox-5-configurer-les-regles-nat-pour-pouvoir-utiliser-un-jeu-ou-une-application-serveur_287340-827962) ; [Free — paramètres réseau avancés](https://assistance.free.fr/articles/1395) ; [Tailscale — subnet routers et contrôle d'accès](https://tailscale.com/docs/features/subnet-routers).
+- [Orange — Livebox 5, NAT/PAT](https://assistance.orange.fr/ordinateurs-peripheriques/installer-et-utiliser/les-consoles-de-jeux/xbox/livebox-5-configurer-les-regles-nat-pour-pouvoir-utiliser-un-jeu-ou-une-application-serveur_287340-827962) ; [Free — paramètres réseau avancés](https://assistance.free.fr/articles/1395).
 
-*Ce guide ne remplace pas les consignes constructeur ni les décisions du responsable d’exploitation. © 2026 lxrider — Tous droits réservés.*
+*Portée : guide pratique destiné aux intervenants autorisés sur les supervisions frigorifiques. Les exemples d'accès et les schémas sont conceptuels ; ils doivent être confrontés aux équipements, connexions et contrats du site.*
+
+*Version 1.3.1 — révision éditoriale publiée, 24 octobre 2026. © 2026 lxrider — Tous droits réservés.*
