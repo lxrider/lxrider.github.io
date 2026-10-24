@@ -7,7 +7,7 @@ updated = 2026-10-24
 template = "doc-page.html"
 
 [extra]
-article_version = "1.2 — révision éditoriale publiée"
+article_version = "1.3 — révision éditoriale publiée"
 author = "lxrider"
 rights = "© 2026 lxrider — Tous droits réservés"
 +++
@@ -83,7 +83,22 @@ Trois questions permettent de comprendre l'autorité réellement exercée :
 
 **Exemple fictif :** un technicien consulte une alarme sur le magasin A. Le compte utilisé dispose aussi, selon les permissions configurées, de droits d'écriture sur les magasins B et C. **La mission concerne un magasin ; l'identité possède des capacités sur trois.** Cet écart mérite une revue, même lorsque l'intervention se déroule normalement.
 
-L'évaluation doit donc suivre **l'intervenant, le compte utilisé, les personnes qui gèrent ce compte et les équipements qu'il peut modifier**. Le [guide d'accès distant](https://lxrider.github.io/publications/securiser-supervision-frigorifique/) décrit comment retrouver les responsables de ces accès.
+L'évaluation doit donc suivre **l'intervenant, le compte utilisé, les personnes qui gèrent ce compte et les équipements qu'il peut modifier**.
+
+### Un parc de magasins : comment répartir les accès ?
+
+Pour une entreprise frigorifique intervenant sur plusieurs magasins, une architecture possible s'appuie sur **un bastion centralisé**, des liaisons VPN et des règles de filtrage propres à chaque site.
+
+- **Le technicien** utilise un compte nominatif unique. Il rejoint l'infrastructure d'accès par un **VPN avec authentification multifacteur (MFA)**, puis ouvre sa session de maintenance sur le bastion.
+- **Le bastion** applique ses habilitations : quels magasins et quels superviseurs ce technicien peut atteindre. Il trace les connexions et, selon les protocoles et ses fonctionnalités, les sessions.
+- **Le réseau** relie la zone de maintenance aux magasins par des **VPN intersites**, terminés sur des passerelles adaptées. Le **pare-feu de chaque magasin** limite les flux aux superviseurs et aux services nécessaires.
+- **Le superviseur** conserve sa propre gestion des comptes et des commandes. Ses permissions déterminent ce que l'intervenant peut effectivement consulter ou modifier une fois connecté.
+
+Cette chaîne sépare plusieurs autorités. **L'exploitant ou l'enseigne valide l'accès à ses magasins**, l'entreprise frigorifique tient à jour la liste de ses techniciens et l'administrateur de l'infrastructure applique les habilitations convenues. À chaque départ ou changement de périmètre, les accès correspondants sont réexaminés et révoqués.
+
+**Le bastion concentre lui aussi des privilèges :** son administration et les comptes techniques utilisés vers les superviseurs méritent une attention particulière. Sur les équipements anciens, un compte local partagé peut subsister ; la traçabilité individuelle des actions dépend alors des fonctions du bastion et du protocole de connexion.
+
+Le [guide pratique des accès distants](https://lxrider.github.io/publications/securiser-supervision-frigorifique/) détaille la mise en place de cette chaîne, les contrôles de connexion et les précautions de télémaintenance. Le point examiné ici est **l'écart éventuel entre les missions accordées et les capacités réelles des identités**.
 
 ## 3. Jusqu'où une modification peut-elle se propager ?
 
@@ -131,7 +146,7 @@ L'[analyse de cyber-résilience](https://lxrider.github.io/publications/cyber-re
 Une évaluation utile commence par **quelques questions que l'on peut confronter aux installations et aux comptes existants** :
 
 - **Accès :** savons-nous comment chaque intervenant rejoint les installations, y compris par les chemins secondaires ?
-- **Autorité :** qui valide une intervention, qui gère les comptes et quels droits d'administration sont effectivement attribués ?
+- **Autorité :** qui valide l'accès à chaque magasin, qui gère les habilitations sur le bastion et quels droits d'administration sont effectivement attribués ?
 - **Moindre privilège :** qui peut lire, modifier une consigne, changer ses limites ou envoyer une commande, et pour quelle mission ?
 - **Périmètre :** quels autres équipements, magasins ou systèmes critiques seraient atteignables depuis l'accès considéré ?
 - **Alertes :** qui peut modifier les seuils et les destinataires des alarmes, et qui vérifie leur réception ?
@@ -168,4 +183,4 @@ Pour les éléments techniques de l'incident et leurs limites : [étude indépen
 
 ---
 
-*Version 1.2 — 24 octobre 2026 — révision éditoriale publiée. © 2026 lxrider — Tous droits réservés. Schémas conceptuels, à confronter aux configurations réelles.*
+*Version 1.3 — 24 octobre 2026 — révision éditoriale publiée. © 2026 lxrider — Tous droits réservés. Schémas conceptuels, à confronter aux configurations réelles.*
