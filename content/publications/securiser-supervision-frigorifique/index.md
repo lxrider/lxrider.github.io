@@ -123,18 +123,21 @@ L'objectif est de **conserver la télémaintenance pour les personnes autorisée
 
 ### Quel accès privé choisir ?
 
-**Réutiliser d'abord un VPN déjà administré.** Sinon, le responsable réseau ou un prestataire IT habilité choisit la solution la plus simple à maintenir.
+**VPN et bastion ne sont pas deux solutions à opposer.** Le premier établit un chemin privé vers le site ; le second peut encadrer les interventions qui empruntent ce chemin. Avant d'ajouter un équipement, vérifiez si un VPN déjà administré peut être réutilisé.
 
 | Situation sur site | Solution à examiner | Vérification indispensable |
 | --- | --- | --- |
-| VPN d'entreprise existant | Le réutiliser, en limitant l'accès au superviseur | Les droits donnent-ils accès uniquement aux équipements nécessaires ? |
-| Box avec serveur VPN compatible | VPN de la box, par exemple [WireGuard sur certaines Freebox](https://assistance.free.fr/articles/1970) | Modèle compatible, accès des techniciens et filtrage |
-| Petite installation sans VPN adapté | Routeur VPN administré ou passerelle dédiée | Responsable des mises à jour, des comptes et du dépannage |
-| Routeur 4G ou parc multisite | Routeur VPN ou solution gérée par le prestataire | Continuité d'accès et d'astreinte en cas de panne |
+| VPN d'entreprise existant | Le réutiliser avec un accès filtré aux équipements frigorifiques nécessaires | Comptes nominatifs, équipements accessibles et droits |
+| Box avec serveur VPN compatible | VPN de la box, par exemple [WireGuard sur certaines Freebox](https://assistance.free.fr/articles/1970) | Compatibilité, authentification, filtrage et maintenance |
+| Petite installation sans VPN adapté | Routeur VPN administré ou passerelle d'accès privé | Responsable des mises à jour, des comptes et du dépannage |
+| Site équipé d'un routeur 4G | VPN compatible avec le routeur ou solution gérée par le prestataire | Possibilités de connexion, secours et réception des alarmes |
+| Plusieurs magasins ou prestataires | **Accès privé + bastion de télémaintenance**, si la complexité le justifie | Permissions par site, traçabilité des sessions et accès de secours |
 
-**Une passerelle dédiée, c'est quoi ?** Un petit équipement qui permet aux techniciens autorisés de rejoindre le superviseur sur le réseau local. Un Raspberry Pi avec [Tailscale](https://tailscale.com/docs/features/subnet-routers) en est un exemple, **à condition d'être correctement administré**. Un routeur VPN professionnel peut aussi remplir ce rôle.
+**Passerelle et bastion, quelle différence ?** Une passerelle VPN permet à un technicien autorisé de rejoindre des équipements du réseau local. Un routeur VPN peut remplir ce rôle ; un Raspberry Pi avec [Tailscale](https://tailscale.com/docs/features/subnet-routers) en est un autre exemple, **à condition d'être correctement administré**.
 
-Cette passerelle doit donner accès **au seul superviseur et aux services utiles**, pas à tout le réseau du magasin. Ne l'ajoutez pas à un PC froid critique sans accord et analyse préalable.
+Le **bastion**, lui, contrôle le passage des intervenants vers les équipements autorisés et peut tracer les sessions, selon les fonctions disponibles. **Il complète l'accès privé, sans remplacer les permissions du superviseur.** Cette distinction est illustrée dans le schéma ci-dessous.
+
+La passerelle doit donner accès **aux seuls équipements et services nécessaires**, pas à tout le réseau du magasin. Ne l'ajoutez pas à un PC froid critique sans accord et analyse préalable.
 
 **Et les accès Web ?** [Cloudflare Tunnel avec Access](https://developers.cloudflare.com/cloudflare-one/setup/secure-private-apps/private-web-app/) peut convenir à certaines applications Web compatibles. Il **ne constitue pas une solution par défaut** pour des interfaces anciennes Danfoss ou XWEB.
 
