@@ -1,0 +1,1507 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html
+  lang="fr"
+  dir="ltr"
+  
+  
+>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <title>Cybersécurité du froid commercial : qui peut agir sur vos installations, et jusqu&#39;où ? | lxrider | Recherche en cybersécurité offensive</title>
+  
+<script>
+  (function () {
+    var storageKey = "devlab-theme-color-mode";
+    var announcementStorageKey = "devlab-announcement-dismissed";
+    var root = document.documentElement;
+    var defaultMode = "dark";
+
+    function isValidMode(mode) {
+      return mode === "light" || mode === "dark" || mode === "system";
+    }
+
+    function getSystemTheme() {
+      return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    }
+
+    function resolveTheme(mode) {
+      return mode === "system" ? getSystemTheme() : mode;
+    }
+
+    function getStoredMode() {
+      try {
+        return localStorage.getItem(storageKey);
+      } catch (_) {
+        return null;
+      }
+    }
+
+    var storedMode = getStoredMode();
+    var mode = isValidMode(storedMode) ? storedMode : defaultMode;
+
+    if (!isValidMode(mode)) {
+      mode = "system";
+    }
+
+    root.dataset.themeDefault = defaultMode;
+    root.dataset.themeMode = mode;
+    root.dataset.theme = resolveTheme(mode);
+
+    if (root.dataset.announcementKey) {
+      try {
+        if (localStorage.getItem(announcementStorageKey) === root.dataset.announcementKey) {
+          root.dataset.announcementDismissed = "true";
+        }
+      } catch (_) {
+        // Keep the announcement visible when persistent storage is unavailable.
+      }
+    }
+  })();
+</script>
+
+
+
+<meta name="description" content="Des accès aux consignes de froid : comprendre les droits, les chemins d&#39;action et leurs conséquences.">
+<link rel="canonical" href="https://lxrider.github.io/publications/froid-commercial/">
+
+<meta property="og:title" content="Cybersécurité du froid commercial : qui peut agir sur vos installations, et jusqu&#39;où ?">
+<meta property="og:description" content="Des accès aux consignes de froid : comprendre les droits, les chemins d&#39;action et leurs conséquences.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lxrider.github.io/publications/froid-commercial/">
+<meta property="og:site_name" content="lxrider | Recherche en cybersécurité offensive">
+<meta property="article:published_time" content="2026-10-22">
+<meta property="article:modified_time" content="2026-10-25">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cybersécurité du froid commercial : qui peut agir sur vos installations, et jusqu&#39;où ?">
+<meta name="twitter:description" content="Des accès aux consignes de froid : comprendre les droits, les chemins d&#39;action et leurs conséquences.">
+
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b1120" media="(prefers-color-scheme: dark)">
+
+
+
+
+
+
+
+<link rel="icon" href="https://lxrider.github.io/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://lxrider.github.io/main.css">
+
+<link rel="stylesheet" href="https://lxrider.github.io/print.css" media="print">
+
+  
+  
+<link rel="stylesheet" href="https://lxrider.github.io/custom.css">
+
+</head>
+
+
+
+
+<body>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <a class="skip-link" href="#main-content">Aller au contenu</a>
+  
+
+  <div class="site-shell">
+    
+    <header class="site-header site-header-has-menu">
+  <div class="site-header-inner">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a class="site-logo" href="https://lxrider.github.io" aria-label="lxrider | Recherche en cybersécurité offensive">
+  
+  
+  <img
+    class="site-logo-mark site-logo-mark-image"
+    src="https://lxrider.github.io/images/lxrider-header-logo.png"
+    alt=""
+    width="32"
+    height="32"
+  >
+  
+  
+
+  
+</a>
+
+
+
+    
+    <nav class="site-nav" aria-label="Navigation principale">
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+<a
+  class="site-nav-link is-active"
+  href="https://lxrider.github.io/publications/"
+  aria-current="location"
+>
+  Publications
+</a>
+
+      
+      
+
+
+
+
+
+
+
+
+
+
+<a
+  class="site-nav-link "
+  href="https://lxrider.github.io/a-propos"
+  
+>
+  À propos
+</a>
+
+      
+      
+
+
+
+
+
+
+
+
+
+
+<a
+  class="site-nav-link "
+  href="https://github.com/lxrider"
+  
+>
+  GitHub
+</a>
+
+      
+    </nav>
+    
+
+    
+
+    
+
+
+
+
+
+
+<button
+  class="theme-toggle"
+  type="button"
+  data-theme-toggle
+  data-theme-light-label="Thème clair"
+  data-theme-dark-label="Thème sombre"
+  data-theme-system-label="Thème système"
+  aria-label="Thème sombre"
+  title="Thème sombre"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="theme-toggle-svg system" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1v-10" /><path d="M7 20h10" /><path d="M9 16v4" /><path d="M15 16v4" /></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="theme-toggle-svg sun" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="theme-toggle-svg moon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454l0 .008" /><path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2" /><path d="M19 11h2m-1 -1v2" /></svg>
+</button>
+
+
+
+
+
+
+    
+    <button
+      class="site-menu-button"
+      type="button"
+      aria-label="Ouvrir le menu"
+      aria-controls="site-menu"
+      aria-expanded="false"
+      data-site-menu-toggle
+    >
+      <span class="site-menu-button-icon" aria-hidden="true"></span>
+    </button>
+    
+  </div>
+</header>
+
+    
+    <div class="site-menu-backdrop" data-site-menu-backdrop hidden></div>
+
+<div
+  id="site-menu"
+  class="site-menu"
+  role="dialog"
+  aria-label="Navigation mobile"
+  aria-modal="true"
+  aria-hidden="true"
+  data-site-menu
+  data-site-menu-initial-panel="docs"
+  inert
+>
+  <div class="site-menu-header">
+    <p class="site-menu-title">Menu</p>
+
+    <button
+      class="site-menu-close"
+      type="button"
+      aria-label="Fermer le menu"
+      data-site-menu-close
+    >
+      &times;
+    </button>
+  </div>
+
+  
+
+<div id="site-menu-panel-main" class="site-menu-panel" data-site-menu-panel="main">
+  <nav class="site-menu-nav" aria-label="Main mobile navigation">
+    
+    
+    <div class="site-menu-link-row">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+<a
+  class="site-menu-link is-active"
+  href="https://lxrider.github.io/publications/"
+  aria-current="location"
+>
+  <span>Publications</span>
+</a>
+
+      <button
+        class="site-menu-link-disclosure"
+        type="button"
+        aria-label="Open documentation navigation"
+        aria-controls="site-menu-panel-docs"
+        aria-expanded="false"
+        data-site-menu-panel-target="docs"
+      >
+        <span class="site-menu-link-indicator" aria-hidden="true">&rsaquo;</span>
+      </button>
+    </div>
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+<a
+  class="site-menu-link "
+  href="https://lxrider.github.io/a-propos"
+  
+>
+  À propos
+</a>
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+<a
+  class="site-menu-link "
+  href="https://github.com/lxrider"
+  
+>
+  GitHub
+</a>
+
+    
+    
+  </nav>
+</div>
+
+  
+
+<div id="site-menu-panel-docs" class="site-menu-panel" data-site-menu-panel="docs" hidden>
+  
+  <button
+    class="site-menu-back"
+    type="button"
+    aria-controls="site-menu-panel-main"
+    data-site-menu-panel-target="main"
+  >
+    <span aria-hidden="true">&larr;</span>
+    Retour
+  </button>
+  
+
+  <nav class="site-menu-nav site-menu-docs-nav" aria-label="Navigation mobile des publications">
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="docs-nav-list">
+  
+  
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link "
+    href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/"
+    
+  >
+    Cyber-résilience du froid commercial : que reste-t-il quand la supervision n&#39;est plus fiable ?
+  </a>
+</li>
+
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link "
+    href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/"
+    
+  >
+    Sécuriser sa supervision frigorifique : guide pratique pas à pas
+  </a>
+</li>
+
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link is-active"
+    href="https://lxrider.github.io/publications/froid-commercial/"
+    aria-current="page"
+  >
+    Cybersécurité du froid commercial : qui peut agir sur vos installations, et jusqu&#39;où ?
+  </a>
+</li>
+
+
+
+
+
+  
+</ul>
+
+
+
+
+  </nav>
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="site-footer site-footer-compact">
+  <div class="site-footer-inner">
+    
+
+<div class="site-footer-info">
+
+<p class="site-footer-note">Analyse indépendante des systèmes et de leurs chemins d&#39;accès.</p>
+
+
+<p class="site-footer-copyright">&copy; 2026 lxrider</p>
+</div>
+
+
+
+  </div>
+</footer>
+
+
+</div>
+
+
+</div>
+
+    
+    
+    <main id="main-content" class="site-main site-main-docs" tabindex="-1">
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="docs-shell">
+  
+<aside
+  id="docs-sidebar"
+  class="docs-sidebar"
+  aria-label="Publications"
+>
+  
+
+  <nav class="docs-sidebar-nav" aria-label="Publications">
+    <p class="docs-sidebar-title">Publications</p>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="docs-nav-list">
+  
+  
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link "
+    href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/"
+    
+  >
+    Cyber-résilience du froid commercial : que reste-t-il quand la supervision n&#39;est plus fiable ?
+  </a>
+</li>
+
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link "
+    href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/"
+    
+  >
+    Sécuriser sa supervision frigorifique : guide pratique pas à pas
+  </a>
+</li>
+
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link is-active"
+    href="https://lxrider.github.io/publications/froid-commercial/"
+    aria-current="page"
+  >
+    Cybersécurité du froid commercial : qui peut agir sur vos installations, et jusqu&#39;où ?
+  </a>
+</li>
+
+
+
+
+
+  
+</ul>
+
+
+
+
+  </nav>
+
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="site-footer site-footer-compact">
+  <div class="site-footer-inner">
+    
+
+<div class="site-footer-info">
+
+<p class="site-footer-note">Analyse indépendante des systèmes et de leurs chemins d&#39;accès.</p>
+
+
+<p class="site-footer-copyright">&copy; 2026 lxrider</p>
+</div>
+
+
+
+  </div>
+</footer>
+
+
+</aside>
+
+
+  <article class="docs-content content">
+    
+    
+
+
+
+
+
+
+
+<nav class="breadcrumbs" aria-label="Fil d&#39;Ariane">
+  <ol class="breadcrumbs-list">
+    <li class="breadcrumbs-item">
+      <a href="https://lxrider.github.io/publications/">Publications</a>
+    </li>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    <li class="breadcrumbs-item" aria-current="page">
+      <span>Cybersécurité du froid commercial : qui peut agir sur vos installations, et jusqu&#39;où ?</span>
+    </li>
+  </ol>
+</nav>
+
+
+
+
+    
+
+    
+<header class="page-header">
+  <div class="docs-page-heading">
+  <h1>Cybersécurité du froid commercial : qui peut agir sur vos installations, et jusqu&#39;où ?</h1>
+  
+<div class="docs-copy-link">
+  <button
+    class="docs-copy-link-button"
+    type="button"
+    aria-label="Copier le lien"
+    title="Copier le lien"
+    data-docs-copy-link
+    hidden
+  >
+    <span class="docs-copy-link-default-icon" data-docs-copy-link-default-icon>
+      <span class="content-icon content-icon-sm" aria-hidden="true">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+</span>
+    </span>
+    <span class="docs-copy-link-success-icon" data-docs-copy-link-success-icon>
+      <span class="content-icon content-icon-sm" aria-hidden="true">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5l10 -10" /></svg>
+</span>
+    </span>
+    <span class="docs-copy-link-label" data-docs-copy-link-label>Copier le lien</span>
+  </button>
+  <span
+    class="docs-page-action-status"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+    data-docs-copy-link-status
+  ></span>
+</div>
+
+</div>
+  
+
+  <p class="page-description">Des accès aux consignes de froid : comprendre les droits, les chemins d&#39;action et leurs conséquences.</p>
+  
+
+</header>
+
+
+    
+    
+    
+<details class="docs-toc-inline" data-devlab-toc>
+  <summary>Sur cette page</summary>
+  <nav aria-label="Sur cette page">
+    
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/publications/froid-commercial/#1-quels-chemins-menent-aux-installations">
+        1. Quels chemins mènent aux installations ?
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <details class="docs-toc-group" data-docs-toc-group>
+        <summary class="docs-toc-group-toggle">
+          <a href="https://lxrider.github.io/publications/froid-commercial/#2-se-connecter-donne-t-il-le-pouvoir-de-modifier">
+            2. Se connecter donne-t-il le pouvoir de modifier ?
+          </a>
+          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
+        </summary>
+
+        
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/publications/froid-commercial/#qui-donne-le-pouvoir-d-agir">
+        Qui donne le pouvoir d&#39;agir ?
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/publications/froid-commercial/#un-parc-de-magasins-comment-repartir-les-acces">
+        Un parc de magasins : comment répartir les accès ?
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+
+      </details>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <details class="docs-toc-group" data-docs-toc-group>
+        <summary class="docs-toc-group-toggle">
+          <a href="https://lxrider.github.io/publications/froid-commercial/#3-jusqu-ou-une-modification-peut-elle-se-propager">
+            3. Jusqu&#39;où une modification peut-elle se propager ?
+          </a>
+          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
+        </summary>
+
+        
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/publications/froid-commercial/#et-si-l-acces-depassait-le-froid">
+        Et si l&#39;accès dépassait le froid ?
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+
+      </details>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/publications/froid-commercial/#4-quand-les-alarmes-disparaissent-quelles-capacites-restent">
+        4. Quand les alarmes disparaissent, quelles capacités restent ?
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/publications/froid-commercial/#5-que-verifier-sans-compliquer-inutilement-le-metier">
+        5. Que vérifier, sans compliquer inutilement le métier ?
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <details class="docs-toc-group" data-docs-toc-group>
+        <summary class="docs-toc-group-toggle">
+          <a href="https://lxrider.github.io/publications/froid-commercial/#conclusion">
+            Conclusion
+          </a>
+          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
+        </summary>
+
+        
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/publications/froid-commercial/#references-essentielles">
+        Références essentielles
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+
+      </details>
+      
+    </li>
+    
+  </ul>
+  
+
+  </nav>
+</details>
+
+
+
+    <p>Dans un magasin, plusieurs intervenants accèdent aux installations frigorifiques. Le frigoriste consulte les températures, l'intégrateur configure la supervision et le prestataire informatique administre les accès réseau.</p>
+<p><strong>Que peut réellement faire chacun ?</strong> Consulter une température, modifier une consigne, acquitter ou inhiber une alarme, administrer un équipement : chaque opération mobilise des permissions différentes.</p>
+<p>Cette analyse relie <strong>les chemins d'accès, les identités et les capacités d'action</strong> : quelles permissions permettent d'agir sur quels équipements, et jusqu'où s'étend leur portée ?</p>
+<p>Les incidents d'octobre 2026 concernant des supervisions Danfoss et Copeland/Dixell ont rappelé l'importance de ces questions. Le <a rel="external" href="https://www.cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/">CERT-FR</a> recommande notamment de supprimer les accès de gestion directement exposés sur Internet. Les informations publiques ne permettent pas pour autant d'établir un chemin initial unique de compromission.</p>
+<p>Le <a rel="external" href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/">guide pratique de sécurisation des supervisions</a> détaille la maîtrise des accès distants. Ici, nous suivons <strong>ce qu'une identité compromise pourrait commander et les protections qui limiteraient sa portée</strong>.</p>
+<figure class="research-figure">
+<a class="figure-open" href="illustration-bastion-lxrider-20261025.svg" target="_blank" rel="noopener" aria-label="Ouvrir l'illustration des frontières de confiance">
+<img src="illustration-bastion-lxrider-20261025.svg" width="1200" height="630" alt="Illustration conceptuelle d'un point de contrôle avec deux voies : une barrière ouverte, une autre fermée, et un chemin lumineux menant vers une installation." loading="eager" decoding="async">
+</a>
+<figcaption>Chemins d'accès et frontières de confiance — Franchir un contrôle d'accès ne signifie pas disposer de toutes les capacités d'action sur les installations. Illustration conceptuelle lxrider.</figcaption>
+</figure>
+<h2 id="1-quels-chemins-menent-aux-installations">1. Quels chemins mènent aux installations ?<a class="zola-anchor" href="#1-quels-chemins-menent-aux-installations" aria-label="Anchor link for: 1-quels-chemins-menent-aux-installations">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p>Le premier travail consiste à reconstruire les accès. Ceux que tout le monde connaît, mais aussi ceux qui ont pu être ajoutés au fil des interventions.</p>
+<p>Un superviseur peut être joignable depuis le réseau du magasin, un VPN, un PC froid, une box avec redirection de port ou un routeur cellulaire. Une plateforme extérieure peut donner accès à plusieurs établissements. Et un changement de prestataire ne fait pas nécessairement disparaître tous les anciens chemins.</p>
+<p>Sur le terrain, les fonctions sont réparties entre des <strong>régulateurs</strong>, qui assurent la conduite locale, et des <strong>systèmes de supervision</strong>, qui collectent des informations et peuvent, selon les configurations et les droits, transmettre des commandes. Un Danfoss AK-SM et un régulateur AK-PC n'ont pas le même rôle. Les familles XWEB présentent elles aussi des fonctions différentes selon les générations.</p>
+<p>Dans certaines installations, la gestion technique centralisée du froid (<strong>GTC</strong>) échange avec une gestion technique du bâtiment (<strong>GTB</strong>) ou une supervision multisite. <strong>Les flux réellement échangés et les éventuelles commandes autorisées</strong> sont à identifier : une remontée de mesures et une fonction de pilotage ont des portées différentes.</p>
+<p><strong>Par quels chemins les équipements sont-ils joignables, et qui maîtrise ces chemins ?</strong> Un schéma simple aide à poser les bonnes questions, avant de vérifier les liaisons et les permissions sur le site réel.</p>
+<figure class="research-figure">
+<a class="figure-open" href="00-exemple-architecture-capacites.svg" target="_blank" rel="noopener" aria-label="Ouvrir l'exemple d'architecture">
+<img src="00-exemple-architecture-capacites.svg" alt="Schéma fictif d'un accès via VPN et PC froid jusqu'à la supervision et aux régulateurs, avec chemin hypothétique vers la vidéosurveillance en pointillés." loading="lazy" decoding="async">
+</a>
+<figcaption>Exemple d'architecture — Du PC froid aux régulateurs. Le chemin vers la vidéosurveillance est une hypothèse à vérifier, pas une interconnexion constatée.</figcaption>
+</figure>
+<h2 id="2-se-connecter-donne-t-il-le-pouvoir-de-modifier">2. Se connecter donne-t-il le pouvoir de modifier ?<a class="zola-anchor" href="#2-se-connecter-donne-t-il-le-pouvoir-de-modifier" aria-label="Anchor link for: 2-se-connecter-donne-t-il-le-pouvoir-de-modifier">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p>Un compte ouvre l'interface d'un superviseur. Pour mesurer son pouvoir, il faut ensuite vérifier <strong>ce que le compte peut consulter, modifier et commander</strong>.</p>
+<p>Pour qualifier une capacité d'action, quatre vérifications sont nécessaires : l'équipement est-il <strong>joignable</strong>, l'identité est-elle <strong>reconnue</strong>, possède-t-elle les <strong>droits nécessaires</strong>, et l'ordre est-il <strong>accepté et appliqué</strong> par le régulateur ?</p>
+<figure class="research-figure">
+<a class="figure-open" href="02-acces-supervision-lxrider.svg" target="_blank" rel="noopener" aria-label="Ouvrir la figure 1">
+<img src="02-acces-supervision-lxrider.svg" alt="Les quatre vérifications entre un accès réseau et une action sur le procédé : accessibilité, authentification, autorisation et application." loading="lazy" decoding="async">
+</a>
+<figcaption>Figure 1 — Entre l'accès réseau et l'action sur le froid, quatre vérifications.</figcaption>
+</figure>
+<p>Consulter une température, acquitter une alarme, modifier une consigne et administrer un équipement correspondent à <strong>des opérations et à des conséquences différentes</strong>.</p>
+<p>La documentation de <a rel="external" href="https://webapps.copeland.com/Dixell/Content/Pages/Manuals/XWEBPRO/XWEBPROV1.2OPERATION/XWEB-PRO-OPR-EN.pdf">XWEB PRO</a> distingue par exemple la lecture des paramètres, leur modification et l'envoi de commandes. Chez <a rel="external" href="https://www.danfoss.com/en/service-and-support/downloads/dcs/adap-kool-software/ak-sm-800a/">Danfoss</a>, les niveaux de permission et les services disponibles dépendent également du produit, de la version et des réglages.</p>
+<p>Ces documentations montrent ce que les systèmes <em>peuvent</em> autoriser. <strong>Les capacités d'action effectives dépendent des comptes, des droits et des réglages propres à chaque site.</strong></p>
+<p>C'est le principe du <strong>moindre privilège</strong> : attribuer à chacun les droits utiles à sa mission. Un compte de consultation sert à lire les températures ; les droits de modification et d'administration sont attribués aux interventions qui les exigent. Lorsque les équipements le permettent, séparer ces fonctions limite le pouvoir d'une identité compromise.</p>
+<h3 id="qui-donne-le-pouvoir-d-agir">Qui donne le pouvoir d'agir ?<a class="zola-anchor" href="#qui-donne-le-pouvoir-d-agir" aria-label="Anchor link for: qui-donne-le-pouvoir-d-agir">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h3>
+<p>Un frigoriste peut intervenir avec des accès fournis par l'enseigne, son entreprise de maintenance ou un intégrateur. Sur certains parcs, le VPN, le bastion, la plateforme multisite et le superviseur possèdent chacun leurs propres comptes et administrateurs.</p>
+<p>Trois questions permettent de comprendre l'autorité réellement exercée :</p>
+<ul>
+<li><strong>Mission autorisée :</strong> qui demande et valide l'intervention, sur quel magasin et pour quelles opérations ?</li>
+<li><strong>Privilèges techniques :</strong> quels équipements et commandes le compte permet-il effectivement d'atteindre, depuis le point d'accès jusqu'au superviseur ?</li>
+<li><strong>Administration des droits :</strong> qui crée les comptes, étend les permissions et peut les retirer, y compris chez un prestataire ?</li>
+</ul>
+<p><strong>Exemple fictif :</strong> un technicien consulte une alarme sur le magasin A. Le compte utilisé dispose aussi, selon les permissions configurées, de droits d'écriture sur les magasins B et C. <strong>La mission concerne un magasin ; l'identité possède des capacités sur trois.</strong> Cet écart mérite une revue, même lorsque l'intervention se déroule normalement.</p>
+<p>L'évaluation doit donc suivre <strong>l'intervenant, le compte utilisé, les personnes qui gèrent ce compte et les équipements qu'il peut modifier</strong>.</p>
+<h3 id="un-parc-de-magasins-comment-repartir-les-acces">Un parc de magasins : comment répartir les accès ?<a class="zola-anchor" href="#un-parc-de-magasins-comment-repartir-les-acces" aria-label="Anchor link for: un-parc-de-magasins-comment-repartir-les-acces">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h3>
+<p>Pour une entreprise frigorifique intervenant sur plusieurs magasins, une architecture possible s'appuie sur <strong>un bastion centralisé</strong>, des liaisons VPN et des règles de filtrage propres à chaque site.</p>
+<ul>
+<li><strong>Le technicien</strong> utilise un compte nominatif unique. Il rejoint l'infrastructure d'accès par un <strong>VPN avec authentification multifacteur (MFA)</strong>, puis ouvre sa session de maintenance sur le bastion.</li>
+<li><strong>Le bastion</strong> applique ses habilitations : quels magasins et quels superviseurs ce technicien peut atteindre. Il trace les connexions et, selon les protocoles et ses fonctionnalités, les sessions.</li>
+<li><strong>Le réseau</strong> relie la zone de maintenance aux magasins par des <strong>VPN intersites</strong>, terminés sur des passerelles adaptées. Le <strong>pare-feu de chaque magasin</strong> limite les flux aux superviseurs et aux services nécessaires.</li>
+<li><strong>Le superviseur</strong> conserve sa propre gestion des comptes et des commandes. Ses permissions déterminent ce que l'intervenant peut effectivement consulter ou modifier une fois connecté.</li>
+</ul>
+<figure class="research-figure">
+<a class="figure-open" href="schema-habilitations-multisites-lxrider.svg" target="_blank" rel="noopener" aria-label="Ouvrir le schéma d'habilitations multisites via bastion">
+<img src="schema-habilitations-multisites-lxrider.svg" width="1160" height="700" alt="Un technicien frigoriste utilise son compte nominatif, un VPN avec MFA puis un bastion centralisé. Des liaisons VPN intersites rejoignent les passerelles et pare-feu des magasins. Pour ce technicien, les accès aux magasins A et C sont autorisés ; celui au magasin B est refusé par le bastion. Les droits de commande propres aux superviseurs restent distincts." loading="lazy" decoding="async">
+</a>
+<figcaption>Exemple — Habilitations multisites via bastion : une identité par technicien, des accès autorisés par magasin, un filtrage réseau sur chaque site et des permissions propres aux superviseurs. Schéma conceptuel lxrider.</figcaption>
+</figure>
+<p>Cette chaîne sépare plusieurs autorités. <strong>L'exploitant ou l'enseigne valide l'accès à ses magasins</strong>, l'entreprise frigorifique tient à jour la liste de ses techniciens et l'administrateur de l'infrastructure applique les habilitations convenues. À chaque départ ou changement de périmètre, les accès correspondants sont réexaminés et révoqués.</p>
+<p><strong>Le bastion concentre lui aussi des privilèges :</strong> son administration et les comptes techniques utilisés vers les superviseurs méritent une attention particulière. Sur les équipements anciens, un compte local partagé peut subsister ; la traçabilité individuelle des actions dépend alors des fonctions du bastion et du protocole de connexion.</p>
+<p>Le <a rel="external" href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/">guide pratique des accès distants</a> détaille la mise en place de cette chaîne, les contrôles de connexion et les précautions de télémaintenance. Le point examiné ici est <strong>l'écart éventuel entre les missions accordées et les capacités réelles des identités</strong>.</p>
+<h2 id="3-jusqu-ou-une-modification-peut-elle-se-propager">3. Jusqu'où une modification peut-elle se propager ?<a class="zola-anchor" href="#3-jusqu-ou-une-modification-peut-elle-se-propager" aria-label="Anchor link for: 3-jusqu-ou-une-modification-peut-elle-se-propager">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p>Une même identité peut parfois modifier un équipement isolé ; ailleurs, elle dispose de droits sur plusieurs régulateurs, une centrale, voire plusieurs magasins. Son périmètre d'action ne s'arrête pas nécessairement au superviseur.</p>
+<p>Le <em>blast radius</em> désigne le <strong>périmètre potentiellement affectable</strong> par une compromission : les fonctions modifiables, les équipements et les sites concernés, mais aussi les autres systèmes éventuellement accessibles depuis un équipement compromis.</p>
+<p>Prenons un exemple précis. Sur le régulateur <a rel="external" href="https://webapps.copeland.com/Dixell/Content/Pages/Manuals/XR-CX/XR60CX/XR60CX-FR.pdf">Dixell XR60CX</a>, le paramètre <strong>SEt</strong> définit une consigne, tandis que <strong>US</strong> peut fixer sa limite supérieure. Si une même autorité peut modifier la consigne <strong>et</strong> sa limite, cette limite ne constitue plus une protection indépendante contre cette autorité.</p>
+<p>Cet exemple illustre une <strong>dépendance entre deux réglages</strong>. Sa portée sur un magasin donné dépend des droits effectifs, des protections physiques et de la configuration des régulateurs.</p>
+<p>Sur une plateforme multisite, <strong>voir les magasins et pouvoir les modifier sont deux fonctions distinctes</strong>. Les permissions d'écriture, leurs limites et leur administrateur déterminent la concentration réelle des capacités d'action.</p>
+<h3 id="et-si-l-acces-depassait-le-froid">Et si l'accès dépassait le froid ?<a class="zola-anchor" href="#et-si-l-acces-depassait-le-froid" aria-label="Anchor link for: et-si-l-acces-depassait-le-froid">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h3>
+<p>Le <strong>mouvement latéral</strong> désigne la progression d'un adversaire d'un système compromis vers d'autres systèmes. C'est une possibilité à examiner dans les architectures où un <strong>PC froid</strong> ou un superviseur communique avec d'autres réseaux du magasin. Exemple : un chemin vers une infrastructure de vidéosurveillance. Cette question ne se limite plus aux températures ou aux régulateurs. Elle concerne aussi les capacités d'action sur les systèmes voisins. <a rel="external" href="https://attack.mitre.org/tactics/TA0008/">MITRE ATT&amp;CK</a> documente ce type de progression.</p>
+<p><strong>Une communication possible ne démontre pas qu'un mouvement latéral soit réalisable.</strong> Il faut vérifier les règles de filtrage, les services exposés, les comptes utilisables et les permissions obtenues. L'accès à l'interface Web d'un superviseur ne prouve ni un accès à son système d'exploitation ni un pouvoir d'administration sur la vidéosurveillance.</p>
+<p>D'autres actions méritent la même analyse : altération de paramètres, inhibition d'alarmes ou suppression d'historiques, <strong>si les droits et les fonctions disponibles les rendent possibles</strong>. Ces exemples sont des hypothèses de capacités, pas des faits établis pour les incidents d'octobre 2026.</p>
+<p>Il faut ensuite relier chaque capacité au procédé : quelles consignes peuvent changer ? Quels dégivrages, seuils ou programmes sont concernés ? Quelles sécurités resteraient indépendantes ?</p>
+<p>Une protection mécanique peut préserver un compresseur sans garantir la température des denrées. Le risque se mesure donc aussi au regard du <strong>service que l'installation doit assurer</strong>.</p>
+<h2 id="4-quand-les-alarmes-disparaissent-quelles-capacites-restent">4. Quand les alarmes disparaissent, quelles capacités restent ?<a class="zola-anchor" href="#4-quand-les-alarmes-disparaissent-quelles-capacites-restent" aria-label="Anchor link for: 4-quand-les-alarmes-disparaissent-quelles-capacites-restent">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p>Selon le matériel et les réglages, certains régulateurs poursuivent leur fonctionnement local après la perte du superviseur ou de la liaison extérieure. <strong>La production de froid et la transmission des alarmes suivent alors des chemins différents.</strong></p>
+<figure class="research-figure">
+<a class="figure-open" href="03-regulation-alarmes-lxrider.svg" target="_blank" rel="noopener" aria-label="Ouvrir la figure 2">
+<img src="03-regulation-alarmes-lxrider.svg" alt="Régulation locale, supervision et transmission des alarmes : fonctions liées mais distinctes, avec exemple de surveillance indépendante." loading="lazy" decoding="async">
+</a>
+<figcaption>Figure 2 — Le froid peut continuer alors que les alarmes ne remontent plus.</figcaption>
+</figure>
+<p>Les conséquences dépendent aussi des <strong>droits d'administration sur les seuils, les notifications et les programmes</strong>. Une identité capable de changer un seuil d'alerte ou sa destination peut affecter la surveillance, tandis qu'une perte de liaison peut interrompre la remontée d'informations.</p>
+<p>Pour analyser le périmètre d'action, il faut distinguer <strong>la régulation, les protections locales et l'alerte reçue par l'astreinte</strong>, puis examiner leurs dépendances éventuelles : comptes, sondes, réseau, alimentation et configuration.</p>
+<p>L'<a rel="external" href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/">analyse de cyber-résilience</a> développe la continuité de la régulation, l'indépendance des protections, les sauvegardes et les preuves nécessaires à une reprise fiable.</p>
+<h2 id="5-que-verifier-sans-compliquer-inutilement-le-metier">5. Que vérifier, sans compliquer inutilement le métier ?<a class="zola-anchor" href="#5-que-verifier-sans-compliquer-inutilement-le-metier" aria-label="Anchor link for: 5-que-verifier-sans-compliquer-inutilement-le-metier">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p>Une évaluation utile commence par <strong>quelques questions que l'on peut confronter aux installations et aux comptes existants</strong> :</p>
+<ul>
+<li><strong>Accès :</strong> savons-nous comment chaque intervenant rejoint les installations, y compris par les chemins secondaires ?</li>
+<li><strong>Autorité :</strong> qui valide l'accès à chaque magasin, qui gère les habilitations sur le bastion et quels droits d'administration sont effectivement attribués ?</li>
+<li><strong>Moindre privilège :</strong> qui peut lire, modifier une consigne, changer ses limites ou envoyer une commande, et pour quelle mission ?</li>
+<li><strong>Périmètre :</strong> quels autres équipements, magasins ou systèmes critiques seraient atteignables depuis l'accès considéré ?</li>
+<li><strong>Alertes :</strong> qui peut modifier les seuils et les destinataires des alarmes, et qui vérifie leur réception ?</li>
+<li><strong>Maîtrise :</strong> qui peut révoquer un accès ou réduire les permissions, y compris lorsque les comptes sont administrés par un prestataire ?</li>
+</ul>
+<p>Le frigoriste connaît le procédé et les contraintes de maintenance. Le prestataire réseau maîtrise les communications qu'il administre. Le spécialiste en cybersécurité relie les <strong>expositions, identités, privilèges et chemins d'action</strong>, y compris entre systèmes, pour mesurer les conséquences possibles. Ces regards se complètent, sans imposer les mêmes compétences à chacun.</p>
+<p>La réponse doit rester proportionnée aux moyens de l'entreprise. Supprimer un ancien accès, réduire un privilège ou tester une alarme peut avoir plus de valeur que multiplier les équipements de sécurité. Quand un matériel obsolète ou une dépendance critique empêche de maîtriser le risque, il faut en revanche envisager des mesures compensatoires ou son remplacement.</p>
+<p>L'objectif est d'aboutir à <strong>quelques décisions vérifiables et maintenables</strong>, appuyées sur des comptes, des configurations et des responsabilités identifiés.</p>
+<h2 id="conclusion">Conclusion<a class="zola-anchor" href="#conclusion" aria-label="Anchor link for: conclusion">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p>La question de départ paraît simple : <em>qui peut agir sur nos installations frigorifiques ?</em></p>
+<p>La réponse se construit en reliant <strong>les missions autorisées, les identités, les administrateurs des droits et les commandes réellement possibles</strong>, puis en suivant leur portée vers les régulateurs, les autres magasins et les systèmes voisins.</p>
+<p>C'est dans ces relations que se trouvent les chemins de compromission possibles et les concentrations d'autorité les plus importantes à maîtriser.</p>
+<p><strong>Connaître ces chemins permet de protéger ce qui compte : le froid, les denrées et la capacité d'intervenir.</strong></p>
+<h3 id="references-essentielles">Références essentielles<a class="zola-anchor" href="#references-essentielles" aria-label="Anchor link for: references-essentielles">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h3>
+<ul>
+<li><a rel="external" href="https://www.cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/">CERT-FR — Alerte sur les équipements de supervision frigorifique, octobre 2026</a>.</li>
+<li><a rel="external" href="https://messervices.cyber.gouv.fr/guides/recommandations-gestion-technique-batiment">ANSSI — Recommandations de sécurité relatives à la GTB/GTC</a>.</li>
+<li><a rel="external" href="https://www.danfoss.com/en/service-and-support/downloads/dcs/adap-kool-software/ak-sm-800a/">Danfoss — Documentation AK-SM 800A et contrôle des sessions</a>.</li>
+<li><a rel="external" href="https://webapps.copeland.com/Dixell/Content/Pages/Manuals/XWEBPRO/XWEBPROV1.2OPERATION/XWEB-PRO-OPR-EN.pdf">Copeland/Dixell — XWEB PRO, manuel d'exploitation</a>.</li>
+<li><a rel="external" href="https://webapps.copeland.com/Dixell/Content/Pages/Manuals/XR-CX/XR60CX/XR60CX-FR.pdf">Copeland/Dixell — XR60CX, notice française</a>.</li>
+<li><a rel="external" href="https://dixell.fr/wp-content/uploads/2026/10/Recommandations-pour-une-utilisation-securisee-des-superviseurs-XWEB-v1.0.pdf">Dixell France — Recommandations de sécurisation XWEB, octobre 2026</a>.</li>
+</ul>
+<p>Pour les éléments techniques de l'incident et leurs limites : <a rel="external" href="https://github.com/lxrider/danfoss-xweb-case-study/blob/main/ETUDE.md">étude indépendante Danfoss/XWEB v1.0</a>.</p>
+<p><em>Les parcours et schémas sont conceptuels. Les capacités décrites proviennent de documentations techniques ; leur activation sur une installation particulière doit être établie. Les vecteurs et droits utilisés lors des incidents d'octobre 2026 restent partiellement inconnus.</em></p>
+<hr />
+<p><em>Version 1.4.2 — 25 octobre 2026 — URL de l’illustration actualisée. © 2026 lxrider — Tous droits réservés. Schémas conceptuels, à confronter aux configurations réelles.</em></p>
+
+
+    
+
+
+
+
+
+    
+  </article>
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<aside class="docs-toc" data-devlab-toc aria-labelledby="docs-toc-title">
+  
+  <p class="docs-toc-title" id="docs-toc-title">Sur cette page</p>
+
+  <nav class="docs-toc-nav" aria-label="Sur cette page">
+    
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/publications/froid-commercial/#1-quels-chemins-menent-aux-installations">
+        1. Quels chemins mènent aux installations ?
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <details class="docs-toc-group" data-docs-toc-group>
+        <summary class="docs-toc-group-toggle">
+          <a href="https://lxrider.github.io/publications/froid-commercial/#2-se-connecter-donne-t-il-le-pouvoir-de-modifier">
+            2. Se connecter donne-t-il le pouvoir de modifier ?
+          </a>
+          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
+        </summary>
+
+        
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/publications/froid-commercial/#qui-donne-le-pouvoir-d-agir">
+        Qui donne le pouvoir d&#39;agir ?
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/publications/froid-commercial/#un-parc-de-magasins-comment-repartir-les-acces">
+        Un parc de magasins : comment répartir les accès ?
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+
+      </details>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <details class="docs-toc-group" data-docs-toc-group>
+        <summary class="docs-toc-group-toggle">
+          <a href="https://lxrider.github.io/publications/froid-commercial/#3-jusqu-ou-une-modification-peut-elle-se-propager">
+            3. Jusqu&#39;où une modification peut-elle se propager ?
+          </a>
+          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
+        </summary>
+
+        
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/publications/froid-commercial/#et-si-l-acces-depassait-le-froid">
+        Et si l&#39;accès dépassait le froid ?
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+
+      </details>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/publications/froid-commercial/#4-quand-les-alarmes-disparaissent-quelles-capacites-restent">
+        4. Quand les alarmes disparaissent, quelles capacités restent ?
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/publications/froid-commercial/#5-que-verifier-sans-compliquer-inutilement-le-metier">
+        5. Que vérifier, sans compliquer inutilement le métier ?
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <details class="docs-toc-group" data-docs-toc-group>
+        <summary class="docs-toc-group-toggle">
+          <a href="https://lxrider.github.io/publications/froid-commercial/#conclusion">
+            Conclusion
+          </a>
+          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
+        </summary>
+
+        
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/publications/froid-commercial/#references-essentielles">
+        Références essentielles
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+
+      </details>
+      
+    </li>
+    
+  </ul>
+  
+
+  </nav>
+  
+
+  
+</aside>
+
+
+</div>
+
+      
+    </main>
+
+    
+  </div>
+  
+  
+
+
+<script defer src="https://lxrider.github.io/js/theme.js"></script>
+
+
+
+
+
+
+
+
+<script defer src="https://lxrider.github.io/js/docs-nav.js"></script>
+
+
+
+
+<script defer src="https://lxrider.github.io/js/toc.js"></script>
+
+
+
+
+
+
+<script
+  defer
+  src="https://lxrider.github.io/js/docs-page-actions.js"
+  data-link-copied-label="Lien copié"
+  data-copy-link-failed-label="Failed"
+  data-copy-link-success-message="Page link copied to clipboard."
+  data-copy-link-error-message="Unable to copy page link."
+></script>
+
+
+<script defer src="https://lxrider.github.io/js/site-menu.js"></script>
+
+
+  
+  
+  
+</body>
+</html>

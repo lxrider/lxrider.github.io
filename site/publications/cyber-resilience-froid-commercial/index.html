@@ -1,0 +1,1455 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html
+  lang="fr"
+  dir="ltr"
+  
+  
+>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <title>Cyber-résilience du froid commercial : que reste-t-il quand la supervision n&#39;est plus fiable ? | lxrider | Recherche en cybersécurité offensive</title>
+  
+<script>
+  (function () {
+    var storageKey = "devlab-theme-color-mode";
+    var announcementStorageKey = "devlab-announcement-dismissed";
+    var root = document.documentElement;
+    var defaultMode = "dark";
+
+    function isValidMode(mode) {
+      return mode === "light" || mode === "dark" || mode === "system";
+    }
+
+    function getSystemTheme() {
+      return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    }
+
+    function resolveTheme(mode) {
+      return mode === "system" ? getSystemTheme() : mode;
+    }
+
+    function getStoredMode() {
+      try {
+        return localStorage.getItem(storageKey);
+      } catch (_) {
+        return null;
+      }
+    }
+
+    var storedMode = getStoredMode();
+    var mode = isValidMode(storedMode) ? storedMode : defaultMode;
+
+    if (!isValidMode(mode)) {
+      mode = "system";
+    }
+
+    root.dataset.themeDefault = defaultMode;
+    root.dataset.themeMode = mode;
+    root.dataset.theme = resolveTheme(mode);
+
+    if (root.dataset.announcementKey) {
+      try {
+        if (localStorage.getItem(announcementStorageKey) === root.dataset.announcementKey) {
+          root.dataset.announcementDismissed = "true";
+        }
+      } catch (_) {
+        // Keep the announcement visible when persistent storage is unavailable.
+      }
+    }
+  })();
+</script>
+
+
+
+<meta name="description" content="Régulation locale, effets différés, sauvegardes et reconstruction : comment démontrer le retour à un état frigorifique fiable ?">
+<link rel="canonical" href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/">
+
+<meta property="og:title" content="Cyber-résilience du froid commercial : que reste-t-il quand la supervision n&#39;est plus fiable ?">
+<meta property="og:description" content="Régulation locale, effets différés, sauvegardes et reconstruction : comment démontrer le retour à un état frigorifique fiable ?">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/">
+<meta property="og:site_name" content="lxrider | Recherche en cybersécurité offensive">
+<meta property="article:published_time" content="2026-10-23">
+<meta property="article:modified_time" content="2026-10-25">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cyber-résilience du froid commercial : que reste-t-il quand la supervision n&#39;est plus fiable ?">
+<meta name="twitter:description" content="Régulation locale, effets différés, sauvegardes et reconstruction : comment démontrer le retour à un état frigorifique fiable ?">
+
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b1120" media="(prefers-color-scheme: dark)">
+
+
+
+
+
+
+
+<link rel="icon" href="https://lxrider.github.io/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://lxrider.github.io/main.css">
+
+<link rel="stylesheet" href="https://lxrider.github.io/print.css" media="print">
+
+  
+  
+<link rel="stylesheet" href="https://lxrider.github.io/custom.css">
+
+</head>
+
+
+
+
+<body>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <a class="skip-link" href="#main-content">Aller au contenu</a>
+  
+
+  <div class="site-shell">
+    
+    <header class="site-header site-header-has-menu">
+  <div class="site-header-inner">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a class="site-logo" href="https://lxrider.github.io" aria-label="lxrider | Recherche en cybersécurité offensive">
+  
+  
+  <img
+    class="site-logo-mark site-logo-mark-image"
+    src="https://lxrider.github.io/images/lxrider-header-logo.png"
+    alt=""
+    width="32"
+    height="32"
+  >
+  
+  
+
+  
+</a>
+
+
+
+    
+    <nav class="site-nav" aria-label="Navigation principale">
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+<a
+  class="site-nav-link is-active"
+  href="https://lxrider.github.io/publications/"
+  aria-current="location"
+>
+  Publications
+</a>
+
+      
+      
+
+
+
+
+
+
+
+
+
+
+<a
+  class="site-nav-link "
+  href="https://lxrider.github.io/a-propos"
+  
+>
+  À propos
+</a>
+
+      
+      
+
+
+
+
+
+
+
+
+
+
+<a
+  class="site-nav-link "
+  href="https://github.com/lxrider"
+  
+>
+  GitHub
+</a>
+
+      
+    </nav>
+    
+
+    
+
+    
+
+
+
+
+
+
+<button
+  class="theme-toggle"
+  type="button"
+  data-theme-toggle
+  data-theme-light-label="Thème clair"
+  data-theme-dark-label="Thème sombre"
+  data-theme-system-label="Thème système"
+  aria-label="Thème sombre"
+  title="Thème sombre"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="theme-toggle-svg system" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1v-10" /><path d="M7 20h10" /><path d="M9 16v4" /><path d="M15 16v4" /></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="theme-toggle-svg sun" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="theme-toggle-svg moon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454l0 .008" /><path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2" /><path d="M19 11h2m-1 -1v2" /></svg>
+</button>
+
+
+
+
+
+
+    
+    <button
+      class="site-menu-button"
+      type="button"
+      aria-label="Ouvrir le menu"
+      aria-controls="site-menu"
+      aria-expanded="false"
+      data-site-menu-toggle
+    >
+      <span class="site-menu-button-icon" aria-hidden="true"></span>
+    </button>
+    
+  </div>
+</header>
+
+    
+    <div class="site-menu-backdrop" data-site-menu-backdrop hidden></div>
+
+<div
+  id="site-menu"
+  class="site-menu"
+  role="dialog"
+  aria-label="Navigation mobile"
+  aria-modal="true"
+  aria-hidden="true"
+  data-site-menu
+  data-site-menu-initial-panel="docs"
+  inert
+>
+  <div class="site-menu-header">
+    <p class="site-menu-title">Menu</p>
+
+    <button
+      class="site-menu-close"
+      type="button"
+      aria-label="Fermer le menu"
+      data-site-menu-close
+    >
+      &times;
+    </button>
+  </div>
+
+  
+
+<div id="site-menu-panel-main" class="site-menu-panel" data-site-menu-panel="main">
+  <nav class="site-menu-nav" aria-label="Main mobile navigation">
+    
+    
+    <div class="site-menu-link-row">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+<a
+  class="site-menu-link is-active"
+  href="https://lxrider.github.io/publications/"
+  aria-current="location"
+>
+  <span>Publications</span>
+</a>
+
+      <button
+        class="site-menu-link-disclosure"
+        type="button"
+        aria-label="Open documentation navigation"
+        aria-controls="site-menu-panel-docs"
+        aria-expanded="false"
+        data-site-menu-panel-target="docs"
+      >
+        <span class="site-menu-link-indicator" aria-hidden="true">&rsaquo;</span>
+      </button>
+    </div>
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+<a
+  class="site-menu-link "
+  href="https://lxrider.github.io/a-propos"
+  
+>
+  À propos
+</a>
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+<a
+  class="site-menu-link "
+  href="https://github.com/lxrider"
+  
+>
+  GitHub
+</a>
+
+    
+    
+  </nav>
+</div>
+
+  
+
+<div id="site-menu-panel-docs" class="site-menu-panel" data-site-menu-panel="docs" hidden>
+  
+  <button
+    class="site-menu-back"
+    type="button"
+    aria-controls="site-menu-panel-main"
+    data-site-menu-panel-target="main"
+  >
+    <span aria-hidden="true">&larr;</span>
+    Retour
+  </button>
+  
+
+  <nav class="site-menu-nav site-menu-docs-nav" aria-label="Navigation mobile des publications">
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="docs-nav-list">
+  
+  
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link is-active"
+    href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/"
+    aria-current="page"
+  >
+    Cyber-résilience du froid commercial : que reste-t-il quand la supervision n&#39;est plus fiable ?
+  </a>
+</li>
+
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link "
+    href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/"
+    
+  >
+    Sécuriser sa supervision frigorifique : guide pratique pas à pas
+  </a>
+</li>
+
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link "
+    href="https://lxrider.github.io/publications/froid-commercial/"
+    
+  >
+    Cybersécurité du froid commercial : qui peut agir sur vos installations, et jusqu&#39;où ?
+  </a>
+</li>
+
+
+
+
+
+  
+</ul>
+
+
+
+
+  </nav>
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="site-footer site-footer-compact">
+  <div class="site-footer-inner">
+    
+
+<div class="site-footer-info">
+
+<p class="site-footer-note">Analyse indépendante des systèmes et de leurs chemins d&#39;accès.</p>
+
+
+<p class="site-footer-copyright">&copy; 2026 lxrider</p>
+</div>
+
+
+
+  </div>
+</footer>
+
+
+</div>
+
+
+</div>
+
+    
+    
+    <main id="main-content" class="site-main site-main-docs" tabindex="-1">
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="docs-shell">
+  
+<aside
+  id="docs-sidebar"
+  class="docs-sidebar"
+  aria-label="Publications"
+>
+  
+
+  <nav class="docs-sidebar-nav" aria-label="Publications">
+    <p class="docs-sidebar-title">Publications</p>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="docs-nav-list">
+  
+  
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link is-active"
+    href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/"
+    aria-current="page"
+  >
+    Cyber-résilience du froid commercial : que reste-t-il quand la supervision n&#39;est plus fiable ?
+  </a>
+</li>
+
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link "
+    href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/"
+    
+  >
+    Sécuriser sa supervision frigorifique : guide pratique pas à pas
+  </a>
+</li>
+
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link "
+    href="https://lxrider.github.io/publications/froid-commercial/"
+    
+  >
+    Cybersécurité du froid commercial : qui peut agir sur vos installations, et jusqu&#39;où ?
+  </a>
+</li>
+
+
+
+
+
+  
+</ul>
+
+
+
+
+  </nav>
+
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="site-footer site-footer-compact">
+  <div class="site-footer-inner">
+    
+
+<div class="site-footer-info">
+
+<p class="site-footer-note">Analyse indépendante des systèmes et de leurs chemins d&#39;accès.</p>
+
+
+<p class="site-footer-copyright">&copy; 2026 lxrider</p>
+</div>
+
+
+
+  </div>
+</footer>
+
+
+</aside>
+
+
+  <article class="docs-content content">
+    
+    
+
+
+
+
+
+
+
+<nav class="breadcrumbs" aria-label="Fil d&#39;Ariane">
+  <ol class="breadcrumbs-list">
+    <li class="breadcrumbs-item">
+      <a href="https://lxrider.github.io/publications/">Publications</a>
+    </li>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    <li class="breadcrumbs-item" aria-current="page">
+      <span>Cyber-résilience du froid commercial : que reste-t-il quand la supervision n&#39;est plus fiable ?</span>
+    </li>
+  </ol>
+</nav>
+
+
+
+
+    
+
+    
+<header class="page-header">
+  <div class="docs-page-heading">
+  <h1>Cyber-résilience du froid commercial : que reste-t-il quand la supervision n&#39;est plus fiable ?</h1>
+  
+<div class="docs-copy-link">
+  <button
+    class="docs-copy-link-button"
+    type="button"
+    aria-label="Copier le lien"
+    title="Copier le lien"
+    data-docs-copy-link
+    hidden
+  >
+    <span class="docs-copy-link-default-icon" data-docs-copy-link-default-icon>
+      <span class="content-icon content-icon-sm" aria-hidden="true">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+</span>
+    </span>
+    <span class="docs-copy-link-success-icon" data-docs-copy-link-success-icon>
+      <span class="content-icon content-icon-sm" aria-hidden="true">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5l10 -10" /></svg>
+</span>
+    </span>
+    <span class="docs-copy-link-label" data-docs-copy-link-label>Copier le lien</span>
+  </button>
+  <span
+    class="docs-page-action-status"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+    data-docs-copy-link-status
+  ></span>
+</div>
+
+</div>
+  
+
+  <p class="page-description">Régulation locale, effets différés, sauvegardes et reconstruction : comment démontrer le retour à un état frigorifique fiable ?</p>
+  
+
+</header>
+
+
+    
+    
+    
+<details class="docs-toc-inline" data-devlab-toc>
+  <summary>Sur cette page</summary>
+  <nav aria-label="Sur cette page">
+    
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/#1-l-ecran-ne-dit-pas-tout">
+        1. L&#39;écran ne dit pas tout
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/#2-reconstruire-les-dependances-du-froid">
+        2. Reconstruire les dépendances du froid
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/#3-une-commande-peut-produire-des-effets-plus-tard">
+        3. Une commande peut produire des effets plus tard
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/#4-quelles-protections-tiennent-encore">
+        4. Quelles protections tiennent encore ?
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/#5-sauvegardes-sait-on-vraiment-reconstruire-l-installation">
+        5. Sauvegardes : sait-on vraiment reconstruire l&#39;installation ?
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <details class="docs-toc-group" data-docs-toc-group>
+        <summary class="docs-toc-group-toggle">
+          <a href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/#6-quelles-preuves-avant-de-declarer-la-reprise">
+            6. Quelles preuves avant de déclarer la reprise ?
+          </a>
+          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
+        </summary>
+
+        
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/#qui-peut-encore-administrer-apres-l-incident">
+        Qui peut encore administrer après l&#39;incident ?
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+
+      </details>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <details class="docs-toc-group" data-docs-toc-group>
+        <summary class="docs-toc-group-toggle">
+          <a href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/#conclusion">
+            Conclusion
+          </a>
+          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
+        </summary>
+
+        
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/#references-essentielles">
+        Références essentielles
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+
+      </details>
+      
+    </li>
+    
+  </ul>
+  
+
+  </nav>
+</details>
+
+
+
+    <p>Le superviseur répond à nouveau. Les courbes s'affichent, les équipements semblent communiquer. <strong>Le froid est-il pour autant revenu à un état fiable ?</strong></p>
+<p><strong>Le retour de l'interface est un premier indice.</strong> La régulation locale, les paramètres réellement appliqués, la transmission des alarmes et les sauvegardes demandent chacun leurs propres vérifications.</p>
+<p>L'<a rel="external" href="https://lxrider.github.io/publications/froid-commercial/">analyse des capacités d'action</a> examine les identités, leurs privilèges et le périmètre des commandes possibles. Ici, nous cherchons <strong>quelles fonctions restent opérationnelles, ce qui peut être reconstruit et quelles preuves permettent de valider la reprise</strong>.</p>
+<p>Les incidents d'octobre 2026 rendent ces questions concrètes. Le <a rel="external" href="https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/">CERT-FR</a> rappelle notamment qu'une intervention sur les accès distants peut perturber la remontée d'informations vers le frigoriste. La fermeture d'un accès doit ainsi s'accompagner d'une vérification du procédé et de la chaîne d'alerte.</p>
+<figure class="research-figure">
+<a class="figure-open" href="illustration-cyber-resilience-lxrider.svg" target="_blank" rel="noopener" aria-label="Ouvrir l’illustration de cyber-résilience en grand">
+<img src="illustration-cyber-resilience-lxrider.svg" width="1200" height="630" alt="Illustration conceptuelle d’un espace frigorifique avec des denrées et deux affichages de température différents, évoquant l’importance de confronter les informations de supervision aux mesures et au terrain." loading="eager" decoding="async">
+</a>
+<figcaption>Supervision, mesures et état des denrées : des vérifications complémentaires pour qualifier la reprise. Illustration conceptuelle lxrider.</figcaption>
+</figure>
+<h2 id="1-l-ecran-ne-dit-pas-tout">1. L'écran ne dit pas tout<a class="zola-anchor" href="#1-l-ecran-ne-dit-pas-tout" aria-label="Anchor link for: 1-l-ecran-ne-dit-pas-tout">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p>Deux situations, un même piège : se fier à l'écran pour juger du froid.</p>
+<ul>
+<li><strong>Plus de télésurveillance :</strong> les températures et alarmes ne remontent plus, mais certains régulateurs continuent à piloter les meubles.</li>
+<li><strong>Interface toujours accessible :</strong> les courbes peuvent être anciennes, une consigne altérée ou une alarme mal transmise.</li>
+</ul>
+<p><strong>Mesurer, réguler, produire du froid et alerter sont quatre fonctions distinctes.</strong> L'une peut être indisponible tandis qu'une autre continue de fonctionner. La disponibilité de l'interface ne prouve pas la fiabilité de ce qu'elle affiche.</p>
+<p>Une sonde mesure la température à son emplacement, souvent celle de l'air, <strong>pas l'historique thermique des denrées</strong>. Leur conservation dépend aussi de la durée d'exposition et des conditions d'exploitation : une mesure ponctuelle ne reconstitue pas cette histoire. Il faut donc établir ce qui fonctionne encore, ce qui est devenu invisible et comment le vérifier autrement.</p>
+<h2 id="2-reconstruire-les-dependances-du-froid">2. Reconstruire les dépendances du froid<a class="zola-anchor" href="#2-reconstruire-les-dependances-du-froid" aria-label="Anchor link for: 2-reconstruire-les-dependances-du-froid">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p>Un plan réseau ne raconte qu'une partie de l'installation. Pour comprendre sa résilience, il faut suivre la chaîne fonctionnelle : <strong>sonde → régulateur → actionneur → procédé</strong>, puis les échanges éventuels avec la centrale, le superviseur et l'astreinte.</p>
+<p>Les <strong>régulateurs</strong> pilotent localement certaines fonctions, selon le matériel. Le <strong>superviseur</strong>, parfois intégré à une GTC, collecte les états, historise les données et peut transmettre des réglages. Lorsqu'elle existe, la télésurveillance ajoute ses propres dépendances : réseau, plateforme distante et transmission des alertes.</p>
+<p><strong>« Local » ne signifie pas « indépendant ».</strong> Les <strong>Dixell XM669K/XM679K</strong> peuvent synchroniser consignes et dégivrages sur leur liaison LAN de régulateurs : une liaison de terrain, <strong>pas une preuve d'accès par Internet</strong>. Chez Danfoss, l'<strong>AK-CC 550</strong> et le superviseur <strong>AK-SM 800</strong> remplissent des rôles distincts. Les paramètres et le câblage du site déterminent ce qui reste autonome.</p>
+<figure class="research-figure">
+<a class="figure-open" href="02-dependances.svg" target="_blank" rel="noopener" aria-label="Ouvrir le schéma des dépendances">
+<img src="02-dependances.svg" alt="La supervision, les régulations locales et le procédé remplissent des fonctions distinctes ; la chaîne d'alerte doit être vérifiée séparément." loading="lazy" decoding="async">
+</a>
+<figcaption>Figure 1 — Perdre la supervision ne signifie pas nécessairement perdre la régulation.</figcaption>
+</figure>
+<p><strong>De quoi dépend chaque fonction pour continuer à agir ?</strong> Consigne partagée, bus de terrain, sonde ou alimentation commune : ces dépendances peuvent changer le comportement en cas de panne. Sans examen des modèles, paramètres et câblages du site, aucun mode de repli ne peut être garanti.</p>
+<h2 id="3-une-commande-peut-produire-des-effets-plus-tard">3. Une commande peut produire des effets plus tard<a class="zola-anchor" href="#3-une-commande-peut-produire-des-effets-plus-tard" aria-label="Anchor link for: 3-une-commande-peut-produire-des-effets-plus-tard">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p>Une consigne modifiée n'a pas toujours d'effet immédiat : le procédé possède une inertie thermique. Un dégivrage programmé peut ainsi se déclencher <strong>après</strong> la fermeture de l'accès compromis, sans nouvelle commande de l'attaquant.</p>
+<p>Le manuel des <strong>XM669K/XM679K</strong> décrit également des synchronisations entre sections et des modes de repli en cas de défaut de sonde. Leur activation sur un site particulier reste à démontrer. L'effet différé d'un paramètre n'atteste pas non plus qu'une nouvelle commande a été transmise au moment où la température a changé.</p>
+<p>Si la température dérive alors que l'accès suspect est fermé, <strong>quatre traces sont à confronter</strong> :</p>
+<ul>
+<li><strong>Valeurs</strong> : paramètres réellement appliqués aux régulateurs ;</li>
+<li><strong>Modes</strong> : programmes, dégivrages et fonctionnement en cours ;</li>
+<li><strong>Chronologie</strong> : commandes et événements disponibles dans les journaux ;</li>
+<li><strong>Terrain</strong> : évolution physique des températures et équipements.</li>
+</ul>
+<p>Même si les journaux ne permettent plus d'attribuer une modification, <strong>ses conséquences sur le procédé restent à rechercher</strong>.</p>
+<p>C'est pourquoi <strong>révoquer un accès compromis et retrouver un état frigorifique maîtrisé sont deux opérations différentes</strong>.</p>
+<h2 id="4-quelles-protections-tiennent-encore">4. Quelles protections tiennent encore ?<a class="zola-anchor" href="#4-quelles-protections-tiennent-encore" aria-label="Anchor link for: 4-quelles-protections-tiennent-encore">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p><strong>Une limite de réglage, une alarme et une sécurité de pression ne protègent pas le même objectif.</strong> Une sécurité peut préserver un compresseur sans garantir les denrées ; une alarme locale peut ne jamais parvenir à l'astreinte. Et deux interfaces distinctes peuvent dépendre du même capteur ou compte d'administration.</p>
+<p>La question est double : <strong>quelle conséquence chaque protection évite-t-elle, et qui peut la modifier ?</strong></p>
+<p>Dans le <a rel="external" href="https://webapps.copeland.com/Dixell/Content/Pages/Manuals/XWEBEVO/XWEBEVOV5.6.0OPERATION/XWEB-EVO-r5.6.0-OPR-EN.pdf">manuel XWEB EVO v5.6.0</a>, le mode maintenance amène XWEB à ignorer les alarmes des instruments concernés. <strong>La supervision cesse alors de prendre ces alarmes en compte ; cela ne prouve pas la disparition des protections locales.</strong> De même, une alarme de perte de liaison renseigne sur une communication interrompue, <strong>pas sur l'arrêt du froid</strong>.</p>
+<p>Une alerte doit être vérifiée <strong>de la mesure jusqu'à sa prise en charge par l'astreinte</strong>. Pour parler de surveillance indépendante, il faut aussi examiner les capteurs, les réseaux, les droits et les alimentations partagés.</p>
+<p>Toute coupure d'accès ou intervention pouvant perturber le procédé doit être préparée avec le frigoriste. <strong>La priorité reste la sécurité du froid et des denrées, pas le retour des écrans.</strong></p>
+<h2 id="5-sauvegardes-sait-on-vraiment-reconstruire-l-installation">5. Sauvegardes : sait-on vraiment reconstruire l'installation ?<a class="zola-anchor" href="#5-sauvegardes-sait-on-vraiment-reconstruire-l-installation" aria-label="Anchor link for: 5-sauvegardes-sait-on-vraiment-reconstruire-l-installation">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p>« Nous avons une sauvegarde. » <strong>De quoi exactement, conservée où, et déjà restaurée avec succès ?</strong></p>
+<p>Trois périmètres doivent être distingués :</p>
+<ul>
+<li><strong>Supervision :</strong> équipements déclarés, comptes, alarmes, programmes et, selon la version et les options, journaux ou historiques.</li>
+<li><strong>Régulateurs :</strong> consignes, limites, dégivrages et paramètres <strong>effectivement appliqués</strong>, à récupérer et vérifier selon les procédures du constructeur.</li>
+<li><strong>Moyens d'intervention :</strong> logiciels, firmwares, schémas, PC froid, accès réseau et cellulaire, comptes, secrets et contacts d'astreinte. Sans eux, la sauvegarde peut être inutilisable.</li>
+</ul>
+<p>La documentation <a rel="external" href="https://webapps.copeland.com/Dixell/Content/Pages/Manuals/XWEBEVO/XWEBEVOV5.6.0OPERATION/XWEB-EVO-r5.6.0-OPR-EN.pdf">XWEB EVO</a> décrit des opérations de sauvegarde et de restauration dont le contenu dépend des données sélectionnées. Chez Danfoss, la base du superviseur et les réglages des régulateurs imposent de respecter le sens des échanges <em>Upload/Download</em>, évoqué plus loin. <strong>Un export réussi ne prouve pas que toute l'installation pourra être reconstituée.</strong></p>
+<p>Une copie conservée sur le superviseur, accessible avec les mêmes comptes compromis, peut disparaître avec lui. Pour reconstruire, les sauvegardes doivent être :</p>
+<ul>
+<li><strong>Protégées</strong> : hors de portée des mêmes comptes compromis ; l'<a rel="external" href="https://messervices.cyber.gouv.fr/documents-guides/anssi-fondamentaux-sauvegarde_systemes_dinformation_v1-0.pdf">ANSSI recommande notamment la stratégie 3-2-1</a>, avec une copie hors ligne ;</li>
+<li><strong>Restaurables</strong> : exercices de récupération, accès aux outils et aux références nécessaires ;</li>
+<li><strong>Adaptées au métier</strong> : fréquence et délais de reprise compatibles avec la continuité du froid.</li>
+</ul>
+<p>Les comptes d'administration des sauvegardes doivent être distincts des comptes exposés ; une copie immuable mais connectée peut renforcer la protection, avec des garanties différentes de celles d'une copie déconnectée. <strong>Qui peut déclencher la restauration, obtenir les outils et approuver les paramètres restaurés ?</strong> Les essais doivent aussi vérifier la disponibilité du matériel, des versions et des intervenants nécessaires.</p>
+<p><strong>La dernière sauvegarde n'est pas forcément saine</strong> : elle peut contenir des paramètres altérés ou des comptes indésirables. La reprise doit partir d'une référence examinée, sur un environnement assaini, puis être confrontée aux réglages et mesures réels.</p>
+<p><strong>Restaurer n'efface pas les conséquences :</strong> des historiques non enregistrés restent manquants, et une rupture de la chaîne du froid déjà survenue ne disparaît pas.</p>
+<p>Le vrai test n'est pas de trouver un fichier de sauvegarde, mais de répondre : <strong>que peut-on reconstruire, dans quel délai et avec quelles preuves ?</strong></p>
+<h2 id="6-quelles-preuves-avant-de-declarer-la-reprise">6. Quelles preuves avant de déclarer la reprise ?<a class="zola-anchor" href="#6-quelles-preuves-avant-de-declarer-la-reprise" aria-label="Anchor link for: 6-quelles-preuves-avant-de-declarer-la-reprise">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p>Pour valider la reprise, <strong>quatre vérifications complémentaires</strong> sont à organiser selon l'installation, au-delà de l'affichage du superviseur :</p>
+<ul>
+<li><strong>Liaisons et alertes.</strong> Les communications nécessaires fonctionnent-elles ? Une alarme peut-elle être suivie jusqu'à sa réception et sa prise en charge par l'astreinte, lors d'un essai autorisé ?</li>
+<li><strong>Paramètres réellement appliqués.</strong> Les valeurs, modes, horaires et dégivrages actifs correspondent-ils à une référence approuvée ? Les réglages ont-ils été relus sur les instruments concernés ?</li>
+<li><strong>Accès maîtrisés.</strong> Qui conserve une capacité d'administration ? Les comptes, sessions, secrets, chemins de télémaintenance et moyens de persistance ont-ils été examinés et traités ?</li>
+<li><strong>Froid et exploitation.</strong> Les mesures physiques, les protections et les cycles pertinents ont-ils été validés par les professionnels compétents ? L'exploitant dispose-t-il des éléments nécessaires pour statuer sur les marchandises ?</li>
+</ul>
+<figure class="research-figure">
+<a class="figure-open" href="03-reprise.svg" target="_blank" rel="noopener" aria-label="Ouvrir le schéma des preuves de reprise">
+<img src="03-reprise.svg" alt="Quatre dimensions de reprise : liaisons et alertes, paramètres appliqués, accès maîtrisés, fonctionnement frigorifique et exploitation." loading="lazy" decoding="async">
+</a>
+<figcaption>Figure 2 — Le retour des écrans ne suffit pas : quatre preuves complémentaires.</figcaption>
+</figure>
+<h3 id="qui-peut-encore-administrer-apres-l-incident">Qui peut encore administrer après l'incident ?<a class="zola-anchor" href="#qui-peut-encore-administrer-apres-l-incident" aria-label="Anchor link for: qui-peut-encore-administrer-apres-l-incident">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h3>
+<p>Les paramètres ont été corrigés et l'accès initial fermé. <strong>La reprise exige aussi de savoir quelles identités conservent un pouvoir d'administration et qui peut retirer ce pouvoir.</strong></p>
+<p>Quatre vérifications sont utiles :</p>
+<ul>
+<li><strong>Chemins :</strong> quels accès au superviseur, aux régulateurs administrables, au PC froid et aux plateformes distantes restent opérationnels ?</li>
+<li><strong>Comptes et privilèges :</strong> quelles permissions, sessions et clés permettent encore de modifier les équipements ?</li>
+<li><strong>Autorité de gestion :</strong> qui détient l'administration des comptes, côté enseigne comme côté prestataire, et qui peut suspendre chaque accès ?</li>
+<li><strong>Persistance :</strong> quelles modifications de configuration, services ou autres mécanismes pourraient maintenir une capacité d'action ?</li>
+</ul>
+<p>Une plateforme exploitée par un tiers mérite une vérification avec son administrateur : <strong>la révocation d'un compte local peut laisser subsister un autre chemin de maintenance</strong>. Les sessions encore actives sont à révoquer lorsque le produit le permet ; les secrets exposés doivent être renouvelés et les comptes secondaires vérifiés. Le frigoriste et le responsable cyber coordonnent les contrôles sur le superviseur et le PC froid, ainsi que la reconstruction depuis une source fiable si leur intégrité est incertaine.</p>
+<p><strong>La reprise des accès se démontre par les contrôles réalisés et leurs résultats</strong>, avec les limites des journaux disponibles. Toute capacité d'administration encore incertaine appelle des restrictions et une surveillance adaptées. Voir les principes de <a rel="external" href="https://messervices.cyber.gouv.fr/guides/cyberattaques-et-remediation-piloter-la-remediation">remédiation de l'ANSSI</a>.</p>
+<p><strong>Le sens des opérations de restauration mérite une vérification particulière.</strong> Dans le <a rel="external" href="https://assets.danfoss.com/documents/latest/56759/BC316842192932en-001001.pdf">manuel Danfoss AK-SM 800</a>, <em>Upload</em> transfère les paramètres des régulateurs vers le superviseur, alors que <em>Download</em> les transfère du superviseur vers les régulateurs. Sur XWEB EVO, <em>Import</em>, <em>Write</em> et <em>Read</em> correspondent également à des opérations distinctes. Confondre charger une sauvegarde, envoyer des réglages et relire l'état réel peut laisser une installation dans un état inattendu.</p>
+<p>La référence restaurée doit être approuvée et vérifiée sur les équipements. Le <a rel="external" href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r3.pdf">NIST SP 800-82r3</a> souligne la nécessité de contrôler aussi les conséquences physiques de la reprise OT.</p>
+<p>La reprise doit aussi rejoindre le <strong>plan de maîtrise sanitaire (PMS)</strong> : rapprocher les relevés fiables, les mesures indépendantes, la chronologie et les lots concernés ; documenter les écarts et décisions selon les <a rel="external" href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX%3A32004R0852">principes HACCP</a>.</p>
+<p><strong>Une donnée manquante ne prouve pas une rupture sanitaire, mais limite ce qui peut être démontré.</strong> Les lots et écarts doivent être examinés par l'exploitant au regard de son PMS. Remettre le froid en marche ne suffit pas à décider de la remise en vente des denrées.</p>
+<p>La reprise réunit plusieurs validations : le <strong>frigoriste</strong> vérifie le procédé et ses protections, l'<strong>exploitant</strong> statue sur les denrées, et les <strong>responsables cyber et prestataires concernés</strong> documentent les accès repris en main et les incertitudes restantes. <strong>Chaque décision s'appuie sur des vérifications traçables.</strong></p>
+<h2 id="conclusion">Conclusion<a class="zola-anchor" href="#conclusion" aria-label="Anchor link for: conclusion">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p>Le superviseur répond à nouveau, les paramètres ont été corrigés et les accès exposés ont été fermés. <strong>Quels réglages sont réellement appliqués, quelles alertes parviennent à l'astreinte et qui peut encore administrer ?</strong></p>
+<p><strong>Les réponses documentées</strong> permettent de statuer sur la reprise. La cyber-résilience tient à cette capacité : <strong>reconstruire un état fiable, vérifier le procédé et rendre explicite ce qui reste incertain</strong>, y compris pour les denrées.</p>
+<h3 id="references-essentielles">Références essentielles<a class="zola-anchor" href="#references-essentielles" aria-label="Anchor link for: references-essentielles">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h3>
+<ul>
+<li><a rel="external" href="https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/">CERT-FR — Alerte CERTFR-2026-ALE-012 (octobre 2026)</a>.</li>
+<li><a rel="external" href="https://messervices.cyber.gouv.fr/documents-guides/Guide_Systemes_industriels__Mesures_detaillees_v2.pdf">ANSSI — Cybersécurité des systèmes industriels : mesures détaillées (2025)</a>.</li>
+<li><a rel="external" href="https://assets.danfoss.com/documents/latest/56759/BC316842192932en-001001.pdf">Danfoss — AK-SM 800 Series, User Guide</a> et <a rel="external" href="https://assets.danfoss.com/documents/latest/55258/BC187486426386en-000701.pdf">AK-CC 550</a>.</li>
+<li><a rel="external" href="https://webapps.copeland.com/Dixell/Content/Pages/Manuals/XWEBEVO/XWEBEVOV5.6.0OPERATION/XWEB-EVO-r5.6.0-OPR-EN.pdf">Copeland/Dixell — XWEB EVO Operating Manual v5.6.0</a>.</li>
+<li><a rel="external" href="https://webapps.copeland.com/Dixell/Content/Pages/Manuals/XM400600/XM669K-XM679KR5.4/XM669K-XM679K-FR-r5.4.pdf">Copeland/Dixell — XM669K/XM679K, manuel français v5.4d</a>.</li>
+<li><a rel="external" href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r3.pdf">NIST — Guide to Operational Technology (OT) Security, SP 800-82r3</a>.</li>
+<li><a rel="external" href="https://messervices.cyber.gouv.fr/documents-guides/anssi-fondamentaux-sauvegarde_systemes_dinformation_v1-0.pdf">ANSSI — Sauvegarde des systèmes d’information : les fondamentaux (2023)</a>.</li>
+<li><a rel="external" href="https://messervices.cyber.gouv.fr/guides/cyberattaques-et-remediation-piloter-la-remediation">ANSSI — Cyberattaques et remédiation : piloter la remédiation</a>.</li>
+</ul>
+<p><strong>Lecture complémentaire :</strong> <a rel="external" href="https://www.controlglobal.com/blogs/unfettered/blog/55413473/the-trust-gap-in-control-system-cybersecurity-iranian-water-hacks-and-french-refrigeration-attacks-demonstrate-why-independent-process-monitoring-is-essential">Joe Weiss, <em>The trust gap in control system cybersecurity</em> (21 octobre 2026)</a>, sur la confiance dans les mesures du procédé. Cette tribune contient également une présentation commerciale ; elle ne constitue ni une preuve des mécanismes des incidents français ni une validation indépendante de la solution présentée.</p>
+<p><em>Portée : analyse fondée sur des fonctions documentées, sans diagnostic d'une installation précise. L'autonomie locale, l'indépendance des protections, la couverture des sauvegardes, les effets différés et les critères de reprise doivent être confirmés sur les équipements et configurations réellement installés. Une revue frigorifique indépendante reste à réaliser.</em></p>
+<hr />
+<p><em>Version 1.3 — illustration d’ouverture ajoutée, 25 octobre 2026. © 2026 lxrider — Tous droits réservés pour le texte original. Schémas conceptuels.</em></p>
+
+
+    
+
+
+
+
+
+    
+  </article>
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<aside class="docs-toc" data-devlab-toc aria-labelledby="docs-toc-title">
+  
+  <p class="docs-toc-title" id="docs-toc-title">Sur cette page</p>
+
+  <nav class="docs-toc-nav" aria-label="Sur cette page">
+    
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/#1-l-ecran-ne-dit-pas-tout">
+        1. L&#39;écran ne dit pas tout
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/#2-reconstruire-les-dependances-du-froid">
+        2. Reconstruire les dépendances du froid
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/#3-une-commande-peut-produire-des-effets-plus-tard">
+        3. Une commande peut produire des effets plus tard
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/#4-quelles-protections-tiennent-encore">
+        4. Quelles protections tiennent encore ?
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/#5-sauvegardes-sait-on-vraiment-reconstruire-l-installation">
+        5. Sauvegardes : sait-on vraiment reconstruire l&#39;installation ?
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <details class="docs-toc-group" data-docs-toc-group>
+        <summary class="docs-toc-group-toggle">
+          <a href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/#6-quelles-preuves-avant-de-declarer-la-reprise">
+            6. Quelles preuves avant de déclarer la reprise ?
+          </a>
+          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
+        </summary>
+
+        
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/#qui-peut-encore-administrer-apres-l-incident">
+        Qui peut encore administrer après l&#39;incident ?
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+
+      </details>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <details class="docs-toc-group" data-docs-toc-group>
+        <summary class="docs-toc-group-toggle">
+          <a href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/#conclusion">
+            Conclusion
+          </a>
+          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
+        </summary>
+
+        
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/#references-essentielles">
+        Références essentielles
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+
+      </details>
+      
+    </li>
+    
+  </ul>
+  
+
+  </nav>
+  
+
+  
+</aside>
+
+
+</div>
+
+      
+    </main>
+
+    
+  </div>
+  
+  
+
+
+<script defer src="https://lxrider.github.io/js/theme.js"></script>
+
+
+
+
+
+
+
+
+<script defer src="https://lxrider.github.io/js/docs-nav.js"></script>
+
+
+
+
+<script defer src="https://lxrider.github.io/js/toc.js"></script>
+
+
+
+
+
+
+<script
+  defer
+  src="https://lxrider.github.io/js/docs-page-actions.js"
+  data-link-copied-label="Lien copié"
+  data-copy-link-failed-label="Failed"
+  data-copy-link-success-message="Page link copied to clipboard."
+  data-copy-link-error-message="Unable to copy page link."
+></script>
+
+
+<script defer src="https://lxrider.github.io/js/site-menu.js"></script>
+
+
+  
+  
+  
+</body>
+</html>
