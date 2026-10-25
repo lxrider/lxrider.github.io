@@ -59,7 +59,7 @@
   <text x="580" y="516" text-anchor="middle" fill="#b6cbd3" font-size="18">Passerelle VPN · Pare-feu</text>
   <path d="M431 539H729" stroke="#365461" stroke-width="1.2"/>
   <text x="580" y="570" text-anchor="middle" fill="#eff8fa" font-size="20">Superviseur frigorifique</text>
-  <text x="580" y="602" text-anchor="middle" fill="#edb28f" font-size="19" font-weight="700">× Accès refusé au bastion</text>
+  <text x="580" y="602" text-anchor="middle" fill="#edb28f" font-size="19" font-weight="700">× Session vers B refusée</text>
 
   <!-- Magasin C -->
   <rect x="792" y="425" width="334" height="196" rx="12" fill="#0e2833" stroke="#4b7080" stroke-width="1.5"/>
