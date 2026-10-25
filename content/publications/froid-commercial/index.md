@@ -3,11 +3,11 @@ title = "Cybersécurité du froid commercial : qui peut agir sur vos installatio
 description = "Des accès aux consignes de froid : comprendre les droits, les chemins d'action et leurs conséquences."
 date = 2026-10-22
 draft = false
-updated = 2026-10-24
+updated = 2026-10-25
 template = "doc-page.html"
 
 [extra]
-article_version = "1.4 — révision éditoriale publiée"
+article_version = "1.4.1 — illustration d’ouverture actualisée"
 author = "lxrider"
 rights = "© 2026 lxrider — Tous droits réservés"
 +++
@@ -190,4 +190,4 @@ Pour les éléments techniques de l'incident et leurs limites : [étude indépen
 
 ---
 
-*Version 1.4 — 24 octobre 2026 — révision éditoriale publiée. © 2026 lxrider — Tous droits réservés. Schémas conceptuels, à confronter aux configurations réelles.*
+*Version 1.4.1 — 25 octobre 2026 — illustration d’ouverture actualisée. © 2026 lxrider — Tous droits réservés. Schémas conceptuels, à confronter aux configurations réelles.*

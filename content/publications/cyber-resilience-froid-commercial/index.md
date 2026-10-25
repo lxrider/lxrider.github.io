@@ -3,12 +3,12 @@ title = "Cyber-résilience du froid commercial : que reste-t-il quand la supervi
 description = "Régulation locale, effets différés, sauvegardes et reconstruction : comment démontrer le retour à un état frigorifique fiable ?"
 date = 2026-10-23
 draft = false
-updated = 2026-10-24
+updated = 2026-10-25
 template = "doc-page.html"
 
 [extra]
 author = "lxrider"
-article_version = "1.2 — révision éditoriale publiée"
+article_version = "1.3 — illustration d’ouverture ajoutée"
 rights = "© 2026 lxrider — Tous droits réservés pour le texte original"
 +++
 
@@ -19,6 +19,13 @@ Le superviseur répond à nouveau. Les courbes s'affichent, les équipements sem
 L'[analyse des capacités d'action](https://lxrider.github.io/publications/froid-commercial/) examine les identités, leurs privilèges et le périmètre des commandes possibles. Ici, nous cherchons **quelles fonctions restent opérationnelles, ce qui peut être reconstruit et quelles preuves permettent de valider la reprise**.
 
 Les incidents d'octobre 2026 rendent ces questions concrètes. Le [CERT-FR](https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/) rappelle notamment qu'une intervention sur les accès distants peut perturber la remontée d'informations vers le frigoriste. La fermeture d'un accès doit ainsi s'accompagner d'une vérification du procédé et de la chaîne d'alerte.
+
+<figure class="research-figure">
+<a class="figure-open" href="illustration-cyber-resilience-lxrider.svg" target="_blank" rel="noopener" aria-label="Ouvrir l’illustration de cyber-résilience en grand">
+<img src="illustration-cyber-resilience-lxrider.svg" width="1200" height="630" alt="Illustration conceptuelle d’un espace frigorifique avec des denrées et deux affichages de température différents, évoquant l’importance de confronter les informations de supervision aux mesures et au terrain." loading="eager" decoding="async">
+</a>
+<figcaption>Supervision, mesures et état des denrées : des vérifications complémentaires pour qualifier la reprise. Illustration conceptuelle lxrider.</figcaption>
+</figure>
 
 ## 1. L'écran ne dit pas tout
 
@@ -167,4 +174,4 @@ Le superviseur répond à nouveau, les paramètres ont été corrigés et les ac
 
 ---
 
-*Version 1.2 — révision éditoriale publiée, 24 octobre 2026. © 2026 lxrider — Tous droits réservés pour le texte original. Schémas conceptuels.*
+*Version 1.3 — illustration d’ouverture ajoutée, 25 octobre 2026. © 2026 lxrider — Tous droits réservés pour le texte original. Schémas conceptuels.*
