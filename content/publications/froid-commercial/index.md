@@ -7,7 +7,7 @@ updated = 2026-10-25
 template = "doc-page.html"
 
 [extra]
-article_version = "1.4.1 — illustration d’ouverture actualisée"
+article_version = "1.4.2 — illustration d’ouverture, URL actualisée"
 author = "lxrider"
 rights = "© 2026 lxrider — Tous droits réservés"
 +++
@@ -23,8 +23,8 @@ Les incidents d'octobre 2026 concernant des supervisions Danfoss et Copeland/Dix
 Le [guide pratique de sécurisation des supervisions](https://lxrider.github.io/publications/securiser-supervision-frigorifique/) détaille la maîtrise des accès distants. Ici, nous suivons **ce qu'une identité compromise pourrait commander et les protections qui limiteraient sa portée**.
 
 <figure class="research-figure">
-<a class="figure-open" href="illustration-bastion-lxrider.svg" target="_blank" rel="noopener" aria-label="Ouvrir l'illustration des frontières de confiance">
-<img src="illustration-bastion-lxrider.svg" width="1200" height="630" alt="Illustration conceptuelle d'un point de contrôle avec deux voies : une barrière ouverte, une autre fermée, et un chemin lumineux menant vers une installation." loading="eager" decoding="async">
+<a class="figure-open" href="illustration-bastion-lxrider-20261025.svg" target="_blank" rel="noopener" aria-label="Ouvrir l'illustration des frontières de confiance">
+<img src="illustration-bastion-lxrider-20261025.svg" width="1200" height="630" alt="Illustration conceptuelle d'un point de contrôle avec deux voies : une barrière ouverte, une autre fermée, et un chemin lumineux menant vers une installation." loading="eager" decoding="async">
 </a>
 <figcaption>Chemins d'accès et frontières de confiance — Franchir un contrôle d'accès ne signifie pas disposer de toutes les capacités d'action sur les installations. Illustration conceptuelle lxrider.</figcaption>
 </figure>
@@ -190,4 +190,4 @@ Pour les éléments techniques de l'incident et leurs limites : [étude indépen
 
 ---
 
-*Version 1.4.1 — 25 octobre 2026 — illustration d’ouverture actualisée. © 2026 lxrider — Tous droits réservés. Schémas conceptuels, à confronter aux configurations réelles.*
+*Version 1.4.2 — 25 octobre 2026 — URL de l’illustration actualisée. © 2026 lxrider — Tous droits réservés. Schémas conceptuels, à confronter aux configurations réelles.*
