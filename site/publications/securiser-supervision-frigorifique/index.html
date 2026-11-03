@@ -1082,6 +1082,12 @@
     </li>
     
     <li class="docs-toc-item docs-toc-level-3">
+      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#isoler-le-reseau-frigorifique-et-controler-les-acces">
+        Isoler le réseau frigorifique et contrôler les accès
+      </a>
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-3">
       
       <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#exemple-avec-deux-magasins">
         Exemple avec deux magasins
@@ -1203,7 +1209,7 @@
   </span>
 </a>
 </h3>
-<p>Deux fonctionnements existent : le superviseur <strong>envoie ses alarmes</strong> vers l’extérieur, ou la plateforme de télésurveillance <strong>interroge le site</strong>. Le sens de la communication change les règles réseau à prévoir.</p>
+<p>Selon l’installation, le superviseur <strong>envoie ses alarmes</strong> vers l’extérieur, la plateforme de télésurveillance <strong>interroge le site</strong>, ou plusieurs mécanismes coexistent. Le sens de chaque communication change les règles réseau à prévoir.</p>
 <p>Avant de modifier une règle, posez la question au mainteneur et à l’astreinte : <strong>qui appelle qui ?</strong> La bascule doit préserver les communications utiles. Un essai convenu avec l’astreinte permettra ensuite de confirmer la réception des alarmes.</p>
 <h2 id="2-retrouver-les-acces-qui-existent-vraiment">2. Retrouver les accès qui existent vraiment<a class="zola-anchor" href="#2-retrouver-les-acces-qui-existent-vraiment" aria-label="Anchor link for: 2-retrouver-les-acces-qui-existent-vraiment">
   <span class="content-icon content-icon-sm" aria-hidden="true">
@@ -1326,7 +1332,13 @@
 <tr><td>Télémaintenance par routeur 4G/5G</td><td>Solution VPN ou distante compatible avec cette liaison</td><td>Connexion, secours et chaîne d'alarme</td></tr>
 <tr><td>Plusieurs magasins ou plusieurs entreprises de maintenance</td><td>Accès privé <strong>complété, si nécessaire, par un bastion</strong></td><td>Droits par magasin, sessions et accès de secours</td></tr>
 </tbody></table>
-<p><strong>Le VPN fournit le chemin privé ; le bastion encadre les interventions.</strong> Selon l’outil et les protocoles utilisés, ce dernier peut imposer des comptes nominatifs, limiter les sites accessibles et conserver des traces de connexion. <strong>Les droits d’administration restent définis sur chaque superviseur.</strong></p>
+<p><strong>Le VPN fournit le chemin privé ; le bastion encadre les interventions.</strong> Selon l’outil et les protocoles utilisés, ce dernier peut imposer des comptes nominatifs, limiter les sites accessibles et conserver des traces de connexion. <strong>Les droits d’administration restent à contrôler sur chaque superviseur.</strong></p>
+<h3 id="isoler-le-reseau-frigorifique-et-controler-les-acces">Isoler le réseau frigorifique et contrôler les accès<a class="zola-anchor" href="#isoler-le-reseau-frigorifique-et-controler-les-acces" aria-label="Anchor link for: isoler-le-reseau-frigorifique-et-controler-les-acces">#</a></h3>
+<p>La télémaintenance doit rejoindre <strong>une zone réseau réservée aux équipements frigorifiques</strong>, séparée autant que possible des postes bureautiques, du Wi-Fi invité et des autres usages du magasin. L'objectif est de limiter les communications possibles si un poste de maintenance ou un compte est compromis.</p>
+<p>Un <strong>VLAN</strong> peut réaliser cette séparation sur une infrastructure administrable ; une séparation physique est une autre possibilité. <strong>Un VLAN seul ne constitue pas un filtrage</strong> : si le routeur laisse librement communiquer les réseaux, un équipement compromis peut encore atteindre l'autre zone. Le responsable réseau doit identifier les communications nécessaires et les limiter au moyen de règles de pare-feu ou de filtrage adaptées, y compris pour l'accès depuis le VPN.</p>
+<p>Avant de modifier cette architecture, <strong>recenser et tester les flux indispensables</strong> : échanges entre supervision et régulateurs, alarmes vers l'astreinte, supervision multisite et accès du mainteneur. Une isolation mal préparée pourrait couper une alarme ou empêcher le dépannage sans nécessairement arrêter la régulation locale. Les fonctions à préserver dépendent des équipements réellement installés.</p>
+<p>Sur une petite installation derrière une box qui ne permet pas ce filtrage, <strong>ne créez pas un VLAN symbolique</strong> : supprimez d'abord les expositions directes, sécurisez les identités et faites étudier un routeur ou pare-feu administré capable de cloisonner réellement les réseaux. <strong>Le choix et la configuration relèvent du responsable réseau, en coordination avec le frigoriste.</strong></p>
+
 <h3 id="exemple-avec-deux-magasins">Exemple avec deux magasins<a class="zola-anchor" href="#exemple-avec-deux-magasins" aria-label="Anchor link for: exemple-avec-deux-magasins">
   <span class="content-icon content-icon-sm" aria-hidden="true">
     
@@ -1361,7 +1373,7 @@
   </span>
 </a>
 </h3>
-<p>Un ancien prestataire utilise encore un identifiant partagé ? Un compte par défaut existe toujours ? Cela mérite une revue avec le mainteneur. Quand c'est possible, attribuez des comptes nominatifs, des droits minimaux et une authentification multifacteur sur le VPN ou le bastion. Prévoyez la révocation des comptes des anciens intervenants et la protection des comptes d’administration du superviseur.</p>
+<p>Un ancien prestataire utilise encore un identifiant partagé ? Un compte par défaut existe toujours ? Cela mérite une revue avec le mainteneur. Attribuez des comptes nominatifs et des droits minimaux. <strong>Activez l’authentification multifacteur (MFA) sur le point d’entrée distant qui la prend en charge (VPN, bastion ou portail d’accès)</strong> ; si le superviseur ancien ne propose pas de MFA, protégez son accès en amont plutôt que de lui prêter une fonction qu’il n’a pas. Prévoyez la révocation des comptes des anciens intervenants, la protection des comptes d’administration du superviseur et la conservation de traces d’accès adaptées.</p>
 <p><strong>La fermeture des ports publics et la gestion des comptes sont deux protections complémentaires.</strong> Le VPN réduit également l’exposition d’un superviseur en fin de support. Pour les XWEB EVO, Copeland a <a rel="external" href="https://webapps.copeland.com/dixell/Content/Pages/AdvertisingMaterials/ProductNews/XWEB%20EVO%20EoS%20-%20Product_Bulletin_March_2026.pdf">annoncé l’arrêt des mises à jour logicielles le 16 mars 2026</a> : la protection immédiate de l’accès s’accompagne d’un projet de remplacement.</p>
 <h3 id="la-bascule-dans-le-bon-ordre">La bascule, dans le bon ordre<a class="zola-anchor" href="#la-bascule-dans-le-bon-ordre" aria-label="Anchor link for: la-bascule-dans-le-bon-ordre">
   <span class="content-icon content-icon-sm" aria-hidden="true">
@@ -1372,7 +1384,7 @@
 </a>
 </h3>
 <ol>
-<li>Mettre en place <strong>le nouvel accès et le tester</strong> avec le frigoriste ; conserver ce qui est nécessaire au retour arrière.</li>
+<li>Mettre en place <strong>le nouvel accès et le tester</strong>, MFA et restrictions réseau compris, avec le frigoriste ; conserver ce qui est nécessaire à un repli approuvé.</li>
 <li>Vérifier la <strong>télémaintenance et le parcours des alarmes</strong> avec l'astreinte.</li>
 <li>Faire retirer l'<strong>accès public direct</strong> par la personne habilitée, avec l'accord de l'exploitant.</li>
 <li>Retester, vérifier les autres chemins (4G, IPv6, accès cloud) et noter le moyen de secours. <strong>Un repli ne doit pas republier automatiquement l’interface sur Internet</strong> : toute exception temporaire doit être arbitrée, limitée et assortie d’une échéance.</li>
@@ -1385,7 +1397,7 @@
   </span>
 </a>
 </h2>
-<p>L’ancienne adresse publique doit désormais <strong>rejeter les connexions vers le superviseur</strong>. Ce premier contrôle s’accompagne de la vérification des autres chemins recensés et d’un essai complet de télémaintenance.</p>
+<p>Depuis Internet, <strong>l’interface de gestion du superviseur ne doit plus être directement accessible</strong>, y compris par l’ancien chemin publié. L’adresse IP publique peut néanmoins rester utilisée par un service VPN protégé. Ce contrôle s’accompagne de la vérification des autres chemins recensés et d’un essai complet de télémaintenance.</p>
 <h3 id="controles-a-cloturer-ensemble">Contrôles à clôturer ensemble<a class="zola-anchor" href="#controles-a-cloturer-ensemble" aria-label="Anchor link for: controles-a-cloturer-ensemble">
   <span class="content-icon content-icon-sm" aria-hidden="true">
     
@@ -1399,6 +1411,10 @@
 Les accès connus ont été recensés : box, 4G/5G, IPv6, PC froid, plateformes et prestataires.</li>
 <li><input disabled="" type="checkbox"/>
 Le nouveau VPN ou accès privé fonctionne pour le frigoriste autorisé ; les tentatives depuis un compte hors périmètre sont bloquées.</li>
+<li><input disabled="" type="checkbox"/>
+L’authentification multifacteur du VPN, bastion ou portail compatible a été testée ; les comptes nominatifs et la révocation des anciens accès ont été vérifiés.</li>
+<li><input disabled="" type="checkbox"/>
+La séparation de la zone frigorifique (VLAN filtré ou autre dispositif adapté) a été examinée ; les communications nécessaires et les communications interdites ont été testées avec le responsable réseau.</li>
 <li><input disabled="" type="checkbox"/>
 Le technicien accède uniquement aux équipements prévus pour son intervention.</li>
 <li><input disabled="" type="checkbox"/>
@@ -1430,10 +1446,11 @@ On sait <strong>qui maintient la solution</strong>, qui dépanne et qui appeler 
 <li><a rel="external" href="https://assets.danfoss.com/documents/latest/471013/BC337629891709en-000901.pdf">Danfoss — AK-SM 800A User Guide</a> (juin 2026, notamment p. 30 et 35 ; <strong>800A uniquement</strong>).</li>
 <li><a rel="external" href="https://webapps.copeland.com/Dixell/Content/Pages/Manuals/XWEBEVO/XWEBEVOV5.6.0OPERATION/XWEB-EVO-r5.6.0-OPR-EN.pdf">Copeland / Dixell — Manuels XWEB EVO 5.6.0</a> et <a rel="external" href="https://webapps.copeland.com/Dixell/Content/Pages/Manuals/XWEBPRO/XWEBPROV1.2OPERATION/XWEB-PRO-OPR-EN.pdf">XWEB PRO 1.2</a> : <strong>versions distinctes</strong>.</li>
 <li><a rel="external" href="https://messervices.cyber.gouv.fr/guides/recommandations-gestion-technique-batiment">ANSSI — Recommandations de sécurité relatives à la GTB/GTC (2026)</a> et <a rel="external" href="https://messervices.cyber.gouv.fr/documents-guides/anssi-guide-admin_securisee_si_v3-0.pdf">Administration sécurisée des systèmes d'information, section 13.1 « Utilisation d'un bastion »</a>.</li>
+<li><a rel="external" href="https://csrc.nist.gov/pubs/sp/800/82/r3/final">NIST — SP 800-82 Rev. 3, Guide to Operational Technology (OT) Security</a> (septembre 2023, section 6.2.1.3 sur la segmentation et l’isolation réseau).</li>
 <li><a rel="external" href="https://assistance.orange.fr/ordinateurs-peripheriques/installer-et-utiliser/les-consoles-de-jeux/xbox/livebox-5-configurer-les-regles-nat-pour-pouvoir-utiliser-un-jeu-ou-une-application-serveur_287340-827962">Orange — Livebox 5, NAT/PAT</a> ; <a rel="external" href="https://assistance.free.fr/articles/1395">Free — paramètres réseau avancés</a>.</li>
 </ul>
 <p><em>Portée : guide pratique destiné aux intervenants autorisés sur les supervisions frigorifiques. Les exemples d'accès et les schémas sont conceptuels ; ils doivent être confrontés aux équipements, connexions et contrats du site.</em></p>
-<p><em>Version 1.3.3 — révision technique, 3 novembre 2026. © 2026 lxrider — Tous droits réservés.</em></p>
+<p><em>Version 1.4 — révision technique et cohérence opérationnelle, 3 novembre 2026. © 2026 lxrider — Tous droits réservés.</em></p>
 
 
     
@@ -1571,6 +1588,12 @@ On sait <strong>qui maintient la solution</strong>, qui dépanne et qui appeler 
         VPN, passerelle, bastion : des rôles différents
       </a>
       
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#isoler-le-reseau-frigorifique-et-controler-les-acces">
+        Isoler le réseau frigorifique et contrôler les accès
+      </a>
     </li>
     
     <li class="docs-toc-item docs-toc-level-3">
