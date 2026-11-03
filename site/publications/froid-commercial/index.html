@@ -254,11 +254,11 @@
 
 
 
-<meta name="description" content="Un compte de maintenance, trois magasins : suivre les droits, les commandes et les protections jusqu&#39;aux conséquences pour le froid.">
+<meta name="description" content="Accès distants, droits de maintenance et conséquences possibles sur le fonctionnement des installations frigorifiques.">
 <link rel="canonical" href="https://lxrider.github.io/publications/froid-commercial/">
 
 <meta property="og:title" content="Cybersécurité du froid commercial : qui peut agir sur vos installations, et jusqu&#39;où ?">
-<meta property="og:description" content="Un compte de maintenance, trois magasins : suivre les droits, les commandes et les protections jusqu&#39;aux conséquences pour le froid.">
+<meta property="og:description" content="Accès distants, droits de maintenance et conséquences possibles sur le fonctionnement des installations frigorifiques.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://lxrider.github.io/publications/froid-commercial/">
 <meta property="og:site_name" content="lxrider | Recherche en cybersécurité offensive">
@@ -267,7 +267,7 @@
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cybersécurité du froid commercial : qui peut agir sur vos installations, et jusqu&#39;où ?">
-<meta name="twitter:description" content="Un compte de maintenance, trois magasins : suivre les droits, les commandes et les protections jusqu&#39;aux conséquences pour le froid.">
+<meta name="twitter:description" content="Accès distants, droits de maintenance et conséquences possibles sur le fonctionnement des installations frigorifiques.">
 
 <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0b1120" media="(prefers-color-scheme: dark)">
@@ -961,7 +961,7 @@
 </div>
   
 
-  <p class="page-description">Un compte de maintenance, trois magasins : suivre les droits, les commandes et les protections jusqu&#39;aux conséquences pour le froid.</p>
+  <p class="page-description">Accès distants, droits de maintenance et conséquences possibles sur le fonctionnement des installations frigorifiques.</p>
   
 
 </header>
@@ -986,11 +986,11 @@
 
 
 
-    <p>Un frigoriste intervient sur le magasin A. Depuis sa plateforme de maintenance, il voit également les magasins B et C.</p>
-<p>Pourquoi ces deux magasins apparaissent-ils ? Peut-il consulter leurs températures, ouvrir une session sur leur superviseur, modifier leurs réglages ? Que pourrait faire une personne ayant obtenu l'accès à son compte ?</p>
-<p><strong>Pour répondre, il faut suivre les droits jusqu'aux équipements, puis vérifier les conséquences possibles sur le froid.</strong> Derrière chaque accès se trouvent des responsabilités partagées entre exploitant, frigoriste, intégrateur et prestataire informatique.</p>
-<p>Ce scénario est fictif : <strong>il ne reconstitue pas les compromissions</strong> de supervisions Danfoss et Copeland/Dixell signalées par le <a href="https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/">CERT-FR en octobre 2026</a>. Il sert à examiner une question distincte : jusqu’où peut s’étendre un accès de maintenance, et quelles conséquences pourrait-il avoir ? Les éléments publics ne permettent pas d'attribuer un chemin d'attaque unique à ces incidents ni de généraliser leurs effets.</p>
-<p>Le <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/">guide de sécurisation des supervisions</a> explique comment protéger les accès distants. L'<a href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/">article sur la cyber-résilience</a> traite des décisions en situation d'incident. Ici, la question porte sur <strong>la portée réelle d'un accès et les protections qui limitent ses effets</strong>.</p>
+    <p>Dans un magasin alimentaire, les installations frigorifiques assurent la conservation des produits. Leur fonctionnement repose sur des équipements de régulation, des systèmes de supervision et des dispositifs d'alarme qui permettent aux professionnels du froid de surveiller les températures, d'ajuster les réglages et d'intervenir en cas d'anomalie.</p>
+<p>Ces équipements sont de plus en plus accessibles à distance pour faciliter la maintenance et la surveillance des installations. Mais ces accès soulèvent une question essentielle : <strong>qui peut réellement agir sur les équipements frigorifiques, avec quels droits et quelles conséquences possibles sur leur fonctionnement ?</strong></p>
+<p>Les compromissions de systèmes de supervision Danfoss et Copeland/Dixell signalées par le <a href="https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/">CERT-FR en octobre 2026</a> rappellent l'importance de maîtriser ces accès. Elles ne suffisent toutefois pas à établir les mécanismes exacts de compromission ou les conséquences rencontrées sur chaque installation.</p>
+<p>Pour comprendre les enjeux, nous partirons d'une situation fictive : un professionnel chargé de la maintenance d'un magasin découvre que son compte lui donne également de la visibilité sur d'autres établissements. Cette situation ne prouve pas qu'il puisse agir sur leurs équipements. Elle invite à examiner les chemins d'accès, les permissions, les commandes possibles et les protections qui en limitent la portée.</p>
+<p><strong>L'objectif de cette analyse est de relier les accès numériques aux conséquences opérationnelles : continuité de la production frigorifique, maîtrise des températures, fonctionnement des alarmes et capacité d'intervention.</strong></p>
 <figure class="research-figure">
 <a class="figure-open" href="illustration-bastion-lxrider-20261025.svg" target="_blank" rel="noopener" aria-label="Ouvrir l'illustration conceptuelle des frontières de confiance">
 <img src="illustration-bastion-lxrider-20261025.svg" width="1200" height="630" alt="Deux voies de contrôle d'accès conduisent vers une installation technique. Leurs permissions restent à vérifier." loading="eager" decoding="async">
@@ -1051,6 +1051,11 @@
 <p>La mission du technicien concerne un magasin. Son interface en affiche trois. Entre ces deux faits se trouvent des chemins réseau, des droits, des commandes possibles et des protections à vérifier.</p>
 <p>L'enjeu apparaît lorsqu'on suit ces relations jusqu'au froid : quels réglages pourraient changer, quelles alarmes pourraient manquer, quelles fonctions continueraient à protéger les équipements et les denrées ?</p>
 <p><strong>La décision repose sur des capacités établies et des conséquences concrètes : limiter les droits injustifiés, vérifier les protections et préserver la capacité d'intervention.</strong></p>
+<h3 id="pour-aller-plus-loin">Pour aller plus loin</h3>
+<ul>
+<li><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/">Sécuriser sa supervision frigorifique : guide pratique pas à pas</a>.</li>
+<li><a href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/">Cyber-résilience du froid commercial : que reste-t-il quand la supervision n'est plus fiable ?</a>.</li>
+</ul>
 <h3 id="sources-et-portee">Sources et portée</h3>
 <ul>
 <li><a href="https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/">CERT-FR — Incident ciblant les contrôleurs à distance de réfrigération, CERTFR-2026-ALE-012, 16 octobre 2026</a>.</li>
@@ -1062,7 +1067,7 @@
 </ul>
 <p><em>Portée : analyse documentaire et scénario multisite fictif. Les droits, liaisons, commandes et protections dépendent des modèles, versions et configurations. Aucun mécanisme décrit ici n'est attribué aux auteurs des incidents d'octobre 2026. Aucun essai sur une installation tierce n'est revendiqué.</em></p>
 <hr />
-<p><em>Version de travail 2.5 — 3 novembre 2026. © 2026 lxrider — Tous droits réservés pour le texte original.</em></p>
+<p><em>Version 2.6 — 3 novembre 2026. © 2026 lxrider — Tous droits réservés pour le texte original.</em></p>
 
 
     
