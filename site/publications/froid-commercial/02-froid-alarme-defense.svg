@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="735" viewBox="0 0 1400 735" role="img" aria-labelledby="title desc"><title id="title">Continuité du froid : régulation, supervision et voies d’alarme</title><desc id="desc">La régulation locale contrôle le procédé frigorifique. La supervision collecte les mesures et peut envoyer des commandes selon les droits. Une voie d’alarme séparée peut permettre une intervention même si la supervision tombe, sous réserve de son indépendance réelle.</desc>
+<rect width="1400" height="735" rx="19" fill="#071823"/>
+<rect x="2" y="2" width="1396" height="731" rx="17" fill="none" stroke="#355766" stroke-width="2"/>
+<text x="40" y="52" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="700" fill="#69D8E8" text-anchor="start">FIG. 2  /  CONSÉQUENCE ET RÉSILIENCE</text>
+<text x="40" y="97" font-family="DejaVu Sans, Arial, sans-serif" font-size="30" font-weight="700" fill="#ECF5F5" text-anchor="start">Ce qui continue, ce qui peut se perdre</text>
+<text x="40" y="128" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#BAD1D7" text-anchor="start">Les dépendances ci-dessous varient selon les architectures.</text>
+<rect x="38" y="169" width="1324" height="240" rx="14" fill="#071823" stroke="#355766" stroke-width="1.4"/>
+<text x="58" y="201" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="700" fill="#69D8E8" text-anchor="start">FONCTIONNEMENT COURANT</text>
+<rect x="60" y="236" width="359" height="134" rx="12" fill="#0D2835" stroke="#79DEBC" stroke-width="1.8"/>
+<text x="79" y="272" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="700" fill="#ECF5F5" text-anchor="start">RÉGULATION LOCALE</text>
+<text x="79" y="310" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#BAD1D7" text-anchor="start">Sondes · régulateur · actionneurs</text>
+<text x="79" y="344" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#79DEBC" text-anchor="start">Maintien du froid à vérifier</text>
+<rect x="516" y="236" width="359" height="134" rx="12" fill="#0D2835" stroke="#69D8E8" stroke-width="1.8"/>
+<text x="535" y="272" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="700" fill="#ECF5F5" text-anchor="start">SUPERVISION</text>
+<text x="535" y="310" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#BAD1D7" text-anchor="start">Collecte · historique · réglages</text>
+<text x="535" y="344" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#69D8E8" text-anchor="start">Commandes selon les droits</text>
+<rect x="972" y="236" width="359" height="134" rx="12" fill="#0D2835" stroke="#F5BC75" stroke-width="1.8"/>
+<text x="991" y="272" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="700" fill="#ECF5F5" text-anchor="start">ALARME / ASTREINTE</text>
+<text x="991" y="310" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#BAD1D7" text-anchor="start">Détection · transmission · réception</text>
+<text x="991" y="344" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#F5BC75" text-anchor="start">Intervention à confirmer</text>
+<path d="M419,300 L516,300" stroke="#69D8E8" stroke-width="2.8" fill="none" stroke-linecap="round" />
+<path d="M504.0,293.0 L516,300 L504.0,307.0" stroke="#69D8E8" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path d="M875,300 L972,300" stroke="#69D8E8" stroke-width="2.8" fill="none" stroke-linecap="round" />
+<path d="M960.0,293.0 L972,300 L960.0,307.0" stroke="#69D8E8" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<text x="435" y="279" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="400" fill="#BAD1D7" text-anchor="start">Données /</text>
+<text x="435" y="296" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="400" fill="#BAD1D7" text-anchor="start">ordres</text>
+<text x="882" y="279" font-family="DejaVu Sans, Arial, sans-serif" font-size="13" font-weight="400" fill="#BAD1D7" text-anchor="start">Alertes</text>
+<text x="60" y="393" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#BAD1D7" text-anchor="start">Une rupture de supervision peut priver le magasin de données ou d’alertes, même si la régulation locale fonctionne.</text>
+<rect x="38" y="440" width="1324" height="218" rx="14" fill="#071823" stroke="#355766" stroke-width="1.4"/>
+<text x="58" y="474" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="700" fill="#79DEBC" text-anchor="start">VOIE DE SURVEILLANCE DISTINCTE — SI ELLE EXISTE</text>
+<rect x="60" y="500" width="357" height="111" rx="12" fill="#0D2835" stroke="#79DEBC" stroke-width="1.6"/>
+<text x="78" y="533" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="700" fill="#ECF5F5" text-anchor="start">SONDE DÉDIÉE</text>
+<text x="78" y="563" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#BAD1D7" text-anchor="start">Mesure indépendante</text>
+<text x="78" y="591" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#79DEBC" text-anchor="start">Capteur · seuil</text>
+<rect x="521" y="500" width="357" height="111" rx="12" fill="#0D2835" stroke="#79DEBC" stroke-width="1.6"/>
+<text x="539" y="533" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="700" fill="#ECF5F5" text-anchor="start">TRANSMISSION DISTINCTE</text>
+<text x="539" y="563" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#BAD1D7" text-anchor="start">Alimentation et réseau</text>
+<text x="539" y="591" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#79DEBC" text-anchor="start">À vérifier</text>
+<rect x="982" y="500" width="357" height="111" rx="12" fill="#0D2835" stroke="#79DEBC" stroke-width="1.6"/>
+<text x="1000" y="533" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="700" fill="#ECF5F5" text-anchor="start">ALERTE REÇUE</text>
+<text x="1000" y="563" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#BAD1D7" text-anchor="start">Astreinte joignable</text>
+<text x="1000" y="591" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#79DEBC" text-anchor="start">Réaction vérifiée</text>
+<path d="M417,556 L521,556" stroke="#79DEBC" stroke-width="2.8" fill="none" stroke-linecap="round" />
+<path d="M509.0,549.0 L521,556 L509.0,563.0" stroke="#79DEBC" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path d="M878,556 L982,556" stroke="#79DEBC" stroke-width="2.8" fill="none" stroke-linecap="round" />
+<path d="M970.0,549.0 L982,556 L970.0,563.0" stroke="#79DEBC" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<text x="60" y="644" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#BAD1D7" text-anchor="start">Indépendance à démontrer : capteurs, seuils, alimentation, réseau, plateforme et destinataires.</text>
+<text x="40" y="702" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="700" fill="#ECF5F5" text-anchor="start">Conséquence métier : maintien de la température  +  détection du défaut  +  intervention à temps</text>
+</svg>
