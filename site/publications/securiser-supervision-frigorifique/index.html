@@ -263,7 +263,7 @@
 <meta property="og:url" content="https://lxrider.github.io/publications/securiser-supervision-frigorifique/">
 <meta property="og:site_name" content="lxrider | Recherche en cybersécurité offensive">
 <meta property="article:published_time" content="2026-10-22">
-<meta property="article:modified_time" content="2026-10-24">
+<meta property="article:modified_time" content="2026-11-03">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sécuriser sa supervision frigorifique : guide pratique pas à pas">
@@ -1258,7 +1258,7 @@
 <ol>
 <li>Sur un téléphone, coupez le Wi-Fi et tout VPN, puis essayez <strong>l'adresse habituelle de maintenance</strong> avec la connexion mobile.</li>
 <li>Si la page de gestion du superviseur apparaît directement, son interface Web est <strong>accessible depuis Internet</strong>.</li>
-<li>Si la page reste inaccessible par cette adresse, poursuivez l’inventaire des autres chemins possibles : 4G, IPv6, outil de téléassistance ou autre service.</li>
+<li>Si la page reste inaccessible par cette adresse, <strong>cela ne démontre pas l’absence d’exposition</strong> : poursuivez l’inventaire des autres chemins possibles (autres ports et services, 4G, IPv6, outil de téléassistance).</li>
 </ol>
 <p>Ce contrôle porte <strong>sur l’adresse habituelle de maintenance, dans un périmètre autorisé</strong>. Pour obtenir d’autres adresses ou vérifier d’autres équipements, passez par le responsable réseau et le mainteneur.</p>
 <h3 id="qui-tient-les-acces-de-telemaintenance">Qui tient les accès de télémaintenance ?<a class="zola-anchor" href="#qui-tient-les-acces-de-telemaintenance" aria-label="Anchor link for: qui-tient-les-acces-de-telemaintenance">
@@ -1318,7 +1318,7 @@
   </span>
 </a>
 </h3>
-<p>Un <strong>VPN</strong> fournit un chemin privé vers le site. Une <strong>passerelle</strong> peut porter cet accès. Un <strong>bastion</strong> est utile pour organiser et tracer les interventions, surtout quand plusieurs magasins ou prestataires sont concernés.</p>
+<p>Un <strong>VPN</strong> fournit un chemin privé vers le site. Une <strong>passerelle</strong> peut porter cet accès. Un <strong>bastion</strong> est utile pour organiser et tracer les interventions, surtout quand plusieurs magasins ou prestataires sont concernés. Ce chemin privé ne suffit pas à lui seul : le responsable de l’accès doit restreindre les routes, les destinations et les ports autorisés, et prévoir la révocation des habilitations.</p>
 <table><thead><tr><th>Situation rencontrée</th><th>Piste à examiner</th><th>Point à vérifier</th></tr></thead><tbody>
 <tr><td>Le magasin dispose déjà d'un VPN d'entreprise</td><td>Le réutiliser, avec un accès limité au froid</td><td>Qui se connecte et quels équipements sont joignables ?</td></tr>
 <tr><td>La box possède un serveur VPN adapté</td><td>VPN de la box, par exemple <a rel="external" href="https://assistance.free.fr/articles/1970">WireGuard sur certaines Freebox</a></td><td>Comptes, mises à jour et filtrage des accès</td></tr>
@@ -1361,7 +1361,7 @@
   </span>
 </a>
 </h3>
-<p>Un ancien prestataire utilise encore un identifiant partagé ? Un compte par défaut existe toujours ? Cela mérite une revue avec le mainteneur. Quand c'est possible, attribuez des comptes nominatifs et une authentification renforcée sur le VPN ou le bastion.</p>
+<p>Un ancien prestataire utilise encore un identifiant partagé ? Un compte par défaut existe toujours ? Cela mérite une revue avec le mainteneur. Quand c'est possible, attribuez des comptes nominatifs, des droits minimaux et une authentification multifacteur sur le VPN ou le bastion. Prévoyez la révocation des comptes des anciens intervenants et la protection des comptes d’administration du superviseur.</p>
 <p><strong>La fermeture des ports publics et la gestion des comptes sont deux protections complémentaires.</strong> Le VPN réduit également l’exposition d’un superviseur en fin de support. Pour les XWEB EVO, Copeland a <a rel="external" href="https://webapps.copeland.com/dixell/Content/Pages/AdvertisingMaterials/ProductNews/XWEB%20EVO%20EoS%20-%20Product_Bulletin_March_2026.pdf">annoncé l’arrêt des mises à jour logicielles le 16 mars 2026</a> : la protection immédiate de l’accès s’accompagne d’un projet de remplacement.</p>
 <h3 id="la-bascule-dans-le-bon-ordre">La bascule, dans le bon ordre<a class="zola-anchor" href="#la-bascule-dans-le-bon-ordre" aria-label="Anchor link for: la-bascule-dans-le-bon-ordre">
   <span class="content-icon content-icon-sm" aria-hidden="true">
@@ -1375,7 +1375,7 @@
 <li>Mettre en place <strong>le nouvel accès et le tester</strong> avec le frigoriste ; conserver ce qui est nécessaire au retour arrière.</li>
 <li>Vérifier la <strong>télémaintenance et le parcours des alarmes</strong> avec l'astreinte.</li>
 <li>Faire retirer l'<strong>accès public direct</strong> par la personne habilitée, avec l'accord de l'exploitant.</li>
-<li>Retester, vérifier les autres chemins (4G, IPv6, accès cloud) et noter le moyen de secours.</li>
+<li>Retester, vérifier les autres chemins (4G, IPv6, accès cloud) et noter le moyen de secours. <strong>Un repli ne doit pas republier automatiquement l’interface sur Internet</strong> : toute exception temporaire doit être arbitrée, limitée et assortie d’une échéance.</li>
 </ol>
 <h2 id="5-apres-la-modification-qu-est-ce-qui-le-prouve">5. Après la modification, qu'est-ce qui le prouve ?<a class="zola-anchor" href="#5-apres-la-modification-qu-est-ce-qui-le-prouve" aria-label="Anchor link for: 5-apres-la-modification-qu-est-ce-qui-le-prouve">
   <span class="content-icon content-icon-sm" aria-hidden="true">
@@ -1414,7 +1414,7 @@ Pour chaque accès, <strong>celui qui autorise, administre et retire les droits<
 <li><input disabled="" type="checkbox"/>
 On sait <strong>qui maintient la solution</strong>, qui dépanne et qui appeler en dehors des heures ouvrées.</li>
 </ul>
-<p>Ce guide concerne <strong>la sécurisation préventive des accès</strong>. Si une compromission est suspectée, il faut préserver les constats et coordonner la réponse avec les personnes compétentes ; la <a rel="external" href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/">reprise après incident</a> est un autre sujet.</p>
+<p>Ce guide concerne <strong>la sécurisation préventive des accès</strong>. Si une compromission est suspectée, <strong>fermer une redirection ne suffit pas à considérer l’installation comme saine</strong>. Préservez les constats, faites vérifier les paramètres et l’état réel de l’installation frigorifique par le professionnel compétent, puis coordonnez la réponse selon les consignes CERT-FR et constructeur ; la <a rel="external" href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/">reprise après incident</a> est un autre sujet.</p>
 <p><strong>Le résultat se vérifie sur le terrain : le frigoriste intervient à distance par un accès maîtrisé, l’astreinte reçoit les alarmes et les interfaces de gestion restent derrière les protections prévues.</strong></p>
 <h2 id="sources-et-documentation">Sources et documentation<a class="zola-anchor" href="#sources-et-documentation" aria-label="Anchor link for: sources-et-documentation">
   <span class="content-icon content-icon-sm" aria-hidden="true">
@@ -1433,7 +1433,7 @@ On sait <strong>qui maintient la solution</strong>, qui dépanne et qui appeler 
 <li><a rel="external" href="https://assistance.orange.fr/ordinateurs-peripheriques/installer-et-utiliser/les-consoles-de-jeux/xbox/livebox-5-configurer-les-regles-nat-pour-pouvoir-utiliser-un-jeu-ou-une-application-serveur_287340-827962">Orange — Livebox 5, NAT/PAT</a> ; <a rel="external" href="https://assistance.free.fr/articles/1395">Free — paramètres réseau avancés</a>.</li>
 </ul>
 <p><em>Portée : guide pratique destiné aux intervenants autorisés sur les supervisions frigorifiques. Les exemples d'accès et les schémas sont conceptuels ; ils doivent être confrontés aux équipements, connexions et contrats du site.</em></p>
-<p><em>Version 1.3.2 — révision éditoriale publiée, 24 octobre 2026. © 2026 lxrider — Tous droits réservés.</em></p>
+<p><em>Version 1.3.3 — révision technique, 3 novembre 2026. © 2026 lxrider — Tous droits réservés.</em></p>
 
 
     
