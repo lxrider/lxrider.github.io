@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="554" viewBox="0 0 1120 554" role="img" aria-labelledby="title desc">
+<title id="title">Dépendances fonctionnelles et continuité du froid</title><desc id="desc">Chaîne principale de régulation locale, supervision et alarmes, et chaîne distincte optionnelle de surveillance de conservation. La continuité et l’indépendance sont à vérifier sur site.</desc>
+<style>text{font-family:Inter, system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif;letter-spacing:0.02px} </style>
+<rect width="1120" height="554" rx="18" fill="#0a1923"/>
+<rect x="1.2" y="1.2" width="1117.6" height="551.6" rx="17" fill="none" stroke="#37515b" stroke-width="1.4"/>
+<text x="34" y="43" fill="#71cede" font-size="18" font-weight="700" text-anchor="start" >FIG. 2  /  CONTINUITÉ DU FROID</text>
+<text x="34" y="78" fill="#eff8fa" font-size="25" font-weight="700" text-anchor="start" >Régulation, supervision et alarmes : trois fonctions distinctes</text>
+<text x="34" y="112" fill="#71cede" font-size="17" font-weight="700" text-anchor="start" >CHAÎNE PRINCIPALE — dépendances à confirmer sur l’installation</text>
+<rect x="34" y="132" width="330" height="152" rx="12" fill="#0e2833" stroke="#365461" stroke-width="1.4"/>
+<text x="52" y="169" fill="#eff8fa" font-size="23" font-weight="700" text-anchor="start" >Régulation locale</text>
+<text x="52" y="208" fill="#b6cbd3" font-size="18" font-weight="400" text-anchor="start" >Capteurs · régulateur · actionneurs</text>
+<line x1="52" y1="229" x2="346" y2="229" stroke="#355663" stroke-width="1.1" />
+<text x="52" y="258" fill="#83dbb8" font-size="17" font-weight="600" text-anchor="start" >Peut fonctionner en autonomie</text>
+<rect x="395" y="132" width="330" height="152" rx="12" fill="#0e2833" stroke="#365461" stroke-width="1.4"/>
+<text x="413" y="169" fill="#eff8fa" font-size="23" font-weight="700" text-anchor="start" >Supervision / GTC</text>
+<text x="413" y="208" fill="#b6cbd3" font-size="18" font-weight="400" text-anchor="start" >Collecte · historique · commandes</text>
+<line x1="413" y1="229" x2="707" y2="229" stroke="#355663" stroke-width="1.1" />
+<text x="413" y="258" fill="#b6cbd3" font-size="17" font-weight="400" text-anchor="start" >Dépend du bus et du superviseur</text>
+<rect x="756" y="132" width="330" height="152" rx="12" fill="#0e2833" stroke="#365461" stroke-width="1.4"/>
+<text x="774" y="169" fill="#eff8fa" font-size="23" font-weight="700" text-anchor="start" >Alarmes / astreinte</text>
+<text x="774" y="208" fill="#b6cbd3" font-size="18" font-weight="400" text-anchor="start" >Détection · transmission · réception</text>
+<line x1="774" y1="229" x2="1068" y2="229" stroke="#355663" stroke-width="1.1" />
+<text x="774" y="258" fill="#b6cbd3" font-size="17" font-weight="400" text-anchor="start" >Dépend de la source et de la voie</text>
+<line x1="366" y1="208" x2="389" y2="208" stroke="#71cede" stroke-width="2.4" /><path d="M380 202 L389 208 L380 214" fill="none" stroke="#71cede" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="727" y1="208" x2="750" y2="208" stroke="#71cede" stroke-width="2.4" /><path d="M741 202 L750 208 L741 214" fill="none" stroke="#71cede" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="34" y="326" fill="#eff8fa" font-size="18" font-weight="500" text-anchor="start" >Une rupture de liaison ne prouve pas l’arrêt du froid ; elle peut interrompre données, commandes ou alertes.</text>
+<line x1="34" y1="351" x2="1086" y2="351" stroke="#37606c" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text x="34" y="387" fill="#83dbb8" font-size="17" font-weight="700" text-anchor="start" >CHAÎNE DE SURVEILLANCE DISTINCTE — lorsqu’elle existe</text>
+<rect x="34" y="409" width="330" height="77" rx="9" fill="#0f2c32" stroke="#428277" stroke-width="1.3"/>
+<text x="51" y="441" fill="#eff8fa" font-size="20" font-weight="700" text-anchor="start" >Sonde dédiée</text>
+<text x="51" y="469" fill="#b6cbd3" font-size="17" font-weight="400" text-anchor="start" >Température de conservation</text>
+<rect x="395" y="409" width="330" height="77" rx="9" fill="#0f2c32" stroke="#428277" stroke-width="1.3"/>
+<text x="412" y="441" fill="#eff8fa" font-size="20" font-weight="700" text-anchor="start" >Transmission propre</text>
+<text x="412" y="469" fill="#b6cbd3" font-size="17" font-weight="400" text-anchor="start" >Réseau / alimentation à vérifier</text>
+<rect x="756" y="409" width="330" height="77" rx="9" fill="#0f2c32" stroke="#428277" stroke-width="1.3"/>
+<text x="773" y="441" fill="#eff8fa" font-size="20" font-weight="700" text-anchor="start" >Alerte reçue</text>
+<text x="773" y="469" fill="#b6cbd3" font-size="17" font-weight="400" text-anchor="start" >Destinataire / astreinte</text>
+<line x1="366" y1="448" x2="389" y2="448" stroke="#83dbb8" stroke-width="2.4" /><path d="M380 442 L389 448 L380 454" fill="none" stroke="#83dbb8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="727" y1="448" x2="750" y2="448" stroke="#83dbb8" stroke-width="2.4" /><path d="M741 442 L750 448 L741 454" fill="none" stroke="#83dbb8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="34" y="530" fill="#b6cbd3" font-size="18" font-weight="400" text-anchor="start" >Indépendance réelle à vérifier : capteurs, seuils, énergie, comptes, réseau, plateforme et réception de l’alarme.</text>
+</svg>

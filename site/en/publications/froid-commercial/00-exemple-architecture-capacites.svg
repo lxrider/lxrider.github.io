@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="636" viewBox="0 0 1200 636" role="img" aria-labelledby="title desc">
+<title id="title">Exemple fictif : des accès distants aux capacités d’action</title>
+<desc id="desc">Un intervenant accède au VPN, puis au PC froid, puis à la supervision et aux régulateurs. Une liaison hypothétique en pointillés vers la vidéosurveillance représente un chemin latéral à vérifier, non une compromission constatée.</desc>
+<defs><marker id="cyanArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 1 L9 5 L0 9" fill="none" stroke="#71cede" stroke-width="1.5"/></marker><marker id="amberArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 1 L9 5 L0 9" fill="none" stroke="#e7ad6b" stroke-width="1.5"/></marker></defs>
+<style>text{font-family:Inter,"Segoe UI",Arial,sans-serif}</style>
+<rect x="0" y="0" width="1198" height="634" rx="18" fill="#0a1923" stroke="#37515b" stroke-width="1.7"/>
+<text x="32" y="41" font-size="18" fill="#71cede" font-weight="700" text-anchor="start">EXEMPLE D’ARCHITECTURE  /  CAPACITÉS D’ACTION</text>
+<text x="32" y="82" font-size="31" fill="#eff8fa" font-weight="700" text-anchor="start">Quels chemins permettent réellement d’agir ?</text>
+<text x="32" y="114" font-size="18" fill="#b6cbd3" font-weight="400" text-anchor="start">Parcours illustratif, pas un relevé d’installation ni un chemin d’attaque confirmé.</text>
+<rect x="226" y="152" width="953" height="218" rx="15" fill="#0c212b" stroke="#2d5965" stroke-width="1.7"/>
+<text x="246" y="180" font-size="16" fill="#71cede" font-weight="700" text-anchor="start">RÉSEAU TECHNIQUE DU MAGASIN</text>
+<text x="32" y="150" font-size="16" fill="#71cede" font-weight="700" text-anchor="start">ACCÈS DISTANT</text>
+<rect x="32" y="205" width="170" height="126" rx="14" fill="#0e2833" stroke="#365461" stroke-width="1.7"/>
+<text x="49" y="244" font-size="20" fill="#eff8fa" font-weight="700" text-anchor="start">Intervenant</text>
+<text x="49" y="282" font-size="17" fill="#b6cbd3" font-weight="400" text-anchor="start">Identité</text>
+<text x="49" y="306" font-size="17" fill="#b6cbd3" font-weight="400" text-anchor="start">et mandat</text>
+<rect x="242" y="205" width="190" height="126" rx="14" fill="#0e2833" stroke="#365461" stroke-width="1.7"/>
+<text x="259" y="244" font-size="20" fill="#eff8fa" font-weight="700" text-anchor="start">VPN / pare-feu</text>
+<text x="259" y="282" font-size="17" fill="#b6cbd3" font-weight="400" text-anchor="start">Accès réseau</text>
+<text x="259" y="306" font-size="17" fill="#b6cbd3" font-weight="400" text-anchor="start">filtré</text>
+<rect x="468" y="205" width="184" height="126" rx="14" fill="#0e2833" stroke="#365461" stroke-width="1.7"/>
+<text x="485" y="244" font-size="20" fill="#eff8fa" font-weight="700" text-anchor="start">PC froid</text>
+<text x="485" y="282" font-size="17" fill="#b6cbd3" font-weight="400" text-anchor="start">Session, outils</text>
+<text x="485" y="306" font-size="17" fill="#b6cbd3" font-weight="400" text-anchor="start">de maintenance</text>
+<rect x="687" y="205" width="224" height="126" rx="14" fill="#0e2833" stroke="#365461" stroke-width="1.7"/>
+<text x="704" y="244" font-size="20" fill="#eff8fa" font-weight="700" text-anchor="start">Supervision / GTC</text>
+<text x="704" y="282" font-size="17" fill="#b6cbd3" font-weight="400" text-anchor="start">Droits de lecture,</text>
+<text x="704" y="306" font-size="17" fill="#b6cbd3" font-weight="400" text-anchor="start">écriture, commandes</text>
+<rect x="945" y="205" width="216" height="126" rx="14" fill="#0e2833" stroke="#365461" stroke-width="1.7"/>
+<text x="962" y="244" font-size="20" fill="#eff8fa" font-weight="700" text-anchor="start">Régulateurs</text>
+<text x="962" y="282" font-size="17" fill="#b6cbd3" font-weight="400" text-anchor="start">Commandes acceptées</text>
+<text x="962" y="306" font-size="17" fill="#b6cbd3" font-weight="400" text-anchor="start">selon configuration</text>
+<path d="M202,268 L241,268" stroke="#71cede" stroke-width="2.4" fill="none" stroke-linecap="round" marker-end="url(#cyanArrow)"/>
+<path d="M432,268 L467,268" stroke="#71cede" stroke-width="2.4" fill="none" stroke-linecap="round" marker-end="url(#cyanArrow)"/>
+<path d="M652,268 L686,268" stroke="#71cede" stroke-width="2.4" fill="none" stroke-linecap="round" marker-end="url(#cyanArrow)"/>
+<path d="M911,268 L944,268" stroke="#71cede" stroke-width="2.4" fill="none" stroke-linecap="round" marker-end="url(#cyanArrow)"/>
+<text x="36" y="390" font-size="16" fill="#83dbb8" font-weight="700" text-anchor="start">PORTÉE DES DROITS</text>
+<text x="36" y="421" font-size="21" fill="#eff8fa" font-weight="600" text-anchor="start">Atteindre un équipement ≠</text>
+<text x="36" y="452" font-size="21" fill="#eff8fa" font-weight="600" text-anchor="start">pouvoir exécuter une commande.</text>
+<text x="36" y="499" font-size="18" fill="#b6cbd3" font-weight="400" text-anchor="start">Vérifier : flux, comptes,</text>
+<text x="36" y="525" font-size="18" fill="#b6cbd3" font-weight="400" text-anchor="start">permissions et applications</text>
+<path d="M1053,333 L1053,444" stroke="#83dbb8" stroke-width="2.4" fill="none" stroke-linecap="round" marker-end="url(#cyanArrow)"/>
+<rect x="950" y="448" width="225" height="102" rx="14" fill="#102e2d" stroke="#387564" stroke-width="1.7"/>
+<text x="966" y="479" font-size="19" fill="#eff8fa" font-weight="700" text-anchor="start">Procédé frigorifique</text>
+<text x="966" y="507" font-size="17" fill="#b6cbd3" font-weight="400" text-anchor="start">Effets physiques</text>
+<text x="966" y="533" font-size="17" fill="#83dbb8" font-weight="600" text-anchor="start">à confirmer</text>
+<rect x="677" y="439" width="243" height="112" rx="14" fill="#2b251e" stroke="#997348" stroke-width="1.8"/>
+<text x="696" y="469" font-size="19" fill="#eff8fa" font-weight="700" text-anchor="start">Autre actif critique</text>
+<text x="696" y="498" font-size="17" fill="#b6cbd3" font-weight="400" text-anchor="start">Ex. vidéosurveillance</text>
+<text x="696" y="525" font-size="17" fill="#e7ad6b" font-weight="650" text-anchor="start">Accès non établi</text>
+<path d="M799,332 L799,437" stroke="#e7ad6b" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-dasharray="7 9" marker-end="url(#amberArrow)"/>
+<text x="812" y="403" font-size="15" fill="#e7ad6b" font-weight="700" text-anchor="start">HYPOTHÈSE</text>
+<text x="32" y="591" font-size="16" fill="#71cede" font-weight="650" text-anchor="start">Trait cyan : parcours métier illustratif</text>
+<text x="570" y="591" font-size="16" fill="#e7ad6b" font-weight="650" text-anchor="start">Pointillés orange : chemin latéral potentiel à vérifier</text>
+<text x="32" y="617" font-size="15" fill="#b6cbd3" font-weight="400" text-anchor="start">Les équipements, flux et autorités diffèrent selon les magasins ; ce schéma ne démontre aucune interconnexion réelle.</text>
+</svg>

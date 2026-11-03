@@ -1,0 +1,1391 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html
+  lang="en"
+  dir="ltr"
+  
+  
+>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <title>Commercial Refrigeration Cybersecurity: Who Can Control the Systems? | lxrider | Independent Offensive Cybersecurity Research</title>
+  
+<script>
+  (function () {
+    var storageKey = "devlab-theme-color-mode";
+    var announcementStorageKey = "devlab-announcement-dismissed";
+    var root = document.documentElement;
+    var defaultMode = "dark";
+
+    function isValidMode(mode) {
+      return mode === "light" || mode === "dark" || mode === "system";
+    }
+
+    function getSystemTheme() {
+      return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    }
+
+    function resolveTheme(mode) {
+      return mode === "system" ? getSystemTheme() : mode;
+    }
+
+    function getStoredMode() {
+      try {
+        return localStorage.getItem(storageKey);
+      } catch (_) {
+        return null;
+      }
+    }
+
+    var storedMode = getStoredMode();
+    var mode = isValidMode(storedMode) ? storedMode : defaultMode;
+
+    if (!isValidMode(mode)) {
+      mode = "system";
+    }
+
+    root.dataset.themeDefault = defaultMode;
+    root.dataset.themeMode = mode;
+    root.dataset.theme = resolveTheme(mode);
+
+    if (root.dataset.announcementKey) {
+      try {
+        if (localStorage.getItem(announcementStorageKey) === root.dataset.announcementKey) {
+          root.dataset.announcementDismissed = "true";
+        }
+      } catch (_) {
+        // Keep the announcement visible when persistent storage is unavailable.
+      }
+    }
+  })();
+</script>
+
+
+
+<meta name="description" content="Maintenance access, command privileges and safeguards: assessing how far an adversary could act.">
+<link rel="canonical" href="https://lxrider.github.io/en/publications/froid-commercial/">
+
+<meta property="og:title" content="Commercial Refrigeration Cybersecurity: Who Can Control the Systems?">
+<meta property="og:description" content="Maintenance access, command privileges and safeguards: assessing how far an adversary could act.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lxrider.github.io/en/publications/froid-commercial/">
+<meta property="og:site_name" content="lxrider | Independent Offensive Cybersecurity Research">
+<meta property="article:published_time" content="2026-10-22">
+<meta property="article:modified_time" content="2026-11-03">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Commercial Refrigeration Cybersecurity: Who Can Control the Systems?">
+<meta name="twitter:description" content="Maintenance access, command privileges and safeguards: assessing how far an adversary could act.">
+
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b1120" media="(prefers-color-scheme: dark)">
+
+
+
+
+
+<link rel="alternate" hreflang="en" href="https://lxrider.github.io/en/publications/froid-commercial/">
+
+
+
+<link rel="alternate" hreflang="fr" href="https://lxrider.github.io/publications/froid-commercial/">
+
+
+
+
+
+<link rel="icon" href="https://lxrider.github.io/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://lxrider.github.io/main.css">
+
+<link rel="stylesheet" href="https://lxrider.github.io/print.css" media="print">
+
+  
+  
+<link rel="stylesheet" href="https://lxrider.github.io/custom.css">
+
+</head>
+
+
+
+
+<body>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  
+
+  <div class="site-shell">
+    
+    <header class="site-header site-header-has-menu">
+  <div class="site-header-inner">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a class="site-logo" href="https://lxrider.github.io/en" aria-label="lxrider | Independent Offensive Cybersecurity Research">
+  
+  
+  <img
+    class="site-logo-mark site-logo-mark-image"
+    src="https://lxrider.github.io/images/lxrider-header-logo.png"
+    alt=""
+    width="32"
+    height="32"
+  >
+  
+  
+
+  
+</a>
+
+
+
+    
+    <nav class="site-nav" aria-label="Main navigation">
+      
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+<a
+  class="site-nav-link is-active"
+  href="https://lxrider.github.io/en/publications/"
+  aria-current="location"
+>
+  Publications
+</a>
+
+      
+      
+      
+      
+      
+        
+        
+      
+      
+      
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+
+<a
+  class="site-nav-link "
+  href="https://github.com/lxrider"
+  
+>
+  GitHub
+</a>
+
+      
+      
+    </nav>
+    
+
+    
+
+    
+
+
+
+
+
+
+<button
+  class="theme-toggle"
+  type="button"
+  data-theme-toggle
+  data-theme-light-label="Light theme"
+  data-theme-dark-label="Dark theme"
+  data-theme-system-label="System theme"
+  aria-label="Dark theme"
+  title="Dark theme"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="theme-toggle-svg system" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1v-10" /><path d="M7 20h10" /><path d="M9 16v4" /><path d="M15 16v4" /></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="theme-toggle-svg sun" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="theme-toggle-svg moon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454l0 .008" /><path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2" /><path d="M19 11h2m-1 -1v2" /></svg>
+</button>
+
+
+
+<nav class="language-switcher" aria-label="Language">
+
+
+
+
+
+<a href="https://lxrider.github.io/en/publications/froid-commercial/" lang="en" hreflang="en" aria-current="page">EN</a>
+
+
+
+
+
+<a href="https://lxrider.github.io/publications/froid-commercial/" lang="fr" hreflang="fr">FR</a>
+
+</nav>
+
+
+
+
+    
+    <button
+      class="site-menu-button"
+      type="button"
+      aria-label="Open menu"
+      aria-controls="site-menu"
+      aria-expanded="false"
+      data-site-menu-toggle
+    >
+      <span class="site-menu-button-icon" aria-hidden="true"></span>
+    </button>
+    
+  </div>
+</header>
+
+    
+    <div class="site-menu-backdrop" data-site-menu-backdrop hidden></div>
+
+<div
+  id="site-menu"
+  class="site-menu"
+  role="dialog"
+  aria-label="Mobile navigation"
+  aria-modal="true"
+  aria-hidden="true"
+  data-site-menu
+  data-site-menu-initial-panel="docs"
+  inert
+>
+  <div class="site-menu-header">
+    <p class="site-menu-title">Menu</p>
+
+    <button
+      class="site-menu-close"
+      type="button"
+      aria-label="Close menu"
+      data-site-menu-close
+    >
+      &times;
+    </button>
+  </div>
+
+  
+
+<div id="site-menu-panel-main" class="site-menu-panel" data-site-menu-panel="main">
+  <nav class="site-menu-nav" aria-label="Main mobile navigation">
+    
+    
+    
+    
+    
+    
+    <div class="site-menu-link-row">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+<a
+  class="site-menu-link is-active"
+  href="https://lxrider.github.io/en/publications/"
+  aria-current="location"
+>
+  <span>Publications</span>
+</a>
+
+      <button
+        class="site-menu-link-disclosure"
+        type="button"
+        aria-label="Open documentation navigation"
+        aria-controls="site-menu-panel-docs"
+        aria-expanded="false"
+        data-site-menu-panel-target="docs"
+      >
+        <span class="site-menu-link-indicator" aria-hidden="true">&rsaquo;</span>
+      </button>
+    </div>
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+<a
+  class="site-menu-link "
+  href="https://github.com/lxrider"
+  
+>
+  GitHub
+</a>
+
+    
+    
+    
+  </nav>
+</div>
+
+  
+
+<div id="site-menu-panel-docs" class="site-menu-panel" data-site-menu-panel="docs" hidden>
+  
+  <button
+    class="site-menu-back"
+    type="button"
+    aria-controls="site-menu-panel-main"
+    data-site-menu-panel-target="main"
+  >
+    <span aria-hidden="true">&larr;</span>
+    Back to main menu
+  </button>
+  
+
+  <nav class="site-menu-nav site-menu-docs-nav" aria-label="Documentation mobile navigation">
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="docs-nav-list">
+  
+  
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link "
+    href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/"
+    
+  >
+    Cyber Resilience in Commercial Refrigeration: Managing an Incident, Protecting the Process
+  </a>
+</li>
+
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link "
+    href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/"
+    
+  >
+    Securing Refrigeration Supervision: A Step-by-Step Practical Guide
+  </a>
+</li>
+
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link is-active"
+    href="https://lxrider.github.io/en/publications/froid-commercial/"
+    aria-current="page"
+  >
+    Commercial Refrigeration Cybersecurity: Who Can Control the Systems?
+  </a>
+</li>
+
+
+
+
+
+  
+</ul>
+
+
+
+
+  </nav>
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="site-footer site-footer-compact">
+  <div class="site-footer-inner">
+    
+
+
+
+
+
+<div class="site-footer-info">
+
+<p class="site-footer-note">Independent analysis of systems and their access paths.</p>
+
+
+<p class="site-footer-copyright">&copy; 2026 lxrider</p>
+</div>
+
+
+
+  </div>
+</footer>
+
+
+</div>
+
+
+</div>
+
+    
+    
+    <main id="main-content" class="site-main site-main-docs" tabindex="-1">
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="docs-shell">
+  
+<aside
+  id="docs-sidebar"
+  class="docs-sidebar"
+  aria-label="Publications"
+>
+  
+
+  <nav class="docs-sidebar-nav" aria-label="Publications">
+    <p class="docs-sidebar-title">Publications</p>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="docs-nav-list">
+  
+  
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link "
+    href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/"
+    
+  >
+    Cyber Resilience in Commercial Refrigeration: Managing an Incident, Protecting the Process
+  </a>
+</li>
+
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link "
+    href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/"
+    
+  >
+    Securing Refrigeration Supervision: A Step-by-Step Practical Guide
+  </a>
+</li>
+
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link is-active"
+    href="https://lxrider.github.io/en/publications/froid-commercial/"
+    aria-current="page"
+  >
+    Commercial Refrigeration Cybersecurity: Who Can Control the Systems?
+  </a>
+</li>
+
+
+
+
+
+  
+</ul>
+
+
+
+
+  </nav>
+
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="site-footer site-footer-compact">
+  <div class="site-footer-inner">
+    
+
+
+
+
+
+<div class="site-footer-info">
+
+<p class="site-footer-note">Independent analysis of systems and their access paths.</p>
+
+
+<p class="site-footer-copyright">&copy; 2026 lxrider</p>
+</div>
+
+
+
+  </div>
+</footer>
+
+
+</aside>
+
+
+  <article class="docs-content content">
+    
+    
+
+
+
+
+
+
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol class="breadcrumbs-list">
+    <li class="breadcrumbs-item">
+      <a href="https://lxrider.github.io/en/publications/">Publications</a>
+    </li>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    <li class="breadcrumbs-item" aria-current="page">
+      <span>Commercial Refrigeration Cybersecurity: Who Can Control the Systems?</span>
+    </li>
+  </ol>
+</nav>
+
+
+
+
+    
+
+    
+<header class="page-header">
+  <div class="docs-page-heading">
+  <h1>Commercial Refrigeration Cybersecurity: Who Can Control the Systems?</h1>
+  
+<div class="docs-copy-link">
+  <button
+    class="docs-copy-link-button"
+    type="button"
+    aria-label="Copy link"
+    title="Copy link"
+    data-docs-copy-link
+    hidden
+  >
+    <span class="docs-copy-link-default-icon" data-docs-copy-link-default-icon>
+      <span class="content-icon content-icon-sm" aria-hidden="true">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+</span>
+    </span>
+    <span class="docs-copy-link-success-icon" data-docs-copy-link-success-icon>
+      <span class="content-icon content-icon-sm" aria-hidden="true">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5l10 -10" /></svg>
+</span>
+    </span>
+    <span class="docs-copy-link-label" data-docs-copy-link-label>Copy link</span>
+  </button>
+  <span
+    class="docs-page-action-status"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+    data-docs-copy-link-status
+  ></span>
+</div>
+
+</div>
+  
+
+  <p class="page-description">Maintenance access, command privileges and safeguards: assessing how far an adversary could act.</p>
+  
+
+</header>
+
+
+    
+    
+    
+<details class="docs-toc-inline" data-devlab-toc>
+  <summary>On this page</summary>
+  <nav aria-label="On this page">
+    
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/en/publications/froid-commercial/#1-authority-required-for-day-to-day-operations">
+        1. Authority required for day-to-day operations
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/en/publications/froid-commercial/#2-how-could-an-adversary-acquire-these-capabilities">
+        2. How could an adversary acquire these capabilities?
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/en/publications/froid-commercial/#3-how-far-does-access-allow-someone-to-affect-refrigeration">
+        3. How far does access allow someone to affect refrigeration?
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/en/publications/froid-commercial/#4-where-do-safeguards-change-the-outcome">
+        4. Where do safeguards change the outcome?
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/en/publications/froid-commercial/#5-what-can-the-operator-decide">
+        5. What can the operator decide?
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <details class="docs-toc-group" data-docs-toc-group>
+        <summary class="docs-toc-group-toggle">
+          <a href="https://lxrider.github.io/en/publications/froid-commercial/#conclusion">
+            Conclusion
+          </a>
+          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
+        </summary>
+
+        
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/froid-commercial/#sources-and-limitations">
+        Sources and limitations
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/froid-commercial/#further-reading">
+        Further reading
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+
+      </details>
+      
+    </li>
+    
+  </ul>
+  
+
+  </nav>
+</details>
+
+
+
+    <p>In October 2026, <a rel="external" href="https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/">CERT-FR reported compromises</a> affecting refrigeration supervisory systems.</p>
+<p><strong>What could an adversary gain after compromising maintenance access?</strong> Information, permission to change settings, the ability to issue commands to equipment? How far could they interfere with refrigeration and alarms?</p>
+<p>To answer these questions, we trace the capabilities available to an actor, the safeguards in place and the consequences for the store.</p>
+<figure class="research-figure">
+<a class="figure-open" href="illustration-pouvoir-de-commande-lxrider.svg" target="_blank" rel="noopener" aria-label="Open the illustration of command authority over a refrigeration system">
+<img src="illustration-pouvoir-de-commande-lxrider.svg" width="1200" height="630" alt="A refrigeration plant room and digital supervisory system connected to the store's equipment by an amber line representing command capabilities." loading="eager" decoding="async" fetchpriority="high">
+</a>
+<figcaption>Depending on the equipment and access rights, a supervisory system can alter certain refrigeration settings. Conceptual illustration by lxrider.</figcaption>
+</figure>
+<h2 id="1-authority-required-for-day-to-day-operations">1. Authority required for day-to-day operations<a class="zola-anchor" href="#1-authority-required-for-day-to-day-operations" aria-label="Anchor link for: 1-authority-required-for-day-to-day-operations">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p>A store must keep its products at the required temperatures. The refrigeration technician needs to monitor the installation, diagnose faults and intervene. Depending on the architecture, a supervisory system centralizes measurements, alarms and certain commands.</p>
+<p>Remote maintenance makes these operations easier. It also grants capabilities to people and services: connecting to equipment, viewing data, changing a setpoint, acknowledging an alarm or administering a supervisory system.</p>
+<p><strong>The first question is: which actions should each party be allowed to perform, on which equipment and for how long?</strong> The maintenance requirement defines the legitimate scope of access rights.</p>
+<h2 id="2-how-could-an-adversary-acquire-these-capabilities">2. How could an adversary acquire these capabilities?<a class="zola-anchor" href="#2-how-could-an-adversary-acquire-these-capabilities" aria-label="Anchor link for: 2-how-could-an-adversary-acquire-these-capabilities">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p>An adversary might look for an exposed interface, obtain credentials, compromise a maintenance workstation or exploit a trusted relationship. These possibilities depend on the actual architecture and safeguards. <strong>None of these paths is attributed here to the October 2026 incidents.</strong></p>
+<p>Consider an <em>illustrative</em> architecture: a technician reaches the supervisory systems through a VPN and a privileged-access gateway (bastion). The VPN controls entry into the network; the bastion controls destinations and sessions. Each supervisory system retains its own permissions for reading, configuration and commands.</p>
+<figure class="research-figure">
+<a class="figure-open" href="01-autorite-bastion-en.svg" target="_blank" rel="noopener" aria-label="Open the conceptual remote-maintenance architecture and its trust boundaries">
+<img height="760" width="1400" src="01-autorite-bastion-en.svg" alt="Technician and remote access with MFA, session bastion, site-specific permissions, supervisory system and controllers. A possible direct bypass path still needs investigation; commands also depend on local permissions." loading="lazy" decoding="async">
+</a>
+<figcaption>Figure 1 — The bastion governs sessions; access rights and site-level safeguards determine which commands are possible. Illustrative architecture.</figcaption>
+</figure>
+<p>Three controls serve complementary purposes:</p>
+<ul>
+<li><strong>MFA:</strong> reduce the risk of stolen credentials being used to establish a session. It does not neutralize an already-compromised session.</li>
+<li><strong>IAM and RBAC:</strong> assign named, role-based and site-specific permissions. Reading, changing settings and administration should be separated where the equipment supports it.</li>
+<li><strong>Bastion:</strong> centralize sessions, restrict destinations, record interventions and allow access to be revoked, subject to the protocols it supports. This control works only if the relevant maintenance connections actually go through it. Direct paths and bypass accounts must be identified.</li>
+</ul>
+<p>Reviewing service accounts, former contractors and administrative privileges is part of the same exercise. <strong>Who can grant or extend permissions on the bastion?</strong> This authority deserves as much scrutiny as the technicians' permissions.</p>
+<h2 id="3-how-far-does-access-allow-someone-to-affect-refrigeration">3. How far does access allow someone to affect refrigeration?<a class="zola-anchor" href="#3-how-far-does-access-allow-someone-to-affect-refrigeration" aria-label="Anchor link for: 3-how-far-does-access-allow-someone-to-affect-refrigeration">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p>An open session may provide read-only access. Changing the physical process requires a path to the controller, write permissions and a command the controller accepts. The resulting effect then depends on how the installation operates.</p>
+<p>The <a rel="external" href="https://webapps.copeland.com/Dixell/Content/Pages/Manuals/PRIME/XR60CX/XR60CX-FR.pdf">Dixell XR60CX manual</a> describes, among other parameters, a setpoint (<code>SEt</code>) and its upper limit (<code>US</code>). An authority able to change both could move the setpoint and its boundary together. <strong>Whether this is possible through a particular supervisory system must be verified</strong> against connectivity, version, accessible registers and permissions.</p>
+<p>Even when a command is accepted, local protections, operating conditions and thermal inertia determine its effects. The assessment must consider the temperatures actually reached, how long they persist and the means available to intervene.</p>
+<p>Alarms are another potential target. Temperature must be measured, a fault detected, the alert transmitted, received and then acted upon. An adversary who disrupts monitoring can reduce the store's ability to respond, even if local control continues to operate.</p>
+<p><strong>Documented example — XWEB EVO v5.6.0.</strong> The manufacturer's manual describes a maintenance mode (“Service” or “Cleaning”) that can be enabled for a defined period. XWEB ignores alarms from devices placed in that mode; read and write operations through this supervisory system are generally inhibited. The interface provides a separate <em>Edit Maintenance Mode</em> permission. <strong>The useful checks are who may enable the mode, whether that action is logged and what monitoring remains available during maintenance.</strong> Local controller protections must be assessed separately. <a rel="external" href="https://webapps.copeland.com/Dixell/Content/Pages/Manuals/XWEBEVO/XWEBEVOV5.6.0OPERATION/XWEB-EVO-r5.6.0-OPR-EN.pdf">XWEB EVO manual, pp. 22 and 93</a>.</p>
+<h2 id="4-where-do-safeguards-change-the-outcome">4. Where do safeguards change the outcome?<a class="zola-anchor" href="#4-where-do-safeguards-change-the-outcome" aria-label="Anchor link for: 4-where-do-safeguards-change-the-outcome">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<figure class="research-figure">
+<a class="figure-open" href="02-froid-alarme-defense-en.svg" target="_blank" rel="noopener" aria-label="Open the diagram of refrigeration functions and alarm paths">
+<img height="735" width="1400" src="02-froid-alarme-defense-en.svg" alt="Local control and supervision exchange data and, where authorized, commands. A separate alerting path, if present, may preserve independent notification. Shared dependencies must be checked." loading="lazy" decoding="async">
+</a>
+<figcaption>Figure 2 — Measurements, settings and alerts use distinct flows depending on the architecture. The independence of backup monitoring must be verified.</figcaption>
+</figure>
+<p>A defensive architecture can interrupt a path at several points: denied remote access, MFA, read-only permissions, a session restricted to one site, a controller rejecting a command, a local safeguard or independent alerting.</p>
+<p><strong>Every safeguard must be tied to a specific capability.</strong> A bastion reduces the available maintenance paths; it cannot replace controller safety functions or a reliable alarm path.</p>
+<p>Continuity requires a separate check. If supervision becomes unavailable, local control may continue operating. The on-call team may nevertheless lose measurements or notifications. Separate monitoring is a genuine fallback only if its sensors, power supply, communications and alert reception remain available.</p>
+<p>A critical assessment also seeks evidence that <em>rules out</em> proposed paths: the supervisory system cannot be reached, the account has no write permission, the controller rejects the command, or alerts continue to be delivered. Such findings reduce uncertainty and avoid unnecessary corrective action.</p>
+<h2 id="5-what-can-the-operator-decide">5. What can the operator decide?<a class="zola-anchor" href="#5-what-can-the-operator-decide" aria-label="Anchor link for: 5-what-can-the-operator-decide">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p>A targeted assessment should answer four questions:</p>
+<ol>
+<li><strong>What access paths exist?</strong> Exposed interfaces, remote maintenance, direct paths and third-party providers.</li>
+<li><strong>What authority is available?</strong> Accounts, MFA, roles, administrative privileges and accessible commands.</li>
+<li><strong>What effects are possible?</strong> Settings, alarms, local continuity, consequences for products and response times.</li>
+<li><strong>Which safeguards work?</strong> Access restrictions, rejected commands, alarm independence and the ability to intervene.</li>
+</ol>
+<p>These answers help remove excessive permissions, close unnecessary paths and preserve essential functions. They require verified configurations and, where necessary, authorized tests conducted with refrigeration professionals.</p>
+<h2 id="conclusion">Conclusion<a class="zola-anchor" href="#conclusion" aria-label="Anchor link for: conclusion">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p>Remote maintenance provides capabilities essential to operations. Security means <strong>controlling who can acquire, exercise or extend those capabilities</strong>.</p>
+<p>The investigation links access paths, permissions and commands to the store's functions. It identifies the conditions under which an adversary could act and the safeguards capable of stopping that action. The findings support decisions about where to act first.</p>
+<h3 id="sources-and-limitations">Sources and limitations<a class="zola-anchor" href="#sources-and-limitations" aria-label="Anchor link for: sources-and-limitations">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h3>
+<ul>
+<li><a rel="external" href="https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/">CERT-FR — Alert concerning remote refrigeration controllers, October 2026</a>.</li>
+<li><a rel="external" href="https://webapps.copeland.com/Dixell/Content/Pages/Manuals/PRIME/XR60CX/XR60CX-FR.pdf">Dixell/Copeland — XR60CX controller manual (French)</a>.</li>
+<li><a rel="external" href="https://webapps.copeland.com/Dixell/Content/Pages/Manuals/XWEBEVO/XWEBEVOV5.6.0OPERATION/XWEB-EVO-r5.6.0-OPR-EN.pdf">Copeland/Dixell — XWEB EVO, operating manual v5.6.0, pp. 22 and 93</a>.</li>
+<li><a rel="external" href="https://csrc.nist.gov/pubs/sp/800/82/r3/final">NIST — Guide to Operational Technology (OT) Security, SP 800-82 Rev. 3</a>.</li>
+</ul>
+<p><em>Documentary analysis and illustrative architectures. Public incident reports, manufacturer-documented capabilities and hypothetical courses of action are kept distinct. Permissions and safeguards must be verified for each installation. No active testing of third-party systems is claimed.</em></p>
+<h3 id="further-reading">Further reading<a class="zola-anchor" href="#further-reading" aria-label="Anchor link for: further-reading">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h3>
+<ul>
+<li><a rel="external" href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/">Securing Refrigeration Supervision: A Practical Guide</a>.</li>
+<li><a rel="external" href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/">Cyber Resilience in Commercial Refrigeration</a>.</li>
+</ul>
+<hr />
+<p><em>Version 3.3 — 3 November 2026. © 2026 lxrider — All rights reserved.</em></p>
+
+
+    
+
+
+
+
+
+    
+  </article>
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<aside class="docs-toc" data-devlab-toc aria-labelledby="docs-toc-title">
+  
+  <p class="docs-toc-title" id="docs-toc-title">On this page</p>
+
+  <nav class="docs-toc-nav" aria-label="On this page">
+    
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/en/publications/froid-commercial/#1-authority-required-for-day-to-day-operations">
+        1. Authority required for day-to-day operations
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/en/publications/froid-commercial/#2-how-could-an-adversary-acquire-these-capabilities">
+        2. How could an adversary acquire these capabilities?
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/en/publications/froid-commercial/#3-how-far-does-access-allow-someone-to-affect-refrigeration">
+        3. How far does access allow someone to affect refrigeration?
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/en/publications/froid-commercial/#4-where-do-safeguards-change-the-outcome">
+        4. Where do safeguards change the outcome?
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/en/publications/froid-commercial/#5-what-can-the-operator-decide">
+        5. What can the operator decide?
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <details class="docs-toc-group" data-docs-toc-group>
+        <summary class="docs-toc-group-toggle">
+          <a href="https://lxrider.github.io/en/publications/froid-commercial/#conclusion">
+            Conclusion
+          </a>
+          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
+        </summary>
+
+        
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/froid-commercial/#sources-and-limitations">
+        Sources and limitations
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/froid-commercial/#further-reading">
+        Further reading
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+
+      </details>
+      
+    </li>
+    
+  </ul>
+  
+
+  </nav>
+  
+
+  
+</aside>
+
+
+</div>
+
+      
+    </main>
+
+    
+  </div>
+  
+  
+
+
+<script defer src="https://lxrider.github.io/js/theme.js"></script>
+
+
+
+
+
+
+
+
+<script defer src="https://lxrider.github.io/js/docs-nav.js"></script>
+
+
+
+
+<script defer src="https://lxrider.github.io/js/toc.js"></script>
+
+
+
+
+
+
+<script
+  defer
+  src="https://lxrider.github.io/js/docs-page-actions.js"
+  data-link-copied-label="Link copied"
+  data-copy-link-failed-label="Failed"
+  data-copy-link-success-message="Page link copied to clipboard."
+  data-copy-link-error-message="Unable to copy page link."
+></script>
+
+
+<script defer src="https://lxrider.github.io/js/site-menu.js"></script>
+
+
+  
+  
+  
+</body>
+</html>

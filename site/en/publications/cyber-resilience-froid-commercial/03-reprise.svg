@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="570" viewBox="0 0 1200 570" role="img" aria-labelledby="chart-title chart-desc">
+<title id="chart-title">Quatre vérifications de reprise et deux décisions distinctes</title><desc id="chart-desc">Deux colonnes et deux lignes de critères : alertes, paramètres actifs, accès maîtrisés, froid. Retour à l’exploitation et clôture cyber sont distincts.</desc>
+<defs><marker id="arrowcyan" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#72d2e8" /></marker><marker id="arrowgreen" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#65d8b7" /></marker><marker id="arrowamber" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#efbc76" /></marker></defs><rect x="0" y="0" width="1200" height="570" fill="#061523" />
+<text x="38" y="45" fill="#72d2e8" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" font-weight="bold" text-anchor="start">REPRISE : DES PREUVES AVANT LA DÉCISION</text>
+<text x="38" y="75" fill="#afc4cf" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="normal" text-anchor="start">Quatre dimensions à vérifier selon les priorités du procédé.</text>
+<rect x="48" y="115" width="540" height="147" rx="14" ry="14" fill="#081e2c" stroke="#72d2e8" stroke-width="1.5" />
+<text x="70" y="158" fill="#ecf4f7" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="bold" text-anchor="start">Liaisons et alertes</text>
+<text x="70" y="198" fill="#afc4cf" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="normal" text-anchor="start">Transmission et prise en charge confirmées</text>
+<text x="70" y="234" fill="#65d8b7" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="normal" text-anchor="start">Preuve : essai de bout en bout</text>
+<rect x="612" y="115" width="540" height="147" rx="14" ry="14" fill="#081e2c" stroke="#65d8b7" stroke-width="1.5" />
+<text x="634" y="158" fill="#ecf4f7" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="bold" text-anchor="start">Paramètres appliqués</text>
+<text x="634" y="198" fill="#afc4cf" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="normal" text-anchor="start">Référence, modes et horaires vérifiés</text>
+<text x="634" y="234" fill="#65d8b7" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="normal" text-anchor="start">Preuve : relecture des régulateurs</text>
+<rect x="48" y="286" width="540" height="147" rx="14" ry="14" fill="#081e2c" stroke="#72d2e8" stroke-width="1.5" />
+<text x="70" y="329" fill="#ecf4f7" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="bold" text-anchor="start">Accès maîtrisés</text>
+<text x="70" y="369" fill="#afc4cf" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="normal" text-anchor="start">Comptes et accès suspects examinés</text>
+<text x="70" y="405" fill="#65d8b7" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="normal" text-anchor="start">Preuve : droits vérifiés, accès traités</text>
+<rect x="612" y="286" width="540" height="147" rx="14" ry="14" fill="#081e2c" stroke="#65d8b7" stroke-width="1.5" />
+<text x="634" y="329" fill="#ecf4f7" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="bold" text-anchor="start">Froid et exploitation</text>
+<text x="634" y="369" fill="#afc4cf" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="normal" text-anchor="start">Mesures, protections et cycles vérifiés</text>
+<text x="634" y="405" fill="#65d8b7" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="normal" text-anchor="start">Preuve : validation frigorifique et métier</text>
+<rect x="48" y="459" width="1104" height="79" rx="14" ry="14" fill="#081b2a" stroke="#efbc76" stroke-width="1.5" />
+<text x="70" y="489" fill="#efbc76" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="start">DEUX DÉCISIONS À DISTINGUER</text>
+<text x="70" y="519" fill="#ecf4f7" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="normal" text-anchor="start">Reprise métier : fonctionnement et denrées.  Clôture cyber : accès, remédiation, risques.</text>
+</svg>

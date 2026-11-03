@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 380" role="img" aria-labelledby="title desc">
+<title id="title">Repérer les menus réseau dans une Livebox 5 et Freebox Connect</title>
+<desc id="desc">Repères schématiques originaux, et non captures d'écran. Orange Livebox 5 : Paramètres avancés, Réseau, NAT/PAT. Freebox Connect : Réseau, Paramètres réseau avancés, Redirection de port ou Serveur VPN.</desc>
+<rect width="1060" height="380" rx="18" fill="#101d2b"/>
+<text x="35" y="43" fill="#f3f7f8" font-size="25" font-weight="700" font-family="Arial,sans-serif">Où chercher les redirections de ports ?</text>
+<text x="35" y="72" fill="#a8bdc9" font-size="16" font-family="Arial,sans-serif">REPÈRES SCHÉMATIQUES · MENUS VARIABLES SELON LE MATÉRIEL</text>
+<rect x="32" y="100" width="484" height="223" rx="12" fill="#1a2d3b" stroke="#65818f"/>
+<rect x="544" y="100" width="484" height="223" rx="12" fill="#1a2d3b" stroke="#65818f"/>
+<rect x="51" y="118" width="446" height="44" rx="8" fill="#264354"/>
+<text x="274" y="146" fill="#ffffff" font-size="21" font-weight="700" text-anchor="middle" font-family="Arial,sans-serif">Livebox 5 · Orange</text>
+<rect x="563" y="118" width="446" height="44" rx="8" fill="#264354"/>
+<text x="786" y="146" fill="#ffffff" font-size="21" font-weight="700" text-anchor="middle" font-family="Arial,sans-serif">Freebox Connect</text>
+<text x="274" y="193" text-anchor="middle" fill="#d4e5ed" font-family="Arial,sans-serif" font-size="19">Paramètres avancés</text>
+<text x="274" y="221" text-anchor="middle" fill="#8ad3c1" font-family="Arial,sans-serif" font-size="18">↓  Réseau  ↓</text>
+<rect x="129" y="238" width="290" height="53" rx="9" fill="#16473f" stroke="#70dbc2" stroke-width="2"/>
+<text x="274" y="270" text-anchor="middle" fill="#ffffff" font-size="21" font-weight="700" font-family="Arial,sans-serif">NAT / PAT</text>
+<text x="786" y="192" text-anchor="middle" fill="#d4e5ed" font-family="Arial,sans-serif" font-size="19">Réseau</text>
+<text x="786" y="221" text-anchor="middle" fill="#8ad3c1" font-family="Arial,sans-serif" font-size="18">↓  Paramètres réseau avancés  ↓</text>
+<rect x="563" y="238" width="216" height="53" rx="9" fill="#16473f" stroke="#70dbc2" stroke-width="2"/>
+<rect x="793" y="238" width="216" height="53" rx="9" fill="#16473f" stroke="#70dbc2" stroke-width="2"/>
+<text x="671" y="270" text-anchor="middle" fill="#ffffff" font-size="19" font-weight="700" font-family="Arial,sans-serif">Redirection de port</text>
+<text x="901" y="270" text-anchor="middle" fill="#ffffff" font-size="19" font-weight="700" font-family="Arial,sans-serif">Serveur VPN</text>
+<text x="530" y="355" text-anchor="middle" fill="#a7bdc7" font-size="15" font-family="Arial,sans-serif">Schéma original lxrider · Exemple de navigation, pas une capture réelle de box.</text>
+</svg>

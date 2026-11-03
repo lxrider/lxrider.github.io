@@ -1,0 +1,1391 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html
+  lang="en"
+  dir="ltr"
+  
+  
+>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <title>Cyber Resilience in Commercial Refrigeration: Managing an Incident, Protecting the Process | lxrider | Independent Offensive Cybersecurity Research</title>
+  
+<script>
+  (function () {
+    var storageKey = "devlab-theme-color-mode";
+    var announcementStorageKey = "devlab-announcement-dismissed";
+    var root = document.documentElement;
+    var defaultMode = "dark";
+
+    function isValidMode(mode) {
+      return mode === "light" || mode === "dark" || mode === "system";
+    }
+
+    function getSystemTheme() {
+      return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    }
+
+    function resolveTheme(mode) {
+      return mode === "system" ? getSystemTheme() : mode;
+    }
+
+    function getStoredMode() {
+      try {
+        return localStorage.getItem(storageKey);
+      } catch (_) {
+        return null;
+      }
+    }
+
+    var storedMode = getStoredMode();
+    var mode = isValidMode(storedMode) ? storedMode : defaultMode;
+
+    if (!isValidMode(mode)) {
+      mode = "system";
+    }
+
+    root.dataset.themeDefault = defaultMode;
+    root.dataset.themeMode = mode;
+    root.dataset.theme = resolveTheme(mode);
+
+    if (root.dataset.announcementKey) {
+      try {
+        if (localStorage.getItem(announcementStorageKey) === root.dataset.announcementKey) {
+          root.dataset.announcementDismissed = "true";
+        }
+      } catch (_) {
+        // Keep the announcement visible when persistent storage is unavailable.
+      }
+    }
+  })();
+</script>
+
+
+
+<meta name="description" content="During a cyber incident: protect stored products, maintain essential functions, restore a trustworthy configuration and confirm stable refrigeration.">
+<link rel="canonical" href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/">
+
+<meta property="og:title" content="Cyber Resilience in Commercial Refrigeration: Managing an Incident, Protecting the Process">
+<meta property="og:description" content="During a cyber incident: protect stored products, maintain essential functions, restore a trustworthy configuration and confirm stable refrigeration.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/">
+<meta property="og:site_name" content="lxrider | Independent Offensive Cybersecurity Research">
+<meta property="article:published_time" content="2026-10-23">
+<meta property="article:modified_time" content="2026-11-03">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cyber Resilience in Commercial Refrigeration: Managing an Incident, Protecting the Process">
+<meta name="twitter:description" content="During a cyber incident: protect stored products, maintain essential functions, restore a trustworthy configuration and confirm stable refrigeration.">
+
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b1120" media="(prefers-color-scheme: dark)">
+
+
+
+
+
+<link rel="alternate" hreflang="en" href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/">
+
+
+
+<link rel="alternate" hreflang="fr" href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/">
+
+
+
+
+
+<link rel="icon" href="https://lxrider.github.io/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://lxrider.github.io/main.css">
+
+<link rel="stylesheet" href="https://lxrider.github.io/print.css" media="print">
+
+  
+  
+<link rel="stylesheet" href="https://lxrider.github.io/custom.css">
+
+</head>
+
+
+
+
+<body>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  
+
+  <div class="site-shell">
+    
+    <header class="site-header site-header-has-menu">
+  <div class="site-header-inner">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a class="site-logo" href="https://lxrider.github.io/en" aria-label="lxrider | Independent Offensive Cybersecurity Research">
+  
+  
+  <img
+    class="site-logo-mark site-logo-mark-image"
+    src="https://lxrider.github.io/images/lxrider-header-logo.png"
+    alt=""
+    width="32"
+    height="32"
+  >
+  
+  
+
+  
+</a>
+
+
+
+    
+    <nav class="site-nav" aria-label="Main navigation">
+      
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+<a
+  class="site-nav-link is-active"
+  href="https://lxrider.github.io/en/publications/"
+  aria-current="location"
+>
+  Publications
+</a>
+
+      
+      
+      
+      
+      
+        
+        
+      
+      
+      
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+
+<a
+  class="site-nav-link "
+  href="https://github.com/lxrider"
+  
+>
+  GitHub
+</a>
+
+      
+      
+    </nav>
+    
+
+    
+
+    
+
+
+
+
+
+
+<button
+  class="theme-toggle"
+  type="button"
+  data-theme-toggle
+  data-theme-light-label="Light theme"
+  data-theme-dark-label="Dark theme"
+  data-theme-system-label="System theme"
+  aria-label="Dark theme"
+  title="Dark theme"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="theme-toggle-svg system" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1v-10" /><path d="M7 20h10" /><path d="M9 16v4" /><path d="M15 16v4" /></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="theme-toggle-svg sun" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="theme-toggle-svg moon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454l0 .008" /><path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2" /><path d="M19 11h2m-1 -1v2" /></svg>
+</button>
+
+
+
+<nav class="language-switcher" aria-label="Language">
+
+
+
+
+
+<a href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/" lang="en" hreflang="en" aria-current="page">EN</a>
+
+
+
+
+
+<a href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/" lang="fr" hreflang="fr">FR</a>
+
+</nav>
+
+
+
+
+    
+    <button
+      class="site-menu-button"
+      type="button"
+      aria-label="Open menu"
+      aria-controls="site-menu"
+      aria-expanded="false"
+      data-site-menu-toggle
+    >
+      <span class="site-menu-button-icon" aria-hidden="true"></span>
+    </button>
+    
+  </div>
+</header>
+
+    
+    <div class="site-menu-backdrop" data-site-menu-backdrop hidden></div>
+
+<div
+  id="site-menu"
+  class="site-menu"
+  role="dialog"
+  aria-label="Mobile navigation"
+  aria-modal="true"
+  aria-hidden="true"
+  data-site-menu
+  data-site-menu-initial-panel="docs"
+  inert
+>
+  <div class="site-menu-header">
+    <p class="site-menu-title">Menu</p>
+
+    <button
+      class="site-menu-close"
+      type="button"
+      aria-label="Close menu"
+      data-site-menu-close
+    >
+      &times;
+    </button>
+  </div>
+
+  
+
+<div id="site-menu-panel-main" class="site-menu-panel" data-site-menu-panel="main">
+  <nav class="site-menu-nav" aria-label="Main mobile navigation">
+    
+    
+    
+    
+    
+    
+    <div class="site-menu-link-row">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+<a
+  class="site-menu-link is-active"
+  href="https://lxrider.github.io/en/publications/"
+  aria-current="location"
+>
+  <span>Publications</span>
+</a>
+
+      <button
+        class="site-menu-link-disclosure"
+        type="button"
+        aria-label="Open documentation navigation"
+        aria-controls="site-menu-panel-docs"
+        aria-expanded="false"
+        data-site-menu-panel-target="docs"
+      >
+        <span class="site-menu-link-indicator" aria-hidden="true">&rsaquo;</span>
+      </button>
+    </div>
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+<a
+  class="site-menu-link "
+  href="https://github.com/lxrider"
+  
+>
+  GitHub
+</a>
+
+    
+    
+    
+  </nav>
+</div>
+
+  
+
+<div id="site-menu-panel-docs" class="site-menu-panel" data-site-menu-panel="docs" hidden>
+  
+  <button
+    class="site-menu-back"
+    type="button"
+    aria-controls="site-menu-panel-main"
+    data-site-menu-panel-target="main"
+  >
+    <span aria-hidden="true">&larr;</span>
+    Back to main menu
+  </button>
+  
+
+  <nav class="site-menu-nav site-menu-docs-nav" aria-label="Documentation mobile navigation">
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="docs-nav-list">
+  
+  
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link is-active"
+    href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/"
+    aria-current="page"
+  >
+    Cyber Resilience in Commercial Refrigeration: Managing an Incident, Protecting the Process
+  </a>
+</li>
+
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link "
+    href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/"
+    
+  >
+    Securing Refrigeration Supervision: A Step-by-Step Practical Guide
+  </a>
+</li>
+
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link "
+    href="https://lxrider.github.io/en/publications/froid-commercial/"
+    
+  >
+    Commercial Refrigeration Cybersecurity: Who Can Control the Systems?
+  </a>
+</li>
+
+
+
+
+
+  
+</ul>
+
+
+
+
+  </nav>
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="site-footer site-footer-compact">
+  <div class="site-footer-inner">
+    
+
+
+
+
+
+<div class="site-footer-info">
+
+<p class="site-footer-note">Independent analysis of systems and their access paths.</p>
+
+
+<p class="site-footer-copyright">&copy; 2026 lxrider</p>
+</div>
+
+
+
+  </div>
+</footer>
+
+
+</div>
+
+
+</div>
+
+    
+    
+    <main id="main-content" class="site-main site-main-docs" tabindex="-1">
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="docs-shell">
+  
+<aside
+  id="docs-sidebar"
+  class="docs-sidebar"
+  aria-label="Publications"
+>
+  
+
+  <nav class="docs-sidebar-nav" aria-label="Publications">
+    <p class="docs-sidebar-title">Publications</p>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="docs-nav-list">
+  
+  
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link is-active"
+    href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/"
+    aria-current="page"
+  >
+    Cyber Resilience in Commercial Refrigeration: Managing an Incident, Protecting the Process
+  </a>
+</li>
+
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link "
+    href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/"
+    
+  >
+    Securing Refrigeration Supervision: A Step-by-Step Practical Guide
+  </a>
+</li>
+
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link "
+    href="https://lxrider.github.io/en/publications/froid-commercial/"
+    
+  >
+    Commercial Refrigeration Cybersecurity: Who Can Control the Systems?
+  </a>
+</li>
+
+
+
+
+
+  
+</ul>
+
+
+
+
+  </nav>
+
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="site-footer site-footer-compact">
+  <div class="site-footer-inner">
+    
+
+
+
+
+
+<div class="site-footer-info">
+
+<p class="site-footer-note">Independent analysis of systems and their access paths.</p>
+
+
+<p class="site-footer-copyright">&copy; 2026 lxrider</p>
+</div>
+
+
+
+  </div>
+</footer>
+
+
+</aside>
+
+
+  <article class="docs-content content">
+    
+    
+
+
+
+
+
+
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol class="breadcrumbs-list">
+    <li class="breadcrumbs-item">
+      <a href="https://lxrider.github.io/en/publications/">Publications</a>
+    </li>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    <li class="breadcrumbs-item" aria-current="page">
+      <span>Cyber Resilience in Commercial Refrigeration: Managing an Incident, Protecting the Process</span>
+    </li>
+  </ol>
+</nav>
+
+
+
+
+    
+
+    
+<header class="page-header">
+  <div class="docs-page-heading">
+  <h1>Cyber Resilience in Commercial Refrigeration: Managing an Incident, Protecting the Process</h1>
+  
+<div class="docs-copy-link">
+  <button
+    class="docs-copy-link-button"
+    type="button"
+    aria-label="Copy link"
+    title="Copy link"
+    data-docs-copy-link
+    hidden
+  >
+    <span class="docs-copy-link-default-icon" data-docs-copy-link-default-icon>
+      <span class="content-icon content-icon-sm" aria-hidden="true">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+</span>
+    </span>
+    <span class="docs-copy-link-success-icon" data-docs-copy-link-success-icon>
+      <span class="content-icon content-icon-sm" aria-hidden="true">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5l10 -10" /></svg>
+</span>
+    </span>
+    <span class="docs-copy-link-label" data-docs-copy-link-label>Copy link</span>
+  </button>
+  <span
+    class="docs-page-action-status"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+    data-docs-copy-link-status
+  ></span>
+</div>
+
+</div>
+  
+
+  <p class="page-description">During a cyber incident: protect stored products, maintain essential functions, restore a trustworthy configuration and confirm stable refrigeration.</p>
+  
+
+</header>
+
+
+    
+    
+    
+<details class="docs-toc-inline" data-devlab-toc>
+  <summary>On this page</summary>
+  <nav aria-label="On this page">
+    
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/#1-assess-the-consequences-and-protect-the-installation">
+        1. Assess the consequences and protect the installation
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/#2-coordinate-interventions-and-decisions">
+        2. Coordinate interventions and decisions
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/#3-contain-the-incident-while-preserving-essential-functions">
+        3. Contain the incident while preserving essential functions
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/#4-maintain-refrigeration-in-degraded-mode">
+        4. Maintain refrigeration in degraded mode
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/#5-restore-a-trustworthy-configuration-and-address-the-compromise">
+        5. Restore a trustworthy configuration and address the compromise
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/#6-verify-stability-and-decide-when-to-resume-normal-operations">
+        6. Verify stability and decide when to resume normal operations
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <details class="docs-toc-group" data-docs-toc-group>
+        <summary class="docs-toc-group-toggle">
+          <a href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/#conclusion">
+            Conclusion
+          </a>
+          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
+        </summary>
+
+        
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/#sources-and-limitations">
+        Sources and limitations
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+
+      </details>
+      
+    </li>
+    
+  </ul>
+  
+
+  </nav>
+</details>
+
+
+
+    <p>When a store opens, several refrigerated display cases show abnormal temperatures. Defrost schedules appear to have changed. The refrigeration technician must restore operation, the operator must protect the goods, and the cybersecurity team must establish whether access has been compromised. <strong>The urgency requires action before every cause is known.</strong></p>
+<p>Following the French incidents of October 2026, further disruption was reported in several European countries on <strong>2 November</strong>. The consequences varied by store: some restored operations quickly, while others had to withdraw products. Public information does not establish a common attack vector across all these events. Sources: <a rel="external" href="https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/">CERT-FR</a>, <a rel="external" href="https://www.reuters.com/business/european-retailers-hit-by-supermarket-fridge-hack-2026-11-02/">Reuters, 2 November 2026</a>.</p>
+<p>The <a rel="external" href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/">lxrider guide to securing refrigeration supervisory systems</a> explains how to protect remote access while retaining maintenance and alarm reporting. Here, we face a different situation: <strong>an incident is suspected or confirmed. What decisions will protect refrigeration, restore service and establish that operations remain stable?</strong></p>
+<figure class="research-figure">
+<a class="figure-open" href="illustration-cyber-resilience-lxrider.svg" target="_blank" rel="noopener" aria-label="Open the conceptual refrigeration-system illustration">
+<img height="630" width="1200" src="illustration-cyber-resilience-lxrider.svg" alt="Conceptual scene: a temperature measurement differs from a supervisory display in a refrigerated space." loading="eager" decoding="async" fetchpriority="high">
+</a>
+<figcaption>A discrepancy in temperature readings requires an on-site check. Fictional illustration; no display manipulation has been established in the cited incidents.</figcaption>
+</figure>
+<h2 id="1-assess-the-consequences-and-protect-the-installation">1. Assess the consequences and protect the installation<a class="zola-anchor" href="#1-assess-the-consequences-and-protect-the-installation" aria-label="Anchor link for: 1-assess-the-consequences-and-protect-the-installation">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p>The first assessment concerns refrigeration itself: <strong>which display cases are affected, what is the condition of the refrigeration plant, which safeguards are working, and are alarms reaching the on-call team?</strong> An abnormal reading may arise from the physical process, a sensor, a setting or an unauthorized intervention. Its cause remains to be established.</p>
+<p><strong>The refrigeration technician checks the equipment and takes the measures needed to restore safe operation.</strong> This includes checking setpoints and active schedules, controller behavior and safeguards. The installation must then be observed through the relevant operating cycles to detect further drift.</p>
+<p><strong>The operator makes decisions about stored products.</strong> The operator considers available temperature histories, product characteristics and applicable food-safety rules. A single air-temperature reading cannot, by itself, establish whether goods are safe to retain.</p>
+<p><strong>In parallel, the cybersecurity team examines signs of compromise.</strong> It correlates access paths, accounts, logs and suspicious modifications. Findings from the refrigeration technician inform that investigation. Urgent measures to protect the physical process take priority.</p>
+<h2 id="2-coordinate-interventions-and-decisions">2. Coordinate interventions and decisions<a class="zola-anchor" href="#2-coordinate-interventions-and-decisions" aria-label="Anchor link for: 2-coordinate-interventions-and-decisions">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p>A network change may disrupt remote monitoring. Restoring parameters may affect control. A product-safety decision may require shutting down a display case that is still operational. <strong>Every intervention must be understood by the people who will bear its consequences.</strong></p>
+<p>The operator coordinates the response and identifies decision-makers. The refrigeration technician validates actions on the installation. The cybersecurity team prepares containment and remediation with the network lead and relevant service providers.</p>
+<p>A short situation report brings together the essentials: <strong>affected equipment, refrigeration still available, functioning alarms, planned intervention, person responsible and method of verification</strong>. Important decisions are timestamped. On-call contact details and a backup communication channel must remain available.</p>
+<p>If several stores are affected, priorities depend on the consequences for products and equipment, as well as the actual capacity to intervene. Notification duties and management reporting are handled according to the organization's status and circumstances.</p>
+<h2 id="3-contain-the-incident-while-preserving-essential-functions">3. Contain the incident while preserving essential functions<a class="zola-anchor" href="#3-contain-the-incident-while-preserving-essential-functions" aria-label="Anchor link for: 3-contain-the-incident-while-preserving-essential-functions">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p><a rel="external" href="https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/">CERT-FR</a> recommends removing management interfaces exposed directly to the Internet. When compromise is suspected, containment must also address sessions, accounts and other usable paths.</p>
+<p><strong>Before disconnecting anything, identify the functions carried by the affected connection.</strong> The same router may support both maintenance and alarm transmission. Elsewhere, these services may use separate paths. A restriction may prevent remote commands while leaving local controllers running; it may also deprive the on-call team of temperature readings and alerts.</p>
+<p>The decision should be prepared with the network lead, refrigeration technician and operator: which access to suspend, expected consequences, replacement monitoring and checks after the change. Fieldbus disconnections, restarts and resets require assessment for the specific equipment concerned.</p>
+<figure class="research-figure">
+<a class="figure-open" href="02-dependances-en.svg" target="_blank" rel="noopener" aria-label="Open the dependency diagram to review before containment">
+<img height="635" width="1200" src="02-dependances-en.svg" alt="Conceptual diagram: supervision, local controllers, the refrigeration process and the alarm chain may share connections; their dependencies must be checked before isolation." loading="lazy" decoding="async">
+</a>
+<figcaption>Figure 1 — Before restricting access, identify the commands, measurements and alerts that might be affected.</figcaption>
+</figure>
+<p>The cybersecurity team preserves logs and configurations useful to the investigation, recording their origin and collection times. Essential actions needed to keep the physical process safe must not be delayed by this collection.</p>
+<h2 id="4-maintain-refrigeration-in-degraded-mode">4. Maintain refrigeration in degraded mode<a class="zola-anchor" href="#4-maintain-refrigeration-in-degraded-mode" aria-label="Anchor link for: 4-maintain-refrigeration-in-degraded-mode">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p>Supervision, local controllers, refrigeration production and alarms may behave differently. Some controllers retain local functions after losing a connection; others rely on shared settings or synchronization. <strong>The refrigeration technician establishes what remains operational on the actual site.</strong></p>
+<p>Fallback monitoring may consist of rounds, local readings or separate sensors. Its reliability depends on sensors, communications, inspection frequency and staff availability. A second display fed by the same measurements may reproduce incorrect information.</p>
+<p>Degraded operations must answer four questions: <strong>which equipment remains under control, how will drift be detected, who will intervene, and at what point must goods be protected or withdrawn?</strong> Thresholds and response times are defined by refrigeration professionals and the operator according to the installation and products.</p>
+<p>These arrangements remain in place until reliable monitoring is restored. They may also be needed during checks following restoration.</p>
+<h2 id="5-restore-a-trustworthy-configuration-and-address-the-compromise">5. Restore a trustworthy configuration and address the compromise<a class="zola-anchor" href="#5-restore-a-trustworthy-configuration-and-address-the-compromise" aria-label="Anchor link for: 5-restore-a-trustworthy-configuration-and-address-the-compromise">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p>Defrost schedules, a setpoint or an alarm threshold may remain altered after suspicious access has been closed. <strong>An effect on the physical process may continue after digital containment.</strong> The refrigeration technician must therefore check active parameters and schedules that could act later.</p>
+<p><strong>Backups</strong> help recover a reference configuration. They must identify the equipment, versions and parameters concerned: supervisory system, controllers, setpoints, defrost cycles and alarms. A recent copy may already contain altered values. The chosen baseline must be compared with the store's actual requirements and approved before values are written.</p>
+<p>The direction of parameter transfer is manufacturer-specific. On <strong>Danfoss AK-SM 800</strong>, <em>Upload</em> retrieves controller parameters into the supervisory database; <em>Download</em> sends supervisory-system parameters to the controllers. On <strong>XWEB EVO v5.6.0</strong>, <em>Read</em> retrieves device parameters, <em>Import</em> loads a previously saved set into the table, and <em>Write</em> sends the displayed values to the selected devices. <strong>A parameter set imported into XWEB still has to be written to the controllers before it takes effect there.</strong> Before writing, the refrigeration technician checks the model, version, target devices and values, then reads back the parameters actually applied. <a rel="external" href="https://assets.danfoss.com/documents/latest/56759/BC316842192932en-001001.pdf">Danfoss AK-SM 800</a> · <a rel="external" href="https://webapps.copeland.com/Dixell/Content/Pages/Manuals/XWEBEVO/XWEBEVOV5.6.0OPERATION/XWEB-EVO-r5.6.0-OPR-EN.pdf">XWEB EVO v5.6.0, pp. 23–26</a>.</p>
+<p>Where possible, the cybersecurity team preserves a copy of the suspicious state for investigation. It addresses compromised accounts, remaining access paths and identified weaknesses. Restoration followed by renewed exposure would leave the door open to another incident. If the initial cause remains unknown, restrictions and compensating controls are maintained or adjusted according to the risk.</p>
+<p><strong>The restored configuration must both operate correctly on the physical process and remain protected against further unauthorized changes.</strong></p>
+<h2 id="6-verify-stability-and-decide-when-to-resume-normal-operations">6. Verify stability and decide when to resume normal operations<a class="zola-anchor" href="#6-verify-stability-and-decide-when-to-resume-normal-operations" aria-label="Anchor link for: 6-verify-stability-and-decide-when-to-resume-normal-operations">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p>Return to service must be confirmed over time, across operating cycles relevant to the installation. The team checks four complementary dimensions:</p>
+<ul>
+<li><strong>Refrigeration and equipment:</strong> plant, controllers, sensors, safeguards and temperatures observed across suitable cycles.</li>
+<li><strong>Applied parameters:</strong> setpoints, defrost schedules, modes and alarms read back and compared with an approved baseline.</li>
+<li><strong>Monitoring:</strong> measurements available and alerts received and acted upon during authorized tests.</li>
+<li><strong>Digital access:</strong> suspicious paths addressed, permissions reviewed and residual risks identified.</li>
+</ul>
+<figure class="research-figure">
+<a class="figure-open" href="03-reprise-en.svg" target="_blank" rel="noopener" aria-label="Open the diagram of checks required before resuming operations">
+<img height="570" width="1200" src="03-reprise-en.svg" alt="Four checks: refrigeration and operations, applied parameters, alarms and access control. Resuming business operations and closing the cybersecurity incident are separate decisions." loading="lazy" decoding="async">
+</a>
+<figcaption>Figure 2 — Evidence of recovery must cover the physical process, configuration, alerts and access. Responsibility for each approval remains distinct.</figcaption>
+</figure>
+<p><strong>The refrigeration technician confirms operational stability.</strong> The operator decides when to resume business operations and what to do with the goods. The cybersecurity team documents remediation, any residual risks and the conditions for closing the incident. These decisions may occur at different times.</p>
+<p>After the immediate response, a lessons-learned review examines backup quality, alarm reception, availability of contacts and the effects of containment measures. The purpose is to prepare for a faster response to a future incident.</p>
+<h2 id="conclusion">Conclusion<a class="zola-anchor" href="#conclusion" aria-label="Anchor link for: conclusion">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p>A cyber incident affecting refrigeration supervision brings several disciplines together around one installation. Access-control changes may affect alarms. Parameters may continue to influence the process after access has been cut. Restoration requires on-site verification.</p>
+<p><strong>The priority is to protect people and goods, restore refrigeration and confirm stable operation.</strong> Cyber investigation and remediation support that recovery by reducing the likelihood of another compromise.</p>
+<p>Decisions rest on practical evidence: <strong>a controlled process, a verified configuration, functioning alerts and secured access.</strong></p>
+<h3 id="sources-and-limitations">Sources and limitations<a class="zola-anchor" href="#sources-and-limitations" aria-label="Anchor link for: sources-and-limitations">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h3>
+<ul>
+<li><a rel="external" href="https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/">CERT-FR — CERTFR-2026-ALE-012, last updated 16 October 2026</a>: compromises and recommendations for protecting access.</li>
+<li><a rel="external" href="https://www.reuters.com/business/european-retailers-hit-by-supermarket-fridge-hack-2026-11-02/">Reuters — <em>European retailers hit by supermarket fridge hack</em>, 2 November 2026</a>: reported European incidents and operational consequences.</li>
+<li><a rel="external" href="https://cyber.gouv.fr/securisation/gestion-de-crise/anticiper-gerer-une-crise-cyber/">ANSSI — <em>Anticipating and managing a cyber crisis</em> (French)</a> and <a rel="external" href="https://messervices.cyber.gouv.fr/guides/cyberattaques-et-remediation-preparer-la-remedation"><em>Preparing remediation</em> (French)</a>: coordination and compromise remediation.</li>
+<li><a rel="external" href="https://messervices.cyber.gouv.fr/documents-guides/Guide_Systemes_industriels__Mesures_detaillees_v2.pdf">ANSSI — <em>Industrial Systems Cybersecurity: Detailed Measures</em>, v2.0, 2025 (French)</a>: continuity, degraded modes and backups.</li>
+<li><a rel="external" href="https://assets.danfoss.com/documents/latest/56759/BC316842192932en-001001.pdf">Danfoss — <em>AK-SM 800 Series, User Guide</em>, ref. BC316842192932en-001001</a> and <a rel="external" href="https://webapps.copeland.com/Dixell/Content/Pages/Manuals/XWEBEVO/XWEBEVOV5.6.0OPERATION/XWEB-EVO-r5.6.0-OPR-EN.pdf">Copeland/Dixell — <em>XWEB EVO</em>, v5.6.0, pp. 23–26</a>: reading, importing and writing parameters.</li>
+<li><a rel="external" href="https://csrc.nist.gov/pubs/sp/800/61/r3/final">NIST — <em>SP 800-61 Rev. 3</em>, 2025</a> and <a rel="external" href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r3.pdf"><em>SP 800-82 Rev. 3</em>, 2023</a>: incident response and OT-specific precautions.</li>
+</ul>
+<p><em>Documentary analysis with a fictional opening scenario. Equipment behavior, safeguards and recovery conditions depend on the actual models, versions, settings and wiring. Refrigeration and food-safety decisions belong to the competent professionals and operators. No forensic examination of a specific installation or independent refrigeration validation is claimed.</em></p>
+<hr />
+<p><em>Version 1.7 — 3 November 2026. © 2026 lxrider — All rights reserved for the original text.</em></p>
+
+
+    
+
+
+
+
+
+    
+  </article>
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<aside class="docs-toc" data-devlab-toc aria-labelledby="docs-toc-title">
+  
+  <p class="docs-toc-title" id="docs-toc-title">On this page</p>
+
+  <nav class="docs-toc-nav" aria-label="On this page">
+    
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/#1-assess-the-consequences-and-protect-the-installation">
+        1. Assess the consequences and protect the installation
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/#2-coordinate-interventions-and-decisions">
+        2. Coordinate interventions and decisions
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/#3-contain-the-incident-while-preserving-essential-functions">
+        3. Contain the incident while preserving essential functions
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/#4-maintain-refrigeration-in-degraded-mode">
+        4. Maintain refrigeration in degraded mode
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/#5-restore-a-trustworthy-configuration-and-address-the-compromise">
+        5. Restore a trustworthy configuration and address the compromise
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/#6-verify-stability-and-decide-when-to-resume-normal-operations">
+        6. Verify stability and decide when to resume normal operations
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <details class="docs-toc-group" data-docs-toc-group>
+        <summary class="docs-toc-group-toggle">
+          <a href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/#conclusion">
+            Conclusion
+          </a>
+          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
+        </summary>
+
+        
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/#sources-and-limitations">
+        Sources and limitations
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+
+      </details>
+      
+    </li>
+    
+  </ul>
+  
+
+  </nav>
+  
+
+  
+</aside>
+
+
+</div>
+
+      
+    </main>
+
+    
+  </div>
+  
+  
+
+
+<script defer src="https://lxrider.github.io/js/theme.js"></script>
+
+
+
+
+
+
+
+
+<script defer src="https://lxrider.github.io/js/docs-nav.js"></script>
+
+
+
+
+<script defer src="https://lxrider.github.io/js/toc.js"></script>
+
+
+
+
+
+
+<script
+  defer
+  src="https://lxrider.github.io/js/docs-page-actions.js"
+  data-link-copied-label="Link copied"
+  data-copy-link-failed-label="Failed"
+  data-copy-link-success-message="Page link copied to clipboard."
+  data-copy-link-error-message="Unable to copy page link."
+></script>
+
+
+<script defer src="https://lxrider.github.io/js/site-menu.js"></script>
+
+
+  
+  
+  
+</body>
+</html>

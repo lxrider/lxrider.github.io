@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="465" viewBox="0 0 1120 465" role="img" aria-labelledby="title desc">
+<title id="title">De l’accès distant à l’action sur le procédé</title><desc id="desc">Quatre conditions indépendantes: accessibilité, authentification, autorisation, application. Chaque franchissement doit être établi séparément.</desc>
+<style>text{font-family:Inter, system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif;letter-spacing:0.02px} </style>
+<rect width="1120" height="465" rx="18" fill="#0a1923"/>
+<rect x="1.2" y="1.2" width="1117.6" height="462.6" rx="17" fill="none" stroke="#37515b" stroke-width="1.4"/>
+<text x="34" y="41" fill="#71cede" font-size="18" font-weight="700" text-anchor="start" >FIG. 1  /  FRONTIÈRES DE CONFIANCE</text>
+<text x="34" y="78" fill="#eff8fa" font-size="29" font-weight="700" text-anchor="start" >De l’accès distant à l’action sur le procédé</text>
+<text x="34" y="106" fill="#b6cbd3" font-size="18" font-weight="400" text-anchor="start" >Un accès réseau ne donne pas automatiquement le pouvoir de commander.</text>
+<rect x="34" y="139" width="240" height="206" rx="12" fill="#0e2833" stroke="#365461" stroke-width="1.4"/>
+<rect x="50" y="157" width="46" height="37" rx="8" fill="#143844" stroke="#448399" stroke-width="1.2"/>
+<text x="73" y="183" fill="#71cede" font-size="20" font-weight="700" text-anchor="middle" >01</text>
+<text x="50" y="218" fill="#eff8fa" font-size="18" font-weight="700" text-anchor="start" >ACCESSIBILITÉ</text>
+<text x="50" y="254" fill="#eff8fa" font-size="19" font-weight="500" text-anchor="start" >L’équipement est-il</text>
+<text x="50" y="281" fill="#eff8fa" font-size="19" font-weight="500" text-anchor="start" >joignable ?</text>
+<line x1="50" y1="298" x2="258" y2="298" stroke="#345360" stroke-width="1.2" />
+<text x="50" y="327" fill="#b6cbd3" font-size="18" font-weight="400" text-anchor="start" >Web, VPN, 4G</text>
+<line x1="278" y1="244" x2="300" y2="244" stroke="#71cede" stroke-width="2.6" /><path d="M291 238 L300 244 L291 250" fill="none" stroke="#71cede" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="304" y="139" width="240" height="206" rx="12" fill="#0e2833" stroke="#365461" stroke-width="1.4"/>
+<rect x="320" y="157" width="46" height="37" rx="8" fill="#143844" stroke="#448399" stroke-width="1.2"/>
+<text x="343" y="183" fill="#71cede" font-size="20" font-weight="700" text-anchor="middle" >02</text>
+<text x="320" y="218" fill="#eff8fa" font-size="18" font-weight="700" text-anchor="start" >AUTHENTIFICATION</text>
+<text x="320" y="254" fill="#eff8fa" font-size="19" font-weight="500" text-anchor="start" >Qui ouvre la</text>
+<text x="320" y="281" fill="#eff8fa" font-size="19" font-weight="500" text-anchor="start" >session ?</text>
+<line x1="320" y1="298" x2="528" y2="298" stroke="#345360" stroke-width="1.2" />
+<text x="320" y="327" fill="#b6cbd3" font-size="18" font-weight="400" text-anchor="start" >Compte, MFA, session</text>
+<line x1="548" y1="244" x2="570" y2="244" stroke="#71cede" stroke-width="2.6" /><path d="M561 238 L570 244 L561 250" fill="none" stroke="#71cede" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="574" y="139" width="240" height="206" rx="12" fill="#0e2833" stroke="#365461" stroke-width="1.4"/>
+<rect x="590" y="157" width="46" height="37" rx="8" fill="#143844" stroke="#448399" stroke-width="1.2"/>
+<text x="613" y="183" fill="#71cede" font-size="20" font-weight="700" text-anchor="middle" >03</text>
+<text x="590" y="218" fill="#eff8fa" font-size="18" font-weight="700" text-anchor="start" >AUTORISATION</text>
+<text x="590" y="254" fill="#eff8fa" font-size="19" font-weight="500" text-anchor="start" >Que peut-il</text>
+<text x="590" y="281" fill="#eff8fa" font-size="19" font-weight="500" text-anchor="start" >modifier ?</text>
+<line x1="590" y1="298" x2="798" y2="298" stroke="#345360" stroke-width="1.2" />
+<text x="590" y="327" fill="#83dbb8" font-size="18" font-weight="600" text-anchor="start" >Lire ≠ écrire</text>
+<line x1="818" y1="244" x2="840" y2="244" stroke="#71cede" stroke-width="2.6" /><path d="M831 238 L840 244 L831 250" fill="none" stroke="#71cede" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="844" y="139" width="240" height="206" rx="12" fill="#0e2833" stroke="#365461" stroke-width="1.4"/>
+<rect x="860" y="157" width="46" height="37" rx="8" fill="#143844" stroke="#448399" stroke-width="1.2"/>
+<text x="883" y="183" fill="#71cede" font-size="20" font-weight="700" text-anchor="middle" >04</text>
+<text x="860" y="218" fill="#eff8fa" font-size="18" font-weight="700" text-anchor="start" >APPLICATION</text>
+<text x="860" y="254" fill="#eff8fa" font-size="19" font-weight="500" text-anchor="start" >L’ordre a-t-il</text>
+<text x="860" y="281" fill="#eff8fa" font-size="19" font-weight="500" text-anchor="start" >été accepté ?</text>
+<line x1="860" y1="298" x2="1068" y2="298" stroke="#345360" stroke-width="1.2" />
+<text x="860" y="327" fill="#b6cbd3" font-size="18" font-weight="400" text-anchor="start" >Effet physique à vérifier</text>
+<rect x="34" y="363" width="1052" height="78" rx="11" fill="#0b212b" stroke="#305362" stroke-width="1.4"/>
+<text x="55" y="396" fill="#71cede" font-size="19" font-weight="700" text-anchor="start" >À vérifier séparément</text>
+<text x="55" y="424" fill="#eff8fa" font-size="21" font-weight="500" text-anchor="start" >Session ouverte ≠ écriture autorisée ≠ valeur acceptée ≠ effet constaté.</text>
+</svg>

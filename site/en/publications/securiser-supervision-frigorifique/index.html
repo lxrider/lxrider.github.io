@@ -1,0 +1,1770 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html
+  lang="en"
+  dir="ltr"
+  
+  
+>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <title>Securing Refrigeration Supervision: A Step-by-Step Practical Guide | lxrider | Independent Offensive Cybersecurity Research</title>
+  
+<script>
+  (function () {
+    var storageKey = "devlab-theme-color-mode";
+    var announcementStorageKey = "devlab-announcement-dismissed";
+    var root = document.documentElement;
+    var defaultMode = "dark";
+
+    function isValidMode(mode) {
+      return mode === "light" || mode === "dark" || mode === "system";
+    }
+
+    function getSystemTheme() {
+      return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    }
+
+    function resolveTheme(mode) {
+      return mode === "system" ? getSystemTheme() : mode;
+    }
+
+    function getStoredMode() {
+      try {
+        return localStorage.getItem(storageKey);
+      } catch (_) {
+        return null;
+      }
+    }
+
+    var storedMode = getStoredMode();
+    var mode = isValidMode(storedMode) ? storedMode : defaultMode;
+
+    if (!isValidMode(mode)) {
+      mode = "system";
+    }
+
+    root.dataset.themeDefault = defaultMode;
+    root.dataset.themeMode = mode;
+    root.dataset.theme = resolveTheme(mode);
+
+    if (root.dataset.announcementKey) {
+      try {
+        if (localStorage.getItem(announcementStorageKey) === root.dataset.announcementKey) {
+          root.dataset.announcementDismissed = "true";
+        }
+      } catch (_) {
+        // Keep the announcement visible when persistent storage is unavailable.
+      }
+    }
+  })();
+</script>
+
+
+
+<meta name="description" content="Remote access to Danfoss and XWEB supervisory systems: identify exposed paths, migrate to a VPN or bastion, and preserve remote maintenance and alarms.">
+<link rel="canonical" href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/">
+
+<meta property="og:title" content="Securing Refrigeration Supervision: A Step-by-Step Practical Guide">
+<meta property="og:description" content="Remote access to Danfoss and XWEB supervisory systems: identify exposed paths, migrate to a VPN or bastion, and preserve remote maintenance and alarms.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/">
+<meta property="og:site_name" content="lxrider | Independent Offensive Cybersecurity Research">
+<meta property="article:published_time" content="2026-10-22">
+<meta property="article:modified_time" content="2026-11-03">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Securing Refrigeration Supervision: A Step-by-Step Practical Guide">
+<meta name="twitter:description" content="Remote access to Danfoss and XWEB supervisory systems: identify exposed paths, migrate to a VPN or bastion, and preserve remote maintenance and alarms.">
+
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b1120" media="(prefers-color-scheme: dark)">
+
+
+
+
+
+<link rel="alternate" hreflang="en" href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/">
+
+
+
+<link rel="alternate" hreflang="fr" href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/">
+
+
+
+
+
+<link rel="icon" href="https://lxrider.github.io/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://lxrider.github.io/main.css">
+
+<link rel="stylesheet" href="https://lxrider.github.io/print.css" media="print">
+
+  
+  
+<link rel="stylesheet" href="https://lxrider.github.io/custom.css">
+
+</head>
+
+
+
+
+<body>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  
+
+  <div class="site-shell">
+    
+    <header class="site-header site-header-has-menu">
+  <div class="site-header-inner">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a class="site-logo" href="https://lxrider.github.io/en" aria-label="lxrider | Independent Offensive Cybersecurity Research">
+  
+  
+  <img
+    class="site-logo-mark site-logo-mark-image"
+    src="https://lxrider.github.io/images/lxrider-header-logo.png"
+    alt=""
+    width="32"
+    height="32"
+  >
+  
+  
+
+  
+</a>
+
+
+
+    
+    <nav class="site-nav" aria-label="Main navigation">
+      
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+<a
+  class="site-nav-link is-active"
+  href="https://lxrider.github.io/en/publications/"
+  aria-current="location"
+>
+  Publications
+</a>
+
+      
+      
+      
+      
+      
+        
+        
+      
+      
+      
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+
+<a
+  class="site-nav-link "
+  href="https://github.com/lxrider"
+  
+>
+  GitHub
+</a>
+
+      
+      
+    </nav>
+    
+
+    
+
+    
+
+
+
+
+
+
+<button
+  class="theme-toggle"
+  type="button"
+  data-theme-toggle
+  data-theme-light-label="Light theme"
+  data-theme-dark-label="Dark theme"
+  data-theme-system-label="System theme"
+  aria-label="Dark theme"
+  title="Dark theme"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="theme-toggle-svg system" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1v-10" /><path d="M7 20h10" /><path d="M9 16v4" /><path d="M15 16v4" /></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="theme-toggle-svg sun" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.828 14.828a4 4 0 1 0 -5.656 -5.656a4 4 0 0 0 5.656 5.656" /><path d="M6.343 17.657l-1.414 1.414" /><path d="M6.343 6.343l-1.414 -1.414" /><path d="M17.657 6.343l1.414 -1.414" /><path d="M17.657 17.657l1.414 1.414" /><path d="M4 12h-2" /><path d="M12 4v-2" /><path d="M20 12h2" /><path d="M12 20v2" /></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="theme-toggle-svg moon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454l0 .008" /><path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2" /><path d="M19 11h2m-1 -1v2" /></svg>
+</button>
+
+
+
+<nav class="language-switcher" aria-label="Language">
+
+
+
+
+
+<a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/" lang="en" hreflang="en" aria-current="page">EN</a>
+
+
+
+
+
+<a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/" lang="fr" hreflang="fr">FR</a>
+
+</nav>
+
+
+
+
+    
+    <button
+      class="site-menu-button"
+      type="button"
+      aria-label="Open menu"
+      aria-controls="site-menu"
+      aria-expanded="false"
+      data-site-menu-toggle
+    >
+      <span class="site-menu-button-icon" aria-hidden="true"></span>
+    </button>
+    
+  </div>
+</header>
+
+    
+    <div class="site-menu-backdrop" data-site-menu-backdrop hidden></div>
+
+<div
+  id="site-menu"
+  class="site-menu"
+  role="dialog"
+  aria-label="Mobile navigation"
+  aria-modal="true"
+  aria-hidden="true"
+  data-site-menu
+  data-site-menu-initial-panel="docs"
+  inert
+>
+  <div class="site-menu-header">
+    <p class="site-menu-title">Menu</p>
+
+    <button
+      class="site-menu-close"
+      type="button"
+      aria-label="Close menu"
+      data-site-menu-close
+    >
+      &times;
+    </button>
+  </div>
+
+  
+
+<div id="site-menu-panel-main" class="site-menu-panel" data-site-menu-panel="main">
+  <nav class="site-menu-nav" aria-label="Main mobile navigation">
+    
+    
+    
+    
+    
+    
+    <div class="site-menu-link-row">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+<a
+  class="site-menu-link is-active"
+  href="https://lxrider.github.io/en/publications/"
+  aria-current="location"
+>
+  <span>Publications</span>
+</a>
+
+      <button
+        class="site-menu-link-disclosure"
+        type="button"
+        aria-label="Open documentation navigation"
+        aria-controls="site-menu-panel-docs"
+        aria-expanded="false"
+        data-site-menu-panel-target="docs"
+      >
+        <span class="site-menu-link-indicator" aria-hidden="true">&rsaquo;</span>
+      </button>
+    </div>
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+<a
+  class="site-menu-link "
+  href="https://github.com/lxrider"
+  
+>
+  GitHub
+</a>
+
+    
+    
+    
+  </nav>
+</div>
+
+  
+
+<div id="site-menu-panel-docs" class="site-menu-panel" data-site-menu-panel="docs" hidden>
+  
+  <button
+    class="site-menu-back"
+    type="button"
+    aria-controls="site-menu-panel-main"
+    data-site-menu-panel-target="main"
+  >
+    <span aria-hidden="true">&larr;</span>
+    Back to main menu
+  </button>
+  
+
+  <nav class="site-menu-nav site-menu-docs-nav" aria-label="Documentation mobile navigation">
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="docs-nav-list">
+  
+  
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link "
+    href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/"
+    
+  >
+    Cyber Resilience in Commercial Refrigeration: Managing an Incident, Protecting the Process
+  </a>
+</li>
+
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link is-active"
+    href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/"
+    aria-current="page"
+  >
+    Securing Refrigeration Supervision: A Step-by-Step Practical Guide
+  </a>
+</li>
+
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link "
+    href="https://lxrider.github.io/en/publications/froid-commercial/"
+    
+  >
+    Commercial Refrigeration Cybersecurity: Who Can Control the Systems?
+  </a>
+</li>
+
+
+
+
+
+  
+</ul>
+
+
+
+
+  </nav>
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="site-footer site-footer-compact">
+  <div class="site-footer-inner">
+    
+
+
+
+
+
+<div class="site-footer-info">
+
+<p class="site-footer-note">Independent analysis of systems and their access paths.</p>
+
+
+<p class="site-footer-copyright">&copy; 2026 lxrider</p>
+</div>
+
+
+
+  </div>
+</footer>
+
+
+</div>
+
+
+</div>
+
+    
+    
+    <main id="main-content" class="site-main site-main-docs" tabindex="-1">
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="docs-shell">
+  
+<aside
+  id="docs-sidebar"
+  class="docs-sidebar"
+  aria-label="Publications"
+>
+  
+
+  <nav class="docs-sidebar-nav" aria-label="Publications">
+    <p class="docs-sidebar-title">Publications</p>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul class="docs-nav-list">
+  
+  
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link "
+    href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/"
+    
+  >
+    Cyber Resilience in Commercial Refrigeration: Managing an Incident, Protecting the Process
+  </a>
+</li>
+
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link is-active"
+    href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/"
+    aria-current="page"
+  >
+    Securing Refrigeration Supervision: A Step-by-Step Practical Guide
+  </a>
+</li>
+
+
+
+
+<li class="docs-nav-item">
+  <a
+    class="docs-nav-link "
+    href="https://lxrider.github.io/en/publications/froid-commercial/"
+    
+  >
+    Commercial Refrigeration Cybersecurity: Who Can Control the Systems?
+  </a>
+</li>
+
+
+
+
+
+  
+</ul>
+
+
+
+
+  </nav>
+
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="site-footer site-footer-compact">
+  <div class="site-footer-inner">
+    
+
+
+
+
+
+<div class="site-footer-info">
+
+<p class="site-footer-note">Independent analysis of systems and their access paths.</p>
+
+
+<p class="site-footer-copyright">&copy; 2026 lxrider</p>
+</div>
+
+
+
+  </div>
+</footer>
+
+
+</aside>
+
+
+  <article class="docs-content content">
+    
+    
+
+
+
+
+
+
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol class="breadcrumbs-list">
+    <li class="breadcrumbs-item">
+      <a href="https://lxrider.github.io/en/publications/">Publications</a>
+    </li>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    <li class="breadcrumbs-item" aria-current="page">
+      <span>Securing Refrigeration Supervision: A Step-by-Step Practical Guide</span>
+    </li>
+  </ol>
+</nav>
+
+
+
+
+    
+
+    
+<header class="page-header">
+  <div class="docs-page-heading">
+  <h1>Securing Refrigeration Supervision: A Step-by-Step Practical Guide</h1>
+  
+<div class="docs-copy-link">
+  <button
+    class="docs-copy-link-button"
+    type="button"
+    aria-label="Copy link"
+    title="Copy link"
+    data-docs-copy-link
+    hidden
+  >
+    <span class="docs-copy-link-default-icon" data-docs-copy-link-default-icon>
+      <span class="content-icon content-icon-sm" aria-hidden="true">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+</span>
+    </span>
+    <span class="docs-copy-link-success-icon" data-docs-copy-link-success-icon>
+      <span class="content-icon content-icon-sm" aria-hidden="true">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5l10 -10" /></svg>
+</span>
+    </span>
+    <span class="docs-copy-link-label" data-docs-copy-link-label>Copy link</span>
+  </button>
+  <span
+    class="docs-page-action-status"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+    data-docs-copy-link-status
+  ></span>
+</div>
+
+</div>
+  
+
+  <p class="page-description">Remote access to Danfoss and XWEB supervisory systems: identify exposed paths, migrate to a VPN or bastion, and preserve remote maintenance and alarms.</p>
+  
+
+</header>
+
+
+    
+    
+    
+<details class="docs-toc-inline" data-devlab-toc>
+  <summary>On this page</summary>
+  <nav aria-label="On this page">
+    
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <details class="docs-toc-group" data-docs-toc-group>
+        <summary class="docs-toc-group-toggle">
+          <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#1-remote-access-and-internet-exposure-two-different-paths">
+            1. Remote access and Internet exposure: two different paths
+          </a>
+          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
+        </summary>
+
+        
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#pay-attention-to-the-alarm-path">
+        Pay attention to the alarm path
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+
+      </details>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <details class="docs-toc-group" data-docs-toc-group>
+        <summary class="docs-toc-group-toggle">
+          <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#2-identify-the-access-paths-that-actually-exist">
+            2. Identify the access paths that actually exist
+          </a>
+          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
+        </summary>
+
+        
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#understand-what-port-forwarding-does">
+        Understand what port forwarding does
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#a-simple-check-on-your-own-installation">
+        A simple check on your own installation
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#who-controls-remote-maintenance-access">
+        Who controls remote-maintenance access?
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+
+      </details>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#3-prepare-the-replacement-before-touching-the-router">
+        3. Prepare the replacement before touching the router
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <details class="docs-toc-group" data-docs-toc-group>
+        <summary class="docs-toc-group-toggle">
+          <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#4-secure-remote-maintenance-without-losing-remote-access">
+            4. Secure remote maintenance without losing remote access
+          </a>
+          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
+        </summary>
+
+        
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#vpn-gateway-and-bastion-different-roles">
+        VPN, gateway and bastion: different roles
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#separate-the-refrigeration-network-and-control-access">
+        Separate the refrigeration network and control access
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#example-involving-two-stores">
+        Example involving two stores
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#temporary-protection-before-deploying-a-vpn">
+        Temporary protection before deploying a VPN
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#review-maintenance-accounts">
+        Review maintenance accounts
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#migrate-in-the-right-order">
+        Migrate in the right order
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+
+      </details>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <details class="docs-toc-group" data-docs-toc-group>
+        <summary class="docs-toc-group-toggle">
+          <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#5-verify-everything-after-the-intervention">
+            5. Verify everything after the intervention
+          </a>
+          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
+        </summary>
+
+        
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#checks-to-close-out-together">
+        Checks to close out together
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+
+      </details>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#sources-and-documentation">
+        Sources and documentation
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+
+  </nav>
+</details>
+
+
+
+    <p>When a store calls about an alarm, the refrigeration technician needs to open its supervisory interface remotely. That is often how the technician understands the situation before travelling to the site.</p>
+<p><strong>Remote maintenance is part of everyday refrigeration service. Its access paths deserve as much attention as the supervisory systems themselves.</strong> A port-forwarding rule on an Internet router, a 4G router installed as a quick fix, a remotely accessible refrigeration workstation: access paths multiply as work is carried out and become harder to track.</p>
+<p>Following the October 2026 incidents, <a rel="external" href="https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/">CERT-FR</a> recommends removing management interfaces exposed directly to the Internet. The practical question remains: <strong>how can direct public access be closed without losing remote maintenance and overnight alarms?</strong></p>
+<p>This guide addresses that question. Two related articles examine <a rel="external" href="https://lxrider.github.io/en/publications/froid-commercial/">what an attacker could command using a compromised account</a> and <a rel="external" href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/">how to recover refrigeration after an incident</a>. Here, the focus is on <strong>remote access to supervisory systems</strong>.</p>
+<figure class="research-figure">
+<a class="figure-open" href="illustration-froid-commercial-lxrider-web.svg" target="_blank" rel="noopener" aria-label="Open the refrigeration-store illustration at full size">
+<img src="illustration-froid-commercial-lxrider-web.svg" width="1200" height="630" alt="A supermarket aisle lined with illuminated refrigerated display cases, an amber indicator and a glowing line leading towards the plant room." loading="eager" decoding="async" fetchpriority="high">
+</a>
+<figcaption>Opening illustration by lxrider — Conceptual representation of a refrigeration installation.</figcaption>
+</figure>
+<h2 id="1-remote-access-and-internet-exposure-two-different-paths">1. Remote access and Internet exposure: two different paths<a class="zola-anchor" href="#1-remote-access-and-internet-exposure-two-different-paths" aria-label="Anchor link for: 1-remote-access-and-internet-exposure-two-different-paths">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p><strong>Remote access meets a refrigeration technician's operational need.</strong> Internet exposure describes how a management interface becomes reachable from outside the site.</p>
+<ul>
+<li><strong>Direct access:</strong> a connection from the Internet reaches the supervisory interface, often through a port-forwarding rule on the Internet router.</li>
+<li><strong>Protected access:</strong> the technician first enters through a VPN or another managed access solution, then reaches only the authorized equipment.</li>
+</ul>
+<p><strong>A public login page remains exposed even when protected by a password.</strong> A VPN creates a private access path; network filtering then limits each technician to the necessary equipment.</p>
+<figure class="research-figure">
+<a class="figure-open" href="schema-acces-supervision-en.svg" target="_blank" rel="noopener" aria-label="Open the high-resolution remote-access diagram">
+<img height="680" width="1320" src="schema-acces-supervision-en.svg" alt="Before: Internet traffic reaches the supervisory system directly via port forwarding. After: the technician uses a VPN and managed access, reaching the supervisory system only after VPN authentication. Alarm flows are shown separately and must be checked on site." loading="lazy" decoding="async">
+</a>
+<figcaption>Figure 1. Two ways to reach the supervisory system: directly from the Internet or through private access. Alarms may take a different route. Original diagram by lxrider.</figcaption>
+</figure>
+<h3 id="pay-attention-to-the-alarm-path">Pay attention to the alarm path<a class="zola-anchor" href="#pay-attention-to-the-alarm-path" aria-label="Anchor link for: pay-attention-to-the-alarm-path">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h3>
+<p>Depending on the installation, the supervisory system may <strong>send alarms</strong> outward, the remote-monitoring platform may <strong>poll the site</strong>, or several mechanisms may coexist. The direction of each communication determines which network rules are needed.</p>
+<p>Before changing a rule, ask the maintainer and on-call team: <strong>which system initiates each connection?</strong> The migration must preserve necessary communications. An agreed test with the on-call team should then confirm that alarms are received.</p>
+<h2 id="2-identify-the-access-paths-that-actually-exist">2. Identify the access paths that actually exist<a class="zola-anchor" href="#2-identify-the-access-paths-that-actually-exist" aria-label="Anchor link for: 2-identify-the-access-paths-that-actually-exist">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p>The store's network diagram, if there is one, is a starting point. Technicians' habits may reveal more: “I connect through the Internet router,” “we use a SIM card,” or “I remote into the refrigeration PC.”</p>
+<p>Identify <strong>all paths still used or left open</strong>:</p>
+<ul>
+<li>port-forwarding rules on the Internet router or firewall;</li>
+<li>a standalone 4G/5G router, perhaps installed by a service provider;</li>
+<li>IPv6 connectivity, where used;</li>
+<li>VPN, cloud access or remote-support software on the refrigeration workstation;</li>
+<li>legacy maintenance access, checked against current contracts and service providers.</li>
+</ul>
+<p><strong>The absence of NAT port forwarding on the main router does not rule out other paths</strong>, particularly cellular routers and remote-support platforms.</p>
+<h3 id="understand-what-port-forwarding-does">Understand what port forwarding does<a class="zola-anchor" href="#understand-what-port-forwarding-does" aria-label="Anchor link for: understand-what-port-forwarding-does">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h3>
+<p>Fictional example: an Internet router receives a connection on port <strong>8443</strong> and forwards it to the supervisory system at <code>192.168.1.50</code> on port <strong>443</strong>. The external and internal ports need not be the same.</p>
+<p>This rule establishes a <strong>possible path</strong> to the supervisory system. Whether the service is reachable and whether it has been accessed in the past are two separate questions.</p>
+<figure class="research-figure">
+  <a class="figure-open" href="schema-lan-nat-en.svg" target="_blank" rel="noopener" aria-label="Open the NAT port-forwarding diagram">
+    <img height="332" width="1080" src="schema-lan-nat-en.svg" alt="Fictional example: an Internet connection reaches the router on external port 8443 and is forwarded by NAT/PAT to the local supervisory system at 192.168.1.50 on internal port 443." loading="lazy" decoding="async">
+  </a>
+  <figcaption>Figure 2. Fictional NAT/PAT port-forwarding example. Addresses and ports are illustrative. Original diagram by lxrider.</figcaption>
+</figure>
+<p>The person responsible for the router records the destination, ports, protocol and purpose of each rule. <strong>Document first; make changes during the coordinated migration.</strong></p>
+<figure class="research-figure">
+  <a class="figure-open" href="reperes-interfaces-box-en.svg" target="_blank" rel="noopener" aria-label="Open the Orange and Freebox interface navigation guide">
+    <img height="380" width="1060" src="reperes-interfaces-box-en.svg" alt="Schematic navigation hints: on Livebox 5, Advanced settings, Network, NAT/PAT; on Freebox Connect, Network, Advanced network settings, then Port forwarding or VPN server. Menu names may differ." loading="lazy" decoding="async">
+  </a>
+  <figcaption>Figure 3. Navigation hints based on <a href="https://assistance.orange.fr/ordinateurs-peripheriques/installer-et-utiliser/les-consoles-de-jeux/xbox/livebox-5-configurer-les-regles-nat-pour-pouvoir-utiliser-un-jeu-ou-une-application-serveur_287340-827962">Orange's Livebox 5 guidance</a> and <a href="https://assistance.free.fr/articles/1395">Free's Freebox Connect guidance</a>. Menus vary by device.</figcaption>
+</figure>
+<h3 id="a-simple-check-on-your-own-installation">A simple check on your own installation<a class="zola-anchor" href="#a-simple-check-on-your-own-installation" aria-label="Anchor link for: a-simple-check-on-your-own-installation">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h3>
+<p>If you already know the address normally used by the refrigeration technician and have the necessary authorization:</p>
+<ol>
+<li>On a phone, disable Wi-Fi and any VPN, then try <strong>the usual maintenance address</strong> over the mobile connection.</li>
+<li>If the supervisory system's management page loads directly, its Web interface is <strong>reachable from the Internet</strong>.</li>
+<li>If the page cannot be reached at that address, <strong>this does not prove there is no exposure</strong>: continue inventorying other possible paths (other ports and services, 4G, IPv6 and remote-support tools).</li>
+</ol>
+<p>This check concerns <strong>the established maintenance address and an authorized scope</strong>. To identify other addresses or test other devices, involve the network administrator and maintenance provider.</p>
+<h3 id="who-controls-remote-maintenance-access">Who controls remote-maintenance access?<a class="zola-anchor" href="#who-controls-remote-maintenance-access" aria-label="Anchor link for: who-controls-remote-maintenance-access">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h3>
+<p>A store may belong to a retail group, have been fitted out by an integrator, and use a remote connection installed by the refrigeration contractor. The VPN may be administered by corporate IT, while a 4G router or maintenance platform belongs to a service provider.</p>
+<p><strong>Four questions should be answered for each access path:</strong></p>
+<ul>
+<li><strong>Who authorizes it?</strong> Who allows a refrigeration technician or provider to intervene at the store?</li>
+<li><strong>Who administers it?</strong> Who creates accounts, grants access and can revoke it?</li>
+<li><strong>Where is it administered?</strong> On the store router, a 4G router, the retailer's bastion, or a platform hosted by a provider?</li>
+<li><strong>With what authority?</strong> Which stores and equipment can the technician reach? Who approves expanded rights?</li>
+</ul>
+<p>Changing maintenance providers is a revealing test: <strong>who can find the former provider's access paths, and who has the ability to close them?</strong></p>
+<h2 id="3-prepare-the-replacement-before-touching-the-router">3. Prepare the replacement before touching the router<a class="zola-anchor" href="#3-prepare-the-replacement-before-touching-the-router" aria-label="Anchor link for: 3-prepare-the-replacement-before-touching-the-router">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p>A port-forwarding rule can be deleted in a few clicks. <strong>Recovering a technician's access during an overnight emergency may take much longer.</strong></p>
+<p>Before the change, assemble three pieces of information:</p>
+<ul>
+<li><strong>Remote maintenance:</strong> how does the refrigeration technician connect today? From a PC, through a VPN or portal, or via remote control of the refrigeration workstation?</li>
+<li><strong>Alarms:</strong> who receives them, by which path, and how will reception be checked afterwards?</li>
+<li><strong>Fallback:</strong> what backup option exists if the new access fails? Who can be reached overnight?</li>
+</ul>
+<p>Also identify the supervisory-system model and its connection: store Internet router, cellular router or another path. <strong>If a contract includes remote monitoring, the relevant service provider must be involved in the migration.</strong></p>
+<table><thead><tr><th>Participant</th><th>What they must confirm</th></tr></thead><tbody>
+<tr><td><strong>Store operator</strong></td><td>Approval for the intervention, maintenance window and fallback arrangements.</td></tr>
+<tr><td><strong>Network / IT lead</strong></td><td>New access path, rule changes and closure of the old path.</td></tr>
+<tr><td><strong>Refrigeration technician</strong></td><td>Working remote access and availability of required functions.</td></tr>
+<tr><td><strong>On-call team / monitoring provider</strong></td><td>Alarm reception and a known fallback procedure.</td></tr>
+</tbody></table>
+<p>Tests must be agreed with the participants: access verification, alarm receipt and <strong>preservation of refrigeration operation</strong>.</p>
+<h2 id="4-secure-remote-maintenance-without-losing-remote-access">4. Secure remote maintenance without losing remote access<a class="zola-anchor" href="#4-secure-remote-maintenance-without-losing-remote-access" aria-label="Anchor link for: 4-secure-remote-maintenance-without-losing-remote-access">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p><strong>A simple, maintained solution restricted to the right equipment makes remote maintenance and future repairs easier.</strong> Every added component must have an owner.</p>
+<h3 id="vpn-gateway-and-bastion-different-roles">VPN, gateway and bastion: different roles<a class="zola-anchor" href="#vpn-gateway-and-bastion-different-roles" aria-label="Anchor link for: vpn-gateway-and-bastion-different-roles">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h3>
+<p>A <strong>VPN</strong> provides a private path to the site. A <strong>gateway</strong> may provide that connection. A <strong>bastion</strong> is useful for organizing and recording maintenance sessions, especially across multiple stores or service providers. A private path alone is not sufficient: the access administrator must restrict permitted routes, destinations and ports, and provide a way to revoke authorizations.</p>
+<table><thead><tr><th>Situation</th><th>Option to examine</th><th>What to check</th></tr></thead><tbody>
+<tr><td>The store already has a corporate VPN</td><td>Reuse it with access restricted to refrigeration</td><td>Who connects, and which devices are reachable?</td></tr>
+<tr><td>The Internet router offers a suitable VPN server</td><td>Router VPN, such as <a rel="external" href="https://assistance.free.fr/articles/1970">WireGuard on certain Freebox models</a></td><td>Accounts, updates and access filtering</td></tr>
+<tr><td>The site needs private access</td><td>Managed VPN router or gateway</td><td>Who will maintain and troubleshoot it?</td></tr>
+<tr><td>Remote maintenance uses a 4G/5G router</td><td>VPN or remote-access solution compatible with the link</td><td>Connectivity, fallback and the alarm path</td></tr>
+<tr><td>Multiple stores or refrigeration maintenance companies</td><td>Private access <strong>supplemented, where necessary, by a bastion</strong></td><td>Site-specific rights, sessions and emergency access</td></tr>
+</tbody></table>
+<p><strong>The VPN provides the private path; the bastion governs maintenance sessions.</strong> Depending on the product and supported protocols, a bastion can require named accounts, restrict destinations and retain connection logs. Check that direct access paths cannot bypass it, and protect the accounts that administer it. <strong>Command permissions still need to be checked on every supervisory system.</strong></p>
+<h3 id="separate-the-refrigeration-network-and-control-access">Separate the refrigeration network and control access<a class="zola-anchor" href="#separate-the-refrigeration-network-and-control-access" aria-label="Anchor link for: separate-the-refrigeration-network-and-control-access">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h3>
+<p>Remote maintenance should connect to <strong>a network zone dedicated to refrigeration equipment</strong>, separated wherever possible from office workstations, guest Wi-Fi and other store systems. The goal is to limit possible communication if a maintenance workstation or account is compromised.</p>
+<p>A <strong>VLAN</strong> can provide logical separation on managed infrastructure; physical separation is another option. <strong>A VLAN alone does not enforce filtering</strong>: if the router allows unrestricted inter-network traffic, a compromised device may still reach the other zone. The network administrator must identify necessary communications and restrict them using suitable firewall or filtering rules, including traffic arriving from the VPN.</p>
+<p>Before changing this architecture, <strong>inventory and test essential traffic</strong>: communications between supervision and controllers, alarms to the on-call team, multi-site monitoring and maintainer access. Poorly prepared isolation could interrupt an alarm or prevent troubleshooting without necessarily stopping local control. Which functions must be preserved depends on the installed equipment.</p>
+<p>On a small installation behind an Internet router that cannot enforce this filtering, <strong>do not create a merely symbolic VLAN</strong>. First remove direct exposure, secure identities and have an appropriate managed router or firewall assessed for genuine network segmentation. <strong>The design and configuration are the network administrator's responsibility, in coordination with the refrigeration technician.</strong></p>
+<h3 id="example-involving-two-stores">Example involving two stores<a class="zola-anchor" href="#example-involving-two-stores" aria-label="Anchor link for: example-involving-two-stores">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h3>
+<p>The same refrigeration contractor maintains stores A and B. During work on store A, the technician's session can be restricted to that store alone. A properly configured bastion can restrict the session to A and log the connection.</p>
+<figure class="research-figure">
+<a class="figure-open" href="schema-bastion-telemaintenance-en.svg" target="_blank" rel="noopener" aria-label="Open the remote-maintenance bastion diagram">
+<img src="schema-bastion-telemaintenance-en.svg" width="1160" height="520" alt="A refrigeration technician connects through a VPN and bastion. Access to store A's supervisor is allowed, while store B is denied according to assigned permissions. The bastion logs connections; write permissions remain managed on each supervisory system." loading="lazy" decoding="async">
+</a>
+<figcaption>Figure 4. Remote-maintenance bastion: one technician, two stores and different access rights. Conceptual example by lxrider.</figcaption>
+</figure>
+<p>However, <strong>the bastion itself becomes a sensitive access point</strong>. It must be updated and its administration protected, with a fallback option in case of failure. <a rel="external" href="https://messervices.cyber.gouv.fr/guides/recommandations-gestion-technique-batiment">ANSSI guidance on provider access to building-management systems</a> informs this choice. The architecture must reflect each store's constraints.</p>
+<h3 id="temporary-protection-before-deploying-a-vpn">Temporary protection before deploying a VPN<a class="zola-anchor" href="#temporary-protection-before-deploying-a-vpn" aria-label="Anchor link for: temporary-protection-before-deploying-a-vpn">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h3>
+<p>The network administrator may temporarily filter incoming Internet connections to <strong>allow only the service provider's known public IP addresses</strong>, if the equipment supports it. <a rel="external" href="https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/">CERT-FR</a> presents this as a <strong>temporary</strong> measure: the supervisory system remains reachable from those addresses.</p>
+<p>Such temporary protection needs an owner, a deadline for moving to VPN access and a test of alarm reception.</p>
+<h3 id="review-maintenance-accounts">Review maintenance accounts<a class="zola-anchor" href="#review-maintenance-accounts" aria-label="Anchor link for: review-maintenance-accounts">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h3>
+<p>Does a former provider still use a shared login? Is a default account still enabled? Review these with the maintainer. Assign named accounts and minimum necessary privileges. <strong>Enable multi-factor authentication (MFA) at a compatible remote-entry point (VPN, bastion or access portal).</strong> If an older supervisory system does not support MFA, protect access upstream rather than assuming it has a feature it lacks. Plan the revocation of former technicians' accounts, protection of supervisory administrator accounts and suitable access logging.</p>
+<p><strong>Closing public ports and managing accounts are complementary protections.</strong> A VPN also reduces the exposure of an out-of-support supervisory system. Copeland <a rel="external" href="https://webapps.copeland.com/dixell/Content/Pages/AdvertisingMaterials/ProductNews/XWEB%20EVO%20EoS%20-%20Product_Bulletin_March_2026.pdf">announced the end of software updates for XWEB EVO on 16 March 2026</a>: immediate access protection should therefore be accompanied by a replacement plan.</p>
+<h3 id="migrate-in-the-right-order">Migrate in the right order<a class="zola-anchor" href="#migrate-in-the-right-order" aria-label="Anchor link for: migrate-in-the-right-order">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h3>
+<ol>
+<li>Deploy <strong>and test the new access</strong>, including MFA and network restrictions, with the refrigeration technician; retain any fallback approved as necessary.</li>
+<li>Check <strong>remote maintenance and the complete alarm path</strong> with the on-call team.</li>
+<li>Have the <strong>direct public access</strong> removed by the authorized person, with the operator's approval.</li>
+<li>Test again, check other paths (4G, IPv6 and cloud access), and document the fallback. <strong>A fallback must not automatically re-expose the interface on the Internet</strong>: any temporary exception must be approved, limited and time-bound.</li>
+</ol>
+<h2 id="5-verify-everything-after-the-intervention">5. Verify everything after the intervention<a class="zola-anchor" href="#5-verify-everything-after-the-intervention" aria-label="Anchor link for: 5-verify-everything-after-the-intervention">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<p>From the Internet, <strong>the supervisory management interface must no longer be directly reachable</strong>, including via the former published path. The public IP address may still serve a protected VPN. This check must be accompanied by an assessment of other identified paths and a complete remote-maintenance test.</p>
+<h3 id="checks-to-close-out-together">Checks to close out together<a class="zola-anchor" href="#checks-to-close-out-together" aria-label="Anchor link for: checks-to-close-out-together">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h3>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Known access paths have been inventoried: Internet router, 4G/5G, IPv6, refrigeration PC, platforms and service providers.</li>
+<li><input disabled="" type="checkbox"/>
+The new VPN or private access works for an authorized technician; attempts by out-of-scope accounts are blocked.</li>
+<li><input disabled="" type="checkbox"/>
+MFA on a compatible VPN, bastion or access portal has been tested; named accounts and revocation of former access have been checked.</li>
+<li><input disabled="" type="checkbox"/>
+Segmentation of the refrigeration zone (filtered VLAN or another suitable control) has been reviewed; permitted and prohibited traffic has been tested with the network administrator.</li>
+<li><input disabled="" type="checkbox"/>
+The technician can reach only the equipment required for the intervention.</li>
+<li><input disabled="" type="checkbox"/>
+If a bastion is used, site-specific permissions, logging and fallback have been tested.</li>
+<li><input disabled="" type="checkbox"/>
+Identified direct paths have been closed; the network team has checked other possible paths.</li>
+<li><input disabled="" type="checkbox"/>
+An authorized test alarm has been <strong>received and acknowledged by the on-call team</strong>.</li>
+<li><input disabled="" type="checkbox"/>
+The refrigeration technician confirms that the supervisory system and necessary remote-maintenance functions remain reachable.</li>
+<li><input disabled="" type="checkbox"/>
+For every access path, <strong>the people who authorize, administer and revoke rights</strong> are identified, including at service providers.</li>
+<li><input disabled="" type="checkbox"/>
+Everyone knows <strong>who maintains the solution</strong>, who troubleshoots it and whom to call outside business hours.</li>
+</ul>
+<p>This guide covers <strong>preventive access security</strong>. If compromise is suspected, <strong>closing a port-forwarding rule is not enough to declare the installation trustworthy</strong>. Preserve observations, have a qualified refrigeration professional check actual parameters and process conditions, and coordinate the response in line with CERT-FR and manufacturer guidance; <a rel="external" href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/">post-incident recovery</a> is a separate topic.</p>
+<p><strong>Success must be verified on site: the technician can work remotely through controlled access, the on-call team receives alarms, and management interfaces remain behind the intended safeguards.</strong></p>
+<h2 id="sources-and-documentation">Sources and documentation<a class="zola-anchor" href="#sources-and-documentation" aria-label="Anchor link for: sources-and-documentation">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a>
+</h2>
+<ul>
+<li><a rel="external" href="https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/">CERT-FR — CERTFR-2026-ALE-012: incident affecting remote refrigeration controllers</a> (16 October 2026 version).</li>
+<li><a rel="external" href="https://dixell.fr/wp-content/uploads/2026/10/Recommandations-pour-une-utilisation-securisee-des-superviseurs-XWEB-v1.0.pdf">Copeland / Dixell France — Recommendations for the secure use of XWEB supervisory systems (French)</a> (14 October 2026).</li>
+<li><a rel="external" href="https://assets.danfoss.com/documents/latest/471013/BC337629891709en-000901.pdf">Danfoss — AK-SM 800A User Guide</a> (June 2026, especially pp. 30 and 35; <strong>800A only</strong>).</li>
+<li><a rel="external" href="https://webapps.copeland.com/Dixell/Content/Pages/Manuals/XWEBEVO/XWEBEVOV5.6.0OPERATION/XWEB-EVO-r5.6.0-OPR-EN.pdf">Copeland / Dixell — XWEB EVO 5.6.0 manual</a> and <a rel="external" href="https://webapps.copeland.com/Dixell/Content/Pages/Manuals/XWEBPRO/XWEBPROV1.2OPERATION/XWEB-PRO-OPR-EN.pdf">XWEB PRO 1.2 manual</a>: <strong>distinct versions</strong>.</li>
+<li><a rel="external" href="https://messervices.cyber.gouv.fr/guides/recommandations-gestion-technique-batiment">ANSSI — Building-management-system security guidance (2026, French)</a> and <a rel="external" href="https://messervices.cyber.gouv.fr/documents-guides/anssi-guide-admin_securisee_si_v3-0.pdf">Secure Administration of Information Systems, §13.1 “Using a Bastion” (French)</a>.</li>
+<li><a rel="external" href="https://csrc.nist.gov/pubs/sp/800/82/r3/final">NIST — SP 800-82 Rev. 3, Guide to Operational Technology (OT) Security</a> (September 2023, §6.2.1.3 on network segmentation and isolation).</li>
+<li><a rel="external" href="https://assistance.orange.fr/ordinateurs-peripheriques/installer-et-utiliser/les-consoles-de-jeux/xbox/livebox-5-configurer-les-regles-nat-pour-pouvoir-utiliser-un-jeu-ou-une-application-serveur_287340-827962">Orange — Livebox 5, NAT/PAT (French)</a> and <a rel="external" href="https://assistance.free.fr/articles/1395">Free — advanced network settings (French)</a>.</li>
+</ul>
+<p><em>Scope: a practical guide for personnel authorized to work on refrigeration supervisory systems. Access examples and diagrams are conceptual and must be checked against the site's actual equipment, connections and contracts.</em></p>
+<p><em>Version 1.5 — maintenance access controls, 3 November 2026. © 2026 lxrider — All rights reserved.</em></p>
+
+
+    
+
+
+
+
+
+    
+  </article>
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<aside class="docs-toc" data-devlab-toc aria-labelledby="docs-toc-title">
+  
+  <p class="docs-toc-title" id="docs-toc-title">On this page</p>
+
+  <nav class="docs-toc-nav" aria-label="On this page">
+    
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <details class="docs-toc-group" data-docs-toc-group>
+        <summary class="docs-toc-group-toggle">
+          <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#1-remote-access-and-internet-exposure-two-different-paths">
+            1. Remote access and Internet exposure: two different paths
+          </a>
+          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
+        </summary>
+
+        
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#pay-attention-to-the-alarm-path">
+        Pay attention to the alarm path
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+
+      </details>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <details class="docs-toc-group" data-docs-toc-group>
+        <summary class="docs-toc-group-toggle">
+          <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#2-identify-the-access-paths-that-actually-exist">
+            2. Identify the access paths that actually exist
+          </a>
+          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
+        </summary>
+
+        
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#understand-what-port-forwarding-does">
+        Understand what port forwarding does
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#a-simple-check-on-your-own-installation">
+        A simple check on your own installation
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#who-controls-remote-maintenance-access">
+        Who controls remote-maintenance access?
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+
+      </details>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#3-prepare-the-replacement-before-touching-the-router">
+        3. Prepare the replacement before touching the router
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <details class="docs-toc-group" data-docs-toc-group>
+        <summary class="docs-toc-group-toggle">
+          <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#4-secure-remote-maintenance-without-losing-remote-access">
+            4. Secure remote maintenance without losing remote access
+          </a>
+          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
+        </summary>
+
+        
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#vpn-gateway-and-bastion-different-roles">
+        VPN, gateway and bastion: different roles
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#separate-the-refrigeration-network-and-control-access">
+        Separate the refrigeration network and control access
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#example-involving-two-stores">
+        Example involving two stores
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#temporary-protection-before-deploying-a-vpn">
+        Temporary protection before deploying a VPN
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#review-maintenance-accounts">
+        Review maintenance accounts
+      </a>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#migrate-in-the-right-order">
+        Migrate in the right order
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+
+      </details>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <details class="docs-toc-group" data-docs-toc-group>
+        <summary class="docs-toc-group-toggle">
+          <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#5-verify-everything-after-the-intervention">
+            5. Verify everything after the intervention
+          </a>
+          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
+        </summary>
+
+        
+  
+  <ul class="docs-toc-list">
+    
+    <li class="docs-toc-item docs-toc-level-3">
+      
+      <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#checks-to-close-out-together">
+        Checks to close out together
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+
+      </details>
+      
+    </li>
+    
+    <li class="docs-toc-item docs-toc-level-2">
+      
+      <a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/#sources-and-documentation">
+        Sources and documentation
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+
+  </nav>
+  
+
+  
+</aside>
+
+
+</div>
+
+      
+    </main>
+
+    
+  </div>
+  
+  
+
+
+<script defer src="https://lxrider.github.io/js/theme.js"></script>
+
+
+
+
+
+
+
+
+<script defer src="https://lxrider.github.io/js/docs-nav.js"></script>
+
+
+
+
+<script defer src="https://lxrider.github.io/js/toc.js"></script>
+
+
+
+
+
+
+<script
+  defer
+  src="https://lxrider.github.io/js/docs-page-actions.js"
+  data-link-copied-label="Link copied"
+  data-copy-link-failed-label="Failed"
+  data-copy-link-success-message="Page link copied to clipboard."
+  data-copy-link-error-message="Unable to copy page link."
+></script>
+
+
+<script defer src="https://lxrider.github.io/js/site-menu.js"></script>
+
+
+  
+  
+  
+</body>
+</html>

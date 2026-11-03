@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760" role="img" aria-labelledby="title desc"><title id="title">Télémaintenance : portée des accès et frontières de confiance</title><desc id="desc">Une identité de maintenance entre par un VPN avec authentification multifacteur, puis par un bastion qui contrôle les sessions et les destinations ; les droits applicatifs et le régulateur limitent les commandes. Un contournement possible doit être recherché.</desc>
+<rect width="1400" height="760" rx="19" fill="#071823"/>
+<rect x="2" y="2" width="1396" height="756" rx="17" fill="none" stroke="#355766" stroke-width="2"/>
+<text x="40" y="50" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="700" fill="#69D8E8" text-anchor="start">FIG. 1 / AUTHORITY AND REMOTE MAINTENANCE</text>
+<text x="40" y="94" font-family="DejaVu Sans, Arial, sans-serif" font-size="30" font-weight="700" fill="#ECF5F5" text-anchor="start">An authorized session, limited capabilities</text>
+<text x="40" y="125" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#BAD1D7" text-anchor="start">Illustrative architecture: verify actual controls at each site.</text>
+<rect x="38" y="175" width="1330" height="233" rx="17" fill="#071823" stroke="#355766" stroke-width="1"/>
+<rect x="40" y="205" width="225" height="178" rx="12" fill="#0D2835" stroke="#355766" stroke-width="2"/>
+<text x="58" y="245" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="700" fill="#ECF5F5" text-anchor="start">TECHNICIAN</text>
+<text x="58" y="282" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#BAD1D7" text-anchor="start">Named account</text>
+<path d="M58,309 L247,309" stroke="#355766" stroke-width="1" fill="none" stroke-linecap="round" />
+<text x="58" y="341" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#BAD1D7" text-anchor="start">Authorized task</text>
+<rect x="305" y="205" width="220" height="178" rx="12" fill="#0D2835" stroke="#355766" stroke-width="2"/>
+<text x="323" y="245" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="700" fill="#ECF5F5" text-anchor="start">VPN / IAM</text>
+<text x="323" y="282" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#BAD1D7" text-anchor="start">MFA and filtered access</text>
+<path d="M323,309 L507,309" stroke="#355766" stroke-width="1" fill="none" stroke-linecap="round" />
+<text x="323" y="341" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#79DEBC" text-anchor="start">Identity verified</text>
+<rect x="570" y="205" width="240" height="178" rx="12" fill="#0D2835" stroke="#355766" stroke-width="2"/>
+<text x="588" y="245" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="700" fill="#ECF5F5" text-anchor="start">BASTION</text>
+<text x="588" y="282" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#BAD1D7" text-anchor="start">Session and destination</text>
+<path d="M588,309 L792,309" stroke="#355766" stroke-width="1" fill="none" stroke-linecap="round" />
+<text x="588" y="341" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#79DEBC" text-anchor="start">Logs · revocation</text>
+<rect x="860" y="205" width="235" height="178" rx="12" fill="#0D2835" stroke="#355766" stroke-width="2"/>
+<text x="878" y="245" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="700" fill="#ECF5F5" text-anchor="start">SUPERVISION</text>
+<text x="878" y="282" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#BAD1D7" text-anchor="start">Role: read / configure</text>
+<path d="M878,309 L1077,309" stroke="#355766" stroke-width="1" fill="none" stroke-linecap="round" />
+<text x="878" y="341" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#BAD1D7" text-anchor="start">RBAC if supported</text>
+<rect x="1140" y="205" width="220" height="178" rx="12" fill="#0D2835" stroke="#355766" stroke-width="2"/>
+<text x="1158" y="245" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="700" fill="#ECF5F5" text-anchor="start">CONTROLLERS</text>
+<text x="1158" y="282" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#BAD1D7" text-anchor="start">Commands and limits</text>
+<path d="M1158,309 L1342,309" stroke="#355766" stroke-width="1" fill="none" stroke-linecap="round" />
+<text x="1158" y="341" font-family="DejaVu Sans, Arial, sans-serif" font-size="16" font-weight="400" fill="#BAD1D7" text-anchor="start">Confirm the effect</text>
+<path d="M265,290 L305,290" stroke="#69D8E8" stroke-width="3" fill="none" stroke-linecap="round" />
+<path d="M293.0,283.0 L305,290 L293.0,297.0" stroke="#69D8E8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path d="M525,290 L570,290" stroke="#69D8E8" stroke-width="3" fill="none" stroke-linecap="round" />
+<path d="M558.0,283.0 L570,290 L558.0,297.0" stroke="#69D8E8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path d="M810,290 L860,290" stroke="#69D8E8" stroke-width="3" fill="none" stroke-linecap="round" />
+<path d="M848.0,283.0 L860,290 L848.0,297.0" stroke="#69D8E8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<path d="M1095,290 L1140,290" stroke="#69D8E8" stroke-width="3" fill="none" stroke-linecap="round" />
+<path d="M1128.0,283.0 L1140,290 L1128.0,297.0" stroke="#69D8E8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<rect x="40" y="480" width="394" height="160" rx="12" fill="#0D2835" stroke="#79DEBC" stroke-width="1.8"/>
+<text x="59" y="522" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="700" fill="#79DEBC" text-anchor="start">CONTROL POINT</text>
+<text x="59" y="555" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#ECF5F5" text-anchor="start">Bastion enforces the route</text>
+<text x="59" y="585" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#ECF5F5" text-anchor="start">and restricts destinations.</text>
+<rect x="503" y="480" width="394" height="160" rx="12" fill="#0D2835" stroke="#F5BC75" stroke-width="1.8"/>
+<text x="522" y="522" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="700" fill="#F5BC75" text-anchor="start">ADMINISTRATIVE AUTHORITY</text>
+<text x="522" y="555" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#ECF5F5" text-anchor="start">Who grants roles?</text>
+<text x="522" y="585" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#ECF5F5" text-anchor="start">Who changes policies?</text>
+<rect x="966" y="480" width="394" height="160" rx="12" fill="#0D2835" stroke="#F5BC75" stroke-width="1.8"/>
+<text x="985" y="522" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="700" fill="#F5BC75" text-anchor="start">BYPASS PATH</text>
+<text x="985" y="555" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#ECF5F5" text-anchor="start">Direct supervisory access?</text>
+<text x="985" y="585" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#ECF5F5" text-anchor="start">Find and block it.</text>
+<path d="M695,383 L695,479" stroke="#F5BC75" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-dasharray="9 9"/>
+<path d="M702.0,467.0 L695,479 L688.0,467.0" stroke="#F5BC75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<text x="711" y="446" font-family="DejaVu Sans, Arial, sans-serif" font-size="15" font-weight="400" fill="#F5BC75" text-anchor="start">Privilege controls</text>
+<path d="M1260,383 L1260,479" stroke="#F5BC75" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-dasharray="9 9"/>
+<path d="M1267.0,467.0 L1260,479 L1253.0,467.0" stroke="#F5BC75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<text x="40" y="709" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="400" fill="#BAD1D7" text-anchor="start">MFA ≠ command rights · Bastion ≠ process protection · Check direct access and service accounts</text>
+</svg>
