@@ -1197,7 +1197,7 @@
 <p><strong>Une page de connexion publique reste exposée, même protégée par un mot de passe.</strong> Le VPN crée un chemin privé ; le filtrage réseau limite ensuite chaque technicien aux équipements nécessaires.</p>
 <figure class="research-figure">
 <a class="figure-open" href="schema-acces-supervision.svg" target="_blank" rel="noopener" aria-label="Ouvrir le schéma original en haute résolution">
-<img src="schema-acces-supervision.svg" alt="Avant : Internet atteint directement le superviseur par une redirection de port sur la box. Après : le technicien passe par un VPN et un accès administré ; le superviseur devient accessible après authentification sur le VPN. Les flux d'alarme sont représentés séparément et doivent être vérifiés sur site." loading="lazy" decoding="async">
+<img height="680" width="1320" src="schema-acces-supervision.svg" alt="Avant : Internet atteint directement le superviseur par une redirection de port sur la box. Après : le technicien passe par un VPN et un accès administré ; le superviseur devient accessible après authentification sur le VPN. Les flux d'alarme sont représentés séparément et doivent être vérifiés sur site." loading="lazy" decoding="async">
 </a>
 <figcaption>Figure 1. Deux façons d'accéder au superviseur : directement depuis Internet ou par un accès privé. Les alarmes suivent éventuellement un autre chemin. Schéma original lxrider.</figcaption>
 </figure>
@@ -1241,14 +1241,14 @@
 <p>Une telle règle indique un <strong>chemin possible</strong> vers le superviseur. L’accessibilité du service et l’historique des connexions restent deux vérifications distinctes.</p>
 <figure class="research-figure">
   <a class="figure-open" href="schema-lan-nat.svg" target="_blank" rel="noopener" aria-label="Ouvrir le schéma de redirection NAT en grand">
-    <img src="schema-lan-nat.svg" alt="Exemple fictif : connexion Internet reçue par la box sur le port externe 8443, transmise par NAT/PAT au superviseur du réseau local à l'adresse 192.168.1.50 sur le port interne 443." loading="lazy" decoding="async">
+    <img height="332" width="1080" src="schema-lan-nat.svg" alt="Exemple fictif : connexion Internet reçue par la box sur le port externe 8443, transmise par NAT/PAT au superviseur du réseau local à l'adresse 192.168.1.50 sur le port interne 443." loading="lazy" decoding="async">
   </a>
   <figcaption>Figure 2. Exemple fictif de redirection NAT/PAT. Adresses et ports fictifs, présentés pour illustrer le mécanisme. Schéma original lxrider.</figcaption>
 </figure>
 <p>Le responsable de la box relève la destination, les ports, le protocole et l’utilité de chaque règle. <strong>On documente d’abord ; les changements viendront lors de la bascule coordonnée.</strong></p>
 <figure class="research-figure">
   <a class="figure-open" href="reperes-interfaces-box.svg" target="_blank" rel="noopener" aria-label="Ouvrir le schéma des menus Orange et Freebox en grand">
-    <img src="reperes-interfaces-box.svg" alt="Repères schématiques : sur Livebox 5, Paramètres avancés, Réseau, NAT/PAT ; sur Freebox Connect, Réseau, Paramètres réseau avancés, puis Redirection de port ou Serveur VPN. Repères schématiques inspirés des menus des applications." loading="lazy" decoding="async">
+    <img height="380" width="1060" src="reperes-interfaces-box.svg" alt="Repères schématiques : sur Livebox 5, Paramètres avancés, Réseau, NAT/PAT ; sur Freebox Connect, Réseau, Paramètres réseau avancés, puis Redirection de port ou Serveur VPN. Repères schématiques inspirés des menus des applications." loading="lazy" decoding="async">
   </a>
   <figcaption>Figure 3. Repères de navigation vers les réglages réseau : repères lxrider d'après l'<a href="https://assistance.orange.fr/ordinateurs-peripheriques/installer-et-utiliser/les-consoles-de-jeux/xbox/livebox-5-configurer-les-regles-nat-pour-pouvoir-utiliser-un-jeu-ou-une-application-serveur_287340-827962">assistance Orange (Livebox 5)</a> et l'<a href="https://assistance.free.fr/articles/1395">assistance Free (Freebox Connect)</a>. Les menus varient selon le matériel.</figcaption>
 </figure>
