@@ -1006,7 +1006,7 @@
 <ul>
 <li><strong>MFA :</strong> réduire le risque d&#39;utilisation d&#39;un identifiant volé pour ouvrir une session. Il ne neutralise pas une session déjà compromise.</li>
 <li><strong>IAM et RBAC :</strong> attribuer des droits nominatifs, par rôle et par site. La lecture, le réglage et l&#39;administration doivent être séparés lorsque les équipements le permettent.</li>
-<li><strong>Bastion :</strong> imposer un point de passage, tracer les interventions, restreindre les destinations et révoquer les sessions. Son efficacité suppose que les accès directs et les comptes de contournement soient maîtrisés.</li>
+<li><strong>Bastion :</strong> centraliser les sessions, restreindre les destinations, tracer les interventions et permettre leur révocation, selon les protocoles pris en charge. Son contrôle suppose que les accès de maintenance concernés passent effectivement par lui. Les chemins directs et les comptes de contournement doivent être recensés.</li>
 </ul>
 <p>La révision des comptes techniques, des prestataires sortants et des privilèges d&#39;administration fait partie du même contrôle. <strong>Qui peut attribuer ou étendre les droits du bastion ?</strong> Cette autorité mérite autant d&#39;attention que les droits des techniciens.</p>
 <h2 id="3-jusqu-ou-un-acces-permet-il-d-agir-sur-le-froid">3. Jusqu&#39;où un accès permet-il d&#39;agir sur le froid ?</h2>
@@ -1014,12 +1014,13 @@
 <p>Le <a href="https://webapps.copeland.com/Dixell/Content/Pages/Manuals/PRIME/XR60CX/XR60CX-FR.pdf">manuel du Dixell XR60CX</a> décrit notamment une consigne (<code>SEt</code>) et sa limite supérieure (<code>US</code>). Une même autorité capable de modifier les deux paramètres pourrait déplacer à la fois le réglage et sa borne. <strong>La possibilité de le faire depuis une supervision donnée reste à vérifier</strong> : raccordement, version, registres accessibles et habilitations.</p>
 <p>Même lorsqu&#39;une commande est acceptée, les protections locales, les conditions de fonctionnement et l&#39;inertie thermique déterminent ses effets. L&#39;évaluation doit porter sur les températures réellement atteintes, leur durée et les moyens d&#39;intervention disponibles.</p>
 <p>Les alarmes constituent une autre cible possible. Une température doit être mesurée, un défaut détecté, l&#39;alerte transmise, reçue puis traitée. Un adversaire qui perturbe la surveillance peut réduire la capacité du magasin à réagir, même si la régulation locale continue de fonctionner.</p>
+<p><strong>Exemple documenté — XWEB EVO v5.6.0.</strong> Le manuel constructeur décrit un mode maintenance (« Service » ou « Cleaning ») activable pour une durée définie. Les alarmes des équipements placés dans ce mode sont ignorées par XWEB ; les opérations de lecture et d&#39;écriture via cette supervision sont généralement inhibées. L&#39;interface prévoit une permission distincte <em>Edit Maintenance Mode</em>. <strong>La vérification utile porte sur les personnes autorisées à activer ce mode, sa traçabilité et la surveillance disponible pendant la maintenance.</strong> Les protections locales des régulateurs doivent être évaluées séparément. <a href="https://webapps.copeland.com/Dixell/Content/Pages/Manuals/XWEBEVO/XWEBEVOV5.6.0OPERATION/XWEB-EVO-r5.6.0-OPR-EN.pdf">Manuel XWEB EVO, p. 22 et 93</a>.</p>
 <h2 id="4-ou-les-protections-changent-elles-le-resultat">4. Où les protections changent-elles le résultat ?</h2>
 <figure class="research-figure">
 <a class="figure-open" href="02-froid-alarme-defense.svg" target="_blank" rel="noopener" aria-label="Ouvrir le schéma des capacités du froid et des chemins d'alarme">
 <img src="02-froid-alarme-defense.svg" alt="Régulation locale et supervision reliées par un échange de données et de commandes. Une voie d'alerte distincte, si elle existe, peut maintenir une notification indépendante. Les dépendances communes sont à vérifier." loading="lazy" decoding="async">
 </a>
-<figcaption>Figure 2 — La régulation, la supervision et l'alerte peuvent présenter des dépendances différentes. La voie de secours exige une indépendance vérifiée.</figcaption>
+<figcaption>Figure 2 — Mesures, réglages et alertes empruntent des flux distincts selon l&#39;architecture. L&#39;indépendance de la surveillance de secours reste à vérifier.</figcaption>
 </figure>
 <p>Une architecture défensive peut interrompre un chemin à plusieurs endroits : accès distant refusé, MFA, permissions en lecture seule, session limitée à un site, commande rejetée par le régulateur, protection locale ou alerte indépendante.</p>
 <p><strong>Chaque protection doit être associée à une capacité précise.</strong> Un bastion réduit les chemins de maintenance utilisables ; il ne remplace ni les sécurités du régulateur ni une voie d&#39;alerte fiable.</p>
@@ -1041,6 +1042,7 @@
 <ul>
 <li><a href="https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/">CERT-FR — Alerte sur les contrôleurs à distance de réfrigération, octobre 2026</a>.</li>
 <li><a href="https://webapps.copeland.com/Dixell/Content/Pages/Manuals/PRIME/XR60CX/XR60CX-FR.pdf">Dixell/Copeland — Manuel français du régulateur XR60CX</a>.</li>
+<li><a href="https://webapps.copeland.com/Dixell/Content/Pages/Manuals/XWEBEVO/XWEBEVOV5.6.0OPERATION/XWEB-EVO-r5.6.0-OPR-EN.pdf">Copeland/Dixell — XWEB EVO, manuel d’exploitation v5.6.0, p. 22 et 93</a>.</li>
 <li><a href="https://csrc.nist.gov/pubs/sp/800/82/r3/final">NIST — Guide to Operational Technology (OT) Security, SP 800-82 Rev. 3</a>.</li>
 </ul>
 <p><em>Analyse documentaire et architectures illustratives. Les incidents publics, les capacités constructeur et les hypothèses d&#39;action sont distingués. Les droits et les protections doivent être vérifiés sur chaque installation. Aucun test actif sur un système tiers n&#39;est revendiqué.</em></p>
@@ -1050,7 +1052,7 @@
 <li><a href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/">Cyber-résilience du froid commercial</a>.</li>
 </ul>
 <hr />
-<p><em>Version 3.2 — 3 novembre 2026. © 2026 lxrider — Tous droits réservés.</em></p>
+<p><em>Version 3.3 — 3 novembre 2026. © 2026 lxrider — Tous droits réservés.</em></p>
 
 
     
