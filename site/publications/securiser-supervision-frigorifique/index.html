@@ -1332,7 +1332,7 @@
 <tr><td>Télémaintenance par routeur 4G/5G</td><td>Solution VPN ou distante compatible avec cette liaison</td><td>Connexion, secours et chaîne d'alarme</td></tr>
 <tr><td>Plusieurs magasins ou plusieurs entreprises de maintenance</td><td>Accès privé <strong>complété, si nécessaire, par un bastion</strong></td><td>Droits par magasin, sessions et accès de secours</td></tr>
 </tbody></table>
-<p><strong>Le VPN fournit le chemin privé ; le bastion encadre les interventions.</strong> Selon l’outil et les protocoles utilisés, ce dernier peut imposer des comptes nominatifs, limiter les sites accessibles et conserver des traces de connexion. <strong>Les droits d’administration restent à contrôler sur chaque superviseur.</strong></p>
+<p><strong>Le VPN fournit le chemin privé ; le bastion encadre les interventions.</strong> Selon l’outil et les protocoles pris en charge, ce dernier peut imposer des comptes nominatifs, limiter les destinations et conserver des traces de connexion. Vérifiez que les accès directs ne contournent pas ce contrôle et protégez les comptes qui administrent le bastion. <strong>Les permissions de commande restent à contrôler sur chaque superviseur.</strong></p>
 <h3 id="isoler-le-reseau-frigorifique-et-controler-les-acces">Isoler le réseau frigorifique et contrôler les accès<a class="zola-anchor" href="#isoler-le-reseau-frigorifique-et-controler-les-acces" aria-label="Anchor link for: isoler-le-reseau-frigorifique-et-controler-les-acces">#</a></h3>
 <p>La télémaintenance doit rejoindre <strong>une zone réseau réservée aux équipements frigorifiques</strong>, séparée autant que possible des postes bureautiques, du Wi-Fi invité et des autres usages du magasin. L'objectif est de limiter les communications possibles si un poste de maintenance ou un compte est compromis.</p>
 <p>Un <strong>VLAN</strong> peut réaliser cette séparation sur une infrastructure administrable ; une séparation physique est une autre possibilité. <strong>Un VLAN seul ne constitue pas un filtrage</strong> : si le routeur laisse librement communiquer les réseaux, un équipement compromis peut encore atteindre l'autre zone. Le responsable réseau doit identifier les communications nécessaires et les limiter au moyen de règles de pare-feu ou de filtrage adaptées, y compris pour l'accès depuis le VPN.</p>
@@ -1450,7 +1450,7 @@ On sait <strong>qui maintient la solution</strong>, qui dépanne et qui appeler 
 <li><a rel="external" href="https://assistance.orange.fr/ordinateurs-peripheriques/installer-et-utiliser/les-consoles-de-jeux/xbox/livebox-5-configurer-les-regles-nat-pour-pouvoir-utiliser-un-jeu-ou-une-application-serveur_287340-827962">Orange — Livebox 5, NAT/PAT</a> ; <a rel="external" href="https://assistance.free.fr/articles/1395">Free — paramètres réseau avancés</a>.</li>
 </ul>
 <p><em>Portée : guide pratique destiné aux intervenants autorisés sur les supervisions frigorifiques. Les exemples d'accès et les schémas sont conceptuels ; ils doivent être confrontés aux équipements, connexions et contrats du site.</em></p>
-<p><em>Version 1.4 — révision technique et cohérence opérationnelle, 3 novembre 2026. © 2026 lxrider — Tous droits réservés.</em></p>
+<p><em>Version 1.5 — contrôle des accès de maintenance, 3 novembre 2026. © 2026 lxrider — Tous droits réservés.</em></p>
 
 
     
