@@ -989,6 +989,12 @@
     <p>En octobre 2026, le <a href="https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/">CERT-FR signalait des compromissions</a> de systèmes de supervision frigorifique.</p>
 <p><strong>Que peut obtenir un adversaire après avoir compromis un accès de maintenance ?</strong> Des informations, des droits de réglage, des commandes sur les équipements ? Jusqu&#39;où peut-il agir sur le froid et les alarmes ?</p>
 <p>Pour répondre, suivons les capacités d&#39;action, les protections et leurs conséquences pour le magasin.</p>
+<figure class="research-figure">
+<a class="figure-open" href="illustration-pouvoir-de-commande-lxrider.svg" target="_blank" rel="noopener" aria-label="Ouvrir l'illustration du pouvoir de commande sur une installation frigorifique">
+<img src="illustration-pouvoir-de-commande-lxrider.svg" width="1200" height="630" alt="Local technique frigorifique et supervision numérique reliés aux équipements du magasin par un tracé ambre symbolisant les capacités de commande." loading="eager" decoding="async" fetchpriority="high">
+</a>
+<figcaption>La supervision permet, selon les équipements et les habilitations, d'agir sur certains paramètres du froid. Illustration conceptuelle lxrider.</figcaption>
+</figure>
 <h2 id="1-une-autorite-necessaire-au-metier">1. Une autorité nécessaire au métier</h2>
 <p>Le magasin doit conserver ses produits aux températures requises. Le frigoriste doit pouvoir surveiller l&#39;installation, diagnostiquer un défaut et intervenir. Selon l&#39;architecture, une supervision centralise les mesures, les alarmes et certaines commandes.</p>
 <p>La télémaintenance facilite ces opérations. Elle confie aussi des capacités à des personnes et à des services : se connecter à un équipement, consulter des données, modifier une consigne, acquitter une alarme ou administrer un superviseur.</p>
@@ -998,7 +1004,7 @@
 <p>Prenons une architecture <em>illustrative</em> : un technicien accède aux superviseurs par un VPN et un bastion. Le VPN contrôle l&#39;entrée réseau ; le bastion contrôle les destinations et les sessions. Chaque superviseur conserve ses propres permissions de lecture, de configuration et de commande.</p>
 <figure class="research-figure">
 <a class="figure-open" href="01-autorite-bastion.svg" target="_blank" rel="noopener" aria-label="Ouvrir l'architecture conceptuelle de télémaintenance et ses frontières de confiance">
-<img src="01-autorite-bastion.svg" alt="Technicien et accès distant avec MFA, bastion de session, droits par site, superviseur et régulateurs. Un chemin direct de contournement demeure à rechercher ; la commande dépend aussi des permissions locales." loading="lazy" decoding="async">
+<img height="760" width="1400" src="01-autorite-bastion.svg" alt="Technicien et accès distant avec MFA, bastion de session, droits par site, superviseur et régulateurs. Un chemin direct de contournement demeure à rechercher ; la commande dépend aussi des permissions locales." loading="lazy" decoding="async">
 </a>
 <figcaption>Figure 1 — Le bastion encadre les sessions ; les habilitations et les protections du site déterminent les commandes possibles. Architecture illustrative.</figcaption>
 </figure>
@@ -1018,7 +1024,7 @@
 <h2 id="4-ou-les-protections-changent-elles-le-resultat">4. Où les protections changent-elles le résultat ?</h2>
 <figure class="research-figure">
 <a class="figure-open" href="02-froid-alarme-defense.svg" target="_blank" rel="noopener" aria-label="Ouvrir le schéma des capacités du froid et des chemins d'alarme">
-<img src="02-froid-alarme-defense.svg" alt="Régulation locale et supervision reliées par un échange de données et de commandes. Une voie d'alerte distincte, si elle existe, peut maintenir une notification indépendante. Les dépendances communes sont à vérifier." loading="lazy" decoding="async">
+<img height="735" width="1400" src="02-froid-alarme-defense.svg" alt="Régulation locale et supervision reliées par un échange de données et de commandes. Une voie d'alerte distincte, si elle existe, peut maintenir une notification indépendante. Les dépendances communes sont à vérifier." loading="lazy" decoding="async">
 </a>
 <figcaption>Figure 2 — Mesures, réglages et alertes empruntent des flux distincts selon l&#39;architecture. L&#39;indépendance de la surveillance de secours reste à vérifier.</figcaption>
 </figure>
