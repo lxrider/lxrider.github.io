@@ -263,7 +263,7 @@
 <meta property="og:url" content="https://lxrider.github.io/en/publications/froid-commercial/">
 <meta property="og:site_name" content="lxrider | Independent Offensive Cybersecurity Research">
 <meta property="article:published_time" content="2026-10-22">
-<meta property="article:modified_time" content="2026-11-03">
+<meta property="article:modified_time" content="2026-11-13">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Commercial Refrigeration Cybersecurity: Who Can Control the Systems?">
@@ -1069,8 +1069,8 @@
     
     <li class="docs-toc-item docs-toc-level-2">
       
-      <a href="https://lxrider.github.io/en/publications/froid-commercial/#2-how-could-an-adversary-acquire-these-capabilities">
-        2. How could an adversary acquire these capabilities?
+      <a href="https://lxrider.github.io/en/publications/froid-commercial/#2-how-could-an-attacker-obtain-these-permissions">
+        2. How could an attacker obtain these permissions?
       </a>
       
     </li>
@@ -1159,21 +1159,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
 
   </span>
-</a>
-</h2>
+</a></h2>
 <p>A store must keep its products at the required temperatures. The refrigeration technician needs to monitor the installation, diagnose faults and intervene. Depending on the architecture, a supervisory system centralizes measurements, alarms and certain commands.</p>
 <p>Remote maintenance makes these operations easier. It also grants capabilities to people and services: connecting to equipment, viewing data, changing a setpoint, acknowledging an alarm or administering a supervisory system.</p>
 <p><strong>The first question is: which actions should each party be allowed to perform, on which equipment and for how long?</strong> The maintenance requirement defines the legitimate scope of access rights.</p>
-<h2 id="2-how-could-an-adversary-acquire-these-capabilities">2. How could an adversary acquire these capabilities?<a class="zola-anchor" href="#2-how-could-an-adversary-acquire-these-capabilities" aria-label="Anchor link for: 2-how-could-an-adversary-acquire-these-capabilities">
+<h2 id="2-how-could-an-attacker-obtain-these-permissions">2. How could an attacker obtain these permissions?<a class="zola-anchor" href="#2-how-could-an-attacker-obtain-these-permissions" aria-label="Anchor link for: 2-how-could-an-attacker-obtain-these-permissions">
   <span class="content-icon content-icon-sm" aria-hidden="true">
     
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
 
   </span>
-</a>
-</h2>
+</a></h2>
 <p>An adversary might look for an exposed interface, obtain credentials, compromise a maintenance workstation or exploit a trusted relationship. These possibilities depend on the actual architecture and safeguards. <strong>None of these paths is attributed here to the October 2026 incidents.</strong></p>
-<p>Consider an <em>illustrative</em> architecture: a technician reaches the supervisory systems through a VPN and a privileged-access gateway (bastion). The VPN controls entry into the network; the bastion controls destinations and sessions. Each supervisory system retains its own permissions for reading, configuration and commands.</p>
+<p>To illustrate a multi-store operation, consider a <em>fictional</em> architecture: a technician reaches the supervisory systems through a VPN and a privileged-access gateway (bastion). The VPN controls entry into the network; the bastion controls destinations and sessions. Each supervisory system retains its own permissions for reading, configuration and commands.</p>
 <figure class="research-figure">
 <a class="figure-open" href="01-autorite-bastion-en.svg" target="_blank" rel="noopener" aria-label="Open the conceptual remote-maintenance architecture and its trust boundaries">
 <img height="760" width="1400" src="01-autorite-bastion-en.svg" alt="Technician and remote access with MFA, session bastion, site-specific permissions, supervisory system and controllers. A possible direct bypass path still needs investigation; commands also depend on local permissions." loading="lazy" decoding="async">
@@ -1182,8 +1180,8 @@
 </figure>
 <p>Three controls serve complementary purposes:</p>
 <ul>
-<li><strong>MFA:</strong> reduce the risk of stolen credentials being used to establish a session. It does not neutralize an already-compromised session.</li>
-<li><strong>IAM and RBAC:</strong> assign named, role-based and site-specific permissions. Reading, changing settings and administration should be separated where the equipment supports it.</li>
+<li><strong>Multi-factor authentication (MFA):</strong> reduce the risk of stolen credentials being used to establish a session. It does not neutralize an already-compromised session.</li>
+<li><strong>Identity and access management (IAM) and role-based access control (RBAC):</strong> assign named, role-based and site-specific permissions. Reading, changing settings and administration should be separated where the equipment supports it.</li>
 <li><strong>Bastion:</strong> centralize sessions, restrict destinations, record interventions and allow access to be revoked, subject to the protocols it supports. This control works only if the relevant maintenance connections actually go through it. Direct paths and bypass accounts must be identified.</li>
 </ul>
 <p>Reviewing service accounts, former contractors and administrative privileges is part of the same exercise. <strong>Who can grant or extend permissions on the bastion?</strong> This authority deserves as much scrutiny as the technicians' permissions.</p>
@@ -1193,21 +1191,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
 
   </span>
-</a>
-</h2>
+</a></h2>
 <p>An open session may provide read-only access. Changing the physical process requires a path to the controller, write permissions and a command the controller accepts. The resulting effect then depends on how the installation operates.</p>
+<p><strong>Fictional example.</strong> A contractor serves two stores. The account can view temperatures at stores A and B, but change settings only at A. Compromising that account does not automatically give an attacker control rights at B. Effective permissions must be checked before assessing the consequences.</p>
 <p>The <a rel="external" href="https://webapps.copeland.com/Dixell/Content/Pages/Manuals/PRIME/XR60CX/XR60CX-FR.pdf">Dixell XR60CX manual</a> describes, among other parameters, a setpoint (<code>SEt</code>) and its upper limit (<code>US</code>). An authority able to change both could move the setpoint and its boundary together. <strong>Whether this is possible through a particular supervisory system must be verified</strong> against connectivity, version, accessible registers and permissions.</p>
 <p>Even when a command is accepted, local protections, operating conditions and thermal inertia determine its effects. The assessment must consider the temperatures actually reached, how long they persist and the means available to intervene.</p>
 <p>Alarms are another potential target. Temperature must be measured, a fault detected, the alert transmitted, received and then acted upon. An adversary who disrupts monitoring can reduce the store's ability to respond, even if local control continues to operate.</p>
 <p><strong>Documented example — XWEB EVO v5.6.0.</strong> The manufacturer's manual describes a maintenance mode (“Service” or “Cleaning”) that can be enabled for a defined period. XWEB ignores alarms from devices placed in that mode; read and write operations through this supervisory system are generally inhibited. The interface provides a separate <em>Edit Maintenance Mode</em> permission. <strong>The useful checks are who may enable the mode, whether that action is logged and what monitoring remains available during maintenance.</strong> Local controller protections must be assessed separately. <a rel="external" href="https://webapps.copeland.com/Dixell/Content/Pages/Manuals/XWEBEVO/XWEBEVOV5.6.0OPERATION/XWEB-EVO-r5.6.0-OPR-EN.pdf">XWEB EVO manual, pp. 22 and 93</a>.</p>
+<p>A permission review should also look for <strong>combinations of sensitive capabilities</strong>: can the same account manage users, change setpoints and alter alarm thresholds or modes? Where these rights cannot be separated, sensitive interventions can be approved, logged and checked afterwards.</p>
 <h2 id="4-where-do-safeguards-change-the-outcome">4. Where do safeguards change the outcome?<a class="zola-anchor" href="#4-where-do-safeguards-change-the-outcome" aria-label="Anchor link for: 4-where-do-safeguards-change-the-outcome">
   <span class="content-icon content-icon-sm" aria-hidden="true">
     
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
 
   </span>
-</a>
-</h2>
+</a></h2>
 <figure class="research-figure">
 <a class="figure-open" href="02-froid-alarme-defense-en.svg" target="_blank" rel="noopener" aria-label="Open the diagram of refrigeration functions and alarm paths">
 <img height="735" width="1400" src="02-froid-alarme-defense-en.svg" alt="Local control and supervision exchange data and, where authorized, commands. A separate alerting path, if present, may preserve independent notification. Shared dependencies must be checked." loading="lazy" decoding="async">
@@ -1217,19 +1215,18 @@
 <p>A defensive architecture can interrupt a path at several points: denied remote access, MFA, read-only permissions, a session restricted to one site, a controller rejecting a command, a local safeguard or independent alerting.</p>
 <p><strong>Every safeguard must be tied to a specific capability.</strong> A bastion reduces the available maintenance paths; it cannot replace controller safety functions or a reliable alarm path.</p>
 <p>Continuity requires a separate check. If supervision becomes unavailable, local control may continue operating. The on-call team may nevertheless lose measurements or notifications. Separate monitoring is a genuine fallback only if its sensors, power supply, communications and alert reception remain available.</p>
-<p>A critical assessment also seeks evidence that <em>rules out</em> proposed paths: the supervisory system cannot be reached, the account has no write permission, the controller rejects the command, or alerts continue to be delivered. Such findings reduce uncertainty and avoid unnecessary corrective action.</p>
+<p>The analysis also checks <strong>what an attacker could not do</strong>: reach an inaccessible supervisory system, change settings through a read-only account or make a controller accept a rejected command. Independent alerts that continue working may limit the consequences. These checks prevent hypothetical attack paths from being presented as established facts.</p>
 <h2 id="5-what-can-the-operator-decide">5. What can the operator decide?<a class="zola-anchor" href="#5-what-can-the-operator-decide" aria-label="Anchor link for: 5-what-can-the-operator-decide">
   <span class="content-icon content-icon-sm" aria-hidden="true">
     
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
 
   </span>
-</a>
-</h2>
+</a></h2>
 <p>A targeted assessment should answer four questions:</p>
 <ol>
 <li><strong>What access paths exist?</strong> Exposed interfaces, remote maintenance, direct paths and third-party providers.</li>
-<li><strong>What authority is available?</strong> Accounts, MFA, roles, administrative privileges and accessible commands.</li>
+<li><strong>What permissions does each account actually have?</strong> Accounts, MFA, roles, administrative privileges and accessible commands.</li>
 <li><strong>What effects are possible?</strong> Settings, alarms, local continuity, consequences for products and response times.</li>
 <li><strong>Which safeguards work?</strong> Access restrictions, rejected commands, alarm independence and the ability to intervene.</li>
 </ol>
@@ -1240,8 +1237,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
 
   </span>
-</a>
-</h2>
+</a></h2>
 <p>Remote maintenance provides capabilities essential to operations. Security means <strong>controlling who can acquire, exercise or extend those capabilities</strong>.</p>
 <p>The investigation links access paths, permissions and commands to the store's functions. It identifies the conditions under which an adversary could act and the safeguards capable of stopping that action. The findings support decisions about where to act first.</p>
 <h3 id="sources-and-limitations">Sources and limitations<a class="zola-anchor" href="#sources-and-limitations" aria-label="Anchor link for: sources-and-limitations">
@@ -1250,8 +1246,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
 
   </span>
-</a>
-</h3>
+</a></h3>
 <ul>
 <li><a rel="external" href="https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/">CERT-FR — Alert concerning remote refrigeration controllers, October 2026</a>.</li>
 <li><a rel="external" href="https://webapps.copeland.com/Dixell/Content/Pages/Manuals/PRIME/XR60CX/XR60CX-FR.pdf">Dixell/Copeland — XR60CX controller manual (French)</a>.</li>
@@ -1265,14 +1260,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
 
   </span>
-</a>
-</h3>
+</a></h3>
 <ul>
-<li><a rel="external" href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/">Securing Refrigeration Supervision: A Practical Guide</a>.</li>
-<li><a rel="external" href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/">Cyber Resilience in Commercial Refrigeration</a>.</li>
+<li><a href="https://lxrider.github.io/en/publications/securiser-supervision-frigorifique/">Securing Refrigeration Supervision: A Practical Guide</a>.</li>
+<li><a href="https://lxrider.github.io/en/publications/cyber-resilience-froid-commercial/">Cyber Resilience in Commercial Refrigeration</a>.</li>
 </ul>
 <hr />
-<p><em>Version 3.3 — 3 November 2026. © 2026 lxrider — All rights reserved.</em></p>
+<p><em>Version 3.4 — 13 November 2026. © 2026 lxrider — All rights reserved.</em></p>
 
 
     
@@ -1318,8 +1312,8 @@
     
     <li class="docs-toc-item docs-toc-level-2">
       
-      <a href="https://lxrider.github.io/en/publications/froid-commercial/#2-how-could-an-adversary-acquire-these-capabilities">
-        2. How could an adversary acquire these capabilities?
+      <a href="https://lxrider.github.io/en/publications/froid-commercial/#2-how-could-an-attacker-obtain-these-permissions">
+        2. How could an attacker obtain these permissions?
       </a>
       
     </li>
