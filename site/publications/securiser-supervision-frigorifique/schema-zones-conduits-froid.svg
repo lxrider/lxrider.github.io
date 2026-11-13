@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1360 710" role="img" aria-labelledby="title desc">
+<title id="title">Des fonctions Purdue aux zones et conduits</title><desc id="desc">Carte fonctionnelle du SI commercial, de l'accès prestataire, du superviseur, des régulateurs et des alarmes, avec quatre conduits de communication à contrôler. Architecture illustrative et non correspondance Purdue obligatoire.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8.2" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#70dbc2" stroke-width="1.7"/></marker></defs>
+<rect width="1360" height="710" rx="18" fill="#101d2b"/>
+<text x="38" y="51" fill="#f3f7f8" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="29">Des fonctions Purdue aux zones et conduits</text>
+<text x="38" y="85" fill="#a8bdc9" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-weight="400" font-size="16">EXEMPLE CONCEPTUEL · TÉLÉMAINTENANCE DU FROID · ARCHITECTURE NON IMPOSÉE</text>
+<path d="M36 109H1324" stroke="#395261" stroke-width="1.2"/>
+<rect x="42" y="185" width="294" height="131" rx="12" fill="#213747" stroke="#95c0d7" stroke-width="1.6"/><text x="189" y="234" fill="#ffffff" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="22">Intervenant externe</text><text x="189" y="271" fill="#d4e5ed" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="400" font-size="17">Maintenance authentifiée</text>
+<rect x="42" y="399" width="294" height="133" rx="12" fill="#1a2d3b" stroke="#65818f" stroke-width="1.6"/><text x="189" y="443" fill="#f3f7f8" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="21">Zone IT de l'enseigne</text><text x="189" y="480" fill="#a8bdc9" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="400" font-size="16">Frontière de confiance distincte</text>
+<path d="M377 156H1318V556H377Z" stroke="#65818f" stroke-width="1.5" stroke-dasharray="8 7" fill="#152634"/>
+<text x="402" y="184" fill="#a8bdc9" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="16">PÉRIMÈTRE TECHNIQUE FRIGORIFIQUE</text>
+<rect x="400" y="252" width="249" height="148" rx="12" fill="#1a3b3e" stroke="#70dbc2" stroke-width="1.6"/>
+<text x="524" y="291" fill="#ffffff" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="22">Zone d'accès</text><text x="524" y="331" fill="#d4e5ed" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="400" font-size="19">VPN · filtrage</text><text x="524" y="363" fill="#a8bdc9" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="400" font-size="17">Bastion éventuel</text>
+<rect x="707" y="252" width="261" height="148" rx="12" fill="#1a3b3e" stroke="#70dbc2" stroke-width="1.6"/>
+<text x="837" y="291" fill="#ffffff" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="21">Zone supervision</text><text x="837" y="339" fill="#d4e5ed" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="400" font-size="22">AK-SM / XWEB</text>
+<rect x="1023" y="252" width="271" height="148" rx="12" fill="#213747" stroke="#95c0d7" stroke-width="1.6"/>
+<text x="1158" y="291" fill="#ffffff" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="21">Zone régulation</text><text x="1158" y="339" fill="#d4e5ed" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="400" font-size="18">Régulateurs frigorifiques</text>
+<rect x="707" y="453" width="587" height="80" rx="12" fill="#26313e" stroke="#e9bb85" stroke-width="1.6"/>
+<text x="1000" y="485" fill="#ffffff" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="21">Voie d'alarme / astreinte</text><text x="1000" y="514" fill="#f4cf9e" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="400" font-size="17">Sens et dépendances à vérifier</text>
+<path d="M336 270H395" fill="none" stroke="#70dbc2" stroke-width="3" marker-end="url(#arrow)"/>
+<path d="M649 270H702" fill="none" stroke="#70dbc2" stroke-width="3" marker-end="url(#arrow)"/>
+<path d="M968 270H1018" fill="none" stroke="#70dbc2" stroke-width="3" marker-end="url(#arrow)"/>
+<path d="M837 401V448" fill="none" stroke="#e9bb85" stroke-width="3" stroke-dasharray="7 6"/>
+<text x="364" y="227" fill="#70dbc2" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="14">C1 · Entrée distante</text>
+<text x="676" y="227" fill="#70dbc2" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="14">C2 · Service autorisé</text>
+<text x="996" y="227" fill="#95c0d7" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="14">C3 · Dialogue équipements</text>
+<text x="902" y="430" fill="#e9bb85" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="16">C4 · Alertes</text>
+<text x="680" y="616" fill="#d4e5ed" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="400" font-size="18">Purdue situe les fonctions. Les zones IEC 62443 regroupent selon exigences et conséquences.</text>
+<text x="680" y="652" fill="#a8bdc9" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="400" font-size="17">Chaque conduit précise initiateur, destination, finalité, protocole, contrôle d'accès et responsable.</text>
+</svg>

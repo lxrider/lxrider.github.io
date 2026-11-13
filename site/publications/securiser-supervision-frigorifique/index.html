@@ -263,7 +263,7 @@
 <meta property="og:url" content="https://lxrider.github.io/publications/securiser-supervision-frigorifique/">
 <meta property="og:site_name" content="lxrider | Recherche en cybersécurité offensive">
 <meta property="article:published_time" content="2026-10-22">
-<meta property="article:modified_time" content="2026-11-03">
+<meta property="article:modified_time" content="2026-11-13">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sécuriser sa supervision frigorifique : guide pratique pas à pas">
@@ -1034,213 +1034,14 @@
     
     
     
-<details class="docs-toc-inline" data-devlab-toc>
-  <summary>Sur cette page</summary>
-  <nav aria-label="Sur cette page">
-    
-  
-  <ul class="docs-toc-list">
-    
-    <li class="docs-toc-item docs-toc-level-2">
-      
-      <details class="docs-toc-group" data-docs-toc-group>
-        <summary class="docs-toc-group-toggle">
-          <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#1-acces-distant-et-exposition-internet-deux-chemins-differents">
-            1. Accès distant et exposition Internet : deux chemins différents
-          </a>
-          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
-        </summary>
+<details class="docs-toc-inline" data-devlab-toc><summary>Sur cette page</summary><nav aria-label="Sur cette page"><ul class="docs-toc-list"><li class="docs-toc-item docs-toc-level-2"><details class="docs-toc-group" data-docs-toc-group><summary class="docs-toc-group-toggle"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#1-acces-distant-et-exposition-internet-deux-chemins-differents">1. Accès distant et exposition Internet : deux chemins différents</a><span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span></summary><ul class="docs-toc-list"><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#une-connexion-internet-independante-peut-aussi-exposer-le-froid">Une connexion Internet indépendante peut aussi exposer le froid</a></li><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#attention-au-chemin-des-alarmes">Attention au chemin des alarmes</a></li></ul></details></li><li class="docs-toc-item docs-toc-level-2"><details class="docs-toc-group" data-docs-toc-group><summary class="docs-toc-group-toggle"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#2-retrouver-les-acces-qui-existent-vraiment">2. Retrouver les accès qui existent vraiment</a><span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span></summary><ul class="docs-toc-list"><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#comprendre-ce-que-fait-la-redirection">Comprendre ce que fait la redirection</a></li><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#une-verification-simple-sur-votre-installation">Une vérification simple, sur votre installation</a></li><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#qui-tient-les-acces-de-telemaintenance">Qui tient les accès de télémaintenance ?</a></li></ul></details></li><li class="docs-toc-item docs-toc-level-2"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#3-avant-de-toucher-a-la-box-preparer-le-relais">3. Avant de toucher à la box, préparer le relais</a></li><li class="docs-toc-item docs-toc-level-2"><details class="docs-toc-group" data-docs-toc-group><summary class="docs-toc-group-toggle"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#4-securiser-la-telemaintenance-sans-perdre-l-acces-distant">4. Sécuriser la télémaintenance sans perdre l'accès distant</a><span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span></summary><ul class="docs-toc-list"><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#vpn-passerelle-bastion-des-roles-differents">VPN, passerelle, bastion : des rôles différents</a></li><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#cartographier-les-fonctions-puis-definir-les-zones-et-conduits">Cartographier les fonctions, puis définir les zones et conduits</a></li><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#donner-une-regle-precise-a-chaque-communication">Donner une règle précise à chaque communication</a></li><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#appliquer-la-segmentation-sans-interrompre-le-froid">Appliquer la segmentation sans interrompre le froid</a></li><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#exemple-avec-deux-magasins">Exemple avec deux magasins</a></li><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#protection-provisoire-avant-la-mise-en-place-du-vpn">Protection provisoire avant la mise en place du VPN</a></li><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#verifier-les-comptes-de-maintenance">Vérifier les comptes de maintenance</a></li><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#la-bascule-dans-le-bon-ordre">La bascule, dans le bon ordre</a></li></ul></details></li><li class="docs-toc-item docs-toc-level-2"><details class="docs-toc-group" data-docs-toc-group><summary class="docs-toc-group-toggle"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#5-verifier-que-tout-fonctionne-apres-l-intervention">5. Vérifier que tout fonctionne après l'intervention</a><span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span></summary><ul class="docs-toc-list"><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#six-resultats-a-verifier-ensemble">Six résultats à vérifier ensemble</a></li></ul></details></li><li class="docs-toc-item docs-toc-level-2"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#sources-et-documentation">Sources et documentation</a></li></ul></nav></details>
 
-        
-  
-  <ul class="docs-toc-list">
-    
-    <li class="docs-toc-item docs-toc-level-3">
-      
-      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#attention-au-chemin-des-alarmes">
-        Attention au chemin des alarmes
-      </a>
-      
-    </li>
-    
-  </ul>
-  
-
-      </details>
-      
-    </li>
-    
-    <li class="docs-toc-item docs-toc-level-2">
-      
-      <details class="docs-toc-group" data-docs-toc-group>
-        <summary class="docs-toc-group-toggle">
-          <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#2-retrouver-les-acces-qui-existent-vraiment">
-            2. Retrouver les accès qui existent vraiment
-          </a>
-          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
-        </summary>
-
-        
-  
-  <ul class="docs-toc-list">
-    
-    <li class="docs-toc-item docs-toc-level-3">
-      
-      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#comprendre-ce-que-fait-la-redirection">
-        Comprendre ce que fait la redirection
-      </a>
-      
-    </li>
-    
-    <li class="docs-toc-item docs-toc-level-3">
-      
-      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#une-verification-simple-sur-votre-installation">
-        Une vérification simple, sur votre installation
-      </a>
-      
-    </li>
-    
-    <li class="docs-toc-item docs-toc-level-3">
-      
-      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#qui-tient-les-acces-de-telemaintenance">
-        Qui tient les accès de télémaintenance ?
-      </a>
-      
-    </li>
-    
-  </ul>
-  
-
-      </details>
-      
-    </li>
-    
-    <li class="docs-toc-item docs-toc-level-2">
-      
-      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#3-avant-de-toucher-a-la-box-preparer-le-relais">
-        3. Avant de toucher à la box, préparer le relais
-      </a>
-      
-    </li>
-    
-    <li class="docs-toc-item docs-toc-level-2">
-      
-      <details class="docs-toc-group" data-docs-toc-group>
-        <summary class="docs-toc-group-toggle">
-          <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#4-securiser-la-telemaintenance-sans-perdre-l-acces-distant">
-            4. Sécuriser la télémaintenance sans perdre l&#39;accès distant
-          </a>
-          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
-        </summary>
-
-        
-  
-  <ul class="docs-toc-list">
-    
-    <li class="docs-toc-item docs-toc-level-3">
-      
-      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#vpn-passerelle-bastion-des-roles-differents">
-        VPN, passerelle, bastion : des rôles différents
-      </a>
-      
-    </li>
-    
-    <li class="docs-toc-item docs-toc-level-3">
-      
-      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#isoler-le-reseau-frigorifique-et-controler-les-acces">
-        Isoler le réseau frigorifique et contrôler les accès
-      </a>
-      
-    </li>
-    
-    <li class="docs-toc-item docs-toc-level-3">
-      
-      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#exemple-avec-deux-magasins">
-        Exemple avec deux magasins
-      </a>
-      
-    </li>
-    
-    <li class="docs-toc-item docs-toc-level-3">
-      
-      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#protection-provisoire-avant-la-mise-en-place-du-vpn">
-        Protection provisoire avant la mise en place du VPN
-      </a>
-      
-    </li>
-    
-    <li class="docs-toc-item docs-toc-level-3">
-      
-      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#verifier-les-comptes-de-maintenance">
-        Vérifier les comptes de maintenance
-      </a>
-      
-    </li>
-    
-    <li class="docs-toc-item docs-toc-level-3">
-      
-      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#la-bascule-dans-le-bon-ordre">
-        La bascule, dans le bon ordre
-      </a>
-      
-    </li>
-    
-  </ul>
-  
-
-      </details>
-      
-    </li>
-    
-    <li class="docs-toc-item docs-toc-level-2">
-      
-      <details class="docs-toc-group" data-docs-toc-group>
-        <summary class="docs-toc-group-toggle">
-          <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#5-verifier-que-tout-fonctionne-apres-l-intervention">
-            5. Vérifier que tout fonctionne après l&#39;intervention
-          </a>
-          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
-        </summary>
-
-        
-  
-  <ul class="docs-toc-list">
-    
-    <li class="docs-toc-item docs-toc-level-3">
-      
-      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#controles-a-cloturer-ensemble">
-        Contrôles à clôturer ensemble
-      </a>
-      
-    </li>
-    
-  </ul>
-  
-
-      </details>
-      
-    </li>
-    
-    <li class="docs-toc-item docs-toc-level-2">
-      
-      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#sources-et-documentation">
-        Sources et documentation
-      </a>
-      
-    </li>
-    
-  </ul>
-  
-
-  </nav>
-</details>
-
-
-
-    <p>Quand un magasin appelle pour une alarme, le frigoriste doit pouvoir ouvrir sa supervision à distance. C'est souvent ce qui permet de comprendre la situation avant de se déplacer.</p>
+<p>Quand un magasin appelle pour une alarme, le frigoriste doit pouvoir ouvrir sa supervision à distance. C'est souvent ce qui permet de comprendre la situation avant de se déplacer.</p>
 <p><strong>La télémaintenance fait partie du quotidien des frigoristes. Les chemins d’accès méritent autant d’attention que les superviseurs eux-mêmes.</strong> Une redirection sur une box, un routeur 4G ajouté pour dépanner, un PC froid accessible à distance… Au fil des interventions, les chemins se multiplient et leur suivi devient plus difficile.</p>
 <p>Après les incidents d'octobre 2026, le <a rel="external" href="https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/">CERT-FR</a> recommande de supprimer les accès de gestion directement exposés sur Internet. Reste la question pratique : <strong>comment fermer ces accès publics tout en conservant la télémaintenance et les alarmes de nuit ?</strong></p>
-<p>C'est l'objet de ce guide. Pour comprendre <a rel="external" href="https://lxrider.github.io/publications/froid-commercial/">ce qu'un compte compromis pourrait commander</a> ou <a rel="external" href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/">comment reprendre le froid après un incident</a>, deux autres articles vont plus loin. Ici, on s'occupe des <strong>accès distants aux superviseurs</strong>.</p>
+<p>Ce guide examine les architectures d'accès réseau aux superviseurs frigorifiques, les expositions qu'elles peuvent créer et les moyens de sécuriser la télémaintenance tout en préservant les alarmes.</p>
+<p>Deux articles complémentaires approfondissent <a href="https://lxrider.github.io/publications/froid-commercial/">les capacités d'action associées à un compte compromis</a> et <a href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/">la gestion d'un incident sur une installation frigorifique</a>.</p>
+<p><strong>Par où commencer ?</strong> Identifiez comment le frigoriste se connecte et qui administre cet accès. Vérifiez comment les alarmes arrivent à l'astreinte. Faites préparer un accès protégé avant toute fermeture des accès publics. Ces premières vérifications ne nécessitent pas de modifier l'installation.</p>
 <figure class="research-figure">
 <a class="figure-open" href="illustration-froid-commercial-lxrider-web.svg" target="_blank" rel="noopener" aria-label="Ouvrir l'illustration du magasin frigorifique en grand">
 <img src="illustration-froid-commercial-lxrider-web.svg" width="1200" height="630" alt="Allée de supermarché bordée de meubles frigorifiques éclairés, avec un voyant ambré et un tracé lumineux vers le local technique." loading="eager" decoding="async" fetchpriority="high">
@@ -1253,8 +1054,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
 
   </span>
-</a>
-</h2>
+</a></h2>
 <p><strong>L’accès distant répond au besoin du frigoriste.</strong> L’exposition Internet décrit la façon dont une interface de gestion est rendue joignable depuis l’extérieur.</p>
 <ul>
 <li><strong>Accès direct :</strong> depuis Internet, une connexion arrive sur l'interface du superviseur, souvent grâce à une redirection de port sur la box.</li>
@@ -1267,14 +1067,28 @@
 </a>
 <figcaption>Figure 1. Deux façons d'accéder au superviseur : directement depuis Internet ou par un accès privé. Les alarmes suivent éventuellement un autre chemin. Schéma original lxrider.</figcaption>
 </figure>
+<h3 id="une-connexion-internet-independante-peut-aussi-exposer-le-froid">Une connexion Internet indépendante peut aussi exposer le froid<a class="zola-anchor" href="#une-connexion-internet-independante-peut-aussi-exposer-le-froid" aria-label="Anchor link for: une-connexion-internet-independante-peut-aussi-exposer-le-froid">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a></h3>
+<p>Dans certains magasins, le frigoriste utilise une connexion Internet technique indépendante du SI de l'enseigne. Cette séparation peut répondre à des besoins d'organisation, mais la box du prestataire peut toujours publier des services de gestion par redirection de ports. La répétition de configurations similaires d'un magasin à l'autre pourrait ainsi produire une surface d'exposition distribuée.</p>
+<p><strong>Un prestataire qui maintient plusieurs magasins ne dispose pas nécessairement d'un compte ou d'une autorité d'écriture commune à tous les sites.</strong> Il faut distinguer la connectivité réseau, la centralisation des interventions et les droits de commande multisites. Cette architecture est une possibilité rapportée par des professionnels, pas une explication démontrée des compromissions d'octobre 2026.</p>
+<figure class="research-figure">
+<a class="figure-open" href="schema-box-independante-froid.svg" target="_blank" rel="noopener" aria-label="Ouvrir le schéma de connexion Internet technique indépendante">
+<img src="schema-box-independante-froid.svg" width="1200" height="620" alt="Deux connexions Internet distinctes : le réseau IT de l'enseigne et une box technique desservant un superviseur AK-SM ou XWEB et ses régulateurs. L'accès entrant éventuel dépend de la configuration de la box ; aucun lien local entre les réseaux n'est présumé." loading="lazy" decoding="async">
+</a>
+<figcaption>Figure 2. Architecture candidate issue de témoignages : une connexion Internet technique indépendante peut coexister avec un SI commercial correctement segmenté. L'accès public dépend de la configuration de la box. Schéma conceptuel lxrider.</figcaption>
+</figure>
 <h3 id="attention-au-chemin-des-alarmes">Attention au chemin des alarmes<a class="zola-anchor" href="#attention-au-chemin-des-alarmes" aria-label="Anchor link for: attention-au-chemin-des-alarmes">
   <span class="content-icon content-icon-sm" aria-hidden="true">
     
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
 
   </span>
-</a>
-</h3>
+</a></h3>
 <p>Selon l’installation, le superviseur <strong>envoie ses alarmes</strong> vers l’extérieur, la plateforme de télésurveillance <strong>interroge le site</strong>, ou plusieurs mécanismes coexistent. Le sens de chaque communication change les règles réseau à prévoir.</p>
 <p>Avant de modifier une règle, posez la question au mainteneur et à l’astreinte : <strong>qui appelle qui ?</strong> La bascule doit préserver les communications utiles. Un essai convenu avec l’astreinte permettra ensuite de confirmer la réception des alarmes.</p>
 <h2 id="2-retrouver-les-acces-qui-existent-vraiment">2. Retrouver les accès qui existent vraiment<a class="zola-anchor" href="#2-retrouver-les-acces-qui-existent-vraiment" aria-label="Anchor link for: 2-retrouver-les-acces-qui-existent-vraiment">
@@ -1283,8 +1097,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
 
   </span>
-</a>
-</h2>
+</a></h2>
 <p>Le schéma réseau du magasin, s'il existe, est un début. Les habitudes des intervenants en disent parfois davantage : « Je passe par la box », « on utilise une carte SIM », « je prends la main sur le PC froid ».</p>
 <p>Il faut retrouver <strong>tous les chemins utilisés ou encore ouverts</strong> :</p>
 <ul>
@@ -1301,22 +1114,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
 
   </span>
-</a>
-</h3>
+</a></h3>
 <p>Exemple fictif : la box reçoit une connexion sur le port <strong>8443</strong> et la transmet au superviseur <code>192.168.1.50</code> sur le port <strong>443</strong>. Le port externe et le port interne peuvent être différents.</p>
 <p>Une telle règle indique un <strong>chemin possible</strong> vers le superviseur. L’accessibilité du service et l’historique des connexions restent deux vérifications distinctes.</p>
 <figure class="research-figure">
   <a class="figure-open" href="schema-lan-nat.svg" target="_blank" rel="noopener" aria-label="Ouvrir le schéma de redirection NAT en grand">
     <img height="332" width="1080" src="schema-lan-nat.svg" alt="Exemple fictif : connexion Internet reçue par la box sur le port externe 8443, transmise par NAT/PAT au superviseur du réseau local à l'adresse 192.168.1.50 sur le port interne 443." loading="lazy" decoding="async">
   </a>
-  <figcaption>Figure 2. Exemple fictif de redirection NAT/PAT. Adresses et ports fictifs, présentés pour illustrer le mécanisme. Schéma original lxrider.</figcaption>
+  <figcaption>Figure 3. Exemple fictif de redirection NAT/PAT. Adresses et ports fictifs, présentés pour illustrer le mécanisme. Schéma original lxrider.</figcaption>
 </figure>
 <p>Le responsable de la box relève la destination, les ports, le protocole et l’utilité de chaque règle. <strong>On documente d’abord ; les changements viendront lors de la bascule coordonnée.</strong></p>
 <figure class="research-figure">
   <a class="figure-open" href="reperes-interfaces-box.svg" target="_blank" rel="noopener" aria-label="Ouvrir le schéma des menus Orange et Freebox en grand">
     <img height="380" width="1060" src="reperes-interfaces-box.svg" alt="Repères schématiques : sur Livebox 5, Paramètres avancés, Réseau, NAT/PAT ; sur Freebox Connect, Réseau, Paramètres réseau avancés, puis Redirection de port ou Serveur VPN. Repères schématiques inspirés des menus des applications." loading="lazy" decoding="async">
   </a>
-  <figcaption>Figure 3. Repères de navigation vers les réglages réseau : repères lxrider d'après l'<a href="https://assistance.orange.fr/ordinateurs-peripheriques/installer-et-utiliser/les-consoles-de-jeux/xbox/livebox-5-configurer-les-regles-nat-pour-pouvoir-utiliser-un-jeu-ou-une-application-serveur_287340-827962">assistance Orange (Livebox 5)</a> et l'<a href="https://assistance.free.fr/articles/1395">assistance Free (Freebox Connect)</a>. Les menus varient selon le matériel.</figcaption>
+  <figcaption>Figure 4. Repères de navigation vers les réglages réseau : repères lxrider d'après l'<a href="https://assistance.orange.fr/ordinateurs-peripheriques/installer-et-utiliser/les-consoles-de-jeux/xbox/livebox-5-configurer-les-regles-nat-pour-pouvoir-utiliser-un-jeu-ou-une-application-serveur_287340-827962">assistance Orange (Livebox 5)</a> et l'<a href="https://assistance.free.fr/articles/1395">assistance Free (Freebox Connect)</a>. Les menus varient selon le matériel.</figcaption>
 </figure>
 <h3 id="une-verification-simple-sur-votre-installation">Une vérification simple, sur votre installation<a class="zola-anchor" href="#une-verification-simple-sur-votre-installation" aria-label="Anchor link for: une-verification-simple-sur-votre-installation">
   <span class="content-icon content-icon-sm" aria-hidden="true">
@@ -1324,8 +1136,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
 
   </span>
-</a>
-</h3>
+</a></h3>
 <p>Si vous connaissez déjà l'adresse utilisée par le frigoriste et disposez de l'autorisation nécessaire :</p>
 <ol>
 <li>Sur un téléphone, coupez le Wi-Fi et tout VPN, puis essayez <strong>l'adresse habituelle de maintenance</strong> avec la connexion mobile.</li>
@@ -1339,8 +1150,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
 
   </span>
-</a>
-</h3>
+</a></h3>
 <p>Un magasin peut appartenir à une enseigne, être équipé par un intégrateur et disposer d'un accès distant installé par son frigoriste. Le VPN peut être administré par l'informatique du groupe, tandis que le routeur 4G ou la plateforme de télémaintenance dépend d'un prestataire.</p>
 <p><strong>Pour chaque accès, quatre questions méritent une réponse :</strong></p>
 <ul>
@@ -1349,6 +1159,7 @@
 <li><strong>Où ?</strong> Sur la box du magasin, un routeur 4G, un bastion de l'enseigne ou une plateforme hébergée chez le prestataire ?</li>
 <li><strong>Avec quelle autorité ?</strong> Quels magasins et quels équipements l'intervenant peut-il atteindre ? Qui valide une extension de ses droits ?</li>
 </ul>
+<p><strong>Trois aspects doivent rester distincts :</strong> l'accès réseau à chaque magasin, l'organisation centralisée éventuelle des interventions et la portée des droits de commande sur les superviseurs. Une console utilisée pour plusieurs magasins ne démontre pas qu'un même compte peut modifier leurs paramètres.</p>
 <p>Un changement de mainteneur est un bon révélateur : <strong>qui sait retrouver les accès de l'ancien prestataire et qui possède les moyens de les fermer ?</strong></p>
 <h2 id="3-avant-de-toucher-a-la-box-preparer-le-relais">3. Avant de toucher à la box, préparer le relais<a class="zola-anchor" href="#3-avant-de-toucher-a-la-box-preparer-le-relais" aria-label="Anchor link for: 3-avant-de-toucher-a-la-box-preparer-le-relais">
   <span class="content-icon content-icon-sm" aria-hidden="true">
@@ -1356,8 +1167,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
 
   </span>
-</a>
-</h2>
+</a></h2>
 <p>On peut supprimer une redirection en quelques clics. <strong>Retrouver l'accès du frigoriste en pleine astreinte peut prendre beaucoup plus longtemps.</strong></p>
 <p>Avant l'intervention, mettez sur la table trois informations :</p>
 <ul>
@@ -1379,8 +1189,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
 
   </span>
-</a>
-</h2>
+</a></h2>
 <p><strong>Une solution simple, maintenue et limitée aux bons équipements facilite la télémaintenance et les dépannages futurs.</strong> Chaque composant ajouté doit avoir un responsable.</p>
 <h3 id="vpn-passerelle-bastion-des-roles-differents">VPN, passerelle, bastion : des rôles différents<a class="zola-anchor" href="#vpn-passerelle-bastion-des-roles-differents" aria-label="Anchor link for: vpn-passerelle-bastion-des-roles-differents">
   <span class="content-icon content-icon-sm" aria-hidden="true">
@@ -1388,9 +1197,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
 
   </span>
-</a>
-</h3>
-<p>Un <strong>VPN</strong> fournit un chemin privé vers le site. Une <strong>passerelle</strong> peut porter cet accès. Un <strong>bastion</strong> est utile pour organiser et tracer les interventions, surtout quand plusieurs magasins ou prestataires sont concernés. Ce chemin privé ne suffit pas à lui seul : le responsable de l’accès doit restreindre les routes, les destinations et les ports autorisés, et prévoir la révocation des habilitations.</p>
+</a></h3>
+<p>Un <strong>VPN</strong> fournit un chemin privé vers le site, parfois au moyen d'une passerelle dédiée. Le responsable réseau limite les équipements et les ports accessibles et prévoit la révocation des habilitations. Pour plusieurs magasins ou prestataires, un <strong>bastion</strong> peut compléter ce dispositif en contrôlant et en traçant les sessions.</p>
 <table><thead><tr><th>Situation rencontrée</th><th>Piste à examiner</th><th>Point à vérifier</th></tr></thead><tbody>
 <tr><td>Le magasin dispose déjà d'un VPN d'entreprise</td><td>Le réutiliser, avec un accès limité au froid</td><td>Qui se connecte et quels équipements sont joignables ?</td></tr>
 <tr><td>La box possède un serveur VPN adapté</td><td>VPN de la box, par exemple <a rel="external" href="https://assistance.free.fr/articles/1970">WireGuard sur certaines Freebox</a></td><td>Comptes, mises à jour et filtrage des accès</td></tr>
@@ -1398,33 +1206,60 @@
 <tr><td>Télémaintenance par routeur 4G/5G</td><td>Solution VPN ou distante compatible avec cette liaison</td><td>Connexion, secours et chaîne d'alarme</td></tr>
 <tr><td>Plusieurs magasins ou plusieurs entreprises de maintenance</td><td>Accès privé <strong>complété, si nécessaire, par un bastion</strong></td><td>Droits par magasin, sessions et accès de secours</td></tr>
 </tbody></table>
-<p><strong>Le VPN fournit le chemin privé ; le bastion encadre les interventions.</strong> Selon l’outil et les protocoles pris en charge, ce dernier peut imposer des comptes nominatifs, limiter les destinations et conserver des traces de connexion. Vérifiez que les accès directs ne contournent pas ce contrôle et protégez les comptes qui administrent le bastion. <strong>Les permissions de commande restent à contrôler sur chaque superviseur.</strong></p>
-<h3 id="isoler-le-reseau-frigorifique-et-controler-les-acces">Isoler le réseau frigorifique et contrôler les accès<a class="zola-anchor" href="#isoler-le-reseau-frigorifique-et-controler-les-acces" aria-label="Anchor link for: isoler-le-reseau-frigorifique-et-controler-les-acces">
+<p>Selon l’outil et les protocoles pris en charge, le bastion peut imposer des comptes nominatifs et enregistrer les connexions. <strong>Les accès directs susceptibles de le contourner, les comptes qui l'administrent et les droits de commande propres à chaque superviseur restent à vérifier.</strong></p>
+<h3 id="cartographier-les-fonctions-puis-definir-les-zones-et-conduits">Cartographier les fonctions, puis définir les zones et conduits<a class="zola-anchor" href="#cartographier-les-fonctions-puis-definir-les-zones-et-conduits" aria-label="Anchor link for: cartographier-les-fonctions-puis-definir-les-zones-et-conduits">
   <span class="content-icon content-icon-sm" aria-hidden="true">
     
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
 
   </span>
+</a></h3>
+<p>Pour sécuriser le réseau, il faut d'abord identifier <strong>où se trouvent les fonctions et quelles communications les relient</strong>. Le modèle Purdue fournit un repère pour distinguer le SI commercial, la supervision, la régulation et le procédé physique. Il ne détermine pas à lui seul les accès autorisés : une box indépendante, un équipement connecté au cloud ou un poste de maintenance peuvent traverser plusieurs frontières de confiance.</p>
+<p>L'approche en <strong>zones et conduits de l'IEC 62443</strong> aide ensuite à organiser ces communications. Une <em>zone</em> regroupe des équipements ayant des exigences de sécurité comparables, définies selon les fonctions et les conséquences d'une compromission. Un <em>conduit</em> représente les communications entre zones et les protections appliquées à leur passage. Les zones ne correspondent donc pas automatiquement à un VLAN ou à un niveau Purdue.</p>
+<figure class="research-figure">
+<a class="figure-open" href="schema-zones-conduits-froid.svg" target="_blank" rel="noopener" aria-label="Ouvrir le schéma des zones et conduits d'une télémaintenance frigorifique">
+<img src="schema-zones-conduits-froid.svg" width="1360" height="710" alt="Schéma conceptuel de zones distinctes pour le SI de l'enseigne, l'accès prestataire, la supervision AK-SM ou XWEB, les régulateurs et l'astreinte. Quatre conduits sont à documenter. Aucun numéro de niveau Purdue ni port n'est présumé." loading="lazy" decoding="async">
 </a>
-</h3>
-<p>La télémaintenance doit rejoindre <strong>une zone réseau réservée aux équipements frigorifiques</strong>, séparée autant que possible des postes bureautiques, du Wi-Fi invité et des autres usages du magasin. L'objectif est de limiter les communications possibles si un poste de maintenance ou un compte est compromis.</p>
-<p>Un <strong>VLAN</strong> peut réaliser cette séparation sur une infrastructure administrable ; une séparation physique est une autre possibilité. <strong>Un VLAN seul ne constitue pas un filtrage</strong> : si le routeur laisse librement communiquer les réseaux, un équipement compromis peut encore atteindre l'autre zone. Le responsable réseau doit identifier les communications nécessaires et les limiter au moyen de règles de pare-feu ou de filtrage adaptées, y compris pour l'accès depuis le VPN.</p>
-<p>Avant de modifier cette architecture, <strong>recenser et tester les flux indispensables</strong> : échanges entre supervision et régulateurs, alarmes vers l'astreinte, supervision multisite et accès du mainteneur. Une isolation mal préparée pourrait couper une alarme ou empêcher le dépannage sans nécessairement arrêter la régulation locale. Les fonctions à préserver dépendent des équipements réellement installés.</p>
-<p>Sur une petite installation derrière une box qui ne permet pas ce filtrage, <strong>ne créez pas un VLAN symbolique</strong> : supprimez d'abord les expositions directes, sécurisez les identités et faites étudier un routeur ou pare-feu administré capable de cloisonner réellement les réseaux. <strong>Le choix et la configuration relèvent du responsable réseau, en coordination avec le frigoriste.</strong></p>
+<figcaption>Figure 5. Cartographier les fonctions avec Purdue, puis définir les frontières et les communications selon les principes IEC 62443. Architecture illustrative : les conduits, leurs directions et les moyens d'alerte sont à vérifier sur chaque installation. Schéma original lxrider.</figcaption>
+</figure>
+<h3 id="donner-une-regle-precise-a-chaque-communication">Donner une règle précise à chaque communication<a class="zola-anchor" href="#donner-une-regle-precise-a-chaque-communication" aria-label="Anchor link for: donner-une-regle-precise-a-chaque-communication">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a></h3>
+<p>Le responsable réseau et le frigoriste documentent ensemble les flux nécessaires avant de modifier les règles. Les quatre conduits du schéma donnent des <strong>questions de vérification</strong>, sans présumer des protocoles réellement utilisés :</p>
+<table><thead><tr><th>Conduit à examiner</th><th>Initiateur et destination à confirmer</th><th>Finalité et contrôle à vérifier</th></tr></thead><tbody>
+<tr><td><strong>C1 — Accès distant</strong></td><td>Poste du prestataire → point d'entrée autorisé</td><td>Authentification, MFA si compatible, limitation et révocation des accès</td></tr>
+<tr><td><strong>C2 — Maintenance</strong></td><td>Passerelle ou bastion → superviseur autorisé</td><td>Destinations et ports limités, session tracée, droits par magasin</td></tr>
+<tr><td><strong>C3 — Supervision / régulation</strong></td><td>Superviseur ↔ régulateurs selon les fonctions</td><td>Protocoles nécessaires, lecture ou écriture autorisée, maintien des sécurités locales</td></tr>
+<tr><td><strong>C4 — Alarmes</strong></td><td>Superviseur ou service de mesure ↔ astreinte ou plateforme</td><td>Sens réel des échanges, réception testée, dépendances et secours</td></tr>
+</tbody></table>
+<p>Pour chaque flux, compléter <strong>source, destination, initiateur, protocole et port, justification, responsable, authentification et droits utilisables</strong>. Les valeurs sont relevées sur l'architecture réelle et dans la documentation de la version installée. Un port ouvert ne démontre ni le service exact ni les droits de commande disponibles.</p>
+<h3 id="appliquer-la-segmentation-sans-interrompre-le-froid">Appliquer la segmentation sans interrompre le froid<a class="zola-anchor" href="#appliquer-la-segmentation-sans-interrompre-le-froid" aria-label="Anchor link for: appliquer-la-segmentation-sans-interrompre-le-froid">
+  <span class="content-icon content-icon-sm" aria-hidden="true">
+    
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+
+  </span>
+</a></h3>
+<p>Une zone frigorifique peut être isolée physiquement ou logiquement. Un <strong>VLAN</strong> sépare des réseaux sur une infrastructure administrable, mais <strong>ne filtre pas leurs échanges à lui seul</strong>. Le pare-feu, la passerelle ou une autre solution adaptée doit appliquer les règles des conduits, y compris depuis le VPN. Le point d'accès du prestataire et les comptes qui l'administrent sont également à protéger.</p>
+<p>La méthode consiste à relever les communications existantes, comparer les flux observés aux besoins validés, préparer les règles et leur <strong>retour arrière</strong>, puis effectuer les changements progressivement lorsque l'installation le permet. La réception des alarmes, les commandes nécessaires et la capacité d'intervention sont vérifiées avec le frigoriste et l'astreinte avant et après les modifications.</p>
+<p>Sur une petite installation dont la box ne sait pas filtrer les flux, la priorité reste de <strong>supprimer les interfaces de gestion publiées sur Internet</strong> et de faire étudier un équipement d'accès administré. Sur une architecture multisite, une DMZ ou un bastion peut être pertinent selon les contraintes ; aucun modèle unique ne remplace l'inventaire des flux et des dépendances.</p>
 <h3 id="exemple-avec-deux-magasins">Exemple avec deux magasins<a class="zola-anchor" href="#exemple-avec-deux-magasins" aria-label="Anchor link for: exemple-avec-deux-magasins">
   <span class="content-icon content-icon-sm" aria-hidden="true">
     
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
 
   </span>
-</a>
-</h3>
+</a></h3>
 <p>Un même frigoriste entretient les magasins A et B. Lors d’une intervention sur A, sa session peut être limitée à ce seul magasin. Un bastion correctement configuré peut limiter sa session à A et enregistrer cette connexion.</p>
 <figure class="research-figure">
 <a class="figure-open" href="schema-bastion-telemaintenance.svg" target="_blank" rel="noopener" aria-label="Ouvrir le schéma du bastion de télémaintenance">
 <img src="schema-bastion-telemaintenance.svg" width="1160" height="520" alt="Exemple d'accès : un frigoriste passe par un VPN et un bastion. La session vers le superviseur du magasin A est autorisée, tandis que l'accès au magasin B est refusé selon les permissions attribuées. Le bastion journalise les connexions ; les droits de modification restent gérés sur chaque superviseur." loading="lazy" decoding="async">
 </a>
-<figcaption>Figure 4. Bastion de télémaintenance : un intervenant, deux magasins, des droits d'accès différents. Exemple conceptuel lxrider.</figcaption>
+<figcaption>Figure 6. Bastion de télémaintenance : un intervenant, deux magasins, des droits d'accès différents. Exemple conceptuel lxrider.</figcaption>
 </figure>
 <p>Attention toutefois : <strong>le bastion devient un passage sensible</strong>. Il faut le maintenir à jour, protéger son administration et prévoir un secours en cas de panne. Les principes de l'<a rel="external" href="https://messervices.cyber.gouv.fr/guides/recommandations-gestion-technique-batiment">ANSSI sur les accès des prestataires aux GTB/GTC</a> éclairent ce choix. L'architecture se décide selon les contraintes de chaque magasin.</p>
 <h3 id="protection-provisoire-avant-la-mise-en-place-du-vpn">Protection provisoire avant la mise en place du VPN<a class="zola-anchor" href="#protection-provisoire-avant-la-mise-en-place-du-vpn" aria-label="Anchor link for: protection-provisoire-avant-la-mise-en-place-du-vpn">
@@ -1433,8 +1268,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
 
   </span>
-</a>
-</h3>
+</a></h3>
 <p>Le responsable réseau peut provisoirement filtrer les connexions venant d’Internet pour <strong>autoriser exclusivement les adresses IP publiques connues du prestataire</strong>, si le matériel le permet. Le <a rel="external" href="https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/">CERT-FR</a> présente cette mesure comme <strong>temporaire</strong> : le superviseur reste joignable depuis ces adresses.</p>
 <p>Cette protection provisoire nécessite un responsable, une échéance de passage au VPN et un essai de réception des alarmes.</p>
 <h3 id="verifier-les-comptes-de-maintenance">Vérifier les comptes de maintenance<a class="zola-anchor" href="#verifier-les-comptes-de-maintenance" aria-label="Anchor link for: verifier-les-comptes-de-maintenance">
@@ -1443,8 +1277,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
 
   </span>
-</a>
-</h3>
+</a></h3>
 <p>Un ancien prestataire utilise encore un identifiant partagé ? Un compte par défaut existe toujours ? Cela mérite une revue avec le mainteneur. Attribuez des comptes nominatifs et des droits minimaux. <strong>Activez l’authentification multifacteur (MFA) sur le point d’entrée distant qui la prend en charge (VPN, bastion ou portail d’accès)</strong> ; si le superviseur ancien ne propose pas de MFA, protégez son accès en amont plutôt que de lui prêter une fonction qu’il n’a pas. Prévoyez la révocation des comptes des anciens intervenants, la protection des comptes d’administration du superviseur et la conservation de traces d’accès adaptées.</p>
 <p><strong>La fermeture des ports publics et la gestion des comptes sont deux protections complémentaires.</strong> Le VPN réduit également l’exposition d’un superviseur en fin de support. Pour les XWEB EVO, Copeland a <a rel="external" href="https://webapps.copeland.com/dixell/Content/Pages/AdvertisingMaterials/ProductNews/XWEB%20EVO%20EoS%20-%20Product_Bulletin_March_2026.pdf">annoncé l’arrêt des mises à jour logicielles le 16 mars 2026</a> : la protection immédiate de l’accès s’accompagne d’un projet de remplacement.</p>
 <h3 id="la-bascule-dans-le-bon-ordre">La bascule, dans le bon ordre<a class="zola-anchor" href="#la-bascule-dans-le-bon-ordre" aria-label="Anchor link for: la-bascule-dans-le-bon-ordre">
@@ -1453,8 +1286,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
 
   </span>
-</a>
-</h3>
+</a></h3>
 <ol>
 <li>Mettre en place <strong>le nouvel accès et le tester</strong>, MFA et restrictions réseau compris, avec le frigoriste ; conserver ce qui est nécessaire à un repli approuvé.</li>
 <li>Vérifier la <strong>télémaintenance et le parcours des alarmes</strong> avec l'astreinte.</li>
@@ -1467,42 +1299,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
 
   </span>
-</a>
-</h2>
+</a></h2>
 <p>Depuis Internet, <strong>l’interface de gestion du superviseur ne doit plus être directement accessible</strong>, y compris par l’ancien chemin publié. L’adresse IP publique peut néanmoins rester utilisée par un service VPN protégé. Ce contrôle s’accompagne de la vérification des autres chemins recensés et d’un essai complet de télémaintenance.</p>
-<h3 id="controles-a-cloturer-ensemble">Contrôles à clôturer ensemble<a class="zola-anchor" href="#controles-a-cloturer-ensemble" aria-label="Anchor link for: controles-a-cloturer-ensemble">
+<h3 id="six-resultats-a-verifier-ensemble">Six résultats à vérifier ensemble<a class="zola-anchor" href="#six-resultats-a-verifier-ensemble" aria-label="Anchor link for: six-resultats-a-verifier-ensemble">
   <span class="content-icon content-icon-sm" aria-hidden="true">
     
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
 
   </span>
-</a>
-</h3>
+</a></h3>
 <ul>
 <li><input disabled="" type="checkbox"/>
-Les accès connus ont été recensés : box, 4G/5G, IPv6, PC froid, plateformes et prestataires.</li>
+<strong>Accès inventoriés :</strong> box, 4G/5G, IPv6, PC froid, plateformes, prestataires et anciens chemins connus ont été examinés.</li>
 <li><input disabled="" type="checkbox"/>
-Le nouveau VPN ou accès privé fonctionne pour le frigoriste autorisé ; les tentatives depuis un compte hors périmètre sont bloquées.</li>
+<strong>Exposition directe supprimée :</strong> les accès publics identifiés sont fermés ; les autres chemins possibles sont vérifiés avec le responsable réseau.</li>
 <li><input disabled="" type="checkbox"/>
-L’authentification multifacteur du VPN, bastion ou portail compatible a été testée ; les comptes nominatifs et la révocation des anciens accès ont été vérifiés.</li>
+<strong>Identités et droits maîtrisés :</strong> comptes nominatifs, MFA sur l'entrée compatible, révocation des anciens accès et limitation aux seuls équipements autorisés sont testés. Si un bastion est utilisé, ses journaux et son secours sont vérifiés.</li>
 <li><input disabled="" type="checkbox"/>
-La séparation de la zone frigorifique (VLAN filtré ou autre dispositif adapté) a été examinée ; les communications nécessaires et les communications interdites ont été testées avec le responsable réseau.</li>
+<strong>Réseau cloisonné :</strong> la séparation du réseau frigorifique et le filtrage des communications nécessaires ou interdites ont été examinés et testés selon l'architecture.</li>
 <li><input disabled="" type="checkbox"/>
-Le technicien accède uniquement aux équipements prévus pour son intervention.</li>
+<strong>Maintenance et alarmes préservées :</strong> le frigoriste confirme l'accès utile ; une alarme de test autorisée est <strong>reçue et confirmée par l'astreinte</strong>.</li>
 <li><input disabled="" type="checkbox"/>
-Si un bastion est présent, les droits par magasin, les journaux et le secours ont été testés.</li>
-<li><input disabled="" type="checkbox"/>
-Les accès directs identifiés ont été fermés ; le réseau a vérifié les autres chemins possibles.</li>
-<li><input disabled="" type="checkbox"/>
-Une alarme de test autorisée a été <strong>reçue et confirmée par l'astreinte</strong>.</li>
-<li><input disabled="" type="checkbox"/>
-Le frigoriste confirme que la supervision et les fonctions de télémaintenance nécessaires restent accessibles.</li>
-<li><input disabled="" type="checkbox"/>
-Pour chaque accès, <strong>celui qui autorise, administre et retire les droits</strong> est identifié, y compris chez les prestataires.</li>
-<li><input disabled="" type="checkbox"/>
-On sait <strong>qui maintient la solution</strong>, qui dépanne et qui appeler en dehors des heures ouvrées.</li>
+<strong>Responsables et secours identifiés :</strong> on sait qui autorise, administre, révoque, maintient et dépanne chaque accès, y compris chez les prestataires et hors horaires ouvrés.</li>
 </ul>
-<p>Ce guide concerne <strong>la sécurisation préventive des accès</strong>. Si une compromission est suspectée, <strong>fermer une redirection ne suffit pas à considérer l’installation comme saine</strong>. Préservez les constats, faites vérifier les paramètres et l’état réel de l’installation frigorifique par le professionnel compétent, puis coordonnez la réponse selon les consignes CERT-FR et constructeur ; la <a rel="external" href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/">reprise après incident</a> est un autre sujet.</p>
+<p>Ce guide concerne <strong>la sécurisation préventive des accès</strong>. Si une compromission est suspectée, <strong>fermer une redirection ne suffit pas à considérer l’installation comme saine</strong>. Préservez les constats, faites vérifier les paramètres et l’état réel de l’installation frigorifique par le professionnel compétent, puis coordonnez la réponse selon les consignes CERT-FR et constructeur ; la <a href="https://lxrider.github.io/publications/cyber-resilience-froid-commercial/">reprise après incident</a> est un autre sujet.</p>
 <p><strong>Le résultat se vérifie sur le terrain : le frigoriste intervient à distance par un accès maîtrisé, l’astreinte reçoit les alarmes et les interfaces de gestion restent derrière les protections prévues.</strong></p>
 <h2 id="sources-et-documentation">Sources et documentation<a class="zola-anchor" href="#sources-et-documentation" aria-label="Anchor link for: sources-et-documentation">
   <span class="content-icon content-icon-sm" aria-hidden="true">
@@ -1510,8 +1330,11 @@ On sait <strong>qui maintient la solution</strong>, qui dépanne et qui appeler 
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" focusable="false" aria-hidden="true" class="social-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
 
   </span>
-</a>
-</h2>
+</a></h2>
+<ul>
+<li><a rel="external" href="https://ryanthomashuff.com/it-ot-network-segmentation-purdue-model-iec-62443/">Ryan Thomas Huff — <em>IT/OT Network Segmentation: The Purdue Model Is the Map, IEC 62443 Zones and Conduits Are the Rules</em></a> (27 octobre 2026) : méthode d'inventaire, zones, conduits, accès des prestataires et validation progressive ; référence méthodologique, non preuve des incidents.</li>
+<li><a rel="external" href="https://webstore.iec.ch/en/publication/30727">IEC — IEC 62443-3-2:2020</a> : analyse des risques et définition des zones et conduits pour la conception.</li>
+</ul>
 <ul>
 <li><a rel="external" href="https://cert.cyber.gouv.fr/alerte/CERTFR-2026-ALE-012/">CERT-FR — CERTFR-2026-ALE-012 : incident ciblant les contrôleurs à distance des installations de réfrigération</a> (version du 16 octobre 2026).</li>
 <li><a rel="external" href="https://dixell.fr/wp-content/uploads/2026/10/Recommandations-pour-une-utilisation-securisee-des-superviseurs-XWEB-v1.0.pdf">Copeland / Dixell France — Recommandations pour une utilisation sécurisée des superviseurs XWEB</a> (14 octobre 2026).</li>
@@ -1522,7 +1345,8 @@ On sait <strong>qui maintient la solution</strong>, qui dépanne et qui appeler 
 <li><a rel="external" href="https://assistance.orange.fr/ordinateurs-peripheriques/installer-et-utiliser/les-consoles-de-jeux/xbox/livebox-5-configurer-les-regles-nat-pour-pouvoir-utiliser-un-jeu-ou-une-application-serveur_287340-827962">Orange — Livebox 5, NAT/PAT</a> ; <a rel="external" href="https://assistance.free.fr/articles/1395">Free — paramètres réseau avancés</a>.</li>
 </ul>
 <p><em>Portée : guide pratique destiné aux intervenants autorisés sur les supervisions frigorifiques. Les exemples d'accès et les schémas sont conceptuels ; ils doivent être confrontés aux équipements, connexions et contrats du site.</em></p>
-<p><em>Version 1.5 — contrôle des accès de maintenance, 3 novembre 2026. © 2026 lxrider — Tous droits réservés.</em></p>
+<p><em>Version 1.8 — 13 novembre 2026. © 2026 lxrider — Tous droits réservés.</em></p>
+
 
 
     
@@ -1549,211 +1373,7 @@ On sait <strong>qui maintient la solution</strong>, qui dépanne et qui appeler 
 
 
 
-<aside class="docs-toc" data-devlab-toc aria-labelledby="docs-toc-title">
-  
-  <p class="docs-toc-title" id="docs-toc-title">Sur cette page</p>
-
-  <nav class="docs-toc-nav" aria-label="Sur cette page">
-    
-  
-  <ul class="docs-toc-list">
-    
-    <li class="docs-toc-item docs-toc-level-2">
-      
-      <details class="docs-toc-group" data-docs-toc-group>
-        <summary class="docs-toc-group-toggle">
-          <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#1-acces-distant-et-exposition-internet-deux-chemins-differents">
-            1. Accès distant et exposition Internet : deux chemins différents
-          </a>
-          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
-        </summary>
-
-        
-  
-  <ul class="docs-toc-list">
-    
-    <li class="docs-toc-item docs-toc-level-3">
-      
-      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#attention-au-chemin-des-alarmes">
-        Attention au chemin des alarmes
-      </a>
-      
-    </li>
-    
-  </ul>
-  
-
-      </details>
-      
-    </li>
-    
-    <li class="docs-toc-item docs-toc-level-2">
-      
-      <details class="docs-toc-group" data-docs-toc-group>
-        <summary class="docs-toc-group-toggle">
-          <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#2-retrouver-les-acces-qui-existent-vraiment">
-            2. Retrouver les accès qui existent vraiment
-          </a>
-          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
-        </summary>
-
-        
-  
-  <ul class="docs-toc-list">
-    
-    <li class="docs-toc-item docs-toc-level-3">
-      
-      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#comprendre-ce-que-fait-la-redirection">
-        Comprendre ce que fait la redirection
-      </a>
-      
-    </li>
-    
-    <li class="docs-toc-item docs-toc-level-3">
-      
-      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#une-verification-simple-sur-votre-installation">
-        Une vérification simple, sur votre installation
-      </a>
-      
-    </li>
-    
-    <li class="docs-toc-item docs-toc-level-3">
-      
-      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#qui-tient-les-acces-de-telemaintenance">
-        Qui tient les accès de télémaintenance ?
-      </a>
-      
-    </li>
-    
-  </ul>
-  
-
-      </details>
-      
-    </li>
-    
-    <li class="docs-toc-item docs-toc-level-2">
-      
-      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#3-avant-de-toucher-a-la-box-preparer-le-relais">
-        3. Avant de toucher à la box, préparer le relais
-      </a>
-      
-    </li>
-    
-    <li class="docs-toc-item docs-toc-level-2">
-      
-      <details class="docs-toc-group" data-docs-toc-group>
-        <summary class="docs-toc-group-toggle">
-          <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#4-securiser-la-telemaintenance-sans-perdre-l-acces-distant">
-            4. Sécuriser la télémaintenance sans perdre l&#39;accès distant
-          </a>
-          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
-        </summary>
-
-        
-  
-  <ul class="docs-toc-list">
-    
-    <li class="docs-toc-item docs-toc-level-3">
-      
-      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#vpn-passerelle-bastion-des-roles-differents">
-        VPN, passerelle, bastion : des rôles différents
-      </a>
-      
-    </li>
-    
-    <li class="docs-toc-item docs-toc-level-3">
-      
-      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#isoler-le-reseau-frigorifique-et-controler-les-acces">
-        Isoler le réseau frigorifique et contrôler les accès
-      </a>
-      
-    </li>
-    
-    <li class="docs-toc-item docs-toc-level-3">
-      
-      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#exemple-avec-deux-magasins">
-        Exemple avec deux magasins
-      </a>
-      
-    </li>
-    
-    <li class="docs-toc-item docs-toc-level-3">
-      
-      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#protection-provisoire-avant-la-mise-en-place-du-vpn">
-        Protection provisoire avant la mise en place du VPN
-      </a>
-      
-    </li>
-    
-    <li class="docs-toc-item docs-toc-level-3">
-      
-      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#verifier-les-comptes-de-maintenance">
-        Vérifier les comptes de maintenance
-      </a>
-      
-    </li>
-    
-    <li class="docs-toc-item docs-toc-level-3">
-      
-      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#la-bascule-dans-le-bon-ordre">
-        La bascule, dans le bon ordre
-      </a>
-      
-    </li>
-    
-  </ul>
-  
-
-      </details>
-      
-    </li>
-    
-    <li class="docs-toc-item docs-toc-level-2">
-      
-      <details class="docs-toc-group" data-docs-toc-group>
-        <summary class="docs-toc-group-toggle">
-          <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#5-verifier-que-tout-fonctionne-apres-l-intervention">
-            5. Vérifier que tout fonctionne après l&#39;intervention
-          </a>
-          <span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span>
-        </summary>
-
-        
-  
-  <ul class="docs-toc-list">
-    
-    <li class="docs-toc-item docs-toc-level-3">
-      
-      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#controles-a-cloturer-ensemble">
-        Contrôles à clôturer ensemble
-      </a>
-      
-    </li>
-    
-  </ul>
-  
-
-      </details>
-      
-    </li>
-    
-    <li class="docs-toc-item docs-toc-level-2">
-      
-      <a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#sources-et-documentation">
-        Sources et documentation
-      </a>
-      
-    </li>
-    
-  </ul>
-  
-
-  </nav>
-  
-
-  
-</aside>
+<aside class="docs-toc" data-devlab-toc aria-labelledby="docs-toc-title"><p class="docs-toc-title" id="docs-toc-title">Sur cette page</p><nav class="docs-toc-nav" aria-label="Sur cette page"><ul class="docs-toc-list"><li class="docs-toc-item docs-toc-level-2"><details class="docs-toc-group" data-docs-toc-group><summary class="docs-toc-group-toggle"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#1-acces-distant-et-exposition-internet-deux-chemins-differents">1. Accès distant et exposition Internet : deux chemins différents</a><span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span></summary><ul class="docs-toc-list"><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#une-connexion-internet-independante-peut-aussi-exposer-le-froid">Une connexion Internet indépendante peut aussi exposer le froid</a></li><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#attention-au-chemin-des-alarmes">Attention au chemin des alarmes</a></li></ul></details></li><li class="docs-toc-item docs-toc-level-2"><details class="docs-toc-group" data-docs-toc-group><summary class="docs-toc-group-toggle"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#2-retrouver-les-acces-qui-existent-vraiment">2. Retrouver les accès qui existent vraiment</a><span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span></summary><ul class="docs-toc-list"><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#comprendre-ce-que-fait-la-redirection">Comprendre ce que fait la redirection</a></li><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#une-verification-simple-sur-votre-installation">Une vérification simple, sur votre installation</a></li><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#qui-tient-les-acces-de-telemaintenance">Qui tient les accès de télémaintenance ?</a></li></ul></details></li><li class="docs-toc-item docs-toc-level-2"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#3-avant-de-toucher-a-la-box-preparer-le-relais">3. Avant de toucher à la box, préparer le relais</a></li><li class="docs-toc-item docs-toc-level-2"><details class="docs-toc-group" data-docs-toc-group><summary class="docs-toc-group-toggle"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#4-securiser-la-telemaintenance-sans-perdre-l-acces-distant">4. Sécuriser la télémaintenance sans perdre l'accès distant</a><span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span></summary><ul class="docs-toc-list"><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#vpn-passerelle-bastion-des-roles-differents">VPN, passerelle, bastion : des rôles différents</a></li><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#cartographier-les-fonctions-puis-definir-les-zones-et-conduits">Cartographier les fonctions, puis définir les zones et conduits</a></li><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#donner-une-regle-precise-a-chaque-communication">Donner une règle précise à chaque communication</a></li><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#appliquer-la-segmentation-sans-interrompre-le-froid">Appliquer la segmentation sans interrompre le froid</a></li><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#exemple-avec-deux-magasins">Exemple avec deux magasins</a></li><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#protection-provisoire-avant-la-mise-en-place-du-vpn">Protection provisoire avant la mise en place du VPN</a></li><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#verifier-les-comptes-de-maintenance">Vérifier les comptes de maintenance</a></li><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#la-bascule-dans-le-bon-ordre">La bascule, dans le bon ordre</a></li></ul></details></li><li class="docs-toc-item docs-toc-level-2"><details class="docs-toc-group" data-docs-toc-group><summary class="docs-toc-group-toggle"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#5-verifier-que-tout-fonctionne-apres-l-intervention">5. Vérifier que tout fonctionne après l'intervention</a><span class="docs-toc-group-indicator" aria-hidden="true">&rsaquo;</span></summary><ul class="docs-toc-list"><li class="docs-toc-item docs-toc-level-3"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#six-resultats-a-verifier-ensemble">Six résultats à vérifier ensemble</a></li></ul></details></li><li class="docs-toc-item docs-toc-level-2"><a href="https://lxrider.github.io/publications/securiser-supervision-frigorifique/#sources-et-documentation">Sources et documentation</a></li></ul></nav></aside>
 
 
 </div>
